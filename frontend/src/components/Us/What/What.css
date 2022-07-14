@@ -1,0 +1,27 @@
+.what--container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+}
+
+.what--text {
+    width: 50%;
+    justify-self: start;
+    padding: 2rem;
+}
+
+.what--text >h1 {
+    font-size: 48px;
+}
+
+.what--text >p {
+    margin-top: 14px;
+    font-size: 20px;
+    line-height: 1.75rem;
+}
+
+.what--img {
+    width: 50%;
+    justify-self: end;
+    background: url("../../../images/notes2.jpeg") no-repeat right / 100% 100%;
+}
