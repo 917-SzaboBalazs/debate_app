@@ -10,7 +10,7 @@ class UserAdmin(admin.ModelAdmin):
 
     list_display = ('username', 'get_name', 'email', 'birthday')
 
-    @display(description='fullname')
+    @display(description='fullname', ordering='firstname')
     def get_name(self, obj):
         return obj.firstname + " " + obj.lastname
 
