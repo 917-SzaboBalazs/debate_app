@@ -3,6 +3,7 @@
 # dependencies
 /frontend/node_modules
 /.pnp
+backend/backend/__pycache__
 .pnp.js
 
 # testing
