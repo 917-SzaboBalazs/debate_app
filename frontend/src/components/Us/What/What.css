@@ -23,5 +23,5 @@
 .what--img {
     width: 50%;
     justify-self: end;
-    background: url("../../../images/notes2.jpeg") no-repeat right / 100% 100%;
+    background: url("../../../../public/images/notes2.jpeg") no-repeat right / 100% 100%;
 }
