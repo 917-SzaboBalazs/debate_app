@@ -1,6 +1,7 @@
 :root {
   --primary: white;
   --secondary: #22344D;
+  --third: #F2CA10;
 }
   
   .trunk--container {
@@ -14,6 +15,7 @@
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
     object-fit: contain;
     text-align: center;
+    border-bottom: 2rem solid var(--third);
   }
   
   .trunk--container > h1 {
@@ -47,7 +49,8 @@
     color: var(--secondary);
     transition: 250ms;
 }
-  
+
+
   @media screen and (max-width: 960px) {
     .trunk--container > h1 {
       font-size: 70px;
