@@ -1,0 +1,9 @@
+:root {
+    --primary: white;
+    --secondary: #22344D;
+    --third: #F2CA10;
+}
+
+.about-us--container {
+    background-color: var(--third);
+}

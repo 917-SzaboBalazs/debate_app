@@ -1,12 +1,17 @@
+:root {
+    --primary: white;
+    --secondary: #22344D;
+    --third: #F2CA10;
+  }
+    
+
 .what--container {
     display: flex;
-    flex-direction: row;
-    margin-top: 3rem;
+    flex-direction: column;
 }
 
 .what--text {
-    width: 50%;
-    justify-self: start;
+    width: 100%;
     padding: 2rem;
 }
 
@@ -18,10 +23,4 @@
     margin-top: 14px;
     font-size: 20px;
     line-height: 1.75rem;
-}
-
-.what--img {
-    width: 50%;
-    justify-self: end;
-    background: url("../../../images/notes2.jpeg") no-repeat right / 100% 100%;
 }
