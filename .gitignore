@@ -3,6 +3,10 @@
 # dependencies
 /.pnp
 .pnp.js
+.idea/
+__pycache__/
+venv/
+node_modules/
 
 # testing
 /coverage

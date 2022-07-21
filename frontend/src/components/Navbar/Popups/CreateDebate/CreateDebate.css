@@ -1,0 +1,80 @@
+:root {
+    --primary: white;
+    --secondary: #22344D;
+    --third: #F2CA10;
+}
+
+.create-debate {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-debate--inner {
+    display: grid;
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 640px;
+    background-color: var(--primary);
+    justify-content: center;
+    align-items: center;
+}
+
+.create-debate--inner .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    background-color: red;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    transition: .3s;
+}
+
+.create-debate--inner .close-btn:hover {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: red;
+    background-color: var(--primary);
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.create-debate--inner .create {
+    width: 100%;
+    border: .3rem solid var(--secondary);
+    margin-top: 1rem;
+    border-radius: .75rem;
+    background-color: transparent;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--secondary);
+    transition: .3s;
+}
+
+.create-debate--inner .create:hover {
+    width: 100%;
+    border: .3rem solid var(--primary);
+    margin-top: 1rem;
+    border-radius: .75rem;
+    background-color: var(--secondary);
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--primary);
+}

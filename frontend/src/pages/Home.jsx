@@ -8,7 +8,7 @@ function Home() {
   return (
     <>
         <Trunk />
-        <Us />
+        {/* <Us /> */}
     </>
   )
 }

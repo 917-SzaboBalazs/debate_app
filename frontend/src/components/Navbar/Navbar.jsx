@@ -2,12 +2,15 @@ import React from 'react';
 import { Button } from "../Button/Button";
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import CreateDebate from './Popups/CreateDebate/CreateDebate';
+
 import './Navbar.css';
 
 function Navbar() {
 
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const [createDebate, setCreate] = useState(false);
 
   useEffect(() => {
     showButton();
@@ -31,6 +34,10 @@ function Navbar() {
 
   window.addEventListener('resize', showButton);
 
+  const handleClickCreate = () => {
+    setCreate(true);
+  }
+
   return (
     <nav className='navbar'>
         <div className="navbar-container">
@@ -50,12 +57,7 @@ function Navbar() {
                 </Button>
               </li>
               <li className='nav-item' onClick={closeMobileMenu}>
-                <Button
-                  className='nav-links'
-                  to="create-a-debate"
-                >
-                  Create a Debate
-                </Button>
+                <button className="nav-links" onClick={handleClickCreate}>Create a Debate</button>
               </li>
               <li  className='nav-item' onClick={closeMobileMenu}>
                 <Button
@@ -74,6 +76,7 @@ function Navbar() {
                 </Button>
               </li>
           </ul>
+          <CreateDebate trigger={createDebate} setTrigger={setCreate}/>
         </div>
     </nav>
   )

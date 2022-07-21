@@ -1,26 +1,28 @@
+:root {
+    --primary: white;
+    --secondary: #22344D;
+    --third: #F2CA10;
+  }
+    
+
 .why--container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .why--text {
-    width: 50%;
+    width: 100%;
     justify-self: end;
     padding: 2rem;
 }
 
 .why--text >h1 {
     font-size: 48px;
+    text-align: left;
 }
 
 .why--text >p {
     margin-top: 14px;
     font-size: 20px;
     line-height: 1.75rem;
-}
-
-.why--img {
-    width: 50%;
-    justify-self: start;
-    background: url("../../../images/notes.jpeg") no-repeat right / 100% 100%;
 }

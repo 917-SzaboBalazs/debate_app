@@ -5,8 +5,6 @@ import './Why.css'
 function Why() {
   return (
     <div className="why--container">
-        <div className="why--img">
-        </div>
         <div className="why--text">
             <h1>
                 Miért jöttünk létre?
