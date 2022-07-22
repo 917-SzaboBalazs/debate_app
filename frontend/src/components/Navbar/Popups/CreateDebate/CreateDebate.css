@@ -78,3 +78,10 @@
     font-weight: bold;
     color: var(--primary);
 }
+
+.create-debate--inner .select-debate {
+    border: none;
+    /* border-bottom: 2px solid var(--secondary); */
+    margin-top: 1rem;
+    font-size: 18px;
+}
