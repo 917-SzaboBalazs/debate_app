@@ -3,7 +3,6 @@ import Select from 'react-select';
 import { useState } from 'react';
 
 import './CreateDebate.css'
-import { logDOM } from '@testing-library/react';
 
 function CreateDebate(props) {
   const [ debateType, setType ] = useState('britt-parlamenti');
