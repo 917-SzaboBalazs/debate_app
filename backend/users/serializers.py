@@ -6,7 +6,7 @@ from users.models import NewUser
 class RegisterUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewUser
-        fields = ('username', 'email', 'first_name', 'last_name', 'birthday', 'about_me', 'password', )
+        exclude = ['is_superuser', 'is_staff', 'is_active', 'start_date', ]
         extra_kwargs = {
             'password': {
                 'write_only': True,

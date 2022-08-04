@@ -24,13 +24,8 @@ class CustomAccountManager(BaseUserManager):
         if not email:
             raise ValueError('You must provide an email address.')
 
-        first_name = other_fields.get('first_name')
-        last_name = other_fields.get('last_name')
-        birthday = other_fields.get('birthday')
-
         email = self.normalize_email(email)
-        user = self.model(username=username, email=email, first_name=first_name, last_name=last_name, birthday=birthday,
-                          **other_fields)
+        user = self.model(username=username, email=email, **other_fields)
         user.set_password(raw_password=password)
         user.save()
         return user
@@ -54,3 +49,6 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+
+    class Meta:
+        verbose_name = "User"

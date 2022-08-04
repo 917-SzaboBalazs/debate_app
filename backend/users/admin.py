@@ -4,6 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from users.models import NewUser
 
 
+@admin.register(NewUser)
 class UserAdminConfig(UserAdmin):
     model = NewUser
     search_fields = ('username', 'first_name', 'last_name', )
@@ -17,14 +18,6 @@ class UserAdminConfig(UserAdmin):
         ('Other', {'fields': ('start_date', )}),
     )
 
-    @admin.display(
-        description='fullname',
-        ordering='first_name',
-        )
+    @admin.display(description='fullname', ordering='first_name')
     def get_name(self, obj):
-
         return obj.first_name + " " + obj.last_name
-
-
-admin.site.register(NewUser, UserAdminConfig)
-
