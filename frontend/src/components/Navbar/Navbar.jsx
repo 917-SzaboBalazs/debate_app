@@ -57,7 +57,10 @@ function Navbar() {
                 </Button>
               </li>
               <li className='nav-item' onClick={closeMobileMenu}>
-                <button className="nav-links" onClick={handleClickCreate}>Create a Debate</button>
+                <button className="nav-links" onClick={handleClickCreate}
+              >
+                Create a Debate
+              </button>
               </li>
               <li  className='nav-item' onClick={closeMobileMenu}>
                 <Button
