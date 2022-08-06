@@ -16,23 +16,33 @@ function Signup() {
   const [ passwordAgain, setPasswordAgain ] = useState('');
 
   const [ trigger, setTrigger ] = useState(false);
-  const [ message, setMessage ] = useState('');
+  const [ finalMessage, setFinal ] = useState('');
+  let message = '';
 
-  const [ user, setUser ] = useState( {
-    'username': '',
-    'email': '',
-    'password': ''
-  });
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
 
   const checkInformation = () => {
-    if ( password !== passwordAgain ) {
-      console.log('A ket jelszo nem egyezik meg ' + password + ' ' + passwordAgain)
-      setMessage('A ket jelszo nem egyezik.');
-      return false;
-    } 
+    let checker = true;
 
-    setMessage('Helyes adatok.');
-    return true;
+    if ( password !== passwordAgain ) {
+      console.log('A ket jelszo nem egyezik meg: ' + password + ', ' + passwordAgain)
+      message = message + 'A ket jelszo nem egyezik, kerjuk probald ujra.';
+      checker = false;
+    } else if (!validateEmail(email)) {
+      console.log('Az email nem ervenyes\nKerjuk probald ujra.');
+      message = 'Az email nem ervenyes, kerjuk probald ujra.';
+      checker = false;
+    } else {
+      message = 'Sikeres regisztracio';
+    }
+    setFinal(message);
+    return checker;
   }
 
   const handleSubmit = (e) => {
@@ -44,14 +54,16 @@ function Signup() {
         email: {email},
         password: {password}
       }
-  
-      setUser(temp)
-      
-      axios.post('loaclhost:8000/api/register/', {temp})
-        .then((res) => {console.log('Sikeres regisztracio.')})
-        .catch((err) => {
-            console.log('Valami hiba tortent a regisztracio soran.');
-            setMessage('POST hiba.')});
+        
+      console.log(temp);
+
+      axios.post('loaclhost:8000/api/register', {temp})
+          .then((res) => {console.log('Sikeres regisztracio.')})
+          .catch((err) => {
+              console.log('Valami hiba tortent a regisztracio soran.');
+              message = 'POST hiba'
+              setFinal(message);
+              });
     }
 
     setTrigger(true);
@@ -116,7 +128,7 @@ function Signup() {
             </div>
         </div>
         <SignupPopup trigger={trigger} setTrigger={setTrigger}>
-          <h3>{message}</h3>
+          <h3>{finalMessage}</h3>
         </SignupPopup>
         </form>
     </div>
