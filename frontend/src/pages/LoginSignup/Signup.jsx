@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from '../../axios'
 import SignupPopup from './SignupPopup';
 
 // import '../../App.css'
@@ -10,14 +10,18 @@ import './Signup.css'
 
 function Signup() {
 
-  const [ userName, setUserName ] = useState('');
-  const [ email, setEmail ] = useState('');
-  const [ password, setPassword ] = useState('');
-  const [ passwordAgain, setPasswordAgain ] = useState('');
+  //const [ userName, setUserName ] = useState('');
+  //const [ email, setEmail ] = useState('');
+  //const [ password, setPassword ] = useState('');
+  //const [ passwordAgain, setPasswordAgain ] = useState('');
+  var userName;
+  var email;
+  var password;
+  var passwordAgain;
 
   const [ trigger, setTrigger ] = useState(false);
   const [ finalMessage, setFinal ] = useState('');
-  let message = '';
+  let message = '...';
 
   const validateEmail = (email) => {
     return String(email)
@@ -32,42 +36,64 @@ function Signup() {
 
     if ( password !== passwordAgain ) {
       console.log('A ket jelszo nem egyezik meg: ' + password + ', ' + passwordAgain)
-      message = message + 'A ket jelszo nem egyezik, kerjuk probald ujra.';
+      message = 'A ket jelszo nem egyezik, kerjuk probald ujra.';
       checker = false;
     } else if (!validateEmail(email)) {
       console.log('Az email nem ervenyes\nKerjuk probald ujra.');
       message = 'Az email nem ervenyes, kerjuk probald ujra.';
       checker = false;
-    } else {
-      message = 'Sikeres regisztracio';
     }
     setFinal(message);
     return checker;
   }
 
+  const handleChange = (e) => {
+    //console.log(e.target);
+    if (e.target.name == "username")
+    {
+      userName = e.target.value;
+    }
+    else if (e.target.name == "email")
+    {
+      email = e.target.value;
+    }
+    else if (e.target.name == "password")
+    {
+      password = e.target.value;
+    }
+    else if (e.target.name == "passwordAgain")
+    {
+      passwordAgain = e.target.value;
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    document.getElementById('username').value = "";
+    document.getElementById('email').value = "";
+    document.getElementById('password').value = "";
+    document.getElementById('passwordAgain').value = "";
+
     if (checkInformation()) {
 
-      const temp = {
-        username: {userName},
-        email: {email},
-        password: {password}
-      }
-        
-      console.log(temp);
-
-      axios.post('loaclhost:8000/api/register', {temp})
-          .then((res) => {console.log('Sikeres regisztracio.')})
+      axiosInstance
+          .post('user/register/', {
+            username: userName,
+            email: email,
+            password: password
+          })
+          .then((res) => {
+            console.log('Sikeres regisztracio.');
+            setFinal('Sikeres regisztracio.');
+          })
           .catch((err) => {
-              console.log('Valami hiba tortent a regisztracio soran.');
-              message = 'POST hiba'
-              setFinal(message);
-              });
+              console.log(err.response);
+              setFinal('POST hiba');
+            });
     }
 
     setTrigger(true);
-    
   };
 
 
@@ -77,8 +103,8 @@ function Signup() {
         <div className="trunk-container">
             <div className="login-img">
               {/* <Link to="/log-In"> */}
-                <button 
-                    className='login-btn' 
+                <button
+                    className='login-btn'
                     type='submit'
                     onClick={handleSubmit}
                 >
@@ -89,40 +115,40 @@ function Signup() {
             <div className="login-container">
                 <div className="login-box">
                     <h5 className="username-text">Username:</h5>
-                    <input 
-                        type="text" 
-                        placeholder='eg.: myUserName' 
-                        className="username" 
-                        value = {userName}
-                        onChange = {(event) => { setUserName(event.target.value);}
-                        }
+                    <input
+                        id="username"
+                        name="username"
+                        type="text"
+                        placeholder='eg.: myUserName'
+                        className="username"
+                        onChange = {handleChange}
                     />
                     <h5 className="email-text">Email:</h5>
-                    <input 
-                        type="text" 
-                        placeholder='eg.: me@lol.com' 
-                        className="email" 
-                        value={email}
-                        onChange = {(event) => { setEmail(event.target.value);}
-                        }
+                    <input
+                        id="email"
+                        name="email"
+                        type="text"
+                        placeholder='eg.: me@lol.com'
+                        className="email"
+                        onChange = {handleChange}
                     />
                     <h5 className="password-text">Password:</h5>
-                    <input 
-                        type="password" 
-                        placeholder='eg.: Passwd1234' 
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder='eg.: Passwd1234'
                         className='password'
-                        value={password}
-                        onChange = {(event) => { setPassword(event.target.value);}
-                        }
+                        onChange = {handleChange}
                     />
                     <h5 className="password-text">Password again:</h5>
-                    <input 
-                        type="password" 
-                        placeholder='eg.: Passwd1234' 
-                        className='password' 
-                        value={passwordAgain}
-                        onChange = {(event) => { setPasswordAgain(event.target.value);}
-                        }
+                    <input
+                        id="passwordAgain"
+                        name="passwordAgain"
+                        type="password"
+                        placeholder='eg.: Passwd1234'
+                        className='password'
+                        onChange = {handleChange}
                     />
                 </div>
             </div>
