@@ -10,14 +10,10 @@ import './Signup.css'
 
 function Signup() {
 
-  //const [ userName, setUserName ] = useState('');
-  //const [ email, setEmail ] = useState('');
-  //const [ password, setPassword ] = useState('');
-  //const [ passwordAgain, setPasswordAgain ] = useState('');
-  var userName;
-  var email;
-  var password;
-  var passwordAgain;
+  const [ userName, setUserName ] = useState('');
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [ passwordAgain, setPasswordAgain ] = useState('');
 
   const [ trigger, setTrigger ] = useState(false);
   const [ finalMessage, setFinal ] = useState('');
@@ -47,33 +43,8 @@ function Signup() {
     return checker;
   }
 
-  const handleChange = (e) => {
-    //console.log(e.target);
-    if (e.target.name == "username")
-    {
-      userName = e.target.value;
-    }
-    else if (e.target.name == "email")
-    {
-      email = e.target.value;
-    }
-    else if (e.target.name == "password")
-    {
-      password = e.target.value;
-    }
-    else if (e.target.name == "passwordAgain")
-    {
-      passwordAgain = e.target.value;
-    }
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    document.getElementById('username').value = "";
-    document.getElementById('email').value = "";
-    document.getElementById('password').value = "";
-    document.getElementById('passwordAgain').value = "";
 
     if (checkInformation()) {
 
@@ -86,8 +57,10 @@ function Signup() {
           .then((res) => {
             console.log('Sikeres regisztracio.');
             setFinal('Sikeres regisztracio.');
+            // TODO: clear data
           })
           .catch((err) => {
+              // TODO: error-handling (using response codes)
               console.log(err.response);
               setFinal('POST hiba');
             });
@@ -121,7 +94,9 @@ function Signup() {
                         type="text"
                         placeholder='eg.: myUserName'
                         className="username"
-                        onChange = {handleChange}
+                        onChange = {(e) => {
+                          setUserName(e.target.value);
+                        } }
                     />
                     <h5 className="email-text">Email:</h5>
                     <input
@@ -130,7 +105,9 @@ function Signup() {
                         type="text"
                         placeholder='eg.: me@lol.com'
                         className="email"
-                        onChange = {handleChange}
+                        onChange = {(e) => {
+                          setEmail(e.target.value);
+                        } }
                     />
                     <h5 className="password-text">Password:</h5>
                     <input
@@ -139,7 +116,9 @@ function Signup() {
                         type="password"
                         placeholder='eg.: Passwd1234'
                         className='password'
-                        onChange = {handleChange}
+                        onChange = {(e) => {
+                          setPassword(e.target.value);
+                        } }
                     />
                     <h5 className="password-text">Password again:</h5>
                     <input
@@ -148,7 +127,9 @@ function Signup() {
                         type="password"
                         placeholder='eg.: Passwd1234'
                         className='password'
-                        onChange = {handleChange}
+                        onChange = {(e) => {
+                          setPasswordAgain(e.target.value);
+                        } }
                     />
                 </div>
             </div>
