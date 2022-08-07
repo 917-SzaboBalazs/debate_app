@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import  { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useEffect } from 'react';
 import axiosInstance from '../../axios'
 import SignupPopup from './SignupPopup';
 
@@ -19,30 +19,95 @@ function Signup() {
   const [ finalMessage, setFinal ] = useState('');
   let message = '...';
 
+  let navigate = useNavigate();
+
+
+  // check if teh username is a valid one
+  const validateUsername = (username) => {
+    if (username === '') {
+      message = 'The username field must not be empty.';
+      return false;
+    }
+
+    if (username.length < 5 || username.length > 50) {
+      message = 'The username must be between 5 and 51 characters.';
+      return false;
+    }
+
+    return true;
+  }
+
+  // check if the password is a valid one
+  const validatePassword = (password, passwordAgain) => {
+    if (password === '' || passwordAgain === '') {
+      message = 'The password fields must not be empty.';
+      return false;
+    }
+
+    if (password !== passwordAgain) {
+      message = 'The passwords must match.';
+      return false;
+    }
+
+    if (password.length < 8 || password.length > 50) {
+      message = 'The password must be between 8 and 51 characters.';
+      return false;
+    }
+
+    if (!/([A-Z]+)/g.test(password)) {
+      message = 'There must be at least one capital letter in your password.';
+      return false;
+    }
+
+    if (!/([0-9]+)/g.test(password)) {
+      message = 'There must be at least one number in your password.';
+      return false;
+    }
+
+    return true;
+  }
+
+  // check if the email is a valid one
   const validateEmail = (email) => {
-    return String(email)
+    if (email === '') {
+      message = 'The email field must not be empty.';
+      return false;
+    }
+
+    if (!String(email)
       .toLowerCase()
       .match(
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
+    )) {
+      message = 'The given email addres is not valid.'
+      return false;
+    }
+
+    return true;
   };
 
+  // check all the information
   const checkInformation = () => {
     let checker = true;
 
-    if ( password !== passwordAgain ) {
-      console.log('A ket jelszo nem egyezik meg: ' + password + ', ' + passwordAgain)
-      message = 'A ket jelszo nem egyezik, kerjuk probald ujra.';
-      checker = false;
-    } else if (!validateEmail(email)) {
-      console.log('Az email nem ervenyes\nKerjuk probald ujra.');
-      message = 'Az email nem ervenyes, kerjuk probald ujra.';
+    if (!validateUsername(userName)) {
+      setUserName('');
       checker = false;
     }
+    else if ( !validatePassword(password, passwordAgain)) {
+      setPassword('');
+      setPasswordAgain('');
+      checker = false;
+    } else if (!validateEmail(email)) {
+      setEmail('');
+      checker = false;
+    }
+
     setFinal(message);
     return checker;
   }
 
+  // handle the submit button
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -55,17 +120,38 @@ function Signup() {
             password: password
           })
           .then((res) => {
-            console.log('Sikeres regisztracio.');
-            setFinal('Sikeres regisztracio.');
-            // TODO: clear data
+            console.log('Succes!');
+            setFinal('Succes! (you will be redirected to home-page in 3 seconds');
+            
+            // wait for 3 seconds before redirecting to home page
+            const delay = ms => new Promise(res => setTimeout(res, ms));
+
+            const waitFunc = async () => {
+              await delay(3500);
+
+              navigate('/');
+            }
+            waitFunc();
           })
           .catch((err) => {
-              // TODO: error-handling (using response codes)
-              console.log(err.response);
-              setFinal('POST hiba');
+              console.log(err.response.data);
+              if (err.respose) {
+                if (err.response.data.username == 'User with this username already exists.') {
+                  setFinal('This username already exists.');
+                  setUserName('');
+                } else if (err.response.data.email == 'User with this email already exists.') {
+                  setFinal('User with this email already exists.');
+                  setEmail('');
+                } else {
+                  setFinal('error: POST');
+                }
+              } else {
+                  setFinal('The server is not reacheable right now.');
+              }
             });
     }
 
+    // sets the trigger true => popup screen
     setTrigger(true);
   };
 
@@ -94,6 +180,7 @@ function Signup() {
                         type="text"
                         placeholder='eg.: myUserName'
                         className="username"
+                        value={userName}
                         onChange = {(e) => {
                           setUserName(e.target.value);
                         } }
@@ -105,6 +192,7 @@ function Signup() {
                         type="text"
                         placeholder='eg.: me@lol.com'
                         className="email"
+                        value={email}
                         onChange = {(e) => {
                           setEmail(e.target.value);
                         } }
@@ -116,6 +204,7 @@ function Signup() {
                         type="password"
                         placeholder='eg.: Passwd1234'
                         className='password'
+                        value={password}
                         onChange = {(e) => {
                           setPassword(e.target.value);
                         } }
@@ -127,6 +216,7 @@ function Signup() {
                         type="password"
                         placeholder='eg.: Passwd1234'
                         className='password'
+                        value={passwordAgain}
                         onChange = {(e) => {
                           setPasswordAgain(e.target.value);
                         } }

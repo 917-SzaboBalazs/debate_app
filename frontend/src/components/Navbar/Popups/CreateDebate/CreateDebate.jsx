@@ -8,10 +8,10 @@ function CreateDebate(props) {
   const [ debateType, setType ] = useState('britt-parlamenti');
 
   const options = [
-    { value: 'britt-parlamenti', label: 'Britt Parlamenti' },
+    { value: 'britt-parlamenti', label: 'Britt Parliament' },
     { value: 'lincoln-douglas', label: 'Lincoln-Douglas' },
-    { value: 'spontan', label: 'Spontán' },
-    { value: 'publikus', label: 'Publikus' }
+    { value: 'spontan', label: 'Spontaneous' },
+    { value: 'publikus', label: 'Public' }
   ];
 
   return (props.trigger) ? (
