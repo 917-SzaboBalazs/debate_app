@@ -6,10 +6,7 @@ import '../App.css'
 
 function Home() {
   return (
-    <>
         <Trunk />
-        {/* <Us /> */}
-    </>
   )
 }
 

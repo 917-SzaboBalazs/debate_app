@@ -4,6 +4,7 @@
   --third: #F2CA10;
 }
   
+
   .trunk--container {
     background: url( '../../images/giraffes.jpeg') center center/cover no-repeat;
     height: 100vh;
@@ -15,7 +16,6 @@
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
     object-fit: contain;
     text-align: center;
-    border-bottom: 2rem solid var(--third);
   }
   
   .trunk--container > h1 {

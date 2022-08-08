@@ -1,66 +1,44 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { Button } from '../Button/Button';
+import React from "react"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import './Footer.css'
+import './Footer.css';
 
-import fb from '../../images/facebook.png';
-import insta from '../../images/insta.png';
-import wa from '../../images/WhatsApp.png';
+const Footer = () => <footer className="page-footer font-small blue pt-4 my-footer">
+    <div className="container  text-md-left">
+        <div className="row">
+            <div className="col-md-6 mt-md-0 mt-3">
+                <h5 className="text-uppercase">Footer Content</h5>
+                <p>Here you can use rows and columns to organize your footer content.</p>
+            </div>
 
+            <hr className="clearfix w-100 d-md-none pb-0"/>
 
-function Footer() {
-  return (
-    <div className="footer--container">
-      <div className="basic-elements">
-        <div className="basic-elements--1">
-          <img src="" alt="" className="footer--logo" />
-          <div className="footer--logo-elements">
-            <p className='contact'><u>Conact us at:</u> </p>
-            <a href="https://www.facebook.com"><img src={fb} alt="Facebook" className="logo facebook" /></a>
-            <a href="https://www.instagram.com" ><img src={insta} alt="Instagramm" className="logo insta" /></a>
-            <a href="https://www.WhatsApp.com"><img src={wa} alt="WhatsApp" className="logo whatsapp" /></a>
-            <ul>
-              <li><p> Phone: (+40) 774 234 534 </p></li>
-              <li><p> Adress: Romania, Cluj, Cluj-Napoca, Iuliu-Maniu 6.</p></li>
-            </ul>
-          </div>
-          <div className="privacy-policy">
-            <p className='contact'><u>Privacy Policy:</u></p>
-            <ul>
-              <li>Ne légy buzi</li>
-              <li>de ha megis, az sem baj</li>
-              <li>szia Attila</li>
-              <li>szia Anna</li>
-              <li>szia Ákos</li>
-              <li>szia Balázs</li>
-            </ul>
-          </div>
+            <div className="col-md-3 mb-md-0 mb-3">
+                <h5 className="text-uppercase">Links</h5>
+                <ul className="list-unstyled">
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+
+            <div className="col-md-3 mb-md-0 mb-3">
+                <h5 className="text-uppercase">Links</h5>
+                <ul className="list-unstyled">
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
         </div>
-        <div className="footer--log">
-            <Button
-                to="log-In"
-                className='btns'
-                buttonStyle='btn--outline'
-                buttonSize='btn--large'
-            >
-                Log-In
-            </Button>
-            <Button
-                to="sign-up"
-                className='btns'
-                buttonStyle='btn--primary'
-                buttonSize='btn--large'
-            >
-                Sign-Up
-            </Button>
-        </div>
-      </div>
-      <div className="lower-tag">
-        @Sérülésekért nem vállalunk felelősséget
-      </div>
     </div>
-  )
-}
+
+    <div className="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+    </div>
+
+</footer>
 
 export default Footer
