@@ -134,20 +134,22 @@ function Signup() {
             waitFunc();
           })
           .catch((err) => {
-              console.log(err.response.data);
-              if (err.respose) {
-                if (err.response.data.username == 'User with this username already exists.') {
-                  setFinal('This username already exists.');
-                  setUserName('');
-                } else if (err.response.data.email == 'User with this email already exists.') {
-                  setFinal('User with this email already exists.');
-                  setEmail('');
-                } else {
-                  setFinal('error: POST');
-                }
-              } else {
-                  setFinal('The server is not reacheable right now.');
+
+              if (typeof(err.response.data) == 'undefined') {
+                  setFinal('Server error.');
               }
+              
+              if (typeof(err.response.data.username) != 'undefined') {
+                console.log(err.response.data.username);
+                setFinal('This username already exists.');
+                setUserName('');
+              } else if (typeof(err.response.data.email) != 'undefined') {
+                setFinal('User with this email already exists.');
+                setEmail('');
+              } else if (err.response.status === 400){
+                setFinal('Unexpected error');
+              } 
+
             });
     }
 
@@ -221,6 +223,10 @@ function Signup() {
                           setPasswordAgain(e.target.value);
                         } }
                     />
+
+                    <p className="signup--password-help">
+                      The password needs to be at least 8 characters long, has to contain a capital letter and a number at least.
+                    </p>
                 </div>
             </div>
         </div>

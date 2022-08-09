@@ -1,0 +1,43 @@
+:root {
+    --primary: white;
+    --secondary: #22344D;
+    --third: #F2CA10;
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1170px;
+    }
+}
+
+.nav {
+    box-shadow: 0px 5px 22px black;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+}
+
+.nav-brand {
+    text-transform: uppercase;
+    color: white;
+    font-weight: 900;
+}
+
+.nav-brand .nav--span {
+    color: var(--third);
+}
+
+.nav-brand:hover {
+    color: var(--third);
+    transition: .4s;    
+}
+
+.nav-link {
+    color: white;
+    border-radius: 1rem;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.844);
+    color: var(--secondary);
+    transition: .4s;
+}

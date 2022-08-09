@@ -24,7 +24,7 @@ function CreateDebate(props) {
             <Select 
               className="select-debate" 
               defaultValue={options[0]}
-              options={options} 
+              options={options} z
               onChange={(e) => setType(e.value)}
               />
             <button className="create" onClick={() => console.log(debateType)}>

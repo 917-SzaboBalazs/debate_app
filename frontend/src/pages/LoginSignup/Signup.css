@@ -27,9 +27,17 @@
     background-color: var(--primary);
     padding-top: 15rem;
     padding-bottom: 2rem;
+    padding-left: 4rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.signup--password-help {
+    color:rgba(0, 0, 0, 0.5);
+    margin-right: 5rem;
+    margin-top: 3rem;
+    text-align: center;
 }
 
 .username {
