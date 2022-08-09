@@ -1,5 +1,6 @@
-import React from 'react'
-import { Button } from "../Button/Button";
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 import { Container } from 'react-bootstrap';
 
@@ -15,20 +16,18 @@ function Trunk() {
                 <p>The Official Debate App of Mathias Corvinus Collegium.</p>
                 <div className="trunk--btns">
                     <Button
-                        to="log-In"
-                        className='btns'
-                        buttonStyle='btn--outline'
-                        buttonSize='btn--large'
+                        className='trunk--login-button text-uppercase border border-3'
+                        variant='outline-primary'
+                        size='lg'
                     >
-                        Log-In
+                        <Link className='trunk--login-link trunk--link-text' to='/log-In'><span>Log-In</span></Link>
                     </Button>
                     <Button
-                        to="sign-up"
-                        className='btns'
-                        buttonStyle='btn--primary'
-                        buttonSize='btn--large'
+                        className='trunk--signin-button text-uppercase'
+                        variant='primary'
+                        size='lg'
                     >
-                        Sign-Up
+                        <Link className="trunk--singup-link trunk--link-text" to='/sign-up'><span>Sign-Up</span></Link>
                     </Button>
                 </div>
             </div>

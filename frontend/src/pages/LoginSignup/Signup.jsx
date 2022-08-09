@@ -223,6 +223,10 @@ function Signup() {
                           setPasswordAgain(e.target.value);
                         } }
                     />
+
+                    <p className="signup--password-help">
+                      The password needs to be at least 8 characters long, has to contain a capital letter and a number at least.
+                    </p>
                 </div>
             </div>
         </div>

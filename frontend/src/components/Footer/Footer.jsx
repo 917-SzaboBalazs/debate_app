@@ -1,20 +1,27 @@
 import React from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+
 import './Footer.css';
+
+import fb from '../../images/facebook.png';
+import insta from '../../images/insta.png';
+import wa from '../../images/WhatsApp.png';
+
 
 const Footer = () => <footer className="page-footer font-small blue pt-4 my-footer">
     <div className="container  text-md-left">
         <div className="row">
             <div className="col-md-6 mt-md-0 mt-3">
-                <h5 className="text-uppercase">Footer Content</h5>
+                <h5 className="text-uppercase footer--list-tag">Footer Content</h5>
                 <p>Here you can use rows and columns to organize your footer content.</p>
             </div>
 
             <hr className="clearfix w-100 d-md-none pb-0"/>
 
             <div className="col-md-3 mb-md-0 mb-3">
-                <h5 className="text-uppercase">Links</h5>
+                <h5 className="text-uppercase footer--list-tag">Links</h5>
                 <ul className="list-unstyled">
                     <li><a href="#!">Link 1</a></li>
                     <li><a href="#!">Link 2</a></li>
@@ -24,12 +31,11 @@ const Footer = () => <footer className="page-footer font-small blue pt-4 my-foot
             </div>
 
             <div className="col-md-3 mb-md-0 mb-3">
-                <h5 className="text-uppercase">Links</h5>
+                <h5 className="text-uppercase footer--list-tag">Contact-us!</h5>
                 <ul className="list-unstyled">
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
+                    <li><a href="https://www.facebook.com"><img src={fb} alt="Facebook" className="footer--icon footer--facebook" /></a></li>
+                    <li><a href="https://www.instagram.com" ><img src={insta} alt="Instagramm" className="footer--icon footer--insta" /></a></li>
+                    <li><a href="https://www.WhatsApp.com"><img src={wa} alt="WhatsApp" className="footer--icon footer--whatsapp" /></a></li>
                 </ul>
             </div>
         </div>

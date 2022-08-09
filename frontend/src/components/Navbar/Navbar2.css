@@ -22,7 +22,7 @@
     font-weight: 900;
 }
 
-.nav-brand span {
+.nav-brand .nav--span {
     color: var(--third);
 }
 

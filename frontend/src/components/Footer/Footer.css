@@ -16,7 +16,27 @@
 a {
     color: white;
 }
-
+/* 
 a:hover {
     color: var(--third);
+} */
+
+.footer--facebook {
+    max-height: 25px;
+}
+
+.footer--whatsapp {
+    max-height: 25px;
+}
+
+.footer--insta {
+    max-height: 25px;
+}
+
+.footer--icon {
+    margin-bottom: 15px;
+}
+
+.footer--list-tag {
+    margin-bottom: 15px;
 }

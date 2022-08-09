@@ -33,10 +33,11 @@
     position: absolute;
     top: 16px;
     right: 16px;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.75rem;
+    height: 1.75rem;
     color: white;
     background-color: red;
+    padding: 1px;
     border: none;
     font-weight: bold;
     font-size: 20px;

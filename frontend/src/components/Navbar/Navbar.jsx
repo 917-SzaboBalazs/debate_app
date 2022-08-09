@@ -24,7 +24,7 @@ function CollapsibleExample() {
     <>
     <Navbar collapseOnSelect expand="lg" bg="primary" className='nav'>
       <Container>
-        <Navbar.Brand href="/" className='nav-brand'>React <span>Bootstrap</span></Navbar.Brand>
+        <Navbar.Brand href="/" className='nav-brand'>React <span className='nav--span'>Bootstrap</span></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -35,7 +35,7 @@ function CollapsibleExample() {
           </Nav>
           <Nav>
             <Nav.Link href="#deets">Login</Nav.Link>
-            <Nav.Link /*eventKey={2}*/ href="/sign-up">Signup</Nav.Link>
+            <Nav.Link href="/sign-up">Signup</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
