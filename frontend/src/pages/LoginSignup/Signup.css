@@ -72,6 +72,7 @@
     border-color: white;
     border-width: .5rem;
     background-color: transparent;
+    min-height: 14vh;
 }
 
 h5 {
