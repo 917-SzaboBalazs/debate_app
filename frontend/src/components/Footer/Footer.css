@@ -21,16 +21,14 @@ a:hover {
     color: var(--third);
 } */
 
-.footer--facebook {
+.footer--facebook, .footer--whatsapp, .footer--insta{
     max-height: 25px;
+    transition: .2s;
 }
 
-.footer--whatsapp {
-    max-height: 25px;
-}
-
-.footer--insta {
-    max-height: 25px;
+.footer--facebook:hover, .footer--whatsapp:hover, .footer--insta:hover{
+    box-shadow: 0px 0px 10px 10px #152437;
+    border-radius: 50%;
 }
 
 .footer--icon {

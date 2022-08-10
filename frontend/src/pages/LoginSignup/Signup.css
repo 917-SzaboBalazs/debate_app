@@ -5,10 +5,11 @@
 }
 
 .login-body {
-    background-color: var(--third);
-    width: 100%;
+    background-color: var(--secondary);
+    /* width: 100%; */
 }
 
+/*
 .trunk-container {
     display: flex;
     flex-direction: row;
@@ -21,16 +22,22 @@
     border-color: var(--secondary);
     border-width: 1rem;
 }
+*/ 
+
 
 .login-container {
+    /*
     width: 35%;
-    background-color: var(--primary);
     padding-top: 15rem;
     padding-bottom: 2rem;
     padding-left: 4rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    */
+    background-color: var(--primary);
+    max-height: 100vh;
+    margin-top: 0px;
 }
 
 .signup--password-help {
@@ -51,13 +58,20 @@
 }
 
 .login-img {
-    background-color: aqua;
+    /*
     width: 35%;
     display: flex;
     justify-content: center;
 
     padding-top:  22rem;
     padding-bottom: 22rem;
+    */
+    background-color: var(--secondary);
+    max-height: 100vh;
+}
+
+.login-box{
+    margin-top: 0px;
 }
 
 .login-btn {

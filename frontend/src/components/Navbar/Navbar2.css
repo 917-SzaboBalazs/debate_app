@@ -34,6 +34,7 @@
 .nav-link {
     color: white;
     border-radius: 1rem;
+    margin: 5px;
 }
 
 .nav-link:hover {

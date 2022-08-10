@@ -8,6 +8,8 @@ import SignupPopup from './SignupPopup';
 // import '../../App.css'
 import './Signup.css'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function Signup() {
 
   const [ userName, setUserName ] = useState('');
@@ -161,8 +163,8 @@ function Signup() {
   return (
     <div className='login-body'>
         <form>
-        <div className="trunk-container">
-            <div className="login-img">
+        <div className="trunk-container row justify-content-evenly">
+            <div className="login-img col-3">
               {/* <Link to="/log-In"> */}
                 <button
                     className='login-btn'
@@ -173,7 +175,7 @@ function Signup() {
                 </button>
               {/* </Link> */}
             </div>
-            <div className="login-container">
+            <div className="login-container col-3 justify-content-around">
                 <div className="login-box">
                     <h5 className="username-text">Username:</h5>
                     <input
