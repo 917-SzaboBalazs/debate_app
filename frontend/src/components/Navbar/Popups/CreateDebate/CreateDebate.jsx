@@ -1,11 +1,15 @@
 import React from 'react';
 import Select from 'react-select';
 import { useState } from 'react';
+import  { Link, useNavigate } from 'react-router-dom';
+
 
 import './CreateDebate.css'
 
+
 function CreateDebate(props) {
   const [ debateType, setType ] = useState('britt-parlamenti');
+  const navigate = useNavigate();
 
   const options = [
     { value: 'britt-parlamenti', label: 'Britt Parliament' },
@@ -13,6 +17,16 @@ function CreateDebate(props) {
     { value: 'spontan', label: 'Spontaneous' },
     { value: 'publikus', label: 'Public' }
   ];
+
+  const handleCreate = () => {
+    console.log(debateType);
+    props.setTrigger(false);
+    navigate('/new-debate', {
+      state: {
+        type: debateType,
+      }
+    });
+  };
 
   return (props.trigger) ? (
     <div className="create-debate">
@@ -27,7 +41,7 @@ function CreateDebate(props) {
               options={options} z
               onChange={(e) => setType(e.value)}
               />
-            <button className="create" onClick={() => console.log(debateType)}>
+            <button className="create" onClick={handleCreate}>
                 Create!
             </button>
         </div>
