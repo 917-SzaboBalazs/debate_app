@@ -32,12 +32,12 @@
 }
 
 .new-debate--people{
-    padding-top: 20vh;
+    padding-top: 2rem;
     padding-left: 3vw;
     padding-right: 3vw;
 }
 
-.person{
+.new-debate--person{
     background-color: lightgoldenrodyellow;
     border-radius: 7px;
     margin: 12px;
@@ -81,11 +81,11 @@
     color: whitesmoke;
 }
 
-.next_btn_section{
+.new-debate--next_btn_section{
     margin-bottom: 5vh;
 }
 
-.next_btn{
+.new-debate--next-btn{
     padding: 2vh;
     background-color: #f9d342;
     color: #292826;
