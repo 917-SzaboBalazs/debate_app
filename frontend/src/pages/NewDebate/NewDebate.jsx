@@ -14,7 +14,7 @@ function NewDebate() {
     const [ names, setNames ] = useState(['elso', 'masodik', 'harmadik', 'negyedik', 'otodik', 'hatodik', 'hetedik', 'nyolcadik']);
     const [ proPlayers, setProPlayers ] = useState([]);
     const [ conPlayers, setConPlayers ] = useState([]);
-    const [ chosenName, setChosenName ] = useState(names[0]);
+    const [ chosenName, setChosenName ] = useState('');
     const [ ready, setReady ] = useState(false);
 
     const namesListed = names.map((name) => {
