@@ -59,6 +59,10 @@ function NewDebate() {
                     {namesListed}
                 </div>
 
+                <div className="row pt-2">
+                    <div className="col-6 text-center font-weight-bold">PRO</div>
+                    <div className="col-6 text-center font-weight-bold">CON</div>
+                </div>
                 <div className="new-debate--decision row justify-content-evenly">
                     <div 
                         className="new-debate--decision--pro col-sm-4 col-md-4"
