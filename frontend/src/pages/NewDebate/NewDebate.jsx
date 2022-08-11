@@ -17,16 +17,28 @@ function NewDebate() {
     const [ chosenName, setChosenName ] = useState(names[0]);
     const [ ready, setReady ] = useState(false);
 
-    const namesListed = names.map((name) => 
-        <div 
-            className="new-debate--person col-2" 
-            key={name} 
-            onClick={() => {
-                setChosenName(name);
-            }}
-        >
+    const namesListed = names.map((name) => {
+        return chosenName === name ? 
+            <div
+                className="new-debate--person col-2 bg-secondary" 
+                key={name} 
+                onClick={() => {
+                    setChosenName(name);
+                }}
+             >
             {name}
-        </div>
+            </div>
+            :
+            <div 
+                className="new-debate--person col-2" 
+                key={name} 
+                onClick={() => {
+                    setChosenName(name);
+                }}
+            >
+                {name}
+            </div>
+        }
     );
 
     const proListed = proPlayers.map((player) =>
@@ -167,6 +179,7 @@ function NewDebate() {
                                 setProPlayers([]);
                                 setConPlayers([]);
                                 setCurrentNumberOfPeople(0);
+                                setReady(false);
                             }}
                         >
                             Clear
