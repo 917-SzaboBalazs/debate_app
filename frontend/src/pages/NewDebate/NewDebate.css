@@ -7,7 +7,7 @@
 .new-debate--background{
     height: 100%;
     width: 100%;
-    background-color: lightblue;
+    background-color: #485c7a;
     z-index: -1;
 }
 
@@ -45,7 +45,7 @@
     min-width: 100px;
 }
 
-.person:hover{
+.new-debate--person:hover{
     background-color: orangered;
     color: whitesmoke;
     transition: .2s;
@@ -62,13 +62,6 @@
     transition: .2s;
     margin: 12px;
 
-}
-
-.pro_team{
-    border: 1px solid #f9d342;
-}
-.con_team{
-    border: 1px solid #292826;
 }
 
 .pro_team:hover {
@@ -90,4 +83,42 @@
     background-color: #f9d342;
     color: #292826;
     border-radius: 7px;
+}
+
+.new-debate--procon-row{
+    margin-top: 5vh !important;
+}
+
+.new-debate--pro-btn, .new-debate--con-btn{
+    border-radius: 7px;
+    color: whitesmoke;
+    transition: .1s;
+}
+
+.new-debate--pro-btn{
+    border: 1px solid #f9d342;
+}
+.new-debate--con-btn{
+    border: 1px solid #292826;
+}
+
+.new-debate--pro-btn:hover, .new-debate--con-btn:hover{
+    box-shadow: 0px 0px 10px black;
+    background-color: orange;
+    color: black;
+    transition: .2s;
+}
+
+.new-debate--clear-btn-container--btn{
+    padding: 1vw;
+    border: none;
+    border-radius: 7px;
+    background-color: #f9d342;
+    transition: .1s;
+}
+
+.new-debate--clear-btn-container--btn:hover{
+    background-color: orange;
+    color: white;
+    transition: .2s;
 }

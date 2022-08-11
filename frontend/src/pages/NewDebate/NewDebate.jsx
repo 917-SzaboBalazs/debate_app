@@ -59,13 +59,54 @@ function NewDebate() {
                     {namesListed}
                 </div>
 
-                <div className="row pt-2">
-                    <div className="col-6 text-center font-weight-bold">PRO</div>
-                    <div className="col-6 text-center font-weight-bold">CON</div>
+                <div className="new-debate--procon-row row pt-2 justify-content-evenly">
+                    <div className="col-2 new-debate--pro-btn text-center font-weight-bold"
+                         onClick = { () => {
+                            if (chosenName === '' ) {
+                                alert('Please select a player.');
+                            } else if (proPlayers.includes(chosenName) || conPlayers.includes(chosenName)) {
+                                alert(chosenName + ' has already been selected.');
+                            } else if (proPlayers.length === 4 ) {
+                                alert('The PRO team is already full');
+                            } else {
+                                //alert(chosenName + ' chosen to be PRO');
+                                const temp = proPlayers.concat(chosenName);
+                                setProPlayers(temp);
+                                setCurrentNumberOfPeople(currentNumberOfPeople + 1);
+
+                                const newNames = names.filter(name => name !== chosenName);
+                                setNames(newNames);
+
+                                checkIfReady();
+                            }
+                        }}
+                        >PRO</div>
+                    <div className="col-2 new-debate--con-btn text-center font-weight-bold"
+                         onClick = { () => {
+                            if (chosenName === '' ) {
+                                alert('Please select a player.');
+                            } else if (conPlayers.includes(chosenName) || proPlayers.includes(chosenName)) {
+                                alert(chosenName + ' has already been selected.');
+                            } else if (conPlayers.length === 4 ) {
+                                alert('The Con team is already full');
+                            } else {
+                                //alert(chosenName + ' chosen to be CON');
+                                const temp = conPlayers.concat(chosenName);
+                                setConPlayers(temp);
+                                setCurrentNumberOfPeople(currentNumberOfPeople + 1);
+
+                                const newNames = names.filter(name => name !== chosenName);
+                                setNames(newNames);
+
+                                checkIfReady();
+                            }
+                        }}
+                         >CON</div>
                 </div>
                 <div className="new-debate--decision row justify-content-evenly">
                     <div 
                         className="new-debate--decision--pro col-sm-4 col-md-4"
+                        /*
                         onClick = { () => {
                             if (chosenName === '' ) {
                                 alert('Please select a player.');
@@ -85,11 +126,13 @@ function NewDebate() {
                                 checkIfReady();
                             }
                         }}
+                        */
                     >
                         {proListed}
                     </div>
                     <div 
                         className="new-debate--decision--con col-sm-4 col-md-4"
+                        /*
                         onClick = { () => {
                             if (chosenName === '' ) {
                                 alert('Please select a player.');
@@ -109,6 +152,7 @@ function NewDebate() {
                                 checkIfReady();
                             }
                         }}
+                        */
                     >
                         {conListed}
                     </div>
