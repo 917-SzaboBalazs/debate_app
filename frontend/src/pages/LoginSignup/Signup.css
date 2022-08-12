@@ -89,7 +89,7 @@
     background-color: transparent;
     min-height: 14vh;
     transition: .3s;
-    margin-top: 22rem;
+    margin-top: 15vh;
     margin-bottom: 1rem;
 }
 
@@ -131,3 +131,24 @@ input {
     background-color: white;
     transition: .4s;
 }
+
+@media only screen and (max-width: 600px) {
+    .trunk-container{
+        flex-direction: column;
+    }
+    .signup--container{
+        border-radius: 7px;
+    }
+    .signup--container, .signup--left-side{
+        height: 45%;
+    }
+    .signup-btn, .signup--container{
+        margin-top: 7vh !important;
+    }
+    .signup--container{
+        margin-bottom: 3vh;
+    }
+    .signup-box{
+        margin-left: 0;
+    }
+  }

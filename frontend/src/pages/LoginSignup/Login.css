@@ -15,7 +15,7 @@
     /* width: 100%; */
 }
 
-.trunk-container {
+.login--trunk-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -28,15 +28,21 @@
     border-width: 1rem;
 }
 
+
 .login-container {
     width: 35%;
     background-color: var(--primary);
+    padding-top: 40vh;
+    height: 100%;
+    /*
     padding-top: 21.5rem;
     padding-bottom: 2rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    */
 }
+
 
 .username {
     margin-bottom: 1rem;
@@ -48,7 +54,7 @@
     display: flex;
     justify-content: center;
 
-    padding-top:  22rem;
+    padding-top: 10vh;
     /* padding-bottom: 22rem; */
 }
 
@@ -109,3 +115,25 @@ input {
     background-color: white;
     transition: .4s;
 }
+
+.login-box{
+    padding-left: 10vw;
+}
+
+@media only screen and (max-width: 600px) {
+    .login--trunk-container{
+        flex-direction: column;
+    }
+    .login-container{
+        border-radius: 7px;
+    }
+    .login-container, .login--right-side{
+        height: 45%;
+    }
+    .login-img, .login-container{
+        padding-top: 8vh;
+    }
+    .login-box{
+        padding-left: 0;
+    }
+  }

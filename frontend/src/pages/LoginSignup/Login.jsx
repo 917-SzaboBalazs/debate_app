@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import axiosInstance from '../../axios'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // import '../../App.css'
 import './Login.css'
@@ -43,10 +44,10 @@ function Login() {
   return (
     <div className='login-body'>
       <div className="container">
-        <div className="trunk-container row">
+        <div className="login--trunk-container row justify-content-evenly align-items-center">
           {/* <form action="" className=""> */}
-            <div className="login-container col-6">
-                <div className="login-box">
+            <div className="login-container col-6 justify-content-evenly align-items-center">
+                <div className="login-box align-items-center">
                     <h5 className="username-text">Username:</h5>
                     <input 
                       value={userName}

@@ -164,7 +164,7 @@ function Signup() {
     <div className='login-body'>
       <div className="container">
         <form>
-        <div className="trunk-container row">
+        <div className="trunk-container row justify-content-evenly align-items-center">
             <div className="signup--left-side col-6 " >
               <div className="signup-img row">
                   <div className="singup--btn-cont col-12 text-center">
