@@ -45,18 +45,22 @@
 
   .trunk--login-button {
     margin: 15px;
+    transition: .3s;
     border: 1rem solid white;
   }
 
   .trunk--login-button:hover{
     box-shadow: 0px 0px 20px black;
+    transition: .3s;
   }
   .trunk--signin-button:hover{
     box-shadow: 0px 0px 30px black;
     background-color: #F2CA10;
+    transition: .3s;
   }
 
   .trunk--signin-button {
+    transition: .3s;
     margin: 15px;
   }
 

@@ -90,6 +90,7 @@
     min-height: 14vh;
     transition: .3s;
     margin-top: 22rem;
+    margin-bottom: 1rem;
 }
 
 .signup-btn:hover {
@@ -108,4 +109,25 @@ input {
     border-color: var(--secondary);
     color: var(--secondary);
     font-size: 24px;
+}
+
+.signup--already-have-an-account {
+    margin-left: .75rem;
+    margin-top: 2rem;
+}
+
+.signup--already-have-an-account span{
+   
+    font-size: 24px;
+    color: white;
+    transition: .4s;
+}
+
+.signup--already-have-an-account span:hover{
+    margin-left: .75rem;
+    margin-top: 2rem;
+    font-size: 24px;
+    color: var(--secondary);
+    background-color: white;
+    transition: .4s;
 }

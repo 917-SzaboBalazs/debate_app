@@ -25,7 +25,7 @@ function Login() {
         })
         .then((res) => {
           console.log(res);
-          localStorage.setItem('access_token', res.data.acces);
+          localStorage.setItem('access_token', res.data.access);
           localStorage.setItem('refresh_token', res.data.refresh);
           axiosInstance.defaults.headers['Autorization'] = 
             'JWT ' + localStorage.getItem('access_token'); 
@@ -43,7 +43,7 @@ function Login() {
   return (
     <div className='login-body'>
       <div className="container">
-        <div className="trunk-container">
+        <div className="trunk-container row">
           {/* <form action="" className=""> */}
             <div className="login-container col-6">
                 <div className="login-box">
@@ -63,15 +63,20 @@ function Login() {
                       className='password' 
                       onChange={(e) => setPassword(e.target.value)}
                       />
+                </div>
+            </div>
+            <div className="login--right-side col-6">
+              <div className="login-img row">
+                <div className="login--btn-cont col-12 text-center">
+                    <button type='submit'  className='login-btn' onClick={handleSubmit}>Let`s Start!</button>
+                </div>
               </div>
+              <div className="login--dont-have-cont row">
+                <Link className="login--dont-have-account col-12 text-center" to='/sign-up'><span>Don`t have an account?</span></Link>
               </div>
-              <div className="login-img col-6">
-                {/* <Link to="/logged-in"> */}
-                  <button type='submit'  className='login-btn' onClick={handleSubmit}>Let`s Start!</button>
-                {/* </Link> */}
-              </div>
+            </div>
             {/* </form> */}
-        </div>
+          </div>
         </div>
     </div>
   )

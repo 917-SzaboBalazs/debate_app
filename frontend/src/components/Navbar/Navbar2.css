@@ -35,6 +35,8 @@
     color: white;
     border-radius: 1rem;
     margin: 5px;
+    transition: .4s;
+
 }
 
 .nav-link:hover {

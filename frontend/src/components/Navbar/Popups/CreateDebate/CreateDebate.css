@@ -44,17 +44,18 @@
     transition: .3s;
 }
 
-.create-debate--inner .close-btn:hover {
+.create-debate--inner .create-debate--close-btn:hover {
     position: absolute;
     top: 16px;
     right: 16px;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.75rem;
+    height: 1.75rem;
     color: red;
-    background-color: var(--primary);
+    background-color: white;
     border: none;
     font-weight: bold;
     font-size: 20px;
+    transition: .3s;
 }
 
 .create-debate--inner .create-debate--create-btn{

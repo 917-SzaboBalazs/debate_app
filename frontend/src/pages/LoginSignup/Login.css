@@ -44,12 +44,12 @@
 
 .login-img {
     background-color: aqua;
-    width: 35%;
+    /* width: 35%; */
     display: flex;
     justify-content: center;
 
     padding-top:  22rem;
-    padding-bottom: 22rem;
+    /* padding-bottom: 22rem; */
 }
 
 .login-btn {
@@ -67,6 +67,7 @@
     min-height: 14vh;
     transition: .3s;
     /* margin-top: 22rem; */
+    margin-bottom: 1rem;
 }
 
 
@@ -86,4 +87,25 @@ input {
     border-color: var(--secondary);
     color: var(--secondary);
     font-size: 24px;
+}
+
+.login--dont-have-account {
+    /* margin-left: .75rem; */
+    margin-top: 2rem;
+}
+
+.login--dont-have-account span{
+   
+    font-size: 24px;
+    color: white;
+    transition: .4s;
+}
+
+.login--dont-have-account span:hover{
+    margin-left: .75rem;
+    margin-top: 2rem;
+    font-size: 24px;
+    color: var(--secondary);
+    background-color: white;
+    transition: .4s;
 }

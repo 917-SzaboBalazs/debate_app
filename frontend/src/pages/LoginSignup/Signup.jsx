@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import  { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axiosInstance from '../../axios'
@@ -165,16 +165,21 @@ function Signup() {
       <div className="container">
         <form>
         <div className="trunk-container row">
-            <div className="signup-img col-6 text-center">
-              {/* <Link to="/log-In"> */}
-                <button
-                    className='signup-btn'
-                    type='submit'
-                    onClick={handleSubmit}
-                >
-                    Let`s Start!
-                </button>
-              {/* </Link> */}
+            <div className="signup--left-side col-6 " >
+              <div className="signup-img row">
+                  <div className="singup--btn-cont col-12 text-center">
+                    <button
+                        className='signup-btn'
+                        type='submit'
+                        onClick={handleSubmit}
+                    >
+                        Let`s Start!
+                    </button>
+                  </div>
+                  <div className="signup--already-cont row ">
+                    <Link className="signup--already-have-an-account col-12 text-center" to='/log-In'><span>Already have an account</span></Link>
+                  </div>
+              </div>
             </div>
             <div className="signup--container col-6">
                 <div className="signup-box">
