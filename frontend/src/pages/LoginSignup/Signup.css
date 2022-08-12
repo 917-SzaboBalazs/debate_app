@@ -4,8 +4,15 @@
     --third: #F2CA10;
 }
 
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1170px;
+    }
+}
+
 .login-body {
     background-color: var(--secondary);
+    min-height: 100vh;
     /* width: 100%; */
 }
 
@@ -25,19 +32,11 @@
 */ 
 
 
-.login-container {
-    /*
-    width: 35%;
-    padding-top: 15rem;
-    padding-bottom: 2rem;
-    padding-left: 4rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    */
+.signup--container {
     background-color: var(--primary);
-    max-height: 100vh;
+    max-height: 100vh; 
     margin-top: 0px;
+    padding-left: 3rem;
 }
 
 .signup--password-help {
@@ -45,16 +44,17 @@
     margin-right: 5rem;
     margin-top: 3rem;
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 .username {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 .email{
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 .password{
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .login-img {
@@ -70,11 +70,12 @@
     max-height: 100vh;
 }
 
-.login-box{
-    margin-top: 0px;
+.signup-box{
+    margin-top: 15rem;
+    margin-left: 6rem;
 }
 
-.login-btn {
+.signup-btn {
     cursor: pointer;
     color: var(--primary);
     font-size: 48px;
@@ -83,11 +84,19 @@
     border-radius: 2rem;
     background-color: rgba(0, 0, 0, 0.61);
     backdrop-filter: blur(5px);
-    border-color: white;
-    border-width: .5rem;
+    outline: none;
+    border: 5px solid white;
     background-color: transparent;
     min-height: 14vh;
+    transition: .3s;
+    margin-top: 22rem;
 }
+
+.signup-btn:hover {
+    background-color: white;
+    color: var(--secondary);
+    transition: .3s;
+}   
 
 h5 {
     font-size: 24px;

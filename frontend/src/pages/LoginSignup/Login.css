@@ -4,9 +4,15 @@
     --third: #F2CA10;
 }
 
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1170px;
+    }
+}
+
 .login-body {
     background-color: var(--third);
-    width: 100%;
+    /* width: 100%; */
 }
 
 .trunk-container {
@@ -14,9 +20,9 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: stretch;
-    margin-left: 14rem;
-    width: 100%;
-    margin-right: 14rem;
+    /* margin-left: 14rem; */
+    /* width: 100%; */
+    /* margin-right: 14rem; */
     height: 100vh;
     border-color: var(--secondary);
     border-width: 1rem;
@@ -55,10 +61,20 @@
     border-radius: 2rem;
     background-color: rgba(0, 0, 0, 0.61);
     backdrop-filter: blur(5px);
-    border-color: white;
-    border-width: .5rem;
+    outline: none;
+    border: 5px solid white;
     background-color: transparent;
+    min-height: 14vh;
+    transition: .3s;
+    /* margin-top: 22rem; */
 }
+
+
+.login-btn:hover {
+    background-color: white;
+    color: var(--secondary);
+    transition: .3s;
+}   
 
 h5 {
     font-size: 24px;

@@ -29,7 +29,7 @@
     align-items: center;
 }
 
-.create-debate--inner .close-btn {
+.create-debate--inner .create-debate--close-btn {
     position: absolute;
     top: 16px;
     right: 16px;
@@ -57,7 +57,7 @@
     font-size: 20px;
 }
 
-.create-debate--inner .create {
+.create-debate--inner .create-debate--create-btn{
     width: 100%;
     border: .3rem solid var(--secondary);
     margin-top: 1rem;
@@ -69,9 +69,9 @@
     transition: .3s;
 }
 
-.create-debate--inner .create:hover {
+.create-debate--inner .create-debate--create-btn:hover {
     width: 100%;
-    border: .3rem solid var(--primary);
+    /* border: .3rem solid var(--primary); */
     margin-top: 1rem;
     border-radius: .75rem;
     background-color: var(--secondary);

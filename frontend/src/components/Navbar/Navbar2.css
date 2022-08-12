@@ -42,3 +42,7 @@
     color: var(--secondary);
     transition: .4s;
 }
+
+.navbar-toggler {
+    background-color: var(--third);
+}

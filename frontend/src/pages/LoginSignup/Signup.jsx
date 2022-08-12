@@ -162,12 +162,13 @@ function Signup() {
 
   return (
     <div className='login-body'>
+      <div className="container">
         <form>
-        <div className="trunk-container row justify-content-evenly">
-            <div className="login-img col-3">
+        <div className="trunk-container row">
+            <div className="signup-img col-6 text-center">
               {/* <Link to="/log-In"> */}
                 <button
-                    className='login-btn'
+                    className='signup-btn'
                     type='submit'
                     onClick={handleSubmit}
                 >
@@ -175,8 +176,8 @@ function Signup() {
                 </button>
               {/* </Link> */}
             </div>
-            <div className="login-container col-3 justify-content-around">
-                <div className="login-box">
+            <div className="signup--container col-6">
+                <div className="signup-box">
                     <h5 className="username-text">Username:</h5>
                     <input
                         id="username"
@@ -230,12 +231,13 @@ function Signup() {
                       The password needs to be at least 8 characters long, has to contain a capital letter and a number at least.
                     </p>
                 </div>
-            </div>
+              </div>
+          </div>
+          <SignupPopup trigger={trigger} setTrigger={setTrigger}>
+            <h3>{finalMessage}</h3>
+          </SignupPopup>
+          </form>
         </div>
-        <SignupPopup trigger={trigger} setTrigger={setTrigger}>
-          <h3>{finalMessage}</h3>
-        </SignupPopup>
-        </form>
     </div>
   )
 }

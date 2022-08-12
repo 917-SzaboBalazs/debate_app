@@ -31,7 +31,7 @@ function CreateDebate(props) {
   return (props.trigger) ? (
     <div className="create-debate">
         <div className="create-debate--inner">
-            <button className="close-btn" onClick={() => props.setTrigger(false)}>X</button>
+            <button className="create-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
             <h3 className="create-debate--text">
                 Select debate type
             </h3>
@@ -41,7 +41,7 @@ function CreateDebate(props) {
               options={options} z
               onChange={(e) => setType(e.value)}
               />
-            <button className="create" onClick={handleCreate}>
+            <button className="create-debate--create-btn" onClick={handleCreate}>
                 Create!
             </button>
         </div>

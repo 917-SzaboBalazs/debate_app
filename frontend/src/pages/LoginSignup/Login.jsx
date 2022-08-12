@@ -42,9 +42,10 @@ function Login() {
 
   return (
     <div className='login-body'>
+      <div className="container">
         <div className="trunk-container">
           {/* <form action="" className=""> */}
-            <div className="login-container">
+            <div className="login-container col-6">
                 <div className="login-box">
                     <h5 className="username-text">Username:</h5>
                     <input 
@@ -64,12 +65,13 @@ function Login() {
                       />
               </div>
               </div>
-              <div className="login-img">
+              <div className="login-img col-6">
                 {/* <Link to="/logged-in"> */}
                   <button type='submit'  className='login-btn' onClick={handleSubmit}>Let`s Start!</button>
                 {/* </Link> */}
               </div>
             {/* </form> */}
+        </div>
         </div>
     </div>
   )

@@ -1,0 +1,45 @@
+:root {
+    --primary: white;
+    --secondary: #22344D;
+    --third: #F2CA10;
+}
+
+.join-debate {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.join-debate--inner {
+    display: grid;
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 640px;
+    background-color: var(--primary);
+    justify-content: center;
+    align-items: center;
+}
+
+.join-debate--inner .join-debate--close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 1.75rem;
+    height: 1.75rem;
+    color: white;
+    background-color: red;
+    padding: 1px;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    transition: .3s;
+}
