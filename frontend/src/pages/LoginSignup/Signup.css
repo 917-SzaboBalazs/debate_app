@@ -14,22 +14,7 @@
     background-color: var(--secondary);
     min-height: 100vh;
     /* width: 100%; */
-}
-
-/*
-.trunk-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
-    margin-left: 14rem;
-    width: 100%;
-    margin-right: 14rem;
-    height: 100vh;
-    border-color: var(--secondary);
-    border-width: 1rem;
-}
-*/ 
+} 
 
 
 .signup--container {
@@ -68,6 +53,19 @@
     */
     background-color: var(--secondary);
     max-height: 100vh;
+}
+
+.signup--left-side {
+
+    overflow: hidden;
+    height: 100vh;
+}
+
+.signup-img {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-35%, -50%);
 }
 
 .signup-box{
@@ -131,6 +129,15 @@ input {
     background-color: white;
     transition: .4s;
 }
+
+.signup--bg-img {
+    position: relative;
+    top: auto;
+    left: auto;
+    max-width:103%;
+    height: 100%;    
+}
+
 
 @media only screen and (max-width: 600px) {
     .trunk-container{

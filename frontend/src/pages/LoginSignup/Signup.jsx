@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import  { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import axiosInstance from '../../axios'
 import SignupPopup from './SignupPopup';
 
-// import '../../App.css'
 import './Signup.css'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import image1 from '../../images/notes.jpeg';
+import image2 from '../../images/notes2.jpeg'
 
 function Signup() {
+
+  
 
   const [ userName, setUserName ] = useState('');
   const [ email, setEmail ] = useState('');
@@ -160,12 +162,35 @@ function Signup() {
   };
 
 
+  const images = [
+    image1,   
+    image2
+  ];
+
+  const [value, setValue] = React.useState(0);
+  let timer
+  
+  const updateCount = () => {
+    timer = setInterval(() => {
+      console.log(value);
+      setValue(prevCount => (prevCount + 1) % images.length) // new
+    }, 5000)
+  }
+  
+  useEffect(() => {
+    updateCount();
+    
+    return () => clearInterval(timer)
+  }, [value])
+
   return (
     <div className='login-body'>
       <div className="container">
         <form>
-        <div className="trunk-container row justify-content-evenly align-items-center">
-            <div className="signup--left-side col-6 " >
+        <div className="trunk-container row ">
+            <div className="signup--left-side col-6" >
+              <img src={images[value]} className='signup--bg-img'/>
+
               <div className="signup-img row">
                   <div className="singup--btn-cont col-12 text-center">
                     <button
