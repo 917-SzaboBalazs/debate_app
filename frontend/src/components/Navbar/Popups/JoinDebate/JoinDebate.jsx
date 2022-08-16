@@ -19,6 +19,8 @@ function JoinDebate(props) {
         <div className='join-debate'>
             <div className="join-debate--inner">
                 <button className="join-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
+                { props.loggedIn ? 
+                <> 
                 <h3 className="join-debate--text">Enter the debate code: </h3>
                 <input 
                     type="text" 
@@ -35,6 +37,10 @@ function JoinDebate(props) {
                 >
                     Next
                 </button>
+                </>
+                : 
+                <h1>You have to be logged in first, in order to join a debate.</h1>
+                }
             </div>
         </div>
     ) : "";

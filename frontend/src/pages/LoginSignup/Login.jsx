@@ -5,14 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 import axiosInstance from '../../axios'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-// import '../../App.css'
+
 import './Login.css'
-import axios from 'axios';
 
 function Login() {
-
     const [ userName, setUserName ] = useState('');
     const [ password, setPassword ] = useState('');
 
@@ -31,9 +28,9 @@ function Login() {
           axiosInstance.defaults.headers['Autorization'] = 
             'JWT ' + localStorage.getItem('access_token'); 
 
-          console.log(res);
-
-          navigate('logged-in/');
+          // console.log(res);
+          navigate('/');
+          window.location.reload(false);
         })
         .catch((err) => {
           alert('baj van.');

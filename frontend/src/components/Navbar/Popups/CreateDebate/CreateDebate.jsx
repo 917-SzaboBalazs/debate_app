@@ -32,6 +32,8 @@ function CreateDebate(props) {
     <div className="create-debate">
         <div className="create-debate--inner">
             <button className="create-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
+           { props.loggedIn ? 
+            <>
             <h3 className="create-debate--text">
                 Select debate type
             </h3>
@@ -44,6 +46,10 @@ function CreateDebate(props) {
             <button className="create-debate--create-btn" onClick={handleCreate}>
                 Create!
             </button>
+            </> 
+            :
+            <h1>You have to be logged in first, in order to create a debate.</h1>
+           }
         </div>
     </div>
   ) : "";

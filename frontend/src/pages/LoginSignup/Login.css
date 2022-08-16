@@ -4,11 +4,11 @@
     --third: #F2CA10;
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
     .container{
         max-width: 1170px;
     }
-}
+} */
 
 .login-body {
     background-color: var(--third);
