@@ -5,8 +5,10 @@ import './About-Us.css';
 
 function AboutUs() {
   return (
-    <div className="about-us--container">
-        <Us />
+    <div className="about-us--container base">
+        <div className="container">
+          <Us />
+        </div>
     </div>
   )
 }
