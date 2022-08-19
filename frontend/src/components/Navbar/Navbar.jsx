@@ -56,7 +56,7 @@ function CollapsibleExample() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" color='white'/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/" className='nav-link'>Debates</Nav.Link>
+            <Nav.Link href="/debates" className='nav-link'>Debates</Nav.Link>
             <Nav.Link onClick={handleClickTriggerJoin} className='nav-link'>Join a Debate</Nav.Link>
             <Nav.Link onClick={handleClickTriggerCreate} className='nav-link'>Create a Debate</Nav.Link>
             <Nav.Link href="/about-us" className='nav-link'>About Us</Nav.Link>

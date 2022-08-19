@@ -1,0 +1,25 @@
+.debates--base {
+    min-height: 100vh;
+}
+
+.debates--container {
+    min-height: 100vh;
+}
+
+.debates--header-title {
+    font-weight: bold;
+}
+
+.debates--header-elements {
+    text-align: right;
+}
+
+.debates--header-row {
+    background-image: url('https://img.freepik.com/premium-vector/newborn-dummy-nipple-seamless-pattern-baby-toys-endless-background-template-pale-colored-pacifier_607579-220.jpg');
+    height: 15vh;
+}
+
+.debates--elements-row {
+    background-image: url('https://img.freepik.com/premium-vector/pacifier-baby-dummy-vector-seamless-pattern-newborn-pink-pacifier-with-hearts-girl-endless-texture-flat-design-cartoon-style-background-web-covers-banners-decoration-children-s-design_502274-417.jpg?w=2000');
+    min-height: 85vh;
+}

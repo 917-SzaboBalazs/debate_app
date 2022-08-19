@@ -7,6 +7,7 @@ import Signup from './pages/LoginSignup/Signup';
 import NewDebate from './pages/NewDebate/NewDebate';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import Debates from './pages/Debates/Debates';
 
 import './App.css'
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/sign-up' exact element={<Signup/>} />
           <Route path='/about-us' exact element={<AboutUs />} />
           <Route path='/new-debate' exact element={<NewDebate />} />
+          <Route path='/debates' exact element={<Debates />} />
         </Routes>
       <Footer />
       </Router>
