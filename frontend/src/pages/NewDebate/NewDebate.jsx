@@ -14,6 +14,7 @@ function NewDebate() {
     const [ names, setNames ] = useState(['elso', 'masodik', 'harmadik', 'negyedik', 'otodik', 'hatodik', 'hetedik', 'nyolcadik']);
     const [ proPlayers, setProPlayers ] = useState([]);
     const [ conPlayers, setConPlayers ] = useState([]);
+    const [ judges, setJudges ] = useState([]);
     const [ chosenName, setChosenName ] = useState('');
     const [ ready, setReady ] = useState(false);
 
@@ -43,12 +44,17 @@ function NewDebate() {
 
     const proListed = proPlayers.map((player) =>
         <div className="col-2" key={player}>
-            {player};
+            {player}
         </div>
     )
     const conListed = conPlayers.map((player) =>
         <div className="col-2" key={player}>
-            {player};
+            {player}
+        </div>
+    )
+    const judgeListed = judges.map((player) =>
+        <div className="col-2" key={player}>
+            {player}
         </div>
     )
 
@@ -81,7 +87,6 @@ function NewDebate() {
                             } else if (proPlayers.length === 4 ) {
                                 alert('The PRO team is already full');
                             } else {
-                                //alert(chosenName + ' chosen to be PRO');
                                 const temp = proPlayers.concat(chosenName);
                                 setProPlayers(temp);
                                 setCurrentNumberOfPeople(currentNumberOfPeople + 1);
@@ -102,7 +107,6 @@ function NewDebate() {
                             } else if (conPlayers.length === 4 ) {
                                 alert('The Con team is already full');
                             } else {
-                                //alert(chosenName + ' chosen to be CON');
                                 const temp = conPlayers.concat(chosenName);
                                 setConPlayers(temp);
                                 setCurrentNumberOfPeople(currentNumberOfPeople + 1);
@@ -114,22 +118,16 @@ function NewDebate() {
                             }
                         }}
                          >CON</div>
-                </div>
-                <div className="new-debate--decision row justify-content-evenly">
-                    <div 
-                        className="new-debate--decision--pro col-sm-4 col-md-4"
-                        /*
-                        onClick = { () => {
+
+                    <div className="col-2 new-debate--judge-btn text-center font-weight-bold"
+                         onClick = { () => {
                             if (chosenName === '' ) {
                                 alert('Please select a player.');
-                            } else if (proPlayers.includes(chosenName) || conPlayers.includes(chosenName)) {
+                            } else if (judges.includes(chosenName) || judges.includes(chosenName)) {
                                 alert(chosenName + ' has already been selected.');
-                            } else if (proPlayers.length === 4 ) {
-                                alert('The PRO team is already full');
                             } else {
-                                alert(chosenName + ' chosen to be PRO');
-                                const temp = proPlayers.concat(chosenName);
-                                setProPlayers(temp);
+                                var temp = judges.concat(chosenName);
+                                setJudges(temp);
                                 setCurrentNumberOfPeople(currentNumberOfPeople + 1);
 
                                 const newNames = names.filter(name => name !== chosenName);
@@ -138,35 +136,21 @@ function NewDebate() {
                                 checkIfReady();
                             }
                         }}
-                        */
+                         >JUDGE</div>
+                </div>
+                <div className="new-debate--decision row justify-content-evenly">
+                    <div 
+                        className="new-debate--decision--pro col-sm-3 col-md-3"
                     >
                         {proListed}
                     </div>
                     <div 
-                        className="new-debate--decision--con col-sm-4 col-md-4"
-                        /*
-                        onClick = { () => {
-                            if (chosenName === '' ) {
-                                alert('Please select a player.');
-                            } else if (conPlayers.includes(chosenName) || proPlayers.includes(chosenName)) {
-                                alert(chosenName + ' has already been selected.');
-                            } else if (conPlayers.length === 4 ) {
-                                alert('The Con team is already full');
-                            } else {
-                                alert(chosenName + ' chosen to be CON');
-                                const temp = conPlayers.concat(chosenName);
-                                setConPlayers(temp);
-                                setCurrentNumberOfPeople(currentNumberOfPeople + 1);
-
-                                const newNames = names.filter(name => name !== chosenName);
-                                setNames(newNames);
-
-                                checkIfReady();
-                            }
-                        }}
-                        */
+                        className="new-debate--decision--con col-sm-3 col-md-3"
                     >
                         {conListed}
+                    </div>
+                    <div className="new-debate--decision--judge col-sm-3 col-md-3">
+                        {judgeListed}
                     </div>
                 </div>
                 
@@ -174,10 +158,11 @@ function NewDebate() {
                         <button 
                             className="new-debate--clear-btn-container--btn"
                             onClick={() => {
-                                const newNames = names.concat(proPlayers, conPlayers);
+                                const newNames = names.concat(proPlayers, conPlayers, judges);
                                 setNames(newNames);
                                 setProPlayers([]);
                                 setConPlayers([]);
+                                setJudges([]);
                                 setCurrentNumberOfPeople(0);
                                 setReady(false);
                             }}
