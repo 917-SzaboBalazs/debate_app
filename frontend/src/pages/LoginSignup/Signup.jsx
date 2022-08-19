@@ -7,8 +7,13 @@ import SignupPopup from './SignupPopup';
 
 import './Signup.css'
 
-import image1 from '../../images/notes.jpeg';
-import image2 from '../../images/notes2.jpeg'
+import image1 from '../../images/signup1.jpg';
+import image2 from '../../images/signup2.jpg'
+import image3 from '../../images/signup3.jpg'
+import image4 from '../../images/signup4.jpg'
+import image5 from '../../images/signup5.jpg'
+import image6 from '../../images/signup6.jpg'
+import image7 from '../../images/signup7.jpg'
 
 function Signup() {
 
@@ -164,7 +169,11 @@ function Signup() {
 
   const images = [
     image1,   
-    image2
+    image2,
+    image4,
+    image5,
+    image6,
+    image7,
   ];
 
   const [value, setValue] = React.useState(0);

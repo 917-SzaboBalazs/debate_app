@@ -56,16 +56,15 @@
 }
 
 .signup--left-side {
-
     overflow: hidden;
     height: 100vh;
 }
 
 .signup-img {
     position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-35%, -50%);
+    top: 70%;
+    left: 20%;
+    transform: translate(-30%, -30%);
 }
 
 .signup-box{
@@ -132,10 +131,10 @@ input {
 
 .signup--bg-img {
     position: relative;
-    top: auto;
-    left: auto;
-    max-width:103%;
-    height: 100%;    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
 }
 
 

@@ -16,13 +16,14 @@
     background-color: lightcoral;
 }
 
-.new-debate--decision--pro, .new-debate--decision--con{
+.new-debate--decision--pro, .new-debate--decision--con, .new-debate--decision--judge{
     background-color: whitesmoke;
     border-radius: 12px;
-    height: 20vh;
-    margin-top: 3vh;
+    min-height: 20vh;
+    margin-top: 5vh;
     margin-bottom: 5vh;
     padding: 2vh;
+    max-width: 90vw;
 }
 
 .new-debate--teams {
@@ -83,13 +84,14 @@
     background-color: #f9d342;
     color: #292826;
     border-radius: 7px;
+    width: 20vw;
 }
 
 .new-debate--procon-row{
     margin-top: 5vh !important;
 }
 
-.new-debate--pro-btn, .new-debate--con-btn{
+.new-debate--pro-btn, .new-debate--con-btn, .new-debate--judge-btn{
     border-radius: 7px;
     color: whitesmoke;
     transition: .1s;
@@ -101,10 +103,13 @@
 .new-debate--con-btn{
     border: 1px solid #292826;
 }
+.new-debate--judge-btn{
+    border: 1px solid orange;
+}
 
-.new-debate--pro-btn:hover, .new-debate--con-btn:hover{
+.new-debate--pro-btn:hover, .new-debate--con-btn:hover, .new-debate--judge-btn:hover{
     box-shadow: 0px 0px 10px black;
-    background-color: orange;
+    background-color: whitesmoke;
     color: black;
     transition: .2s;
 }
