@@ -59,6 +59,8 @@
 .signup--left-side {
     overflow: hidden;
     height: 100vh;
+    background-color: black;
+    opacity: 0.7;
 }
 
 .signup-img {
