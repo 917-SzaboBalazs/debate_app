@@ -10,7 +10,7 @@
     }
 } */
 
-.login-body {
+.signup-body {
     background-color: var(--secondary);
     min-height: 100vh;
     /* width: 100%; */
@@ -43,7 +43,7 @@
     margin-bottom: 1.5rem;
 }
 
-.login-img {
+.signup-img {
     /*
     width: 35%;
     display: flex;
@@ -52,7 +52,6 @@
     padding-top:  22rem;
     padding-bottom: 22rem;
     */
-    background-color: var(--secondary);
     max-height: 100vh;
 }
 

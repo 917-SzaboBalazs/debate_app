@@ -193,7 +193,7 @@ function Signup() {
   }, [value])
 
   return (
-    <div className='login-body'>
+    <div className='signup-body base'>
       <div className="container">
         <form>
         <div className="trunk-container row ">
