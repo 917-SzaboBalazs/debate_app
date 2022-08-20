@@ -23,7 +23,7 @@
     margin-top: 5vh;
     margin-bottom: 5vh;
     padding: 2vh;
-    max-width: 90vw;
+    max-width: 90vw !important;
 }
 
 .new-debate--teams {
@@ -126,4 +126,13 @@
     background-color: orange;
     color: white;
     transition: .2s;
+}
+
+.new-debate--background{
+    min-height: 100vh;
+}
+
+.new-debate--container{
+    min-height: 100vh;
+    background-color: #485c7a;
 }

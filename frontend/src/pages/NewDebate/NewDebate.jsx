@@ -66,8 +66,8 @@ function NewDebate() {
 
 
     return (
-        <div className='new-debate--background pb-3'>
-            <div className="new-debate--container container ">
+        <div className='new-debate--background base'>
+            <div className="new-debate--container container">
                 <div className="row pt-4">
                     <h2 className='new-debate--basic-text col-6 text-center'>Debate-type: {location.state.type}</h2>
                     <h2 className="new-debate--selected-player col-6 text-center ">Selected Player: {chosenName}</h2>

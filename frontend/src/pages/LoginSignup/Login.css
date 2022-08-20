@@ -136,14 +136,31 @@ input {
     }
     .login-container{
         border-radius: 7px;
+        min-width: 80%;
     }
     .login-container, .login--right-side{
         height: 45%;
+        border-radius: 7px;
     }
     .login-img, .login-container{
         padding-top: 8vh;
     }
     .login-box{
-        padding-left: 0;
+        padding-left: 18vw;
+        top: 25%;
+        min-width: 60%;
     }
+
+    .login--right-side{
+        min-width: 80%;
+    }
+
+    .login--right-side-box{
+        top: 72%;
+    }
+
+    .login--right-side-box{
+        left: -45%;
+    }
+
   }

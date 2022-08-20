@@ -27,6 +27,7 @@
     background-color: var(--primary);
     justify-content: center;
     align-items: center;
+    z-index: 5;
 }
 
 .create-debate--inner .create-debate--close-btn {
