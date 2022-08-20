@@ -8,6 +8,7 @@ import NewDebate from './pages/NewDebate/NewDebate';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Debates from './pages/Debates/Debates';
+import InDebateTimer from './pages/InDebateTimer/InDebateTimer';
 
 import './App.css'
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/about-us' exact element={<AboutUs />} />
           <Route path='/new-debate' exact element={<NewDebate />} />
           <Route path='/debates' exact element={<Debates />} />
+          <Route path='/in-debate' exact element={<InDebateTimer />} />
         </Routes>
       <Footer />
       </Router>

@@ -60,6 +60,7 @@ function CollapsibleExample() {
             <Nav.Link onClick={handleClickTriggerJoin} className='nav-link'>Join a Debate</Nav.Link>
             <Nav.Link onClick={handleClickTriggerCreate} className='nav-link'>Create a Debate</Nav.Link>
             <Nav.Link href="/about-us" className='nav-link'>About Us</Nav.Link>
+            <Nav.Link href="/in-debate" className='nav-link'>Deb.Timer-PROBA</Nav.Link>
           </Nav>
           <Nav>
             { !loggedIn ? 
