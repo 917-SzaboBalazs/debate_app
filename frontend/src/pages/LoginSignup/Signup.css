@@ -67,9 +67,7 @@
     top: 50%;
     left: 20%;
     transform: translate(-30%, -50%);
-
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    
 }
 
 .signup-box{
