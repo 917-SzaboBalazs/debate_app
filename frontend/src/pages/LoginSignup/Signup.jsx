@@ -196,7 +196,7 @@ function Signup() {
     <div className='signup-body base'>
       <div className="container">
         <form>
-        <div className="trunk-container row ">
+        <div className="trunk-container row">
             <div className="signup--left-side col-6" >
               <img src={images[value]} className='signup--bg-img'/>
               <div className="signup-img row">
@@ -215,6 +215,7 @@ function Signup() {
               </div>
             </div>
             <div className="signup--container col-6">
+              <h1 className="signup--signup-title">Register:</h1>
                 <div className="signup-box">
                     <h5 className="username-text">Username:</h5>
                     <input

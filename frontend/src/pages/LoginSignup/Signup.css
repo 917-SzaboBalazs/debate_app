@@ -146,24 +146,26 @@ input {
     height: 100%;
 }
 
+.signup--signup-title{
+    margin-top: 7vh;
+    margin-left: 12vw;
+}
+
 
 @media only screen and (max-width: 600px) {
     .trunk-container{
         flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
     }
-    .signup--container{
+
+    .signup--left-side, .signup--container{
+        height: 45vh;
+        width: 80vw !important;
         border-radius: 7px;
     }
-    .signup--container, .signup--left-side{
-        height: 45%;
-    }
-    .signup-btn, .signup--container{
-        margin-top: 7vh !important;
-    }
-    .signup--container{
-        margin-bottom: 3vh;
-    }
-    .signup-box{
-        margin-left: 0;
+
+    .signup--img{
+        top: -120% !important;
     }
   }
