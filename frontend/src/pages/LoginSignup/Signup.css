@@ -28,8 +28,9 @@
     color:rgba(0, 0, 0, 0.5);
     margin-right: 5rem;
     margin-top: 3rem;
-    text-align: center;
+    /*text-align: center;*/
     margin-bottom: 1rem;
+    width: 15vw;
 }
 
 .username {
@@ -62,14 +63,20 @@
 
 .signup-img {
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 20%;
-    transform: translate(-30%, -30%);
+    transform: translate(-30%, -50%);
 }
 
 .signup-box{
+    /*
     margin-top: 15rem;
     margin-left: 6rem;
+    */
+    position: absolute;
+    top: 60%;
+    left: 72%;
+    transform: translate(-28%, -40%);
 }
 
 .signup-btn {
