@@ -199,7 +199,6 @@ function Signup() {
         <div className="trunk-container row ">
             <div className="signup--left-side col-6" >
               <img src={images[value]} className='signup--bg-img'/>
-
               <div className="signup-img row">
                   <div className="singup--btn-cont col-12 text-center">
                     <button

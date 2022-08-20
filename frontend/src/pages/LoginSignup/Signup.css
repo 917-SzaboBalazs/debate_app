@@ -59,7 +59,7 @@
     overflow: hidden;
     height: 100vh;
     background-color: black;
-    opacity: 0.7;
+    /* opacity: 0.7; */
 }
 
 .signup-img {
@@ -67,6 +67,9 @@
     top: 50%;
     left: 20%;
     transform: translate(-30%, -50%);
+
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .signup-box{
