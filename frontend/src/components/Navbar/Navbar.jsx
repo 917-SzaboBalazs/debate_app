@@ -9,6 +9,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import CreateDebate from './Popups/CreateDebate/CreateDebate';
 import JoinDebate from './Popups/JoinDebate/JoinDebate';
+import LogOut from '../../logout';
 
 import './Navbar.css';
 import './Navbar2.css';
@@ -43,9 +44,9 @@ function CollapsibleExample() {
     }
 
     const logOut = () => {
-      localStorage.clear();
-      window.location.reload(false);
+      LogOut();
       setLoggedIn(false);
+      window.location.reload(true);
     }
 
   return (
@@ -63,15 +64,15 @@ function CollapsibleExample() {
             <Nav.Link href="/in-debate" className='nav-link'>Deb.Timer-PROBA</Nav.Link>
           </Nav>
           <Nav>
-            { !loggedIn ? 
+            { !loggedIn ?
                 <>
-                <Nav.Link href="/log-In">Login</Nav.Link> 
+                <Nav.Link href="/log-In">Login</Nav.Link>
                 <Nav.Link href="/sign-up">Signup</Nav.Link>
                 </>
-                : 
+                :
                 <>
                 <Nav.Link >Szervusz {userName} </Nav.Link>
-                <Nav.Link onClick={logOut}>Log Out</Nav.Link>
+                <Nav.Link href="../../logout">Log Out</Nav.Link>
                 </>
             }
             {/* <Nav.Link href="/log-In">Login</Nav.Link> */}

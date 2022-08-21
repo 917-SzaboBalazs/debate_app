@@ -18,14 +18,14 @@
     text-align: center;
     padding-top: 15vh;
   }
-  
+
   .trunk--container > h1 {
     color: var(--primary);
     font-size: 100px;
     font-weight: 800;
     margin-top: -100px;
   }
-  
+
   .trunk--container > p {
     margin-top: 8px;
     color: #fff;
@@ -34,7 +34,7 @@
       'Lucida Sans', Arial, sans-serif;
     justify-content: space-between;
   }
-  
+
   .trunk--link-text {
     text-decoration: none;
     font-weight: bold;
@@ -73,22 +73,22 @@
       margin-top: -150px;
     }
   }
-  
+
   @media screen and (max-width: 768px) {
     .trunk--container > h1 {
       font-size: 50px;
       margin-top: -100px;
     }
-  
+
     .trunk--container > p {
       font-size: 30px;
     }
-  
+
     .trunk--mobile {
       display: block;
       text-decoration: none;
     }
-  
+
     .btn {
       width: 100%;
     }

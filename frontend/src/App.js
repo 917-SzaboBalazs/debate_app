@@ -9,8 +9,9 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Debates from './pages/Debates/Debates';
 import InDebateTimer from './pages/InDebateTimer/InDebateTimer';
+import LogOut from './logout';
 
-import './App.css'
+import './App.css';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/log-In' exact element={<Login />} />
+          <Route path='/logout' exact element={<LogOut />} />
           <Route path='/sign-up' exact element={<Signup/>} />
           <Route path='/about-us' exact element={<AboutUs />} />
           <Route path='/new-debate' exact element={<NewDebate />} />
