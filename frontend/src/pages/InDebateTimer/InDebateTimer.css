@@ -46,6 +46,18 @@
     width: 30px;
 }
 
+.indebate--next {
+    height: 30px;
+    width: 30px;
+}
+
+.indebate--back {
+    
+    transform: scale(1, -1);
+    height: 30px;
+    width: 30px;
+}
+
 .indebate--start {
     border-color: var(--green);
     background-color: var(--green);
@@ -81,4 +93,34 @@
 .indebate--reset-button:hover {
     background-color: white;
     transition: .3s;
+}
+
+.indebate--next-button {
+    border-color: var(--third);
+    background-color: var(--third);
+    transition: .3s;
+    margin-left: 4px;
+}
+
+.indebate--next-button:hover {
+    background-color: white;
+    transition: .3s;
+}
+
+.indebate--back-button {
+    transform: rotate(180deg);
+    border-color: var(--third);
+    background-color: var(--third);
+    transition: .3s;
+    margin-right: 4px;
+}
+
+.indebate--back-button:hover {
+    background-color: white;
+    transition: .3s;
+}
+
+
+.indebate--current-speaker {
+    margin-bottom: 4rem;
 }
