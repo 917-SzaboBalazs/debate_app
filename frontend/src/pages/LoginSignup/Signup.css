@@ -157,15 +157,50 @@ input {
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
+        height: 160vh;
     }
 
     .signup--left-side, .signup--container{
-        height: 45vh;
+        position: absolute;
         width: 80vw !important;
         border-radius: 7px;
     }
 
-    .signup--img{
-        top: -120% !important;
+    .signup--left-side{
+        top: 99vh;
+        height: 65vh;
+    }
+    .signup--container{
+        top: 15vh;
+        height: 79vh;
+    }
+
+    .signup-box{
+        left: 35vw;
+        top: 37vh;
+    }
+
+    .signup--signup-title{
+        margin-top: 3vh;
+        margin-left: 10vw;
+    }
+
+    .signup--password-help{
+        margin-top: 0;
+        width: 60vw;
+    }
+
+    .signup-img{
+        left: 37%;
+        top: 40%;
+        width: 90%;
+    }
+
+    .signup-btn{
+        box-shadow: 0px 0px 30px 10px black;
+    }
+
+    .signup--already-have-an-account span{
+        text-shadow: 0px 0px 10px black;
     }
   }
