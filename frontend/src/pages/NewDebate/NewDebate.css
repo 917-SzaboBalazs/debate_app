@@ -135,4 +135,5 @@
 .new-debate--container{
     min-height: 100vh;
     background-color: #485c7a;
+    padding-top: 10vh;
 }

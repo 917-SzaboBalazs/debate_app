@@ -97,14 +97,14 @@ function Login() {
             </div>
             <div className="login--right-side col-6">
               <img src={images[value]} className='login--bg-img'/>
-              <div className="login--right-side-box col-12">
+              <div className="login--right-side-box col-12 ">
                 <div className="login-img row">
-                  <div className="login--btn-cont col-12 text-center">
+                  <div className="login--btn-cont col-6 ">
                       <button type='submit'  className='login-btn' onClick={handleSubmit}>Let`s Start!</button>
                   </div>
                 </div>
                 <div className="login--dont-have-cont row">
-                  <Link className="login--dont-have-account col-12 text-center" to='/sign-up'><span>Don`t have an account?</span></Link>
+                  <Link className="login--dont-have-account col-6 text-center" to='/sign-up'><span>Don`t have an account?</span></Link>
                 </div>
               </div>
             </div>

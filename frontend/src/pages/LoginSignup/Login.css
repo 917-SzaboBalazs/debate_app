@@ -52,6 +52,8 @@
     top: 50%;
     right: 25%;
     transform: translate(45%, -25%);
+    text-align: right;
+    left: 10%;
 }
 
 .login--bg-img {
@@ -79,6 +81,7 @@
     transition: .3s;
     /* margin-top: 22rem; */
     margin-bottom: 1rem;
+    display: inline-block;
 }
 
 
@@ -128,6 +131,19 @@ input {
     top: 50%;
     left: 25%;
     transform: translate(-25%, -25%);
+}
+
+.login--dont-have-cont {
+    display: inline-block;
+}
+
+.login--btn-cont {
+    text-align: right;
+    /* align-items: right; */
+}
+
+.login-img {
+    display: inline-block;
 }
 
 @media only screen and (max-width: 600px) {

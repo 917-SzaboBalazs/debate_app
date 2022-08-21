@@ -27,8 +27,8 @@ function Trunk() {
     <div className="bg-dark base">
         <Container>
             <div className="trunk--container">
-                <h1>DEBATE</h1>
-                <p>The Official Debate App of Mathias Corvinus Collegium.</p>
+                <h1>DEBATE-CULTURE</h1>
+                <p>Ákos majd ir ide valamit.</p>
                 <div className="trunk--btns">
                 { !loggedIn ? 
                     <>

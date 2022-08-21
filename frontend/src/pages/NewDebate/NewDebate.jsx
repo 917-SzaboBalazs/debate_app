@@ -69,13 +69,13 @@ function NewDebate() {
         <div className='new-debate--background base'>
             <div className="new-debate--container container">
                 <div className="row pt-4">
-                    <h2 className='new-debate--basic-text col-6 text-center'>Debate-type: {location.state.type}</h2>
-                    <h2 className="new-debate--selected-player col-6 text-center ">Selected Player: {chosenName}</h2>
+                    <h2 className='new-debate--basic-text col-12 text-center'>Debate-type: {location.state.type}</h2>
+                    {/* <h2 className="new-debate--selected-player col-6 text-center ">Selected Player: {chosenName}</h2> */}
                 </div>
 
-                <div className="new-debate--people row justify-content-evenly">
+                {/* <div className="new-debate--people row justify-content-evenly">
                     {namesListed}
-                </div>
+                </div> */}
 
                 <div className="new-debate--procon-row row pt-2 justify-content-evenly">
                     <div className="col-2 new-debate--pro-btn text-center font-weight-bold"

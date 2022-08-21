@@ -4,6 +4,7 @@
 
 .debates--container {
     min-height: 100vh;
+    padding-top: 10vh;
 }
 
 .debates--header-title {

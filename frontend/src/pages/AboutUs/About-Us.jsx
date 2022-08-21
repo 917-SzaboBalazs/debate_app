@@ -6,7 +6,7 @@ import './About-Us.css';
 function AboutUs() {
   return (
     <div className="about-us--container base">
-        <div className="container">
+        <div className="container about-us--container">
           <Us />
         </div>
     </div>

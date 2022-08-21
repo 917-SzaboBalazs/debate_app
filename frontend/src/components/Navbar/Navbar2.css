@@ -15,6 +15,8 @@
     padding-top: .75rem;
     padding-bottom: .75rem;
     z-index: 7;
+    position: fixed;
+    width: 100%;
 }
 
 .nav-brand {

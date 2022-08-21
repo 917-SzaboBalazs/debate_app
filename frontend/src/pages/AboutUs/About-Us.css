@@ -4,6 +4,6 @@
     --third: #F2CA10;
 }
 
-/* .about-us--container {
-    background-color: var(--third);
-} */
+.about-us--container {
+    padding-top: 4vh;
+} 
