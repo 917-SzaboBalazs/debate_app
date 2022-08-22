@@ -21,3 +21,4 @@ class RegisterUserSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+

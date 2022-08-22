@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -15,6 +16,8 @@ import './Navbar.css';
 import './Navbar2.css';
 
 function CollapsibleExample() {
+    let navigate = useNavigate();
+
     const [ triggerCreate, setTriggerCreate ] = useState(false);
     const [ triggerJoin, setTriggerJoin ] = useState(false);
     const [ loggedIn, setLoggedIn ] = useState(false);
@@ -46,7 +49,7 @@ function CollapsibleExample() {
     const logOut = () => {
       LogOut();
       setLoggedIn(false);
-      window.location.reload(true);
+      window.location.reload(false);
     }
 
   return (
