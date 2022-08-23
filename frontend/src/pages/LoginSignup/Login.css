@@ -16,22 +16,14 @@
     /* width: 100%; */
 }
 
-.login--trunk-container {
-    /* display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch; */
-    height: 100vh;
-    /* border-color: var(--secondary);
-    border-width: 1rem; */
+.login--trunk-container { 
+    min-height: 100vh;
 }
 
 
 .login-container {
-    /* width: 35%; */
     background-color: var(--primary);
-    /* padding-top: 30vh; */
-    height: 100%;
+    min-height: 100vh;
 }
 
 .login--right-side {
@@ -47,41 +39,9 @@
     margin-bottom: 1rem;
 }
 
-.login--right-side-box {
-    position: absolute;
-    top: 50%;
-    right: 25%;
-    transform: translate(45%, -25%);
-    text-align: right;
-    left: 10%;
-}
-
-.login--bg-img {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* z-index: -1; */
-}
-    
-
 .login-btn {
     cursor: pointer;
-    color: var(--primary);
-    font-size: 48px;
-    font-weight: bold;
-    padding: .5rem;
-    border-radius: 2rem;
-    background-color: rgba(0, 0, 0, 0.61);
-    backdrop-filter: blur(5px);
-    outline: none;
-    border: 5px solid white;
-    background-color: transparent;
-    min-height: 14vh;
-    transition: .3s;
-    /* margin-top: 22rem; */
-    margin-bottom: 1rem;
-    display: inline-block;
+    color: var(--secondary);
 }
 
 
@@ -105,48 +65,42 @@ input {
 
 .login--dont-have-account {
     /* margin-left: .75rem; */
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
 }
 
 .login--dont-have-account span{
    
     font-size: 24px;
-    color: white;
+    color: black;
     transition: .4s;
 }
 
 .login--dont-have-account span:hover{
-    margin-left: .75rem;
-    margin-top: 2rem;
-    font-size: 24px;
-    color: var(--secondary);
-    background-color: white;
+    box-shadow: #22344D;
     transition: .4s;
 }
 
 .login-box{
     /* padding-left: 10vw; */
     /* margin-top: 30vh; */
-    position: absolute;
-    top: 50%;
+    /* position: absolute; */
+    /* top: 50%;
     left: 25%;
-    transform: translate(-25%, -25%);
+    transform: translate(-25%, -25%); */
 }
 
 .login--dont-have-cont {
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .login--btn-cont {
-    text-align: right;
+    /* text-align: right; */
     /* align-items: right; */
 }
 
-.login-img {
-    display: inline-block;
-}
 
-@media only screen and (max-width: 600px) {
+
+/* @media only screen and (max-width: 600px) {
     .login--trunk-container{
         flex-direction: column;
     }
@@ -187,4 +141,4 @@ input {
         text-shadow: 0px 0px 10px black;
     }
 
-  }
+  } */
