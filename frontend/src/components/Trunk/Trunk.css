@@ -45,25 +45,49 @@
     color: white;
   }
 
-  .trunk--login-button {
-    margin: 15px;
+  .trunk--signin-button {
     transition: .3s;
-    border: 1rem solid white;
+    background-color: var(--secondary);
+    border: 2px solid var(--secondary);
+    border-radius: 1.25rem;
+    color: white;
+    padding: 15px;
+
+    margin-left: 5px;
+    min-width: 7rem;
+  }
+  
+  .trunk--signin-button:hover{
+    box-shadow: 0px 0px 30px black;
+    background-color: transparent;
+    transition: .3s;
+  }
+
+  .trunk--login-button {
+    transition: .3s;
+    border: 4px soid white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 1.25rem;
+    color: white;
+    padding: 15px;
+    transition: .3s;
+    
+    margin-right: 5px;
+    min-width: 7rem;
   }
 
   .trunk--login-button:hover{
     box-shadow: 0px 0px 20px black;
     transition: .3s;
   }
-  .trunk--signin-button:hover{
-    box-shadow: 0px 0px 30px black;
-    background-color: #F2CA10;
-    transition: .3s;
+
+  .trunk--login-link {
+    color: white;
   }
 
-  .trunk--signin-button {
-    transition: .3s;
-    margin: 15px;
+  .trunk--signup-link {
+    color: white;
   }
 
 

@@ -32,20 +32,16 @@ function Trunk() {
                 <div className="trunk--btns">
                 { !loggedIn ? 
                     <>
-                    <Button
-                        className='trunk--login-button text-uppercase border border-3'
-                        variant='outline-primary'
-                        size='lg'
+                    <button
+                        className='trunk--login-button text-uppercase'
                     >
                         <Link className='trunk--login-link trunk--link-text' to='/log-In'><span>Sign In</span></Link>
-                    </Button>
-                    <Button
+                    </button>
+                    <button 
                         className='trunk--signin-button text-uppercase'
-                        variant='primary'
-                        size='lg'
                     >
-                        <Link className="trunk--singup-link trunk--link-text" to='/sign-up'><span>Register</span></Link>
-                    </Button>
+                        <Link className="trunk--signup-link trunk--link-text" to='/sign-up'><span>Register</span></Link>
+                    </button>
                     </>
                 : ''
                 }

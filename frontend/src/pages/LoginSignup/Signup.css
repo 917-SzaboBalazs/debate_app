@@ -19,18 +19,18 @@
 
 .signup--container {
     background-color: var(--primary);
-    max-height: 100vh; 
+    min-height: 100vh; 
     margin-top: 0px;
-    padding-left: 3rem;
+    /* padding-left: 3rem; */
 }
 
 .signup--password-help {
     color:rgba(0, 0, 0, 0.5);
-    margin-right: 5rem;
+    /* margin-right: 5rem; */
     margin-top: 3rem;
     /*text-align: center;*/
     margin-bottom: 1rem;
-    width: 15vw;
+    /* width: 15vw; */
 }
 
 .username {
@@ -52,7 +52,7 @@
     padding-top:  22rem;
     padding-bottom: 22rem;
     */
-    max-height: 100vh;
+    min-height: 100vh;
 }
 
 .signup--left-side {
@@ -62,41 +62,36 @@
     /* opacity: 0.7; */
 }
 
-.signup-img {
-    position: absolute;
-    top: 50%;
-    left: 20%;
-    transform: translate(-30%, -50%);
+.signup--btn-row {
     
 }
+
+/* .signup-box-2 {
+    padding-left: 9rem;
+}
+
+@media only screen and (max-width: 900px) and (min-width: 759px) {
+    .signup-box-2 {
+        padding-left: 5rem;
+    }
+} */
 
 .signup-box{
     /*
     margin-top: 15rem;
     margin-left: 6rem;
     */
-    position: absolute;
+    /* position: absolute;
     top: 60%;
     left: 72%;
-    transform: translate(-28%, -40%);
+    transform: translate(-28%, -40%); */
+    margin-top: 5vh;
+    padding-top: 5vh;
 }
 
 .signup-btn {
     cursor: pointer;
-    color: var(--primary);
-    font-size: 48px;
-    font-weight: bold;
-    padding: .5rem;
-    border-radius: 2rem;
-    background-color: rgba(0, 0, 0, 0.61);
-    backdrop-filter: blur(5px);
-    outline: none;
-    border: 5px solid white;
-    background-color: transparent;
-    min-height: 14vh;
-    transition: .3s;
-    margin-top: 15vh;
-    margin-bottom: 1rem;
+   
 }
 
 .signup-btn:hover {
@@ -117,90 +112,15 @@ input {
     font-size: 24px;
 }
 
-.signup--already-have-an-account {
-    margin-left: .75rem;
-    margin-top: 2rem;
-}
-
-.signup--already-have-an-account span{
-   
-    font-size: 24px;
-    color: white;
-    transition: .4s;
-}
-
-.signup--already-have-an-account span:hover{
-    margin-left: .75rem;
-    margin-top: 2rem;
-    font-size: 24px;
-    color: var(--secondary);
-    background-color: white;
-    transition: .4s;
-}
-
-.signup--bg-img {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 100%;
-}
 
 .signup--signup-title{
-    margin-top: 7vh;
-    margin-left: 12vw;
+    /* margin-top: 7vh;
+    margin-left: 12vw; */
+    margin-bottom: 5rem;
 }
 
-
-@media only screen and (max-width: 600px) {
-    .trunk-container{
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        height: 160vh;
+@media only screen and (max-width: 768px) {
+    .signup--left-side {
+        display: none;
     }
-
-    .signup--left-side, .signup--container{
-        position: absolute;
-        width: 80vw !important;
-        border-radius: 7px;
-    }
-
-    .signup--left-side{
-        top: 99vh;
-        height: 65vh;
-    }
-    .signup--container{
-        top: 15vh;
-        height: 79vh;
-    }
-
-    .signup-box{
-        left: 35vw;
-        top: 37vh;
-    }
-
-    .signup--signup-title{
-        margin-top: 3vh;
-        margin-left: 10vw;
-    }
-
-    .signup--password-help{
-        margin-top: 0;
-        width: 60vw;
-    }
-
-    .signup-img{
-        left: 37%;
-        top: 40%;
-        width: 90%;
-    }
-
-    .signup-btn{
-        box-shadow: 0px 0px 30px 10px black;
-    }
-
-    .signup--already-have-an-account span{
-        text-shadow: 0px 0px 10px black;
-    }
-  }
+}

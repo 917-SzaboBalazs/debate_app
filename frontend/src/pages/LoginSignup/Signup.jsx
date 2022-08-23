@@ -197,9 +197,9 @@ function Signup() {
       <div className="container">
         <form>
         <div className="trunk-container row">
-            <div className="signup--left-side col-6" >
+            <div className="signup--left-side p-0 col-md-6 col-sm-12" >
               <img src={images[value]} className='signup--bg-img'/>
-              <div className="signup-img row">
+              {/* <div className="signup-img row">
                   <div className="singup--btn-cont col-12 text-center">
                     <button
                         className='signup-btn'
@@ -212,11 +212,12 @@ function Signup() {
                   <div className="signup--already-cont row ">
                     <Link className="signup--already-have-an-account col-12 text-center" to='/log-In'><span>Already have an account</span></Link>
                   </div>
-              </div>
+              </div> */}
             </div>
-            <div className="signup--container col-6">
-              <h1 className="signup--signup-title">Register:</h1>
-                <div className="signup-box">
+            <div className="signup--container d-flex align-items-center justify-content-center col-md-6 col-sm-12">
+                <div className="signup-box ">
+                    {/* <div className="signup-box-2 col-12"> */}
+                    <h1 className="signup--signup-title">Register:</h1>
                     <h5 className="username-text">Username:</h5>
                     <input
                         id="username"
@@ -265,11 +266,27 @@ function Signup() {
                           setPasswordAgain(e.target.value);
                         } }
                     />
-
-                    <p className="signup--password-help">
+                    {/* </div> */}
+                    {/* <p className="signup--password-help text-center">
                       The password needs to be at least 8 characters long, has to contain a capital letter and a number at least.
-                    </p>
-                </div>
+                    </p> */}
+                    
+                    <div className="signup--btn-row row">
+                      <div className="singup--btn-cont col-12 text-center">
+                        <button
+                            className='signup-btn'
+                            type='submit'
+                            onClick={handleSubmit}
+                        >
+                            Register
+                        </button>
+                      </div>
+                      <div className="signup--already-cont row text-center">
+                        <Link className="signup--already-have-an-account col-12 text-center" to='/log-In'><span>Already have an account</span></Link>
+                      </div>
+                   {/* </div> */}
+                   </div>
+                  </div>
               </div>
           </div>
           <SignupPopup trigger={trigger} setTrigger={setTrigger}>
