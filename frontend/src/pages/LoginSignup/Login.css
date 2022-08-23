@@ -11,6 +11,10 @@
 } */
 
 .login-body {
+    color: var(--black);
+}
+
+.login-body {
     background-color: var(--third);
     min-height: 100vh;
     /* width: 100%; */
@@ -81,7 +85,6 @@ input {
 .login--dont-have-account span{
    
     font-size: 24px;
-    color: black;
     transition: .4s;
 }
 
@@ -95,7 +98,7 @@ input {
     align-self: center;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     .login--right-side {
         display: none;
     }

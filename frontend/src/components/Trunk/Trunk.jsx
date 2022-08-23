@@ -35,12 +35,12 @@ function Trunk() {
                     <button
                         className='trunk--login-button text-uppercase'
                     >
-                        <Link className='trunk--login-link trunk--link-text' to='/log-In'><span>Sign In</span></Link>
+                        <Link className='trunk--login-link trunk--link-text' to='/log-In'><span className='white-text'>Sign In</span></Link>
                     </button>
                     <button 
                         className='trunk--signin-button text-uppercase'
                     >
-                        <Link className="trunk--signup-link trunk--link-text" to='/sign-up'><span>Register</span></Link>
+                        <Link className="trunk--signup-link trunk--link-text" to='/sign-up'><span className='white-text'>Register</span></Link>
                     </button>
                     </>
                 : ''

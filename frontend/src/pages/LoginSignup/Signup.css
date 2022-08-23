@@ -14,6 +14,7 @@
     background-color: var(--secondary);
     min-height: 100vh;
     /* width: 100%; */
+    color: var(--black);
 } 
 
 
