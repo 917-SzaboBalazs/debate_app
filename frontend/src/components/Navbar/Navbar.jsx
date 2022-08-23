@@ -69,8 +69,8 @@ function CollapsibleExample() {
           <Nav>
             { !loggedIn ?
                 <>
-                <Nav.Link href="/log-In">Login</Nav.Link>
-                <Nav.Link href="/sign-up">Signup</Nav.Link>
+                <Nav.Link href="/log-In">Sign In</Nav.Link>
+                <Nav.Link href="/sign-up">Register</Nav.Link>
                 </>
                 :
                 <>

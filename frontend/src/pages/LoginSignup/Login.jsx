@@ -76,14 +76,9 @@ function Login() {
           {/* <form action="" className=""> */}
             <div className="login-container d-flex align-items-center justify-content-center col-md-6 col-sm-12 ">
                 <div className="login-box align-items-center">
-                  <div className="login-btn-row row text-center">
-                    <div className="login--btn-cont col-12 ">
-                        <button type='submit'  className='login-btn bg-succes' onClick={handleSubmit}>Sign In</button>
-                    </div>
-                  </div>
-                  <div className="login--dont-have-cont row">
-                    <Link className="login--dont-have-account col-12 text-center" to='/sign-up'><span>Don`t have an account?</span></Link>
-                  </div>
+                    <h1 className="login--login-title">
+                      Sign In
+                    </h1>
                     <h5 className="username-text">Username:</h5>
                     <input 
                       value={userName}
@@ -100,6 +95,15 @@ function Login() {
                       className='password' 
                       onChange={(e) => setPassword(e.target.value)}
                       />
+
+                  <div className="login-btn-row row text-center">
+                    <div className="login--btn-cont col-12 ">
+                        <button type='submit'  className='login-btn bg-succes' onClick={handleSubmit}>Sign In</button>
+                    </div>
+                  </div>
+                  <div className="login--dont-have-cont row">
+                    <Link className="login--dont-have-account col-12 text-center" to='/sign-up'><span>Don`t have an account?</span></Link>
+                  </div>
                 </div>
             </div>
             <div className="login--right-side col-md-6 col-sm-12 p-0">

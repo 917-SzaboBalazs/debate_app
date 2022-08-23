@@ -37,14 +37,14 @@ function Trunk() {
                         variant='outline-primary'
                         size='lg'
                     >
-                        <Link className='trunk--login-link trunk--link-text' to='/log-In'><span>Log-In</span></Link>
+                        <Link className='trunk--login-link trunk--link-text' to='/log-In'><span>Sign In</span></Link>
                     </Button>
                     <Button
                         className='trunk--signin-button text-uppercase'
                         variant='primary'
                         size='lg'
                     >
-                        <Link className="trunk--singup-link trunk--link-text" to='/sign-up'><span>Sign-Up</span></Link>
+                        <Link className="trunk--singup-link trunk--link-text" to='/sign-up'><span>Register</span></Link>
                     </Button>
                     </>
                 : ''

@@ -80,25 +80,11 @@ input {
     transition: .4s;
 }
 
-.login-box{
-    /* padding-left: 10vw; */
-    /* margin-top: 30vh; */
-    /* position: absolute; */
-    /* top: 50%;
-    left: 25%;
-    transform: translate(-25%, -25%); */
+@media only screen and (max-width: 768px) {
+    .login--right-side {
+        display: none;
+    }
 }
-
-.login--dont-have-cont {
-    /* display: inline-block; */
-}
-
-.login--btn-cont {
-    /* text-align: right; */
-    /* align-items: right; */
-}
-
-
 
 /* @media only screen and (max-width: 600px) {
     .login--trunk-container{
