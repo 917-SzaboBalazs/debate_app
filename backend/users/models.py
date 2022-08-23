@@ -39,7 +39,7 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=150, default="", blank=True)
     last_name = models.CharField(max_length=150, default="", blank=True)
-    birthday = models.DateField(default=timezone.datetime(year=1, month=1, day=1))
+    birthday = models.DateTimeField(default=timezone.datetime(year=1800, month=1, day=1))
     about_me = models.TextField(max_length=500, default="", blank=True)
     start_date = models.DateTimeField(default=timezone.now)
     is_staff = models.BooleanField(default=False)
