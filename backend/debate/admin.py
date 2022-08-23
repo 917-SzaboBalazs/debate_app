@@ -1,7 +1,5 @@
 from django.contrib import admin
-from debate.models import Debate, Participant
+from debate.models import Debate
 
 # Register your models here.
-
-admin.site.register(Participant)
 admin.site.register(Debate)

@@ -3,6 +3,8 @@ from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from django.utils import timezone
 
+from debate.models import Debate
+
 
 class CustomAccountManager(BaseUserManager):
 
@@ -28,6 +30,7 @@ class CustomAccountManager(BaseUserManager):
         user = self.model(username=username, email=email, **other_fields)
         user.set_password(raw_password=password)
         user.save()
+        
         return user
 
 
@@ -42,7 +45,9 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
 
-    # TODO: one to one field
+    current_debate = models.ForeignKey(to=Debate, on_delete=models.PROTECT, blank=True, null=True)
+    role = models.CharField(max_length=50, blank=True, null=True)
+    number = models.IntegerField(blank=True, null=True)
 
     objects = CustomAccountManager()
 

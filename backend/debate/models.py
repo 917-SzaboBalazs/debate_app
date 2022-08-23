@@ -1,17 +1,14 @@
 from django.db import models
 
 # Create your models here.
-from users.models import NewUser
+from django.utils import timezone
 
 
 class Debate(models.Model):
     type = models.CharField(max_length=50)
     winner = models.CharField(max_length=50, default="no winner")
+    status = models.CharField(max_length=50, default="lobby")
+    date_time = models.DateTimeField(default=timezone.now)
 
-    is_finished = models.BooleanField(default=False)
-
-
-class Participant(models.Model):
-    user = models.OneToOneField(to=NewUser, on_delete=models.PROTECT)
-    role = models.CharField(max_length=50)
-    current_debate = models.ForeignKey(to=Debate, on_delete=models.PROTECT)
+    def __str__(self):
+        return self.type

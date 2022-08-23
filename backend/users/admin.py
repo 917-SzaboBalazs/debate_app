@@ -15,6 +15,7 @@ class UserAdminConfig(UserAdmin):
         ('Login info', {'fields': ('username', 'email', 'password', )}),
         ('Permissions', {'fields': ('is_superuser', 'is_active', 'is_staff', )}),
         ('Personal', {'fields': ('first_name', 'last_name', 'birthday', 'about_me', )}),
+        ('Debate', {'fields': ('current_debate', 'role', 'number', )}),
         ('Other', {'fields': ('start_date', )}),
     )
 

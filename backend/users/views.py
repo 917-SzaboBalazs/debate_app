@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from rest_framework import status
+from rest_framework import status, generics
+from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from users.models import NewUser
 from users.serializers import RegisterUserSerializer
 
 
@@ -36,9 +38,10 @@ class BlacklistTokenUpdateView(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-class CurrentUserView(APIView):
+class CurrentUserView(generics.RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated]
+    serializer_class = RegisterUserSerializer
+    queryset = NewUser.objects.all()
 
-    def get(self, request):
-        serializer = RegisterUserSerializer(request.user)
-        return Response(serializer.data)
+    def get_object(self):
+        return get_object_or_404(queryset=self.queryset, username=self.request.user)
