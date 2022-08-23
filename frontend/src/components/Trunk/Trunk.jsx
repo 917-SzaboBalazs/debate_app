@@ -25,7 +25,7 @@ function Trunk() {
 
   return (
     <div className="bg-dark base">
-        <Container>
+        <div className="container p-0">
             <div className="trunk--container">
                 <h1>DEBATE-CULTURE</h1>
                 <p>Ákos majd ir ide valamit.</p>
@@ -51,7 +51,7 @@ function Trunk() {
                 }
                 </div>
             </div>
-        </Container>
+        </div>
     </div>
   )
 }

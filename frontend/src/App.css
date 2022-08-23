@@ -9,3 +9,30 @@
   background-image: url('./images/bg-logo.png');
   background-size: 75px 75px;
 }
+
+
+/* container width */
+@media only screen and (min-width: 1400px) {
+  .container {
+    min-width: 1350px; 
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .container {
+    min-width: 1550px; 
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .container {
+    min-width: 1750px; 
+  }
+}
+
+@media only screen and (min-width: 1900px) {
+  .container {
+    max-width: 1850px; 
+  }
+}
+/* container width*/
