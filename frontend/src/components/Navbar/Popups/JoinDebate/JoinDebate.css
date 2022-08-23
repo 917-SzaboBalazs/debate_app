@@ -24,9 +24,12 @@
     padding: 32px;
     width: 100%;
     max-width: 640px;
-    background-color: var(--primary);
+    background-color: var(--secondary);
     justify-content: center;
     align-items: center;
+    border-radius: 12px;
+    text-align: center;
+    border: 3px solid var(--third);
 }
 
 .join-debate--inner .join-debate--close-btn {
@@ -36,12 +39,13 @@
     width: 1.75rem;
     height: 1.75rem;
     color: white;
-    background-color: red;
+    background-color: var(--third);
     padding: 1px;
     border: none;
     font-weight: bold;
     font-size: 20px;
     transition: .3s;
+    border-radius: 5px;
 }
 
 .join-debate--inner .join-debate--close-btn:hover {
@@ -83,4 +87,10 @@
 
 .join-debate--code {
     margin-top: 2rem;
+}
+
+.join-debate--inner h1{
+    color: whitesmoke;
+    margin-top: 1vh;
+    padding: 2vh 2vw;
 }

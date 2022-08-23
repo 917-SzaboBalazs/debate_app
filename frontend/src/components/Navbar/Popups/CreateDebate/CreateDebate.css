@@ -24,10 +24,12 @@
     padding: 32px;
     width: 100%;
     max-width: 640px;
-    background-color: var(--primary);
+    background-color: var(--secondary);
     justify-content: center;
     align-items: center;
     z-index: 5;
+    border-radius: 12px;
+    border: 3px solid var(--third);
 }
 
 .create-debate--inner .create-debate--close-btn {
@@ -36,13 +38,14 @@
     right: 16px;
     width: 1.75rem;
     height: 1.75rem;
-    color: white;
-    background-color: red;
+    color: whitesmoke;
+    background-color: var(--third);
     padding: 1px;
     border: none;
     font-weight: bold;
     font-size: 20px;
     transition: .3s;
+    border-radius: 5px;
 }
 
 .create-debate--inner .create-debate--close-btn:hover {
@@ -61,25 +64,19 @@
 
 .create-debate--inner .create-debate--create-btn{
     width: 100%;
-    border: .3rem solid var(--secondary);
+    border: .3rem solid whitesmoke;
     margin-top: 1rem;
     border-radius: .75rem;
     background-color: transparent;
     font-size: 22px;
     font-weight: bold;
-    color: var(--secondary);
+    color: whitesmoke;
     transition: .3s;
 }
 
 .create-debate--inner .create-debate--create-btn:hover {
-    width: 100%;
-    /* border: .3rem solid var(--primary); */
-    margin-top: 1rem;
-    border-radius: .75rem;
-    background-color: var(--secondary);
-    font-size: 22px;
-    font-weight: bold;
-    color: var(--primary);
+    color: var(--third);
+    background-color: whitesmoke;
 }
 
 .create-debate--inner .select-debate {
@@ -87,4 +84,8 @@
     /* border-bottom: 2px solid var(--secondary); */
     margin-top: 1rem;
     font-size: 18px;
+}
+
+.create-debate--text{
+    color: whitesmoke;
 }
