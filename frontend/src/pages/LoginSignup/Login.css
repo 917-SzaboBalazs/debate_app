@@ -41,14 +41,24 @@
 
 .login-btn {
     cursor: pointer;
-    color: var(--secondary);
+    background-color: #22344D;
+    color: white;
+    padding: 1vw 2vw;
+    font-size: 18px;
+    border-radius: 12px;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    transition: .2s;
 }
 
+.login--btn-cont{
+    display: flex;
+}
 
 .login-btn:hover {
     background-color: white;
     color: var(--secondary);
-    transition: .3s;
+    transition: .1s;
 }   
 
 h5 {
@@ -78,6 +88,11 @@ input {
 .login--dont-have-account span:hover{
     box-shadow: #22344D;
     transition: .4s;
+}
+
+.login--bg-img{
+    height: 100vh;
+    align-self: center;
 }
 
 @media only screen and (max-width: 768px) {
