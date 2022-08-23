@@ -108,7 +108,6 @@
 }
 
 .indebate--back-button {
-    transform: rotate(180deg);
     border-color: var(--third);
     background-color: var(--third);
     transition: .3s;

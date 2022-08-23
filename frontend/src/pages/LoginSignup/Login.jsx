@@ -34,6 +34,7 @@ function Login() {
           axiosInstance.defaults.headers['Autorization'] = 
             'JWT ' + localStorage.getItem('access_token'); 
 
+
           // console.log(res);
           navigate('/');
           window.location.reload(false);

@@ -9,7 +9,7 @@ import wa from '../../images/WhatsApp.png';
 
 
 const Footer = () => <footer className="page-footer font-small pt-4 my-footer">
-    <div className="container  text-md-left">
+    <div className="container  text-center">
         <div className="row">
             <div className="col-md-6 mt-md-0 mt-3">
                 <h5 className="text-uppercase footer--list-tag white-text">Footer Content</h5>

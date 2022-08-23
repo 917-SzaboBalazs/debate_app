@@ -12,8 +12,11 @@ import CreateDebate from './Popups/CreateDebate/CreateDebate';
 import JoinDebate from './Popups/JoinDebate/JoinDebate';
 import LogOut from '../../logout';
 
+import axiosInstance from '../../axios';
+
 import './Navbar.css';
 import './Navbar2.css';
+import axios from 'axios';
 
 function CollapsibleExample() {
     let navigate = useNavigate();
@@ -26,15 +29,25 @@ function CollapsibleExample() {
     // check if user is logged in
     useEffect(() => {
       const accessToken = localStorage.getItem('access_token');
-      console.log(accessToken);
-      if (accessToken === null) {
-          // setLoggedIn(true);
-          console.log('not logged in bruh')
-      } else {
-        setLoggedIn(true);
-        setUserName('Jani');
-        console.log('logged in');
-      }
+      // console.log(accessToken);
+      // if (accessToken === null) {
+      //     // setLoggedIn(true);
+      //     console.log('not logged in bruh')
+      // } else {
+      //   setLoggedIn(true);
+      //   setUserName('Jani');
+      //   console.log('logged in');
+      // }
+
+      axiosInstance
+        .get('user/current/')
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
     }, []);
 
     const handleClickTriggerCreate = () => {

@@ -10,6 +10,8 @@ import BlueRes from '../../images/reset-blue.svg';
 import WhiteRes from '../../images/reset-white.svg';
 import YellowNext from '../../images/next-yellow.svg';
 import WhiteNext from '../../images/next-white.svg';
+import YellowBack from '../../images/back-yellow.svg';
+import WhiteBack from '../../images/back-white.svg';
 
 import './InDebateTimer.css'
 
@@ -119,8 +121,8 @@ function InDebateTimer() {
                         >
                             <img src={
                                 !isMouseBack ? 
-                                    WhiteNext :
-                                    YellowNext
+                                    WhiteBack :
+                                    YellowBack
                             } 
                             className='indebate--back'
                             />
