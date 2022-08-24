@@ -43,7 +43,7 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     about_me = models.TextField(max_length=500, default="", blank=True)
     start_date = models.DateTimeField(default=timezone.now)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     current_debate = models.ForeignKey(to=Debate, on_delete=models.PROTECT, blank=True, null=True)
     role = models.CharField(max_length=50, blank=True, null=True)
