@@ -41,4 +41,5 @@ class DebateCodeView(APIView):
 
     def get(self, request):
         random_string = ''.join(random.choices(string.ascii_lowercase, k=8))
-        return Response(data=random_string)
+
+        return Response(data={'entry-code': random_string})
