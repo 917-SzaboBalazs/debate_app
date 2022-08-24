@@ -10,7 +10,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import CreateDebate from './Popups/CreateDebate/CreateDebate';
 import JoinDebate from './Popups/JoinDebate/JoinDebate';
-import LogOut from '../../logout';
+import LogOut from '../../pages/LogOut/logout';
 
 import axiosInstance from '../../axios';
 
@@ -43,6 +43,9 @@ function CollapsibleExample() {
         .get('user/current/')
         .then((res) => {
           console.log(res);
+          setUserName(res.data.username);
+          setLoggedIn(true);
+          console.log(userName);
         })
         .catch((err) => {
           console.log(err);
@@ -88,7 +91,7 @@ function CollapsibleExample() {
                 :
                 <>
                 <Nav.Link >Szervusz {userName} </Nav.Link>
-                <Nav.Link href="../../logout">Log Out</Nav.Link>
+                <Nav.Link href="/logout">Log Out</Nav.Link>
                 </>
             }
             {/* <Nav.Link href="/log-In">Login</Nav.Link> */}

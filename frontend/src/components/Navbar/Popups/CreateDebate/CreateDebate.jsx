@@ -5,14 +5,15 @@ import  { Link, useNavigate } from 'react-router-dom';
 
 
 import './CreateDebate.css'
+import axiosInstance from '../../../../axios';
 
 
 function CreateDebate(props) {
-  const [ debateType, setType ] = useState('britt-parlamenti');
+  const [ debateType, setType ] = useState('brittish');
   const navigate = useNavigate();
 
   const options = [
-    { value: 'britt-parlamenti', label: 'Britt Parliament' },
+    { value: 'brittish', label: 'brittish' },
     { value: 'lincoln-douglas', label: 'Lincoln-Douglas' },
     { value: 'spontan', label: 'Spontaneous' },
     { value: 'publikus', label: 'Public' }
@@ -21,11 +22,18 @@ function CreateDebate(props) {
   const handleCreate = () => {
     console.log(debateType);
     props.setTrigger(false);
-    navigate('/new-debate', {
-      state: {
-        type: debateType,
-      }
-    });
+
+    axiosInstance
+      .post('debate/', { 'type':'brittish'})
+      .then((res) => {
+        navigate('/new-debate');
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+        }
+      )
+
   };
 
   return (props.trigger) ? (

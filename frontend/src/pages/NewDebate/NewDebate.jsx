@@ -1,13 +1,28 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import './NewDebate.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axiosInstance from '../../axios';
 
 function NewDebate() {
-    const location = useLocation();
+    // const location = useLocation();
+    // const type = location.state.type;
+    const [ debateType, setDebateType ] = useState('');
+
+    useEffect(() => {
+        axiosInstance
+            .get('debate/current/')
+            .then((res) => {
+                console.log(res);
+                setDebateType(res.data.type);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
 
     const numberOfPeople = 8;
     const [ currentNumberOfPeople, setCurrentNumberOfPeople ] = useState(0); 
@@ -69,7 +84,7 @@ function NewDebate() {
         <div className='new-debate--background base'>
             <div className="new-debate--container container">
                 <div className="row pt-4">
-                    <h2 className='new-debate--basic-text col-12 text-center'>Debate-type: {location.state.type}</h2>
+                    <h2 className='new-debate--basic-text col-12 text-center'>Debate-type: {debateType}</h2>
                     {/* <h2 className="new-debate--selected-player col-6 text-center ">Selected Player: {chosenName}</h2> */}
                 </div>
 

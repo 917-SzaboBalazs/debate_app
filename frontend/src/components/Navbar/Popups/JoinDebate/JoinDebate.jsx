@@ -1,18 +1,32 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../../../axios';
 
 import './JoinDebate.css';
 
 function JoinDebate(props) {
-    const [ code, setCode ] = useState('');
+    const [ debateCode, setDebateCode ] = useState('');
+    let navigate = useNavigate();
 
     const handleNext = () => {
-        if (code === '') {
+        if (debateCode === '') {
             alert('The input fied is empty');
             return;
-        }
+        } 
 
-        alert('GG');
+        console.log(debateCode);
+        axiosInstance
+            .get('debate/current/', {params: {
+                "entry-code":debateCode
+            }})
+            .then((res) => {
+                navigate('/new-debate');
+                window.location.reload(false);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     return (props.trigger) ? (
@@ -24,11 +38,11 @@ function JoinDebate(props) {
                 <h3 className="join-debate--text">Enter the debate code: </h3>
                 <input 
                     type="text" 
-                    value={code} 
+                    value={debateCode} 
                     placeholder='enter code' 
                     className="join-debate--code"
                     onChange={(e) => {
-                        setCode(e.value);
+                        setDebateCode(e.target.value);
                     }}
                 />
                 <button 

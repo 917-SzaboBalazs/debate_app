@@ -9,7 +9,7 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Debates from './pages/Debates/Debates';
 import InDebateTimer from './pages/InDebateTimer/InDebateTimer';
-import LogOut from './logout';
+import LogOut from './pages/LogOut/logout';
 
 import './App.css';
 

@@ -21,8 +21,8 @@ class CurrentDebateView(generics.RetrieveUpdateAPIView):
     serializer_class = DebateSerializer
 
     def get_object(self):
-        if "entry-code" in self.request.data and self.request.data["entry-code"] is not None:
-            new_debate = get_object_or_404(queryset=self.queryset, entry_code=self.request.data["entry-code"])
+        if "entry-code" in self.request.query_params and self.request.query_params.get("entry-code") is not None:
+            new_debate = get_object_or_404(queryset=self.queryset, entry_code=self.request.query_params.get("entry-code"))
             self.request.user.current_debate = new_debate
             self.request.user.save()
             return new_debate
