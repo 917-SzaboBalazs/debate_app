@@ -22,7 +22,10 @@ class CurrentDebateView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         if "entry-code" in self.request.data and self.request.data["entry-code"] is not None:
-            return get_object_or_404(queryset=self.queryset, entry_code=self.request.data["entry-code"])
+            new_debate = get_object_or_404(queryset=self.queryset, entry_code=self.request.data["entry-code"])
+            self.request.user.current_debate = new_debate
+            self.request.user.save()
+            return new_debate
 
         if self.request.user.current_debate is None:
             raise Http404

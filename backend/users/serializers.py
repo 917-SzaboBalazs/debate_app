@@ -23,8 +23,7 @@ class RegisterUserSerializer(serializers.ModelSerializer):
         return instance
 
 
-class DebateUserSerializer(serializers.ModelSerializer):
+class CurrentUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewUser
-        fields = ('username', 'current_debate', 'role', 'number', )
-        read_only_fields = ('username', )
+        exclude = ['is_superuser', 'is_staff', 'is_active', 'start_date', 'password', ]
