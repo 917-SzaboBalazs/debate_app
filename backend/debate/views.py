@@ -21,6 +21,9 @@ class CurrentDebateView(generics.RetrieveUpdateAPIView):
     serializer_class = DebateSerializer
 
     def get_object(self):
+        if "entry-code" in self.request.data and self.request.data["entry-code"] is not None:
+            return get_object_or_404(queryset=self.queryset, entry_code=self.request.data["entry-code"])
+
         if self.request.user.current_debate is None:
             raise Http404
 

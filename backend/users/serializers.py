@@ -22,3 +22,9 @@ class RegisterUserSerializer(serializers.ModelSerializer):
 
         return instance
 
+
+class DebateUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewUser
+        fields = ('username', 'current_debate', 'role', 'number', )
+        read_only_fields = ('username', )

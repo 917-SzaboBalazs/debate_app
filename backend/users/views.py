@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from users.models import NewUser
-from users.serializers import RegisterUserSerializer
+from users.serializers import RegisterUserSerializer, DebateUserSerializer
 
 
 class CustomUserCreate(APIView):
@@ -40,7 +40,7 @@ class BlacklistTokenUpdateView(APIView):
 
 class CurrentUserView(generics.RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = RegisterUserSerializer
+    serializer_class = DebateUserSerializer
     queryset = NewUser.objects.all()
 
     def get_object(self):
