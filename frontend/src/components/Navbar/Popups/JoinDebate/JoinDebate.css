@@ -22,8 +22,9 @@
     display: grid;
     position: relative;
     padding: 32px;
-    width: 100%;
-    max-width: 640px;
+    /* width: 100%; */
+    width: 640px;
+    height: 280px;
     background-color: var(--secondary);
     justify-content: center;
     align-items: center;
@@ -62,31 +63,35 @@
     transition: .3s;
 }
 
-.join-debate--inner .join-debate--next-btn{
+.join-debate--next-btn{
     width: 100%;
-    border: .3rem solid var(--secondary);
-    margin-top: 1rem;
+    border: .3rem solid var(--primary);
+    /* margin-top: 1rem; */
     border-radius: .75rem;
     background-color: transparent;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--primary);
+    transition: .3s;
+}
+
+.join-debate--next-btn:hover {
+    width: 100%;
+    /* border: .3rem solid var(--primary); */
+    /* margin-top: 1rem; */
+    border-radius: .75rem;
+    background-color: var(--primary);
     font-size: 22px;
     font-weight: bold;
     color: var(--secondary);
     transition: .3s;
 }
 
-.join-debate--inner .join-debate--next-btn:hover {
-    width: 100%;
-    /* border: .3rem solid var(--primary); */
-    margin-top: 1rem;
-    border-radius: .75rem;
-    background-color: var(--secondary);
-    font-size: 22px;
-    font-weight: bold;
-    color: var(--primary);
-}
-
 .join-debate--code {
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
+    border-radius: .7rem;
+    padding: 5px;
+    margin-bottom: 2rem;
 }
 
 .join-debate--inner h1{

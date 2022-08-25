@@ -17,6 +17,7 @@ import axiosInstance from '../../axios';
 import './Navbar.css';
 import './Navbar2.css';
 import axios from 'axios';
+import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 
 function CollapsibleExample() {
     let navigate = useNavigate();
@@ -68,6 +69,20 @@ function CollapsibleExample() {
       window.location.reload(false);
     }
 
+    const leaveDebate = () => {
+      axiosInstance
+        .patch('user/current/', {"current_debate": null})
+        .then((res) => {
+          console.log('Sikeres kilépés');
+          navigate('/');
+          window.location.reload(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          console.log('Baj van');
+        })
+    }
+
   return (
     <>
     <Navbar collapseOnSelect expand="lg" bg="primary" className='nav'>
@@ -90,6 +105,7 @@ function CollapsibleExample() {
                 </>
                 :
                 <>
+                <Nav.Link onClick={leaveDebate}>Leave Debate</Nav.Link>
                 <Nav.Link >Szervusz {userName} </Nav.Link>
                 <Nav.Link href="/logout">Log Out</Nav.Link>
                 </>

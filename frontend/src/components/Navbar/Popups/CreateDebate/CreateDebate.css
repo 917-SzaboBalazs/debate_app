@@ -22,12 +22,12 @@
     display: grid;
     position: relative;
     padding: 32px;
-    width: 100%;
-    max-width: 640px;
+    width: 640px;
+    height: 280px;
     background-color: var(--secondary);
     justify-content: center;
     align-items: center;
-    z-index: 5;
+
     border-radius: 12px;
     border: 3px solid var(--third);
 }
@@ -83,6 +83,7 @@
     border: none;
     /* border-bottom: 2px solid var(--secondary); */
     margin-top: 1rem;
+    margin-bottom: 2rem;
     font-size: 18px;
 }
 
