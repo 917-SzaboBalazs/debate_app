@@ -26,7 +26,7 @@ function CreateDebate(props) {
     props.setTrigger(false);
 
     axiosInstance
-      .post('debate/', { 'type':'brittish'})
+      .post('debate/', { 'type':'british'})
       .then((res) => {
         navigate('/new-debate');
         }
