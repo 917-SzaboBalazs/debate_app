@@ -13,6 +13,14 @@ class DebateSerializer(serializers.ModelSerializer):
         model = Debate
         fields = "__all__"
 
+    def create(self, validated_data):
+        type = validated_data.pop('type', None)
+        entry_code = validated_data.pop('entry_code', None)
+        instance = self.Meta.model.objects.create_debate(type, entry_code, **validated_data)
+        instance.save()
+
+        return instance
+
     def get_participants(self, obj):
         custom_debate_query = models.NewUser.objects.filter(current_debate=obj.id)
         serializer = RegisterUserSerializer(custom_debate_query, many=True)

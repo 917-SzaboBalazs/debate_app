@@ -40,10 +40,8 @@ class CreateDebateView(APIView):
     def post(self, request):
         entry_code = self.generate_random_unique_code()
 
-        custom_data = {
-            "type": request.data['type'],
-            "entry_code": entry_code
-        }
+        custom_data = request.data
+        custom_data['entry_code'] = entry_code
 
         serializer = DebateSerializer(data=custom_data)
 
