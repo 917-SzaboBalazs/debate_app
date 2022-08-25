@@ -1,5 +1,11 @@
 from django.contrib import admin
 from debate.models import Debate
 
-# Register your models here.
-admin.site.register(Debate)
+
+@admin.register(Debate)
+class DebateAdmin(admin.ModelAdmin):
+    list_display = ('id', 'type', 'entry_code', 'winner', 'status', 'date_time', )
+    fieldsets = (
+        ('Debate Info', {'fields': ('type', 'entry_code', 'status', 'date_time', 'winner', )}),
+        ('Custom options', {'fields': ('team_size', 'no_judges', 'has_chair', )}),
+    )

@@ -48,7 +48,11 @@ class CreateDebateView(APIView):
         serializer = DebateSerializer(data=custom_data)
 
         if serializer.is_valid():
-            serializer.save()
+            new_debate = serializer.save()
+
+            self.request.user.current_debate = new_debate
+            self.request.user.save()
+
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
