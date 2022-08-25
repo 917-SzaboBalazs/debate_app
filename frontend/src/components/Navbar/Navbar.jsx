@@ -8,8 +8,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 
-import CreateDebate from './Popups/CreateDebate/CreateDebate';
-import JoinDebate from './Popups/JoinDebate/JoinDebate';
+import CreateDebate from '../Popups/CreateDebate/CreateDebate';
+import JoinDebate from '../Popups/JoinDebate/JoinDebate';
 import LogOut from '../../pages/LogOut/logout';
 
 import axiosInstance from '../../axios';

@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import JoinDebate from '../Navbar/Popups/JoinDebate/JoinDebate';
-import CreateDebate from '../Navbar/Popups/CreateDebate/CreateDebate';
+import JoinDebate from '../Popups/JoinDebate/JoinDebate';
+import CreateDebate from '../Popups/CreateDebate/CreateDebate';
 
 import './Trunk.css';
 

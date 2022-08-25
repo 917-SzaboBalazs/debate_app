@@ -21,9 +21,9 @@
 .create-debate--inner {
     display: grid;
     position: relative;
-    padding: 32px;
+    padding: 36px;
     width: 640px;
-    height: 280px;
+    height: auto;
     background-color: var(--secondary);
     justify-content: center;
     align-items: center;
@@ -81,12 +81,28 @@
 
 .create-debate--inner .select-debate {
     border: none;
+    padding: 0;
     /* border-bottom: 2px solid var(--secondary); */
+
+    font-size: 14px;
+}
+
+.create-debate--input {
     margin-top: 1rem;
     margin-bottom: 2rem;
-    font-size: 18px;
 }
 
 .create-debate--text{
     color: whitesmoke;
+}
+
+.create-debate--no-judges {
+    text-align: center;
+    border-radius: 10px;
+}
+
+.create-debate--chair {
+    width: 2rem;
+    height: 2rem;
+    margin: 0;
 }
