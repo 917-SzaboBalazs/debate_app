@@ -11,16 +11,35 @@ function NewDebate() {
     // const location = useLocation();
     // const type = location.state.type;
     const [ debateType, setDebateType ] = useState('');
+    const [ entryCode, setEntryCode ] = useState('');
+    const [ someError, setSomeError ] = useState(false);
+    const [ errorMessage, setErrorMessage ] = useState('');
+
+   
 
     useEffect(() => {
         axiosInstance
             .get('debate/current/')
             .then((res) => {
                 console.log(res);
+                setSomeError(false);
+                setErrorMessage('');
                 setDebateType(res.data.type);
+                setEntryCode(res.data.entry_code);
             })
             .catch((err) => {
-                console.log(err);
+                setSomeError(true);
+                if (err.response.status === 401) {
+                    console.log('Valaki nincs bejelentkezve');
+                    setErrorMessage('Jelentkezz be rigó');
+                } else if (err.response.status === 404) {
+                    console.log('Valaki vitátlan');
+                    setErrorMessage('Lépj be egy vitába előbb, s utána keménykedj');
+                }
+                else {
+                    console.log('Nagy a baj');
+                    setErrorMessage('Valamit nagyon elcsűrtél');
+                }
             });
     }, []);
 
@@ -83,9 +102,22 @@ function NewDebate() {
     return (
         <div className='new-debate--background base'>
             <div className="new-debate--container container">
+                {
+                    someError ?
+                        <>
+                            <div className="new-debate--not-logged-in-cont row ">
+                                <h1 className="new-debate--not-logged-in-text white-text">
+                                    {errorMessage}
+                                </h1>
+                            </div>
+                        </>
+                    
+                    :
+                    <>
+                
                 <div className="row pt-4">
-                    <h2 className='new-debate--basic-text col-12 text-center'>Debate-type: {debateType}</h2>
-                    {/* <h2 className="new-debate--selected-player col-6 text-center ">Selected Player: {chosenName}</h2> */}
+                    <h2 className='new-debate--basic-text col-12 text-center white-text'>Debate-type: {debateType}</h2>
+                    <h2 className='new-debate--entry-code col-12 text-center white-text'>Entry: {entryCode}</h2>
                 </div>
 
                 {/* <div className="new-debate--people row justify-content-evenly">
@@ -197,6 +229,8 @@ function NewDebate() {
                         </button>
                     }
                 </div>
+                </>
+                }
             </div>
         </div>
     )

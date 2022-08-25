@@ -35,7 +35,7 @@ function JoinDebate(props) {
                 <button className="join-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
                 { props.loggedIn ? 
                 <> 
-                <h3 className="join-debate--text">Enter the debate code: </h3>
+                <h3 className="join-debate--text white-text">Enter the debate code: </h3>
                 <input 
                     type="text" 
                     value={debateCode} 
