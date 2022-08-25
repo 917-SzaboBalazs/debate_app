@@ -137,3 +137,10 @@
     background-color: #485c7a;
     padding-top: 10vh;
 }
+
+.new-debate--not-logged-in-cont {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}

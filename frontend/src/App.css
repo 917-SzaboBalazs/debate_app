@@ -13,6 +13,7 @@
 .base {
   background-image: url('./images/bg-logo.png');
   background-size: 75px 75px;
+  background-attachment: fixed;
 }
 
 .white-text {
