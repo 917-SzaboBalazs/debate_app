@@ -51,6 +51,7 @@ function NewDebate() {
     const [ judges, setJudges ] = useState([]);
     const [ chosenName, setChosenName ] = useState('');
     const [ ready, setReady ] = useState(false);
+    const [ posts, setPosts ] = useState(['1.', '2.', '3.', '4.']);
 
     const namesListed = names.map((name) => {
         return chosenName === name ? 
@@ -76,18 +77,18 @@ function NewDebate() {
         }
     );
 
-    const proListed = proPlayers.map((player) =>
-        <div className="col-2" key={player}>
+    const proListed = posts.map((player) =>
+        <div className="col-2 new-debate--participant" key={player}>
             {player}
         </div>
     )
-    const conListed = conPlayers.map((player) =>
-        <div className="col-2" key={player}>
+    const conListed = posts.map((player) =>
+        <div className="col-2 new-debate--participant" key={player}>
             {player}
         </div>
     )
-    const judgeListed = judges.map((player) =>
-        <div className="col-2" key={player}>
+    const judgeListed = posts.map((player) =>
+        <div className="col-2 new-debate--participant" key={player}>
             {player}
         </div>
     )
@@ -124,7 +125,11 @@ function NewDebate() {
                     {namesListed}
                 </div> */}
 
-                <div className="new-debate--procon-row row pt-2 justify-content-evenly">
+                <div className="new-debate--procon-row row pt-2 justify-content-around">
+                <div className="col-2 new-debate--pro-btn text-center font-weight-bold">PRO</div>
+                <div className="col-2 new-debate--pro-btn text-center font-weight-bold">CON</div>
+                <div className="col-2 new-debate--pro-btn text-center font-weight-bold">JUDGE</div>
+                    {/*
                     <div className="col-2 new-debate--pro-btn text-center font-weight-bold"
                          onClick = { () => {
                             if (chosenName === '' ) {
@@ -184,6 +189,7 @@ function NewDebate() {
                             }
                         }}
                          >JUDGE</div>
+                    */}
                 </div>
                 <div className="new-debate--decision row justify-content-evenly">
                     <div 

@@ -17,13 +17,15 @@
 }
 
 .new-debate--decision--pro, .new-debate--decision--con, .new-debate--decision--judge{
-    background-color: whitesmoke;
+    /*background-color: whitesmoke;*/
     border-radius: 12px;
     min-height: 20vh;
     margin-top: 5vh;
     margin-bottom: 5vh;
     padding: 2vh;
     max-width: 90vw !important;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .new-debate--teams {
@@ -143,4 +145,23 @@
     display: flex;
     align-items: center;
     text-align: center;
+}
+
+.new-debate--participant{
+    background-color: whitesmoke;
+    border-radius: 5px;
+    margin: 5px;
+    width: 100% !important;
+    text-align: center;
+    border: 2px solid #f9d342;
+    transition: .1s;
+}
+
+.new-debate--participant:hover{
+    border-radius: 12px;
+    background-color: #485c7a;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+    transition: .2s;
+    cursor:pointer;
 }
