@@ -11,6 +11,7 @@ import Debates from './pages/Debates/Debates';
 import InDebateTimer from './pages/InDebateTimer/InDebateTimer';
 import LogOut from './pages/LogOut/logout';
 import Profile from './pages/Profile/Profile';
+import Error from './pages/Error404/Error'
 
 import './App.css';
 
@@ -30,6 +31,7 @@ function App() {
           <Route path='/debates' exact element={<Debates />} />
           <Route path='/in-debate' exact element={<InDebateTimer />} />
           <Route path='/profile' exact element={<Profile />} />
+          <Route path='/error404' exact element={<Error />} />
         </Routes>
       <Footer />
       </Router>
