@@ -83,16 +83,17 @@ function CollapsibleExample() {
     <>
     <Navbar collapseOnSelect expand="lg" bg="primary" className='nav'>
       <Container>
-        <Navbar.Brand href="/" className='nav-brand'>React <span className='nav--span'>Bootstrap</span></Navbar.Brand>
+        <Navbar.Brand href="/" className='nav-brand'>Debate <span className='nav--span'>Culture</span></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" color='white'/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
+            <Nav.Link href="/about-us" className='nav-link'>About Us</Nav.Link>
             <Nav.Link href="/debates" className='nav-link'>Debates</Nav.Link>
             {
               !inDebate ?
               <>
-                <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link>
                 <Nav.Link onClick={handleClickTriggerCreate} className='nav-link yellow-text'>Create a Debate</Nav.Link>
+                <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link>
               </>
               :
               <>
@@ -100,8 +101,7 @@ function CollapsibleExample() {
                 <Nav.Link onClick={leaveDebate} className='yellow-text'>Leave Debate</Nav.Link>
               </>
             }
-            <Nav.Link href="/about-us" className='nav-link'>About Us</Nav.Link>
-            <Nav.Link href="/in-debate" className='nav-link'>Deb.Timer-PROBA</Nav.Link>
+            <Nav.Link href="/in-debate" className='nav-link'>Timer Page</Nav.Link>
           </Nav>
           <Nav>
             { !loggedIn ?
