@@ -78,7 +78,7 @@ function Login() {
             <div className="login-container d-flex align-items-center justify-content-center col-md-6 col-sm-12 ">
                 <div className="login-box align-items-center">
                     <h1 className="login--login-title">
-                      Sign In
+                      Log In
                     </h1>
                     <h5 className="username-text">Username:</h5>
                     <input 
@@ -99,7 +99,7 @@ function Login() {
 
                   <div className="login-btn-row row text-center">
                     <div className="login--btn-cont col-12 ">
-                        <button type='submit'  className='login-btn bg-succes' onClick={handleSubmit}>Sign In</button>
+                        <button type='submit'  className='login-btn bg-succes' onClick={handleSubmit}>Log In</button>
                     </div>
                   </div>
                   <div className="login--dont-have-cont row">
