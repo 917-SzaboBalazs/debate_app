@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import CreateDebate from '../Popups/CreateDebate/CreateDebate';
 import JoinDebate from '../Popups/JoinDebate/JoinDebate';
@@ -16,8 +15,7 @@ import axiosInstance from '../../axios';
 
 import './Navbar.css';
 import './Navbar2.css';
-import axios from 'axios';
-import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
+
 
 function CollapsibleExample() {
     let navigate = useNavigate();
@@ -90,36 +88,33 @@ function CollapsibleExample() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/debates" className='nav-link'>Debates</Nav.Link>
-            <Nav.Link onClick={handleClickTriggerJoin} className='nav-link'>Join a Debate</Nav.Link>
-            <Nav.Link onClick={handleClickTriggerCreate} className='nav-link'>Create a Debate</Nav.Link>
+            {
+              !inDebate ?
+              <>
+                <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link>
+                <Nav.Link onClick={handleClickTriggerCreate} className='nav-link yellow-text'>Create a Debate</Nav.Link>
+              </>
+              :
+              <>
+                <Nav.Link href="/new-debate" className='yellow-text'>Current</Nav.Link>
+                <Nav.Link onClick={leaveDebate} className='yellow-text'>Leave</Nav.Link>
+              </>
+            }
             <Nav.Link href="/about-us" className='nav-link'>About Us</Nav.Link>
             <Nav.Link href="/in-debate" className='nav-link'>Deb.Timer-PROBA</Nav.Link>
           </Nav>
           <Nav>
             { !loggedIn ?
                 <>
-                <Nav.Link href="/log-In">Sign In</Nav.Link>
-                <Nav.Link href="/sign-up">Register</Nav.Link>
+                  <Nav.Link href="/log-In">Sign In</Nav.Link>
+                  <Nav.Link href="/sign-up">Register</Nav.Link>
                 </>
                 :
                 <>
-                {
-                  inDebate ? 
-                    <>                      
-                      <Nav.Link href="/new-debate">Current</Nav.Link>
-                      <Nav.Link onClick={leaveDebate}>Leave</Nav.Link>
-                      <div className="nav--separator-line"></div>
-                    </>
-                    :
-                    <>
-                    </>
-                }
-                <Nav.Link >Szervusz {userName} </Nav.Link>
-                <Nav.Link href="/logout">Log Out</Nav.Link>
+                  <Nav.Link href='/profile'>{userName} </Nav.Link>
+                  <Nav.Link href="/logout">Log Out</Nav.Link>
                 </>
             }
-            {/* <Nav.Link href="/log-In">Login</Nav.Link> */}
-            {/* <Nav.Link href="/sign-up">Signup</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

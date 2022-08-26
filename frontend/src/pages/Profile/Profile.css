@@ -1,0 +1,50 @@
+.profile--base {
+    min-height: 100vh;
+}
+
+.profile--container {
+    min-height: 100vh;
+}
+
+.profile--container-error {
+    min-height: 100vh;
+}
+
+.profile--left-side {
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
+    padding-top: 15vh;
+}
+
+.profile--right-side {
+    min-height: 100vh;
+}
+
+.profile--element {
+    color: white;
+    font-size: 24px;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.profile--img-element {
+    background-color: antiquewhite;
+    height: 8rem;
+    width: 8rem;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+    border: 3px solid white;
+}
+
+@media only screen and (max-width: 767px) {
+    .profile--right-side {
+        min-height: 50vh;
+    }
+    
+    .profile--left-side {
+        min-height: 50vh;
+        padding-bottom: 2rem;
+    }
+}

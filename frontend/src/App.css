@@ -1,5 +1,6 @@
 :root {
   --black: #404040;
+  --mcc-sarga: #F2CA10;
 }
 
 * {
@@ -18,6 +19,10 @@
 
 .white-text {
   color: white;
+}
+
+.yellow-text {
+  color: var(--mcc-sarga);
 }
 
 /* container width */

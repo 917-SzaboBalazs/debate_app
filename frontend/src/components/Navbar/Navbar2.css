@@ -55,3 +55,7 @@
 .nav--separator-line {
     border-left: 1px solid white;
 }
+
+.yellow-text {
+    color: var(--mcc-sarga);
+}

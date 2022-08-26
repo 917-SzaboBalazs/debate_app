@@ -10,6 +10,7 @@ import Footer from './components/Footer/Footer';
 import Debates from './pages/Debates/Debates';
 import InDebateTimer from './pages/InDebateTimer/InDebateTimer';
 import LogOut from './pages/LogOut/logout';
+import Profile from './pages/Profile/Profile';
 
 import './App.css';
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='/new-debate' exact element={<NewDebate />} />
           <Route path='/debates' exact element={<Debates />} />
           <Route path='/in-debate' exact element={<InDebateTimer />} />
+          <Route path='/profile' exact element={<Profile />} />
         </Routes>
       <Footer />
       </Router>
