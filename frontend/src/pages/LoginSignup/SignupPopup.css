@@ -24,9 +24,16 @@
     padding: 32px;
     width: 100%;
     max-width: 640px;
-    background-color: var(--primary);
+    background-color: var(--secondary);
+    color: whitesmoke;
     justify-content: center;
     align-items: center;
+    border-radius: 12px;
+    border: 3px solid var(--third);
+}
+
+.signup-popup--inner h3{
+    color: whitesmoke;
 }
 
 .signup-popup--inner .close-btn {
@@ -35,12 +42,13 @@
     right: 16px;
     width: 1.5rem;
     height: 1.5rem;
-    color: white;
-    background-color: red;
+    color: whitesmoke;
+    background-color: var(--third);
     border: none;
     font-weight: bold;
     font-size: 20px;
     transition: .3s;
+    border-radius: 5px;
 }
 
 .signup-popup--inner .close-btn:hover {
@@ -50,7 +58,7 @@
     width: 1.5rem;
     height: 1.5rem;
     color: red;
-    background-color: var(--secondary);
+    background-color: whitesmoke;
     border: none;
     font-weight: bold;
     font-size: 20px;

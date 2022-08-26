@@ -259,7 +259,7 @@ function Signup() {
                     </p> */}
                     
                     <div className="signup--btn-row row">
-                      <div className="singup--btn-cont col-12 text-center">
+                      <div className="singup--btn-cont col-12">
                         <button
                             className='signup-btn'
                             type='submit'
@@ -268,8 +268,8 @@ function Signup() {
                             Register
                         </button>
                       </div>
-                      <div className="signup--already-cont row text-center">
-                        <Link className="signup--already-have-an-account col-12 text-center" to='/log-In'><span>Already have an account</span></Link>
+                      <div className="signup--already-cont row">
+                        <Link className="signup--already-have-an-account col-12" to='/log-In'><span>Already have an account</span></Link>
                       </div>
                    {/* </div> */}
                    </div>

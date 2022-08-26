@@ -103,7 +103,7 @@ function Login() {
                     </div>
                   </div>
                   <div className="login--dont-have-cont row">
-                    <Link className="login--dont-have-account col-12 text-center" to='/sign-up'><span>Don`t have an account?</span></Link>
+                    <Link className="login--dont-have-account col-12" to='/sign-up'><span>Don`t have an account?</span></Link>
                   </div>
                 </div>
             </div>

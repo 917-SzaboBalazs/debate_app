@@ -63,10 +63,6 @@
     /* opacity: 0.7; */
 }
 
-.signup--btn-row {
-    
-}
-
 /* .signup-box-2 {
     padding-left: 9rem;
 }
@@ -92,13 +88,20 @@
 
 .signup-btn {
     cursor: pointer;
-   
+    background-color: #22344D;
+    color: white;
+    padding: 1vw 2vw;
+    font-size: 18px;
+    border-radius: 12px;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    transition: .1s;
 }
 
 .signup-btn:hover {
     background-color: white;
     color: var(--secondary);
-    transition: .3s;
+    transition: .2s;
 }   
 
 h5 {
@@ -118,6 +121,11 @@ input {
     /* margin-top: 7vh;
     margin-left: 12vw; */
     margin-bottom: 5rem;
+}
+
+.signup--bg-img{
+    height: 100vh;
+    align-self: center;
 }
 
 @media only screen and (max-width: 768px) {

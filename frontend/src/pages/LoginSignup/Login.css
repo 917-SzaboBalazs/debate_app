@@ -77,14 +77,9 @@ input {
     font-size: 24px;
 }
 
-.login--dont-have-account {
-    /* margin-left: .75rem; */
-    /* margin-top: 2rem; */
-}
-
 .login--dont-have-account span{
    
-    font-size: 24px;
+    font-size: 16px;
     transition: .4s;
 }
 
