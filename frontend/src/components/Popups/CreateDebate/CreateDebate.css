@@ -23,6 +23,7 @@
     position: relative;
     padding: 36px;
     width: 640px;
+    min-height: 280px;
     height: auto;
     background-color: var(--secondary);
     justify-content: center;

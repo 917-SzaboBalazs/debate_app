@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useNavigate } from 'react';
+import axiosInstance from '../../axios';
 
 import JoinDebate from '../Popups/JoinDebate/JoinDebate';
 import CreateDebate from '../Popups/CreateDebate/CreateDebate';
@@ -12,19 +12,28 @@ function Trunk() {
     const [ loggedIn, setLoggedIn ] = useState(false); 
     const [ triggerCreate, setTriggerCreate ] = useState(false);
     const [ triggerJoin, setTriggerJoin ] = useState(false);
+    const [ inDebate, setInDebate ] = useState(false);
+
+    // let navigate = useNavigate();
 
     // check if user is logged in
     useEffect(() => {
-        const accessToken = localStorage.getItem('access_token');
-        console.log(accessToken);
-        if (accessToken === null) {
-            console.log('not logged in bruh')
-        } else {
+      axiosInstance
+        .get('user/current/')
+        .then((res) => {
+          console.log(res);
           setLoggedIn(true);
-        //   setUserName('Jani');
-          console.log('logged in');
-        }
-      }, []);
+          if (res.data.current_debate != null) {
+            setInDebate(true);
+          } else {
+            setInDebate(false);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    }, []);
 
     const handleClickTriggerCreate = () => {
         setTriggerCreate(true);
@@ -32,6 +41,20 @@ function Trunk() {
 
     const handleClickTriggerJoin = () => {
         setTriggerJoin(true);
+        }
+
+    const leaveDebate = () => {
+        axiosInstance
+            .patch('user/current/', {"current_debate": null})
+            .then((res) => {
+            console.log('Sikeres kilépés');
+            // navigate('/');
+            window.location.reload(false);
+            })
+            .catch((err) => {
+            console.log(err);
+            console.log('Baj van');
+            })
         }
 
   return (
@@ -56,16 +79,35 @@ function Trunk() {
                     </>
                 : 
                     <>
-                        <button
-                            className='trunk--login-button text-uppercase'
-                        >
-                            <div className='trunk--login-link trunk--link-text' onClick={handleClickTriggerJoin} ><span className='white-text'>Join</span></div>
-                        </button>
-                        <button 
-                            className='trunk--signin-button text-uppercase'
-                        >
-                            <div className="trunk--signup-link trunk--link-text" onClick={handleClickTriggerCreate}><span className='white-text'>Create</span></div>
-                        </button>
+                        {
+                            !inDebate ? 
+                            <>
+                                <button
+                                    className='trunk--login-button text-uppercase'
+                                >
+                                    <div className='trunk--login-link trunk--link-text' onClick={handleClickTriggerJoin} ><span className='white-text'>Join</span></div>
+                                </button>
+                                <button 
+                                    className='trunk--signin-button text-uppercase'
+                                >
+                                    <div className="trunk--signup-link trunk--link-text" onClick={handleClickTriggerCreate}><span className='white-text'>Create</span></div>
+                                </button>
+                            </>
+                            :
+                            <>
+                                <button
+                                    className='trunk--login-button text-uppercase'
+                                    href='/new-debate'
+                                >
+                                    <Link className='trunk--login-link trunk--link-text' to='/new-debate'><span className='white-text'>Current</span></Link>
+                                </button>
+                                <button 
+                                    className='trunk--signin-button text-uppercase'
+                                >
+                                    <div className="trunk--signup-link trunk--link-text" onClick={leaveDebate}><span className='white-text'>Leave</span></div>
+                                </button>
+                            </>
+                        }
                     </>
                 }
                 </div>

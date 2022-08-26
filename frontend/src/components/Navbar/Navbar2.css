@@ -51,3 +51,7 @@
 .navbar-toggler {
     background-color: var(--third);
 }
+
+.nav--separator-line {
+    border-left: 1px solid white;
+}

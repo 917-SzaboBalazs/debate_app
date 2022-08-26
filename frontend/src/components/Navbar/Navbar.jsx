@@ -26,19 +26,10 @@ function CollapsibleExample() {
     const [ triggerJoin, setTriggerJoin ] = useState(false);
     const [ loggedIn, setLoggedIn ] = useState(false);
     const [ userName, setUserName ] = useState('');
+    const [ inDebate, setInDebate ] = useState(false);
 
     // check if user is logged in
     useEffect(() => {
-      const accessToken = localStorage.getItem('access_token');
-      // console.log(accessToken);
-      // if (accessToken === null) {
-      //     // setLoggedIn(true);
-      //     console.log('not logged in bruh')
-      // } else {
-      //   setLoggedIn(true);
-      //   setUserName('Jani');
-      //   console.log('logged in');
-      // }
 
       axiosInstance
         .get('user/current/')
@@ -47,6 +38,13 @@ function CollapsibleExample() {
           setUserName(res.data.username);
           setLoggedIn(true);
           console.log(userName);
+
+          if (res.data.current_debate != null) {
+            setInDebate(true);
+          } else {
+            setInDebate(false);
+          }
+
         })
         .catch((err) => {
           console.log(err);
@@ -105,7 +103,17 @@ function CollapsibleExample() {
                 </>
                 :
                 <>
-                <Nav.Link onClick={leaveDebate}>Leave Debate</Nav.Link>
+                {
+                  inDebate ? 
+                    <>                      
+                      <Nav.Link href="/new-debate">Current</Nav.Link>
+                      <Nav.Link onClick={leaveDebate}>Leave</Nav.Link>
+                      <div className="nav--separator-line"></div>
+                    </>
+                    :
+                    <>
+                    </>
+                }
                 <Nav.Link >Szervusz {userName} </Nav.Link>
                 <Nav.Link href="/logout">Log Out</Nav.Link>
                 </>
