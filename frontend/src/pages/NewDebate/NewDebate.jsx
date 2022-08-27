@@ -14,8 +14,8 @@ function NewDebate() {
     const [ entryCode, setEntryCode ] = useState('');
     const [ someError, setSomeError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState('');
-
-   
+    const [ noJudges, setNoJudges ] = useState(3);
+    const [ currRole, setCurrRole ] = useState('spectator');
 
     useEffect(() => {
         axiosInstance
@@ -26,6 +26,7 @@ function NewDebate() {
                 setErrorMessage('');
                 setDebateType(res.data.type);
                 setEntryCode(res.data.entry_code);
+                setNoJudges(res.data.no_judges);
             })
             .catch((err) => {
                 setSomeError(true);
@@ -41,64 +42,53 @@ function NewDebate() {
                     setErrorMessage('Valamit nagyon elcsűrtél');
                 }
             });
+        
+
     }, []);
 
-    const numberOfPeople = 8;
-    const [ currentNumberOfPeople, setCurrentNumberOfPeople ] = useState(0); 
-    const [ names, setNames ] = useState(['elso', 'masodik', 'harmadik', 'negyedik', 'otodik', 'hatodik', 'hetedik', 'nyolcadik']);
-    const [ proPlayers, setProPlayers ] = useState([]);
-    const [ conPlayers, setConPlayers ] = useState([]);
-    const [ judges, setJudges ] = useState([]);
-    const [ chosenName, setChosenName ] = useState('');
+    useEffect(() => {
+        axiosInstance
+        .get('user/current/')
+        .then((res) => {
+            setCurrRole(res.data.role);
+        })
+    }, [currRole])
+
     const [ ready, setReady ] = useState(false);
-    const [ posts, setPosts ] = useState(['1.', '2.', '3.', '4.']);
+    const [ posts, setPosts ] = useState(['1', '2', '3', '4']);
+    const [ postJudge, setJudge ] = useState(['1', '2', '3']);
 
-    const namesListed = names.map((name) => {
-        return chosenName === name ? 
-            <div
-                className="new-debate--person col-2 bg-secondary" 
-                key={name} 
-                onClick={() => {
-                    setChosenName(name);
-                }}
-             >
-            {name}
-            </div>
-            :
-            <div 
-                className="new-debate--person col-2" 
-                key={name} 
-                onClick={() => {
-                    setChosenName(name);
-                }}
-            >
-                {name}
-            </div>
-        }
-    );
 
-    const proListed = posts.map((player) =>
-        <div className="col-2 new-debate--participant" key={player}>
-            {player}
-        </div>
-    )
-    const conListed = posts.map((player) =>
-        <div className="col-2 new-debate--participant" key={player}>
-            {player}
-        </div>
-    )
-    const judgeListed = posts.map((player) =>
-        <div className="col-2 new-debate--participant" key={player}>
-            {player}
-        </div>
-    )
+    function handleChoose(team, nr) {
+        let role = team + nr;
+        console.log(role);
+        setCurrRole(role);
 
-    const checkIfReady = () => {
-        if ( currentNumberOfPeople === numberOfPeople - 1) {
-            setReady(true);
-        }
+        axiosInstance
+            .patch('user/current/', {'role':role})
+            .then((res) => {
+                console.log('nice');
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
+    const proListed = posts.map((player) => 
+        <div className="col-2 new-debate--participant" onClick={event => handleChoose('pro', player)} key={player}>
+            {player}
+        </div> 
+    )
+    const conListed = posts.map((player) =>
+        <div className="col-2 new-debate--participant" onClick={event => handleChoose('con', player)} key={player}>
+            {player}
+        </div>
+    )
+    const judgeListed = postJudge.map((player) =>
+        <div className="col-2 new-debate--participant" onClick={event => handleChoose('judge', player)} key={player}>
+            {player}
+        </div>
+    )
 
     return (
         <div className='new-debate--background base'>
@@ -119,11 +109,8 @@ function NewDebate() {
                 <div className="row pt-4">
                     <h2 className='new-debate--basic-text col-12 text-center white-text'>Debate-type: {debateType}</h2>
                     <h2 className='new-debate--entry-code col-12 text-center white-text'>Entry: {entryCode}</h2>
+                    <h2 className='new-debate--current-role col-12 text-center white-text'>Your role: {currRole}</h2>
                 </div>
-
-                {/* <div className="new-debate--people row justify-content-evenly">
-                    {namesListed}
-                </div> */}
 
                 <div className="new-debate--procon-row row pt-2 justify-content-around">
                 <div className="col-2 new-debate--pro-btn text-center font-weight-bold">PRO</div>
@@ -211,12 +198,12 @@ function NewDebate() {
                         <button 
                             className="new-debate--clear-btn-container--btn"
                             onClick={() => {
-                                const newNames = names.concat(proPlayers, conPlayers, judges);
-                                setNames(newNames);
-                                setProPlayers([]);
-                                setConPlayers([]);
-                                setJudges([]);
-                                setCurrentNumberOfPeople(0);
+                                // const newNames = names.concat(proPlayers, conPlayers, judges);
+                                // setNames(newNames);
+                                // setProPlayers([]);
+                                // setConPlayers([]);
+                                // setJudges([]);
+                                // setCurrentNumberOfPeople(0);
                                 setReady(false);
                             }}
                         >

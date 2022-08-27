@@ -11,7 +11,7 @@ import axiosInstance from '../../../axios';
 function CreateDebate(props) {
   const [ debateType, setType ] = useState('brittish');
   const navigate = useNavigate();
-  const [ noJudges, setNoJudges ] = useState(1);
+  const [ noJudges, setNoJudges ] = useState(3);
   const [ hasChair, setChair ] = useState(false);
 
   const options = [
