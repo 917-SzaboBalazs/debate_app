@@ -180,4 +180,7 @@
 .new-debate--label {
     margin-left: 5px;
     margin-bottom: 2rem;
+    background-color: var(--mcc-sarga);
+    color: var(--mcc-kek);
+    font-weight: bold;
 }

@@ -45,7 +45,7 @@ function Trunk() {
 
     const leaveDebate = () => {
         axiosInstance
-            .patch('user/current/', {"current_debate": null})
+            .patch('user/current/', {"current_debate": null, 'role': null})
             .then((res) => {
             console.log('Sikeres kilépés');
             // navigate('/');

@@ -9,9 +9,9 @@ import axiosInstance from '../../../axios';
 
 
 function CreateDebate(props) {
-  const [ debateType, setType ] = useState('brittish');
+  const [ debateType, setType ] = useState('british');
   const navigate = useNavigate();
-  const [ noJudges, setNoJudges ] = useState(3);
+  const [ noJudges, setNoJudges ] = useState(1);
   const [ hasChair, setChair ] = useState(false);
 
   const options = [
@@ -26,7 +26,7 @@ function CreateDebate(props) {
     props.setTrigger(false);
 
     axiosInstance
-      .post('debate/', { 'type':'british'})
+      .post('debate/', { 'type': debateType, 'no_judges': noJudges, 'has_chair': hasChair})
       .then((res) => {
         navigate('/new-debate');
         }
@@ -38,8 +38,8 @@ function CreateDebate(props) {
 
   };
 
-  const handleNumber = () => {
-    setNoJudges(prev => prev + 1);
+  const handleNumber = (val) => {
+    setNoJudges(val.target.value);
   }
 
   const handleCheckBox = () => {
@@ -58,13 +58,13 @@ function CreateDebate(props) {
             <Select 
               className="select-debate create-debate--input" 
               defaultValue={options[0]}
-              options={options} z
+              options={options} 
               onChange={(e) => setType(e.value)}
               />
             <h3 className="create-debate--text col-12">
               Select nr. of judges (opt)
             </h3>
-            <input type="number" className="create-debate--no-judges create-debate--input col-12" value={noJudges} onChange={handleNumber}/>
+            <input type="number" className="create-debate--no-judges create-debate--input col-12" value={noJudges} onChange={ev => handleNumber(ev)}/>
             <h3 className="create-debate--text col-8">
               Chair? (opt)
             </h3>

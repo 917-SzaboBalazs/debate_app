@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import axiosInstance from '../../axios';
 
 // icon imports 
 import GreenStart from '../../images/start-green.svg';
@@ -24,7 +25,38 @@ function InDebateTimer() {
     const [ isMouseBack, setMouseBack ] = useState(false);
     const [ currentlySpeaking, setCurrentlySpeaking ] = useState(1);
 
+    const [ role, setRole ] = useState('');
+    const [ loggedIn, setLoggedIn ] = useState(false);
+    const [ inDebate, setInDebate ] = useState(false);
+
     const speakerRole = [ 'PRO-Start', 'CON-Start', 'PRO-Start', 'CON-Start', 'PRO-End', 'CON-End', 'PRO-End', 'CON-end'];
+
+    // check if user is logged in
+    useEffect(() => {
+
+        axiosInstance
+          .get('user/current/')
+          .then((res) => {
+            console.log(res);
+            setLoggedIn(true);
+  
+            if (res.data.current_debate != null) {
+                setInDebate(true);
+                
+                if (res.data.role != null) {
+                    setRole(res.data.role);
+                }
+            } else {
+              setInDebate(false);
+            }
+
+  
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+  
+      }, []);
 
     useEffect(() => {
         let interval;
@@ -65,9 +97,11 @@ function InDebateTimer() {
     return (
         <div className="indebate--base base">
             <div className="indebate--container container bg-light">
+                { loggedIn && inDebate ? <>
                 <div className="row indebate--current-speaker">
                     <div className="col-12 text-center">
                         <h3>Current speaker: {currentlySpeaking} ({speakerRole[currentlySpeaking - 1]})</h3>
+                        <h3>You are: {role}</h3>
                     </div>
                 </div>
                 <div className="indebate--stopwatch row text-center">
@@ -76,6 +110,7 @@ function InDebateTimer() {
                         <span>{("0" + Math.floor((seconds / 1000) % 60)).slice(-2)}:</span>
                         <span>{("0" + ((seconds / 10) % 100)).slice(-2)}</span>
                     </div>
+                    { role == 'judge1' ? <>
                     <div className="indebate--buttons text-center">
                         <button 
                             className={`indebate--button col-12 indebate--start-button ${!running ? 'indebate--start' : 'indebate--stop'}`}
@@ -145,7 +180,18 @@ function InDebateTimer() {
                             />
                         </button>
                     </div>
+                    </>
+                    :
+                    null }
                 </div>
+                </>
+                : 
+                <>
+                    <div className="in-debate--hiba row d-flex justify-content-center align-items-center">
+                        <h1 className='col-12 text-center'>Valami nagyon em jó tesó</h1>
+                    </div>
+                </>
+                }
             </div>
         </div>
       );
