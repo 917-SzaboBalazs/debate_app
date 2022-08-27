@@ -165,3 +165,19 @@
     transition: .2s;
     cursor:pointer;
 }
+
+.new-debate--button {
+    margin-bottom: 2rem;
+    border: 3px solid white;
+    border-radius: 1rem;
+    padding: .5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+.new-debate--button:hover {
+    color: var(--mcc-kek);
+    background-color: white;
+    transition: .3s;
+}

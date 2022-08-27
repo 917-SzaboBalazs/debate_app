@@ -60,18 +60,23 @@ function NewDebate() {
 
 
     function handleChoose(team, nr) {
-        let role = team + nr;
-        console.log(role);
-        setCurrRole(role);
 
-        axiosInstance
-            .patch('user/current/', {'role':role})
-            .then((res) => {
-                console.log('nice');
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        if (!ready) {
+            let role = team + nr;
+            console.log(role);
+            setCurrRole(role);
+
+            axiosInstance
+                .patch('user/current/', {'role':role})
+                .then((res) => {
+                    console.log('nice');
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        } else {
+            alert('You must not be ready in order to change role.');
+        }
     }
 
     const proListed = posts.map((player) => 
@@ -107,76 +112,18 @@ function NewDebate() {
                     <>
                 
                 <div className="row pt-4">
-                    <h2 className='new-debate--basic-text col-12 text-center white-text'>Debate-type: {debateType}</h2>
-                    <h2 className='new-debate--entry-code col-12 text-center white-text'>Entry: {entryCode}</h2>
-                    <h2 className='new-debate--current-role col-12 text-center white-text'>Your role: {currRole}</h2>
+                    <h2 className='new-debate--basic-text col-md-6 col-sm-12 text-center white-text'>Debate-type: {debateType}</h2>
+                    <h2 className='new-debate--current-role col-md-6 col-sm-12 text-center white-text'>Your role: {currRole}</h2>
+                </div>
+                <div className="row">
+                    <h2 className='new-debate--ready col-md-6 col-sm-12 text-center white-text'>Ready: {ready ? 'true' : 'false'}</h2>
+                    <h2 className='new-debate--entry-code col-md-6 col-sm-12 text-center white-text'>Entry: {entryCode}</h2>
                 </div>
 
                 <div className="new-debate--procon-row row pt-2 justify-content-around">
                 <div className="col-2 new-debate--pro-btn text-center font-weight-bold">PRO</div>
                 <div className="col-2 new-debate--pro-btn text-center font-weight-bold">CON</div>
                 <div className="col-2 new-debate--pro-btn text-center font-weight-bold">JUDGE</div>
-                    {/*
-                    <div className="col-2 new-debate--pro-btn text-center font-weight-bold"
-                         onClick = { () => {
-                            if (chosenName === '' ) {
-                                alert('Please select a player.');
-                            } else if (proPlayers.includes(chosenName) || conPlayers.includes(chosenName)) {
-                                alert(chosenName + ' has already been selected.');
-                            } else if (proPlayers.length === 4 ) {
-                                alert('The PRO team is already full');
-                            } else {
-                                const temp = proPlayers.concat(chosenName);
-                                setProPlayers(temp);
-                                setCurrentNumberOfPeople(currentNumberOfPeople + 1);
-
-                                const newNames = names.filter(name => name !== chosenName);
-                                setNames(newNames);
-
-                                checkIfReady();
-                            }
-                        }}
-                        >PRO</div>
-                    <div className="col-2 new-debate--con-btn text-center font-weight-bold"
-                         onClick = { () => {
-                            if (chosenName === '' ) {
-                                alert('Please select a player.');
-                            } else if (conPlayers.includes(chosenName) || proPlayers.includes(chosenName)) {
-                                alert(chosenName + ' has already been selected.');
-                            } else if (conPlayers.length === 4 ) {
-                                alert('The Con team is already full');
-                            } else {
-                                const temp = conPlayers.concat(chosenName);
-                                setConPlayers(temp);
-                                setCurrentNumberOfPeople(currentNumberOfPeople + 1);
-
-                                const newNames = names.filter(name => name !== chosenName);
-                                setNames(newNames);
-
-                                checkIfReady();
-                            }
-                        }}
-                         >CON</div>
-
-                    <div className="col-2 new-debate--judge-btn text-center font-weight-bold"
-                         onClick = { () => {
-                            if (chosenName === '' ) {
-                                alert('Please select a player.');
-                            } else if (judges.includes(chosenName) || judges.includes(chosenName)) {
-                                alert(chosenName + ' has already been selected.');
-                            } else {
-                                var temp = judges.concat(chosenName);
-                                setJudges(temp);
-                                setCurrentNumberOfPeople(currentNumberOfPeople + 1);
-
-                                const newNames = names.filter(name => name !== chosenName);
-                                setNames(newNames);
-
-                                checkIfReady();
-                            }
-                        }}
-                         >JUDGE</div>
-                    */}
                 </div>
                 <div className="new-debate--decision row justify-content-evenly">
                     <div 
@@ -194,33 +141,30 @@ function NewDebate() {
                     </div>
                 </div>
                 
-                <div className="new-debate--clear-btn-container col-ms-12 text-center">
-                        <button 
-                            className="new-debate--clear-btn-container--btn"
+                <div className="new-debate--spectator  row justify-content-center">
+                    <div className="new-debate--spectator-col new-debate--button col-4 white-text text-center" onClick={event => handleChoose('spectator', '')}>
+                        Spectator
+                    </div>
+                </div>
+
+                <div className="new-debate--clear-btn-container row justify-content-center">
+                        <div
+                            className="col-4 new-debate--button white-text text-center"
                             onClick={() => {
-                                // const newNames = names.concat(proPlayers, conPlayers, judges);
-                                // setNames(newNames);
-                                // setProPlayers([]);
-                                // setConPlayers([]);
-                                // setJudges([]);
-                                // setCurrentNumberOfPeople(0);
-                                setReady(false);
+                                setReady(!ready);
                             }}
                         >
-                            Clear
-                        </button>
-                </div>
-
-                <div className="new-debate--teams row justify-content-evenly">
-                    {}
-                </div>
-
-                <div className="new-debate--next_btn_section row justify-content-evenly">
-                    {ready && 
-                        <button className="new-debate--next-btn pb-3">
-                            NEXT
-                        </button>
-                    }
+                            {
+                                ready ?
+                                <>
+                                    not ready
+                                </>
+                                :
+                                <>
+                                    ready
+                                </>
+                            }
+                        </div>
                 </div>
                 </>
                 }
