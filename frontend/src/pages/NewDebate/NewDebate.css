@@ -95,6 +95,8 @@
 
 .new-debate--pro-btn, .new-debate--con-btn, .new-debate--judge-btn{
     border-radius: 7px;
+    background-color: #485c7a;
+    box-shadow: 0px 0px 80px 5px black;
     color: whitesmoke;
     transition: .1s;
 }
@@ -107,13 +109,6 @@
 }
 .new-debate--judge-btn{
     border: 1px solid orange;
-}
-
-.new-debate--pro-btn:hover, .new-debate--con-btn:hover, .new-debate--judge-btn:hover{
-    box-shadow: 0px 0px 10px black;
-    background-color: whitesmoke;
-    color: black;
-    transition: .2s;
 }
 
 .new-debate--clear-btn-container--btn{
