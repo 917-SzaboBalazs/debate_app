@@ -121,22 +121,22 @@ function NewDebate() {
                 </div>
 
                 <div className="new-debate--procon-row row pt-2 justify-content-around">
-                <div className="col-2 new-debate--pro-btn text-center font-weight-bold">PRO</div>
-                <div className="col-2 new-debate--pro-btn text-center font-weight-bold">CON</div>
-                <div className="col-2 new-debate--pro-btn text-center font-weight-bold">JUDGE</div>
                 </div>
                 <div className="new-debate--decision row justify-content-evenly">
                     <div 
                         className="new-debate--decision--pro col-sm-3 col-md-3"
                     >
+                        <div className="col-12 new-debate--pro-btn new-debate--label text-center font-weight-bold">PRO</div>
                         {proListed}
                     </div>
                     <div 
                         className="new-debate--decision--con col-sm-3 col-md-3"
                     >
+                        <div className="col-12 new-debate--pro-btn text-center new-debate--label font-weight-bold">CON</div>
                         {conListed}
                     </div>
                     <div className="new-debate--decision--judge col-sm-3 col-md-3">
+                        <div className="col-12 new-debate--pro-btn text-center  new-debate--label font-weight-bold">JUDGE</div>
                         {judgeListed}
                     </div>
                 </div>

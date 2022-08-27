@@ -181,3 +181,8 @@
     background-color: white;
     transition: .3s;
 }
+
+.new-debate--label {
+    margin-left: 5px;
+    margin-bottom: 2rem;
+}
