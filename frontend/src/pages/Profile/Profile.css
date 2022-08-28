@@ -13,11 +13,14 @@
 .profile--left-side {
     min-height: 100vh;
     background-color: rgba(0, 0, 0, .5);
+    padding: 2rem;
     padding-top: 15vh;
 }
 
 .profile--right-side {
     min-height: 100vh;
+    padding: 2rem;
+    padding-top: 20vh;
 }
 
 .profile--element {
@@ -38,13 +41,41 @@
     border: 3px solid white;
 }
 
+.profile--edit-element {
+    text-decoration: underline;
+    transition: .3s;
+    margin-top:2rem;
+    font-size: 18px;
+}
+
+.profile--edit-element:hover {
+    text-decoration: none;
+    background-color: white;
+    transition: .3s;
+    border-radius: 15px;
+}
+
+.profile--right-element {
+    padding: 2rem;
+    box-shadow: 20px 20px 50px 10px var(--mcc-sarga) inset;
+    border-radius: 15px;
+
+    margin-bottom: 2rem;
+}
+
+.profile--about-me-box {
+    font-size: 20px;
+}
+
 @media only screen and (max-width: 767px) {
     .profile--right-side {
         min-height: 50vh;
+        padding-top: 2rem;
     }
     
     .profile--left-side {
         min-height: 50vh;
         padding-bottom: 2rem;
+        border-bottom: 10px solid var(--mcc-sarga);
     }
 }

@@ -13,6 +13,8 @@ function Profile() {
     const [ lastName, setLastName ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ bDay, setbDay ] = useState('');
+    const [ aboutMe, setAboutMe ] = useState('');
+    const [ role, setRole ] = useState('');
 
     useEffect(() => {
 
@@ -25,6 +27,8 @@ function Profile() {
             setLastName(res.data.last_name);
             setEmail(res.data.email);
             setbDay(res.data.birthday);
+            setAboutMe(res.data.about_me);
+            setRole(res.data.role);
   
             if (res.data.current_debate != null) {
               setInDebate(true);
@@ -63,10 +67,32 @@ function Profile() {
                             <div className="profile--email row">
                                 <h1 className="profile--email-element profile--element col-12">Email: {email}</h1>
                             </div>
-                            
+                            <div className="profile--edit row">
+                                <h3 className="profile--edit-element col-4 text-center"><a href='/edit-profile'>Edit Profile</a></h3>
+                            </div>
                         </div>
-                        <div className="profile--right-side col-md-7 col-sm-12">
-
+                        <div className="profile--right-side d-flex flex-row align-items-center justify-content-center col-md-7 col-sm-12">
+                            <div className="row m-4">
+                                <div className="profile--about-me-row align-self-start profile--right-element row">
+                                    <h1 className="profile--about-me-title col-12">About me:</h1>
+                                    <p className="profile--about-me-box col-12">
+                                        {aboutMe}
+                                    </p>
+                                </div>
+                                <div className="profile--in-debate-row profile--right-element align-self-end row">
+                                    {
+                                        inDebate ?
+                                        <>
+                                            <h1 className="col-12">Your are in a debate</h1>
+                                            <h1 className="col-12">Role: {role}</h1>
+                                        </>
+                                        :
+                                        <>
+                                            <h1 className="col-12">Your are not in a debate</h1>
+                                        </>
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
