@@ -7,3 +7,21 @@
 .about-us--container {
     padding-top: 4vh;
 } 
+
+@media only screen and (max-width: 768px) {
+    .what--text h1, .why--text h1{
+        text-align: center;
+        margin-bottom: 8vh;
+    }
+    .what--text p, .why--text p{
+        text-align: justify;
+        padding-bottom: 5vh;
+        padding-top: 5vh;
+        border-bottom: 2px solid #F2CA10;
+        border-top: 2px solid #F2CA10;
+    }
+
+    .why--text{
+        margin-top: 10vh;
+    }
+}
