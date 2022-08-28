@@ -25,7 +25,7 @@ function JoinDebate(props) {
                 window.location.reload(false);
             })
             .catch((err) => {
-                console.log(err);
+                alert('Non existing code'); 
             })
     }
 

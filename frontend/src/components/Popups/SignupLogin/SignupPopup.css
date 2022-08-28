@@ -22,7 +22,8 @@
     display: grid;
     position: relative;
     padding: 32px;
-    width: 100%;
+    width: 640px;
+    height: 280px;
     max-width: 640px;
     background-color: var(--secondary);
     color: whitesmoke;

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-import axiosInstance from '../../axios'
+import axiosInstance from '../../axios';
+import SignupPopup from '../../components/Popups/SignupLogin/SignupPopup';
 
 import image1 from '../../images/signup1.jpg';
 import image2 from '../../images/signup2.jpg'
@@ -18,6 +19,9 @@ import './Login.css'
 function Login() {
     const [ userName, setUserName ] = useState('');
     const [ password, setPassword ] = useState('');
+    const [ trigger, setTrigger ] = useState(false);
+    const [ message, setMessage ] = useState('');
+
 
     let navigate = useNavigate();
 
@@ -40,7 +44,8 @@ function Login() {
           window.location.reload(false);
         })
         .catch((err) => {
-          alert('baj van.');
+          setMessage('Wrong username - password combination.');
+          setTrigger(true);
           console.log(err);
         })
     }
@@ -121,6 +126,9 @@ function Login() {
               </div> */}
             </div>
             {/* </form> */}
+            <SignupPopup trigger={trigger} setTrigger={setTrigger}>
+              <h3>{message}</h3>
+            </SignupPopup>
           </div>
         </div>
     </div>

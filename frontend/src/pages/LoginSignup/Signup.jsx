@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axiosInstance from '../../axios'
-import SignupPopup from './SignupPopup';
+import SignupPopup from '../../components/Popups/SignupLogin/SignupPopup';
 
 import './Signup.css'
 
