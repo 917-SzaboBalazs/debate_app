@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-ve^drp8p3_ni@)(adehdwnsk^x&nsts8^$+5v3m)q50n($uz_t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "*"
+]
 
 
 # Application definition
@@ -130,9 +132,8 @@ DATE_FORMAT = 'Y-m-d'
 
 STATIC_URL = '/static/'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
