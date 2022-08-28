@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import axiosInstance from '../../axios';
-import SignupPopup from '../../components/Popups/SignupLogin/SignupPopup';
+import LoginPopup from '../../components/Popups/SignupLogin/LoginPopup';
 
 import image1 from '../../images/signup1.jpg';
 import image2 from '../../images/signup2.jpg'
@@ -126,9 +126,9 @@ function Login() {
               </div> */}
             </div>
             {/* </form> */}
-            <SignupPopup trigger={trigger} setTrigger={setTrigger}>
+            <LoginPopup trigger={trigger} setTrigger={setTrigger}>
               <h3>{message}</h3>
-            </SignupPopup>
+            </LoginPopup>
           </div>
         </div>
     </div>

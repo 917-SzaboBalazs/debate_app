@@ -1,0 +1,68 @@
+:root {
+    --primary: white;
+    --secondary: #22344D;
+    --third: #F2CA10;
+}
+
+.login-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-popup--inner {
+    display: grid;
+    position: relative;
+    padding: 32px;
+    width: 640px;
+    height: 200px;
+    max-width: 640px;
+    background-color: var(--secondary);
+    color: whitesmoke;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: 3px solid var(--third);
+}
+
+.login-popup--inner h3{
+    color: whitesmoke;
+}
+
+.login-popup--inner .loginpopup--close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: whitesmoke;
+    background-color: var(--third);
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    transition: .3s;
+    border-radius: 5px;
+}
+
+.login-popup--inner .loginpopup--close-btn:hover {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: red;
+    background-color: whitesmoke;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    vertical-align: middle;
+    transform: rotate(180deg);
+}
