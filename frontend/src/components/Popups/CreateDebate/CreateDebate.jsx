@@ -26,9 +26,17 @@ function CreateDebate(props) {
     props.setTrigger(false);
 
     axiosInstance
-      .post('debate/', { 'type': debateType, 'no_judges': noJudges, 'has_chair': hasChair})
+      .post('debate/', { 'type': debateType, 'motion': 'add at Acshuni', 'no_judges': noJudges, 'has_chair': hasChair})
       .then((res) => {
         navigate('/new-debate');
+
+        axiosInstance
+          .patch('user/current/', {
+            'role': 'judge1'
+          })
+          .catch((err) => {
+            console.log(err);
+          })
         }
       )
       .catch((err) => {
@@ -50,15 +58,15 @@ function CreateDebate(props) {
     <div className="create-debate">
         <div className="create-debate--inner row">
             <button className="create-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
-           { props.loggedIn ?  
+           { props.loggedIn ?
             <>
             <h3 className="create-debate--text">
                 Select debate type
             </h3>
-            <Select 
-              className="select-debate create-debate--input" 
+            <Select
+              className="select-debate create-debate--input"
               defaultValue={options[0]}
-              options={options} 
+              options={options}
               onChange={(e) => setType(e.value)}
               />
             <h3 className="create-debate--text col-12">
@@ -72,9 +80,9 @@ function CreateDebate(props) {
             <button className="create-debate--create-btn" onClick={handleCreate}>
                 Create!
             </button>
-            </> 
+            </>
             :
-            <h1 className='white-text'>You have to be logged in first, in order to create a debate.</h1> 
+            <h1 className='white-text'>You have to be logged in first, in order to create a debate.</h1>
             }
         </div>
     </div>

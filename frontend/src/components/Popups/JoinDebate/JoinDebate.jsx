@@ -13,7 +13,7 @@ function JoinDebate(props) {
         if (debateCode === '') {
             alert('The input fied is empty');
             return;
-        } 
+        }
 
         console.log(debateCode);
         axiosInstance
@@ -23,9 +23,17 @@ function JoinDebate(props) {
             .then((res) => {
                 navigate('/new-debate');
                 window.location.reload(false);
+
+                axiosInstance
+                  .patch('user/current/', {
+                    'role': 'spectator'
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  })
             })
             .catch((err) => {
-                alert('Non existing code'); 
+                alert('Non existing code');
             })
     }
 
@@ -33,26 +41,26 @@ function JoinDebate(props) {
         <div className='join-debate'>
             <div className="join-debate--inner">
                 <button className="join-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
-                { props.loggedIn ? 
-                <> 
+                { props.loggedIn ?
+                <>
                 <h3 className="join-debate--text white-text">Enter the debate code: </h3>
-                <input 
-                    type="text" 
-                    value={debateCode} 
-                    placeholder='enter code' 
+                <input
+                    type="text"
+                    value={debateCode}
+                    placeholder='enter code'
                     className="join-debate--code"
                     onChange={(e) => {
                         setDebateCode(e.target.value);
                     }}
                 />
-                <button 
+                <button
                     className="join-debate--next-btn"
                     onClick={handleNext}
                 >
                     Next
                 </button>
                 </>
-                : 
+                :
                 <h1>You have to be logged in first, in order to join a debate.</h1>
                 }
             </div>

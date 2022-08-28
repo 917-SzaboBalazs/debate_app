@@ -16,7 +16,8 @@ class DebateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         type = validated_data.pop('type', None)
         entry_code = validated_data.pop('entry_code', None)
-        instance = self.Meta.model.objects.create_debate(type, entry_code, **validated_data)
+        motion = validated_data.pop('motion', None)
+        instance = self.Meta.model.objects.create_debate(type, entry_code, motion, **validated_data)
         instance.save()
 
         return instance
