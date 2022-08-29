@@ -11,3 +11,21 @@ Drive: https://docs.google.com/document/d/1utVIOJrAO7IC1rojlQ6xNVul-8mgifeCqnwTk
 
   **Version 1.0** 
   https://docs.google.com/document/d/1utVIOJrAO7IC1rojlQ6xNVul-8mgifeCqnwTk_SjHWE/edit
+
+  Backend
+
+
+  Activate virtual environment
+  venv\Scripts\activate
+  
+  Install:
+  pip install -r requirements.txt
+
+  Start:
+
+  python manage.py runserver
+
+  Frontend:
+
+  Start:
+  npm start
