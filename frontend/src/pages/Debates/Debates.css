@@ -9,18 +9,60 @@
 
 .debates--header-title {
     font-weight: bold;
+    color: whitesmoke !important;
 }
 
 .debates--header-elements {
     text-align: right;
+    color: whitesmoke !important;
 }
 
 .debates--header-row {
-    background-image: url('https://img.freepik.com/premium-vector/newborn-dummy-nipple-seamless-pattern-baby-toys-endless-background-template-pale-colored-pacifier_607579-220.jpg');
+    /*background-image: url('https://img.freepik.com/premium-vector/newborn-dummy-nipple-seamless-pattern-baby-toys-endless-background-template-pale-colored-pacifier_607579-220.jpg');*/
+    background-color: #22344d !important;
     height: 15vh;
 }
 
 .debates--elements-row {
-    background-image: url('https://img.freepik.com/premium-vector/pacifier-baby-dummy-vector-seamless-pattern-newborn-pink-pacifier-with-hearts-girl-endless-texture-flat-design-cartoon-style-background-web-covers-banners-decoration-children-s-design_502274-417.jpg?w=2000');
+    /*background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b4/Orb%C3%A1n_Viktor_portr%C3%A9.jpg')center center/cover no-repeat;*/
+    background-color: whitesmoke !important;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    border-top: 2px solid #f2ca10;
     min-height: 85vh;
+}
+
+.readmore--paragraph{
+    text-align: justify;
+    width: 90%;
+    margin-left: 5%;
+    border-left: 3px solid #f2ca10;
+    border-right: 3px solid #f2ca10;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+}
+
+.debates--elements--title{
+    text-align: center;
+    margin-bottom: 7vh;
+    margin-top: 5vh;
+}
+
+@media only screen and (max-width: 768px) {
+    .debates--elements-row{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .debates--elements-col{
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .readmore--paragraph{
+        border: none;
+        padding: 0;
+        border-bottom: 3px solid #f2ca10;
+        padding-bottom: 5vh;
+    }
 }

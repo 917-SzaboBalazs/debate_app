@@ -24,7 +24,7 @@ function Debates() {
             <div className="row debates--elements-row p-4">
                 <div className="debates--elements-col col-4">
                     <h1 className="debates--elements--title">
-                        Lorem Ipsum
+                        Lorem Ipsum 1
                     </h1>
                     <ReadMore>
                         {text}
@@ -40,7 +40,7 @@ function Debates() {
                 </div>
                 <div className="debates--elements-col col-4">
                     <h1 className="debates--elements--title">
-                        Lorem Ipsum 2
+                        Lorem Ipsum 3
                     </h1>
                     <ReadMore>
                         {text}
