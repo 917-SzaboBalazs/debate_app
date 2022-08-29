@@ -13,6 +13,7 @@ function CreateDebate(props) {
   const navigate = useNavigate();
   const [ noJudges, setNoJudges ] = useState(1);
   const [ hasChair, setChair ] = useState(false);
+  const [ motion, setMotion ] = useState('');
 
   const options = [
     { value: 'british', label: 'british' },
@@ -25,10 +26,16 @@ function CreateDebate(props) {
     console.log(debateType);
     props.setTrigger(false);
 
+    if (motion == '' ) {
+      alert(' You have to give the motion first');
+      return;
+    }
+
     axiosInstance
-      .post('debate/', { 'type': debateType, 'motion': 'add at Acshuni', 'no_judges': noJudges, 'has_chair': hasChair})
+      .post('debate/', { 'type': debateType, 'motion': motion, 'no_judges': noJudges, 'has_chair': hasChair})
       .then((res) => {
         navigate('/new-debate');
+        window.location.reload(false);
 
         axiosInstance
           .patch('user/current/', {
@@ -60,6 +67,8 @@ function CreateDebate(props) {
             <button className="create-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
            { props.loggedIn ?
             <>
+            <h3 className="create--debate-text white-text">Give the motion:</h3>
+            <input type="text" className="create-debate--motion input" onChange={(ev) => {setMotion(ev.target.value)}}/>
             <h3 className="create-debate--text">
                 Select debate type
             </h3>

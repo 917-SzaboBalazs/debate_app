@@ -127,3 +127,32 @@
     height: 100vh;
     transform: translate(0, -12%);
 }
+
+.indebate--motion-text {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.in-debate--finish-button {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--mcc-kek);
+    background-color: white;
+    border: 4px solid var(--mcc-kek);
+    transition: .3s;
+    border-radius: 2rem;
+}
+
+.in-debate--finish-button:hover {
+    color: white;
+    background-color: var(--mcc-kek);
+    transition: .3s;
+}
+
+.in-debate--leave-debate {
+    background-color: var(--mcc-kek);
+    height: 3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 24px;
+}

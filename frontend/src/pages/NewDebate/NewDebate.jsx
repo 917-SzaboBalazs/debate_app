@@ -18,6 +18,7 @@ function NewDebate() {
     const [ someError, setSomeError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState('');
     const [ noJudges, setNoJudges ] = useState(1);
+    const [ motion, setMotion ] = useState('');
     const [ currRole, setCurrRole ] = useState('spectator');
 
     const [ ready, setReady ] = useState(false);
@@ -36,6 +37,7 @@ function NewDebate() {
                 setDebateType(res.data.type);
                 setEntryCode(res.data.entry_code);
                 setNoJudges(res.data.no_judges);
+                setMotion(res.data.motion);
                 setJudge(postJudge.slice(0, noJudges));
                 setWaitValue(true);
                 if (res.data.status == 'running') {
@@ -130,6 +132,9 @@ function NewDebate() {
                     :
                     <>
                 
+                <div className="row">
+                    <h1 className='new-debate--motion col-12 text-center p-4'><span className="new-debate--motion-text white-text">"{motion}"</span></h1>
+                </div>
                 <div className="row pt-4">
                     <h2 className='new-debate--basic-text col-md-6 col-sm-12 text-center white-text'>Debate-type: {debateType}</h2>
                     <h2 className='new-debate--current-role col-md-6 col-sm-12 text-center white-text'>Your role: {currRole}</h2>
