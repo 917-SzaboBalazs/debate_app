@@ -39,14 +39,14 @@
     right: 16px;
     width: 1.75rem;
     height: 1.75rem;
-    color: white;
-    background-color: var(--third);
+    color: whitesmoke;
+    background-color: #22344D;
     padding: 1px;
     border: none;
     font-weight: bold;
     font-size: 20px;
     transition: .3s;
-    border-radius: 5px;
+    border-radius: 50%;
 }
 
 .join-debate--inner .join-debate--close-btn:hover {

@@ -44,12 +44,12 @@
     width: 1.5rem;
     height: 1.5rem;
     color: whitesmoke;
-    background-color: var(--third);
+    background-color: #22344D;
     border: none;
     font-weight: bold;
     font-size: 20px;
     transition: .3s;
-    border-radius: 5px;
+    border-radius: 50%;
 }
 
 .login-popup--inner .loginpopup--close-btn:hover {
