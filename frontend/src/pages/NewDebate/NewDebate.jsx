@@ -28,6 +28,9 @@ function NewDebate() {
     const [ waitValue, setWaitValue ] = useState(false);
 
     useEffect(() => {
+
+        const interval = setInterval(() => {
+            
         axiosInstance
             .get('debate/current/')
             .then((res) => {
@@ -58,14 +61,18 @@ function NewDebate() {
                     setErrorMessage('Valamit nagyon elcsűrtél');
                 }
             });
-
+        
+        }, 2000)
+        return () => {clearInterval(interval)};
+    }, []);   
+    
+    useEffect(() => {
         axiosInstance
-            .get('user/current/')
-            .then((res) => {
-                setCurrRole(res.data.role);
-            })
-            
-    }, [currRole]);    
+        .get('user/current/')
+        .then((res) => {
+            setCurrRole(res.data.role);
+        })
+    }, [currRole]);
 
 
     function handleChoose(team, nr) {
