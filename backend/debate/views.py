@@ -44,6 +44,7 @@ class CreateDebateView(APIView):
         custom_data['entry_code'] = entry_code
 
         serializer = DebateSerializer(data=custom_data)
+        print(serializer)
 
         if serializer.is_valid():
             new_debate = serializer.save()
