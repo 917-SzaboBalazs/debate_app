@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from rest_framework import status, generics
+from rest_framework.exceptions import ParseError, APIException
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -45,3 +45,27 @@ class CurrentUserView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return get_object_or_404(queryset=self.queryset, username=self.request.user)
+
+
+class GetDebaterByRoleView(generics.RetrieveUpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = CurrentUserSerializer
+    queryset = NewUser.objects.all()
+
+    def get_object(self):
+        if 'role' not in self.request.query_params:
+            raise APIException(detail="Role must be defined", code=400)
+
+        return get_object_or_404(queryset=self.queryset, current_debate=self.request.user.current_debate,
+                                 role=self.request.query_params.get('role'))
+
+
+class GetDebaterByCurrentNumberView(generics.RetrieveAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = CurrentUserSerializer
+    queryset = NewUser.objects.all()
+
+    def get_object(self):
+        current_number = self.request.user.current_debate.current_number
+        return get_object_or_404(queryset=self.queryset, current_debate=self.request.user.current_debate,
+                                 number=current_number)

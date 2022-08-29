@@ -36,7 +36,6 @@ class Debate(models.Model):
     no_judges = models.IntegerField(default=1)
     has_chair = models.BooleanField(default=False)
 
-
     objects = DebateManager()
 
     def __str__(self):
