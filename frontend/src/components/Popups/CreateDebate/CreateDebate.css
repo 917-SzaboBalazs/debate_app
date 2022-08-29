@@ -107,3 +107,8 @@
     height: 2rem;
     margin: 0;
 }
+
+.create-debate--motion {
+    margin-bottom: 2rem;
+    border-radius: 10px;
+}

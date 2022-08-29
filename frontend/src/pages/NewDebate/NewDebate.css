@@ -184,3 +184,8 @@
     color: var(--mcc-kek);
     font-weight: bold;
 }
+
+.new-debate--motion-text {
+    font-style: italic;
+    font-weight: bold;
+}

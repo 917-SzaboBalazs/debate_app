@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axios';
 
 // icon imports 
@@ -14,9 +15,13 @@ import WhiteNext from '../../images/next-white.svg';
 import YellowBack from '../../images/back-yellow.svg';
 import WhiteBack from '../../images/back-white.svg';
 
+import FinishDebate from '../../components/Popups/FinishDebate/FinishDebate';
+
 import './InDebateTimer.css'
 
 function InDebateTimer() {
+    const navigate = useNavigate();
+
     const [ seconds, setSeconds ] = useState(0);
     const [ running, setRunning ] = useState(false);
     const [ isMouse, setMouse ] = useState(false);
@@ -24,10 +29,13 @@ function InDebateTimer() {
     const [ isMouseNext, setMouseNext ] = useState(false);
     const [ isMouseBack, setMouseBack ] = useState(false);
     const [ currentlySpeaking, setCurrentlySpeaking ] = useState(1);
+    const [ trigger, setTrigger ] = useState(false);
 
     const [ role, setRole ] = useState('');
     const [ loggedIn, setLoggedIn ] = useState(false);
     const [ inDebate, setInDebate ] = useState(false);
+    const [ motion, setMotion ] = useState('');
+    const [ winner, setWinner ] = useState('');
 
     const speakerRole = [ 'PRO-Start', 'CON-Start', 'PRO-Start', 'CON-Start', 'PRO-End', 'CON-End', 'PRO-End', 'CON-end'];
 
@@ -37,9 +45,8 @@ function InDebateTimer() {
         axiosInstance
           .get('user/current/')
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             setLoggedIn(true);
-  
             if (res.data.current_debate != null) {
                 setInDebate(true);
                 
@@ -49,15 +56,34 @@ function InDebateTimer() {
             } else {
               setInDebate(false);
             }
-
-  
           })
           .catch((err) => {
             console.log(err);
           });
   
+          
       }, []);
 
+      useEffect(() => {
+        const interval=setInterval(() =>{
+            axiosInstance
+            .get('debate/current/')
+            .then((res) => {
+                // console.log(res);
+                setMotion(res.data.motion);
+                setCurrentlySpeaking(res.data.current_number);
+                setWinner(res.data.winner);
+                console.log(winner);
+            })
+            .catch((err) => {
+                console.log(err);
+            }, []);
+        }, 2000);
+
+        return () => clearInterval(interval);  
+      }, []);
+
+    // timer
     useEffect(() => {
         let interval;
 
@@ -94,10 +120,84 @@ function InDebateTimer() {
         setMouseBack(prev => !prev);
     }
 
+    const handleNext = () => {
+        if (currentlySpeaking < 8) {
+            let currentNumber = currentlySpeaking + 1;
+
+            axiosInstance
+                .patch('debate/current/', {'current_number': currentNumber})
+                .then((res) => {
+                    // console.log(res);
+                    setCurrentlySpeaking(currentNumber);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+    }
+
+    const handleBack = () => {
+        if (currentlySpeaking > 1) {
+            let currentNumber = currentlySpeaking - 1;
+
+            axiosInstance
+                .patch('debate/current/', {'current_number': currentNumber})
+                .then((res) => {
+                    // console.log(res);
+                    setCurrentlySpeaking(currentNumber);
+                })
+                .catch((err) => {
+                    console.log(err);
+            });
+        }
+    }
+
+    const leaveDebate = () => {
+        axiosInstance
+            .patch('user/current/', {"current_debate": null, 'role': null})
+            .then((res) => {
+            console.log('Sikeres kilépés');
+            navigate('/');
+            window.location.reload(false);
+            })
+            .catch((err) => {
+            console.log(err);
+            console.log('Baj van');
+            })
+    }
+
+    const handleFinish = () => {
+        if (currentlySpeaking == 8) {
+            // setFinished(true);
+            setTrigger(true);
+        }
+    }
+
     return (
+        <>
         <div className="indebate--base base">
             <div className="indebate--container container bg-light">
-                { loggedIn && inDebate ? <>
+                { loggedIn && inDebate ? 
+
+                <>
+                {
+                    winner == 'pro' || winner == 'con' ?
+                <>
+                <div className="in-debate--hiba row d-flex justify-content-center align-items-center">
+                        <h1 className='col-12 text-center'>The {winner} won!</h1>
+                        <button 
+                            className="in-debate--leave-debate white-text col-12"
+                            onClick={leaveDebate}    
+                        >
+                            Leave Debate
+                        </button>
+                    </div>
+                </>
+                :
+                <>
+                <div className="row indebate--motion-field">
+                    <h1 className="indebate--motion-text col-12 text-center">"{motion}"</h1>
+                </div>
                 <div className="row indebate--current-speaker">
                     <div className="col-12 text-center">
                         <h3>Current speaker: {currentlySpeaking} ({speakerRole[currentlySpeaking - 1]})</h3>
@@ -147,10 +247,7 @@ function InDebateTimer() {
                         <br/>
                         <button 
                             className="indebate--button indebate--back-button col-12"
-                            onClick={() => {
-                                if ( currentlySpeaking > 1 )
-                                setCurrentlySpeaking(prev => prev - 1);
-                                }}
+                            onClick={handleBack}
                             onMouseOver={handleMouseBack}
                             onMouseOut={handleMouseBack}
                         >
@@ -164,10 +261,7 @@ function InDebateTimer() {
                         </button>
                         <button 
                             className="indebate--button indebate--next-button col-12 text-center"
-                            onClick={() => {
-                                if ( currentlySpeaking < 8 )
-                                setCurrentlySpeaking(prev => prev + 1);
-                                }}
+                            onClick={handleNext}
                             onMouseOver={handleMouseNext}
                             onMouseOut={handleMouseNext}
                         >
@@ -179,12 +273,23 @@ function InDebateTimer() {
                             className='indebate--next'
                             />
                         </button>
+                        <div className="row in-debate--finish-field row d-flex justify-content-center p-4">
+                            <button 
+                                className="in-debate--finish-button col-3"
+                                onClick={handleFinish}
+                            >
+                                finish
+                            </button>
+                        </div>
                     </div>
                     </>
                     :
                     null }
                 </div>
                 </>
+                }
+                </> 
+
                 : 
                 <>
                     <div className="in-debate--hiba row d-flex justify-content-center align-items-center">
@@ -194,6 +299,8 @@ function InDebateTimer() {
                 }
             </div>
         </div>
+        <FinishDebate trigger={trigger} setTrigger={setTrigger} />
+        </>
       );
 }
 
