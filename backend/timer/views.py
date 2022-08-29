@@ -30,6 +30,8 @@ class CurrentTimeView(APIView):
             elif request.data.get('state') == "reset":
                 request.user.current_debate.timer.duration_in_minutes = 0
                 request.user.current_debate.timer.save()
+
+                request.user.current_debate.timer.state = request.user.current_debate.timer.STATE.PAUSED
                 request.user.current_debate.timer.duration_in_minutes = request.user.current_debate.speaker_time
                 request.user.current_debate.timer.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
