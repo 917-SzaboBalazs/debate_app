@@ -1,6 +1,4 @@
 from django.db import models
-
-# Create your models here.
 from django.utils import timezone
 
 
@@ -8,6 +6,7 @@ class DebateManager(models.Manager):
     def create_debate(self, type, entry_code, motion, **other_fields):
         other_fields.setdefault('no_judges', 3)
         other_fields.setdefault('has_chair', False)
+        other_fields.setdefault('speaker_time', 6)
 
         if type == "british":
             return self.create_british_parliamentary_debate(type, entry_code, motion, **other_fields)
@@ -35,6 +34,7 @@ class Debate(models.Model):
     team_size = models.IntegerField(default=1)
     no_judges = models.IntegerField(default=1)
     has_chair = models.BooleanField(default=False)
+    speaker_time = models.IntegerField(default=6)
 
     objects = DebateManager()
 
