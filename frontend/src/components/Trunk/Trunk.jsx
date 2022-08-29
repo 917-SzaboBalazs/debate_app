@@ -58,8 +58,8 @@ function Trunk() {
         }
 
   return (
-    <div className="bg-dark base">
-        <div className="container p-0">
+    <div className="home--container">
+        <div className="container">
             <div className="trunk--container">
                 <h1>DEBATE-CULTURE</h1>
                 <p>Ákos majd ir ide valamit.</p>
