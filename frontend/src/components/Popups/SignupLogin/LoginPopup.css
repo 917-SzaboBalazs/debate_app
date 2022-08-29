@@ -58,11 +58,9 @@
     right: 16px;
     width: 1.5rem;
     height: 1.5rem;
-    color: red;
-    background-color: whitesmoke;
-    border: none;
     font-weight: bold;
     font-size: 20px;
-    vertical-align: middle;
     transform: rotate(180deg);
+    color: #f24810;
+    background-color: whitesmoke;
 }

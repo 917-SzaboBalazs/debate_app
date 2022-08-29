@@ -55,12 +55,13 @@
     right: 16px;
     width: 1.75rem;
     height: 1.75rem;
-    color: red;
-    background-color: white;
     border: none;
     font-weight: bold;
     font-size: 20px;
     transition: .3s;
+    transform: rotate(180deg);
+    color: #f24810;
+    background-color: whitesmoke;
 }
 
 .create-debate--inner .create-debate--create-btn{
