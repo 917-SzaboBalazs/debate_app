@@ -54,7 +54,7 @@ class GetDebaterByRoleView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         if 'role' not in self.request.query_params:
-            raise APIException(detail="Role must be defined", code=400)
+            raise ParseError(detail="Role must be defined", code=400)
 
         return get_object_or_404(queryset=self.queryset, current_debate=self.request.user.current_debate,
                                  role=self.request.query_params.get('role'))
