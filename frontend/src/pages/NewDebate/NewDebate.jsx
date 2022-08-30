@@ -22,15 +22,15 @@ function NewDebate() {
     const [ currRole, setCurrRole ] = useState('spectator');
 
     const [ ready, setReady ] = useState(false);
-    const [ posts, setPosts ] = useState(['1', '2', '3', '4']);
-    const [ postJudge, setJudge ] = useState(['1', '2', '3', '4', '5']);
+    const [ posts, setPosts ] = useState([]);
+    const [ postJudge, setJudge ] = useState([]);
 
     const [ waitValue, setWaitValue ] = useState(false);
 
     useEffect(() => {
 
         const interval = setInterval(() => {
-            
+
         axiosInstance
             .get('debate/current/')
             .then((res) => {
@@ -41,7 +41,8 @@ function NewDebate() {
                 setEntryCode(res.data.entry_code);
                 setNoJudges(res.data.no_judges);
                 setMotion(res.data.motion);
-                setJudge(postJudge.slice(0, noJudges));
+                setJudge(setJudgeArray(res.data.no_judges, res.data.has_chair));
+                setPosts(setDebaterArray(res.data.team_size));
                 setWaitValue(true);
                 if (res.data.status != 'lobby') {
                     navigate('/in-debate');
@@ -61,11 +62,11 @@ function NewDebate() {
                     setErrorMessage('Valamit nagyon elcsűrtél');
                 }
             });
-        
+
         }, 2000)
         return () => {clearInterval(interval)};
-    }, []);   
-    
+    }, []);
+
     useEffect(() => {
         axiosInstance
         .get('user/current/')
@@ -74,6 +75,35 @@ function NewDebate() {
         })
     }, [currRole]);
 
+    function setJudgeArray(noJudges, hasChair) {
+      const judgeArr = [];
+
+      for (let i = 1; i <= noJudges; i++)
+      {
+          if (i == 1 && hasChair)
+          {
+            judgeArr.push("1 (chair)")
+          }
+          else
+          {
+            judgeArr.push(i);
+          }
+        }
+
+      return judgeArr;
+    }
+
+    function setDebaterArray(teamSize)
+    {
+        const debaterArr = [];
+
+        for (let i = 1; i <= teamSize; i++)
+        {
+            debaterArr.push(i)
+        }
+
+        return debaterArr;
+    }
 
     function handleChoose(team, nr) {
 
@@ -116,10 +146,10 @@ function NewDebate() {
             })
     }
 
-    const proListed = posts.map((player) => 
+    const proListed = posts.map((player) =>
         <div className="col-2 new-debate--participant" onClick={event => handleChoose('pro', player)} key={player}>
             {player}
-        </div> 
+        </div>
     )
     const conListed = posts.map((player) =>
         <div className="col-2 new-debate--participant" onClick={event => handleChoose('con', player)} key={player}>
@@ -144,10 +174,10 @@ function NewDebate() {
                                 </h1>
                             </div>
                         </>
-                    
+
                     :
                     <>
-                
+
                 <div className="row">
                     <h1 className='new-debate--motion col-12 text-center p-4'><span className="new-debate--motion-text white-text">"{motion}"</span></h1>
                 </div>
@@ -164,13 +194,13 @@ function NewDebate() {
                 </div>
                 <div className="new-debate--decision row justify-content-evenly">
                     { waitValue ? <>
-                    <div 
+                    <div
                         className="new-debate--decision--pro new-debate--dec col-sm-3 col-md-3"
                     >
                         <div className="col-12 new-debate--pro-btn new-debate--label text-center font-weight-bold">PRO</div>
                         {proListed}
                     </div>
-                    <div 
+                    <div
                         className="new-debate--decision--con new-debate--dec col-sm-3 col-md-3"
                     >
                         <div className="col-12 new-debate--pro-btn text-center new-debate--label font-weight-bold">CON</div>
@@ -183,7 +213,7 @@ function NewDebate() {
                      </>   : null
                     }
                 </div>
-                
+
                 <div className="new-debate--spectator  row justify-content-center">
                     <div className="new-debate--spectator-col new-debate--button col-4 white-text text-center" onClick={event => handleChoose('spectator', '')}>
                         Spectator
@@ -214,10 +244,10 @@ function NewDebate() {
                         </div>
                 </div>
                 {
-                    ready && currRole == 'judge1' ? 
+                    ready && currRole == 'judge1' ?
                     <>
                         <div className="new-debate--start row justify-content-center">
-                            <div 
+                            <div
                                 className="new-debate--button col-4 white-text text-center"
                                 onClick={startDebate}
                             >
