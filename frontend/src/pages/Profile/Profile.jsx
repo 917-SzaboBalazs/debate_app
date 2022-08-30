@@ -29,18 +29,18 @@ function Profile() {
             setbDay(res.data.birthday);
             setAboutMe(res.data.about_me);
             setRole(res.data.role);
-  
+
             if (res.data.current_debate != null) {
               setInDebate(true);
             } else {
               setInDebate(false);
             }
-  
+
           })
           .catch((err) => {
             console.log(err);
           });
-  
+
       }, []);
 
   return (
@@ -62,7 +62,7 @@ function Profile() {
                                 <h1 className="profile--lastname-element profile--element col-12">Lastname: {lastName}</h1>
                             </div>
                             <div className="profile--birthday row">
-                                <h1 className="profile--birthday-element profile--element col-12">Brthday: {bDay}</h1>
+                                <h1 className="profile--birthday-element profile--element col-12">Birthday: {bDay}</h1>
                             </div>
                             <div className="profile--email row">
                                 <h1 className="profile--email-element profile--element col-12">Email: {email}</h1>
@@ -103,7 +103,7 @@ function Profile() {
             <div className="profile--base base text-center">
                     <div className="profile--container-error container bg-light text-center d-flex align-items-center justify-content-center">
                         <h1 className="profile--not-logged-in">
-                            Jelentkezz be előbb te fegyenc. 
+                            Jelentkezz be előbb te fegyenc.
                         </h1>
                     </div>
             </div>

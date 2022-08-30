@@ -9,7 +9,7 @@ import CreateDebate from '../Popups/CreateDebate/CreateDebate';
 import './Trunk.css';
 
 function Trunk() {
-    const [ loggedIn, setLoggedIn ] = useState(false); 
+    const [ loggedIn, setLoggedIn ] = useState(false);
     const [ triggerCreate, setTriggerCreate ] = useState(false);
     const [ triggerJoin, setTriggerJoin ] = useState(false);
     const [ inDebate, setInDebate ] = useState(false);
@@ -64,30 +64,30 @@ function Trunk() {
                 <h1>DEBATE-CULTURE</h1>
                 <p>Ákos majd ir ide valamit.</p>
                 <div className="trunk--btns">
-                { !loggedIn ? 
+                { !loggedIn ?
                     <>
                     <button
                         className='trunk--login-button text-uppercase'
                     >
-                        <Link className='trunk--login-link trunk--link-text' to='/log-In'><span className='white-text'>Sign In</span></Link>
+                        <Link className='trunk--login-link trunk--link-text' to='/log-In'><span className='white-text'>Log In</span></Link>
                     </button>
-                    <button 
+                    <button
                         className='trunk--signin-button text-uppercase'
                     >
                         <Link className="trunk--signup-link trunk--link-text" to='/sign-up'><span className='white-text'>Register</span></Link>
                     </button>
                     </>
-                : 
+                :
                     <>
                         {
-                            !inDebate ? 
+                            !inDebate ?
                             <>
                                 <button
                                     className='trunk--login-button text-uppercase'
                                 >
                                     <div className='trunk--login-link trunk--link-text' onClick={handleClickTriggerJoin} ><span className='white-text'>Join</span></div>
                                 </button>
-                                <button 
+                                <button
                                     className='trunk--signin-button text-uppercase'
                                 >
                                     <div className="trunk--signup-link trunk--link-text" onClick={handleClickTriggerCreate}><span className='white-text'>Create</span></div>
@@ -101,7 +101,7 @@ function Trunk() {
                                 >
                                     <Link className='trunk--login-link trunk--link-text' to='/new-debate'><span className='white-text'>Current</span></Link>
                                 </button>
-                                <button 
+                                <button
                                     className='trunk--signin-button text-uppercase'
                                 >
                                     <div className="trunk--signup-link trunk--link-text" onClick={leaveDebate}><span className='white-text'>Leave</span></div>

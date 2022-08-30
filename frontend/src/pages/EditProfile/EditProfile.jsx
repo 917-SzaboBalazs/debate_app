@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import axiosInstance from '../../axios'
 
@@ -15,9 +16,13 @@ function EditProfile() {
     const [ newUserName, setNewUserName ] = useState('');
     const [ newFirstName, setNewFirstName ] = useState('');
     const [ newLastName, setNewLastName ] = useState('');
+    const [ newBirthday, setNewBirthday ] = useState('');
+    const [ newEmail, setNewEmail ] = useState('');
     const [ newAboutMe, setNewAboutMe ] = useState('');
 
     const [ loggedIn, setLoggedIn ] = useState(false);
+
+    let navigate = useNavigate();
 
     useEffect(() => {
 
@@ -32,6 +37,8 @@ function EditProfile() {
             setNewFirstName(res.data.first_name);
             setLastName(res.data.last_name);
             setNewLastName(res.data.last_name);
+            setNewBirthday(res.data.birthday);
+            setNewEmail(res.data.email);
             setAboutMe(res.data.about_me);
             setNewAboutMe(res.data.about_me);
           })
@@ -39,7 +46,7 @@ function EditProfile() {
             setLoggedIn(false);
             console.log(err);
           });
-  
+
       }, []);
 
   return (
@@ -47,16 +54,16 @@ function EditProfile() {
         <div className="edit--base base">
             <div className="edit--container bg-light container">
                 {
-                    loggedIn ? 
+                    loggedIn ?
                     <>
                         <div className="edit--title row text-center">
                             <h1 className="col-12">Edit Your Profile!</h1>
                         </div>
                         <div className="edit--username edit--element row">
                             <h1 className="edit--username-text col-md-5 col-sm-12">Username: </h1>
-                            <input 
-                                type="text" 
-                                className="edit--username-input col-md-7 col-sm-12" 
+                            <input
+                                type="text"
+                                className="edit--username-input col-md-7 col-sm-12"
                                 value={newUserName}
                                 onChange={(e) => {
                                     setNewUserName(e.target.value);
@@ -64,10 +71,10 @@ function EditProfile() {
                             />
                         </div>
                         <div className="edit--firstname edit--element row">
-                            <h1 className="edit--firstname-text col-md-5 col-sm-12">FirstName: </h1>
-                            <input 
-                                type="text" 
-                                className="edit--firstname-input col-md-7 col-sm-12" 
+                            <h1 className="edit--firstname-text col-md-5 col-sm-12">Firstname: </h1>
+                            <input
+                                type="text"
+                                className="edit--firstname-input col-md-7 col-sm-12"
                                 value={newFirstName}
                                 onChange={(e) => {
                                     setNewFirstName(e.target.value);
@@ -75,28 +82,50 @@ function EditProfile() {
                             />
                         </div>
                         <div className="edit--lastname edit--element row">
-                            <h1 className="edit--lastname-text col-md-5 col-sm-12">LastName: </h1>
-                            <input 
-                                type="text" 
-                                className="edit--lastname-input col-md-7 col-sm-12" 
+                            <h1 className="edit--lastname-text col-md-5 col-sm-12">Lastname: </h1>
+                            <input
+                                type="text"
+                                className="edit--lastname-input col-md-7 col-sm-12"
                                 value={newLastName}
                                 onChange={(e) => {
                                     setNewLastName(e.target.value);
                                 }}
                             />
                         </div>
+                        <div className="edit--birthday edit--element row">
+                            <h1 className="edit--birthday-text col-md-5 col-sm-12">Birthday: </h1>
+                            <input
+                                type="date"
+                                className="edit--birthday-input col-md-7 col-sm-12"
+                                value={newBirthday}
+                                onChange={(e) => {
+                                    setNewBirthday(e.target.value);
+                                }}
+                            />
+                        </div>
+                        <div className="edit--email edit--element row">
+                            <h1 className="edit--email-text col-md-5 col-sm-12">Email: </h1>
+                            <input
+                                type="email"
+                                className="edit--email-input col-md-7 col-sm-12"
+                                value={newEmail}
+                                onChange={(e) => {
+                                    setNewEmail(e.target.value);
+                                }}
+                            />
+                        </div>
                         <div className="edit--aboutme edit--element row">
-                            <h1 className="edit--aboutme-text col-md-5 col-sm-12">About Me: </h1>
-                            <textarea 
-                                className="edit--aboutme-input col-md-7 col-sm-12" 
+                            <h1 className="edit--aboutme-text col-md-5 col-sm-12">About me: </h1>
+                            <textarea
+                                className="edit--aboutme-input col-md-7 col-sm-12"
                                 value={newAboutMe}
                                 onChange={(e) => {
                                     setNewAboutMe(e.target.value);
-                                }}   
+                                }}
                             />
                         </div>
                         <div className="edit--save-button-row row d-flex justify-content-center text-center">
-                            <div 
+                            <div
                                 className="edit--save-button-element col-3"
                                 onClick={() => {
                                     axiosInstance
@@ -104,11 +133,12 @@ function EditProfile() {
                                                 'username': newUserName,
                                                 'first_name': newFirstName,
                                                 'last_name': newLastName,
+                                                'birthday': newBirthday,
+                                                'email': newEmail,
                                                 'about_me': newAboutMe
                                                 })
                                         .then((res) => {
-                                            alert('gg');
-                                            window.location.reload(false);
+                                            navigate('/profile')
                                         })
                                         .catch((err) => {
                                             console.log(err);

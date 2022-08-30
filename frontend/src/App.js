@@ -30,8 +30,9 @@ function App() {
           <Route path='/debates' exact element={<Debates />} />
           <Route path='/in-debate' exact element={<InDebateTimer />} />
           <Route path='/profile' exact element={<Profile />} />
-          <Route path='/error404' exact element={<Error />} />
           <Route path='/edit-profile' exact element={<EditProfile />} />
+
+          <Route path='*' exact element={<Error />} />
         </Routes>
       <Footer />
       </Router>
