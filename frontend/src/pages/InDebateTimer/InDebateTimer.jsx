@@ -96,27 +96,6 @@ function InDebateTimer() {
         return () => clearInterval(interval);  
       }, []);
 
-    // // timer
-    // useEffect(() => {
-    //     let interval;
-
-    //     if (running) {
-    //         interval = setInterval(() => {
-    //             setSeconds((prevSeconds) => 
-    //                 prevSeconds + 10
-    //             );
-
-    //             if (seconds > 180000) {
-    //                 setRunning(false);
-    //             }
-    //         }, 10);
-    //     } else if (!running) {
-    //         clearInterval(interval);
-    //     };
-
-    //     return () => clearInterval(interval);
-    // }, [running, seconds]);
-
     const handleMouse = () => {
         setMouse(prev => !prev);
     }

@@ -32,7 +32,7 @@ function CreateDebate(props) {
     }
 
     axiosInstance
-      .post('debate/', { 'type': debateType, 'motion': motion, 'no_judges': noJudges, 'has_chair': hasChair})
+      .post('debate/', { 'type': debateType, 'motion': motion, 'no_judges': noJudges, 'has_chair': hasChair, 'status': 'lobby'})
       .then((res) => {
         navigate('/new-debate');
         window.location.reload(false);

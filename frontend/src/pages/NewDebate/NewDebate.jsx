@@ -43,7 +43,7 @@ function NewDebate() {
                 setMotion(res.data.motion);
                 setJudge(postJudge.slice(0, noJudges));
                 setWaitValue(true);
-                if (res.data.status == 'running') {
+                if (res.data.status != 'lobby') {
                     navigate('/in-debate');
                 }
             })
