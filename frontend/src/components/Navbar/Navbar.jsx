@@ -9,7 +9,6 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import CreateDebate from '../Popups/CreateDebate/CreateDebate';
 import JoinDebate from '../Popups/JoinDebate/JoinDebate';
-import LogOut from '../../pages/LogOut/logout';
 
 import axiosInstance from '../../axios';
 
@@ -60,9 +59,23 @@ function CollapsibleExample() {
     }
 
     const logOut = () => {
-      LogOut();
-      setLoggedIn(false);
-      window.location.reload(false);
+      axiosInstance
+        .post('user/logout/blacklist/', {
+  			refresh_token: localStorage.getItem('refresh_token'),
+  		})
+        .then((res) => {
+          localStorage.removeItem('access_token');
+      		localStorage.removeItem('refresh_token');
+      		axiosInstance.defaults.headers['Authorization'] = null;
+
+          setLoggedIn(false);
+
+          navigate('/');
+          window.location.reload(false);
+      })
+        .catch((err) => {
+          console.log(err);
+        })
     }
 
     const leaveDebate = () => {
@@ -112,7 +125,7 @@ function CollapsibleExample() {
                 :
                 <>
                   <Nav.Link href='/profile'>{userName} </Nav.Link>
-                  <Nav.Link href="/logout">Log Out</Nav.Link>
+                  <Nav.Link onClick={logOut}>Log Out</Nav.Link>
                 </>
             }
           </Nav>

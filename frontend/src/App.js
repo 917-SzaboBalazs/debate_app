@@ -9,7 +9,6 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Debates from './pages/Debates/Debates';
 import InDebateTimer from './pages/InDebateTimer/InDebateTimer';
-import LogOut from './pages/LogOut/logout';
 import Profile from './pages/Profile/Profile';
 import Error from './pages/Error404/Error'
 import EditProfile from './pages/EditProfile/EditProfile';
@@ -25,7 +24,6 @@ function App() {
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/log-In' exact element={<Login />} />
-          <Route path='/logout' exact element={<LogOut />} />
           <Route path='/sign-up' exact element={<Signup/>} />
           <Route path='/about-us' exact element={<AboutUs />} />
           <Route path='/new-debate' exact element={<NewDebate />} />
