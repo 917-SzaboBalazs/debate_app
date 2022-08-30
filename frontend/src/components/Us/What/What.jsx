@@ -9,8 +9,7 @@ function What() {
             <h1>
                 Miről szól a weboldal?
             </h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
+            <p>A Debate Culture egy olyan oldal, ahol bárki kipróbálhatja magát a vita világában. A felhasználók megtalálhatják az oldalunkon elérhető három vitatípus szabályait és létrehozhatnak vagy csatlakozhatnak vitákhoz. Az DC segítségével egy igazi vitának lehet a részese. A bíró koordinálásával a  vitázók kiválaszthatják, hogy a tételmondat mellett vagy ellen érvelnek, valamint a vitázó nevét, csapatát és a hátramaradt idejét a közönség pontosan és struktúráltan tudja követni.</p>
         </div>
     </div>
   )
