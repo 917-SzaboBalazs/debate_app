@@ -61,8 +61,8 @@ function Trunk() {
     <div className="home--container">
         <div className="container">
             <div className="trunk--container">
-                <h1>DEBATE-CULTURE</h1>
-                <p>Ákos majd ir ide valamit.</p>
+                <h1>DEBATE CULTURE</h1>
+                <p>„It is better to debate a question without settling it than to settle a question without debating it.”</p>
                 <div className="trunk--btns">
                 { !loggedIn ? 
                     <>

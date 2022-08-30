@@ -33,9 +33,9 @@
   .trunk--container > p {
     margin-top: 8px;
     color: #fff;
-    font-size: 32px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-      'Lucida Sans', Arial, sans-serif;
+    font-size: 28px;
+    font-family: 'Trebuchet MS';
+    font-style: italic;
     justify-content: space-between;
   }
 

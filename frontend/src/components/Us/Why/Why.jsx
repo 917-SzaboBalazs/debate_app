@@ -9,8 +9,7 @@ function Why() {
             <h1>
                 Miért jöttünk létre?
             </h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
+            <p>Csapatunk a Mathias Corvinus Collegium kolozsvári egyetemi program diákprojektje során jött létre és feladatunk a vitakultúra terjesztése. Fontos számunkra a tájékozódottság és a folytonos tudásbővítés, épp ezért a közös célunk célunk az, hogy segítsünk a felhasználóinknak a logikus gondolatmenet levezetésében, a véleményük kifejtésében, valamint a határozott és meggyőző érvelésben. Úgy gondoljuk, hogy a kritikus és innovatív gondolkodás képessége segíteni fog abban, hogy az élet minden területén megállja a helyét.</p>
         </div>
     </div>
   )

@@ -10,6 +10,12 @@
 .debates--header-title {
     font-weight: bold;
     color: whitesmoke !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Trebuchet MS";
+
+
 }
 
 .debates--header-elements {
@@ -40,6 +46,7 @@
     border-right: 3px solid #f2ca10;
     padding-left: 2.5vw;
     padding-right: 2.5vw;
+    text-indent: 35px;
 }
 
 .debates--elements--title{
@@ -64,5 +71,6 @@
         padding: 0;
         border-bottom: 3px solid #f2ca10;
         padding-bottom: 5vh;
+
     }
 }
