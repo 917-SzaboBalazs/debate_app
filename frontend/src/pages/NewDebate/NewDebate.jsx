@@ -34,7 +34,7 @@ function NewDebate() {
         axiosInstance
             .get('debate/current/')
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 setSomeError(false);
                 setErrorMessage('');
                 setDebateType(res.data.type);
@@ -80,16 +80,25 @@ function NewDebate() {
         if (!ready) {
             let role = team + nr;
             console.log(role);
-            setCurrRole(role);
 
             axiosInstance
-                .patch('user/current/', {'role':role})
-                .then((res) => {
-                    console.log('nice');
+                .get('user/role/', {params:{'role':role}})
+                .then(() => {
+                    console.log('nemjo');
+                    alert(role + 'is already chosen')
                 })
-                .catch((err) => {
-                    console.log(err);
-                });
+                .catch(() => {
+                    console.log('jojo');
+                    setCurrRole(role);
+                    axiosInstance
+                    .patch('user/current/', {'role':role})
+                    .then((res) => {
+                        // console.log('nice');
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+                })
         } else {
             alert('You must not be ready in order to change role.');
         }
