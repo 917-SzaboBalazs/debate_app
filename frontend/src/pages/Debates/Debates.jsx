@@ -7,7 +7,7 @@ const text = " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque 
 
 function Debates() {
   return (
-    <div className="debates--base base bg-dark">
+    <div className="debates--base base">
         <div className="container debates--container bg-light">
             <div className="row debates--header-row bg-light p-4">
                 <div className="col-4 debates--header-title-cont">

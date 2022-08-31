@@ -43,11 +43,11 @@ function JoinDebate(props) {
                 <button className="join-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
                 { props.loggedIn ?
                 <>
-                <h3 className="join-debate--text white-text">Enter the debate code: </h3>
+                <h3 className="join-debate--text white-text">Vita kódja: </h3>
                 <input
                     type="text"
                     value={debateCode}
-                    placeholder='enter code'
+                    placeholder='kód'
                     className="join-debate--code"
                     onChange={(e) => {
                         setDebateCode(e.target.value);
@@ -57,7 +57,7 @@ function JoinDebate(props) {
                     className="join-debate--next-btn"
                     onClick={handleNext}
                 >
-                    Next
+                    Következő
                 </button>
                 </>
                 :

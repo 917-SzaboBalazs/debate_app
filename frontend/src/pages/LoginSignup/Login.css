@@ -15,7 +15,6 @@
 }
 
 .login-body {
-    background-color: var(--third);
     min-height: 100vh;
     /* width: 100%; */
 }

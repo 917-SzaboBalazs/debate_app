@@ -13,9 +13,9 @@
 }
 
 .base {
-  background-image: url('./images/bg-logo.png');
-  background-size: 75px 75px;
-  background-attachment: fixed;
+  /*background-image: url('./images/mikrofon.jpg') center center/cover no-repeat;
+  background-attachment: fixed;*/
+  background-color: #437c8b;
 }
 
 .white-text {

@@ -72,10 +72,10 @@ function CreateDebate(props) {
             <button className="create-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
            { props.loggedIn ?
             <>
-            <h3 className="create--debate-text white-text">Give the motion</h3>
+            <h3 className="create--debate-text white-text">Tételmondat</h3>
             <input type="text" className="create-debate--motion input" onChange={(ev) => {setMotion(ev.target.value)}}/>
             <h3 className="create-debate--text">
-                Select debate type
+                Vita típusa
             </h3>
             <Select
               className="select-debate create-debate--input"
@@ -84,21 +84,21 @@ function CreateDebate(props) {
               onChange={(e) => setType(e.value)}
               />
             <h3 className="create-debate--text col-12">
-              Select nr. of judges
+              Bírók száma
             </h3>
             <input type="number" className="create-debate--no-judges create-debate--input col-12" value={noJudges} onChange={ev => handleNumber(ev)}/>
 
             <h3 className="create-debate--text col-12">
-              Speaker time
+              Beszédek hossza (perc)
             </h3>
             <input type="number" className="create-debate--speaker-time create-debate--input col-12" value={speakerTime} onChange={ev => handleSpeakerTime(ev)}/>
 
             <h3 className="create-debate--text col-8">
-              Chair?
+              Ház?
             </h3>
             <input type="checkbox" className="create-debate--chair create-debate--input col-4" value={hasChair} onChange={handleCheckBox}/>
             <button className="create-debate--create-btn" onClick={handleCreate}>
-                Create!
+                Létrehoz!
             </button>
             </>
             :

@@ -259,12 +259,12 @@ function NewDebate() {
                     <h1 className='new-debate--motion col-12 text-center p-4'><span className="new-debate--motion-text white-text">"{motion}"</span></h1>
                 </div>
                 <div className="row pt-4">
-                    <h2 className='new-debate--basic-text col-md-6 col-sm-12 text-center white-text'>Debate-type: {debateType}</h2>
-                    <h2 className='new-debate--current-role col-md-6 col-sm-12 text-center white-text'>Your role: {currRole}</h2>
+                    <h2 className='new-debate--basic-text col-md-6 col-sm-12 text-center white-text'>Vita típus: {debateType}</h2>
+                    <h2 className='new-debate--current-role col-md-6 col-sm-12 text-center white-text'>Szerep: {currRole}</h2>
                 </div>
                 <div className="row">
-                    <h2 className='new-debate--ready col-md-6 col-sm-12 text-center white-text'>Ready: {ready ? 'true' : 'false'}</h2>
-                    <h2 className='new-debate--entry-code col-md-6 col-sm-12 text-center white-text'>Entry: {entryCode}</h2>
+                    <h2 className='new-debate--ready col-md-6 col-sm-12 text-center white-text'>Kész: {ready ? 'true' : 'false'}</h2>
+                    <h2 className='new-debate--entry-code col-md-6 col-sm-12 text-center white-text'>Vita kód: {entryCode}</h2>
                 </div>
 
                 <div className="new-debate--procon-row row pt-2 justify-content-around">
@@ -293,7 +293,7 @@ function NewDebate() {
 
                 <div className="new-debate--spectator  row justify-content-center">
                     <div className="new-debate--spectator-col new-debate--button col-4 white-text text-center" onClick={handleChooseSpectator}>
-                        Spectator
+                        Szemlélő
                     </div>
                 </div>
 
@@ -311,11 +311,11 @@ function NewDebate() {
                             {
                                 ready ?
                                 <>
-                                    not ready
+                                    Nem állok készen
                                 </>
                                 :
                                 <>
-                                    ready
+                                    Készen állok
                                 </>
                             }
                         </div>

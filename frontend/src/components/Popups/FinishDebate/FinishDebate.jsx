@@ -58,13 +58,13 @@ function FinishDebate(props) {
         <div className="finish-debate--inner row">
             <button className="finish-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
             <div className="finish-debate--winner-field row">
-              <h3 className="finish-debate--winner-text col-12 white-text pb-4">Select winner</h3>
+              <h3 className="finish-debate--winner-text col-12 white-text pb-4">Ki nyert?</h3>
               <div className="finish-debate--buttons-field d-flex align-items-center justify-content-center text-center"></div>
               <div className="finish-debate--buttons-container">
                 <button className="finish-debate--pro finish-debate--button col-2" onClick={handlePro}>PRO</button>
-                <button className="finish-debate--con finish-debate--button col-2" onClick={handleCon}>CON</button>
-                <button className="finish-debate--draw finish-debate--button col-2" onClick={handleDraw}>DRAW</button>
-                <button className="finish-debate--no-winner finish-debate--button col-3" onClick={handleNoWinner}>NO WINNER</button>
+                <button className="finish-debate--con finish-debate--button col-2" onClick={handleCon}>KONTRA</button>
+                <button className="finish-debate--draw finish-debate--button col-2" onClick={handleDraw}>DÖNTETLEN</button>
+                <button className="finish-debate--no-winner finish-debate--button col-3" onClick={handleNoWinner}>NINCS GYŐZTES</button>
               </div>
             </div>
         </div>
