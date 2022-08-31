@@ -69,3 +69,19 @@ class GetDebaterByCurrentNumberView(generics.RetrieveAPIView):
         current_number = self.request.user.current_debate.current_number
         return get_object_or_404(queryset=self.queryset, current_debate=self.request.user.current_debate,
                                  number=current_number)
+
+
+class GetAllDebatersFromCurrentDebateView(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = CurrentUserSerializer
+
+    def get(self, request, *args, **kwargs):
+        if request.user.current_debate is None:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data={"detail": "The current user is not in debate now"})
+
+        serialized_res = self.serializer_class(self.get_queryset(), many=True)
+
+        return Response(data=serialized_res.data)
+
+    def get_queryset(self):
+        return NewUser.objects.all().filter(current_debate=self.request.user.current_debate)
