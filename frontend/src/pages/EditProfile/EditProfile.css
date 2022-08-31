@@ -43,3 +43,36 @@
 .edit--save-button-row {
     margin-top: 4rem;
 }
+
+.profile--about-me-row, .profile--in-debate-row{
+    background-color: whitesmoke !important;
+    box-shadow: none !important;
+    border: 2px solid #22334d
+}
+ 
+.profile--edit-element{
+    background-color: whitesmoke;
+    border-radius: 7px;
+    padding: 2vh 2vw;
+}
+
+.profile--img-element{
+    border-radius: 12px;
+    transition: .2s;
+}
+
+.profile--img-element:hover{
+    transform: rotate(360deg);
+    transition: .2s;
+}
+
+@media only screen and (max-width: 768px) {
+    .profile--edit{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .edit--save-button-element{
+        width: 100% !important;
+    }
+}

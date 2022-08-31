@@ -10,7 +10,7 @@ function Debates() {
     <div className="debates--base base bg-dark">
         <div className="container debates--container bg-light">
             <div className="row debates--header-row bg-light p-4">
-                <div className="col-4 debates--header-title">
+                <div className="col-4 debates--header-title-cont">
                     <h1 className="debates--header-title">
                         Vitaformátumok
                     </h1>
