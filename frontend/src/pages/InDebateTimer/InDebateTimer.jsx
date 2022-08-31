@@ -195,10 +195,10 @@ function InDebateTimer() {
     }
 
     const handleFinish = () => {
-        if (currentlySpeaking == 8) {
+        //if (currentlySpeaking == 8) {
             // setFinished(true);
             setTrigger(true);
-        }
+        //}
     }
 
     return (
