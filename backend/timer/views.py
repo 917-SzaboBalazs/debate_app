@@ -11,8 +11,18 @@ class CurrentTimeView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        if request.user.current_debate.timer.remaining_time().seconds == 0:
+            request.user.current_debate.timer.state = request.user.current_debate.timer.STATE.PAUSED
+            request.user.current_debate.timer.save()
+
+        if request.user.current_debate.timer.state == request.user.current_debate.timer.STATE.RUNNING:
+            curr_state = "running"
+        else:
+            curr_state = "paused"
+
         return Response(data={
-            "remaining-time": request.user.current_debate.timer.remaining_time().seconds
+            "remaining-time": request.user.current_debate.timer.remaining_time().seconds,
+            "state": curr_state,
         })
 
     def patch(self, request):
