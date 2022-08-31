@@ -40,6 +40,7 @@ function InDebateTimer() {
     const [ motion, setMotion ] = useState('');
     const [ winner, setWinner ] = useState('');
     const [ status, setStatus ] = useState('');
+    const [ speakerTime, setSpeakerTime ] = useState('');
 
     const speakerRole = [ 'Nyitó kormány - 1', 'Nyitó ellenzék - 1', 'Nyitó kormány - 2', 'Nyitó ellenzék - 2', 'Záró kormány - 1', 'Záró ellenzék - 1', 'Záró kormány - 2', 'Záró ellenzék - 2'];
 
@@ -73,7 +74,8 @@ function InDebateTimer() {
             axiosInstance
             .get('debate/current/')
             .then((res) => {
-                // console.log(res);
+                // console.log(res.data.speaker_time);
+                setSpeakerTime(res.data.speaker_time);
                 setMotion(res.data.motion);
                 setCurrentlySpeaking(res.data.current_number);
                 setWinner(res.data.winner);
@@ -213,6 +215,27 @@ function InDebateTimer() {
         //}
     }
 
+    const handleSetTime = (ev) => {
+        console.log(ev);
+        axiosInstance
+            .patch('debate/current/', {'speaker_time': ev.target.value})
+            .then(() => {
+                axiosInstance
+                    .patch('timer/', {'state': 'reset'})
+                    .then(() => {
+                        setRunning(false);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        
+       
+    }
+
     return (
         <>
         <div className="indebate--base base">
@@ -306,6 +329,10 @@ function InDebateTimer() {
                             className='indebate--next'
                             />
                         </button>
+                        <div className="in-debate--speaker-time row d-flex justify-content-center">
+                            <h2 className="in-debate--speaker-time-text col-md-2">Set time:</h2>
+                            <input type="number" className="in-debate--speaker-time-element col-md-3 p-sm-2 text-center" value={speakerTime} onChange={(ev) => {handleSetTime(ev)}}/>
+                        </div>
                         <div className="row in-debate--finish-field row d-flex justify-content-center p-4">
                             <button
                                 className="in-debate--finish-button col-3"

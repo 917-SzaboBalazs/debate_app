@@ -167,6 +167,14 @@
     transition: .2s;
 }
 
+.in-debate--speaker-time-text {
+    padding-top: 1rem;
+}
+
+.in-debate--speaker-time-element {
+    border-radius: 1.5rem;
+}
+
 @media screen and (max-width: 768px) {
     .in-debate--finish-button{
         width: 80%;
