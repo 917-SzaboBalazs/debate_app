@@ -172,6 +172,21 @@ function NewDebate() {
         }
     }
 
+    const handleChooseSpectator = () => {
+        if (!ready) {
+            setCurrRole('spectator');
+
+            axiosInstance
+            .patch('user/current/', {'role':'spectator'})
+            .then((res) => {
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        }
+    }
+
     const startDebate = () => {
         axiosInstance
             .patch('debate/current/', {'status': 'running'})
