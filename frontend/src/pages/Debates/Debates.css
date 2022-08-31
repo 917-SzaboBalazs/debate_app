@@ -7,20 +7,24 @@
     padding-top: 10vh;
 }
 
-.debates--header-title {
+.debates--header-title-cont {
     font-weight: bold;
     color: whitesmoke !important;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: "Trebuchet MS";
-
-
+    text-align: center !important;
+    width: 100%;
+}
+.debates--header-title{
+    color: whitesmoke;
 }
 
 .debates--header-elements {
     text-align: right;
     color: whitesmoke !important;
+    display: none;
 }
 
 .debates--header-row {
