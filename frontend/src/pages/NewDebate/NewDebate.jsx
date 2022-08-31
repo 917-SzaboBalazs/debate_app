@@ -26,8 +26,24 @@ function NewDebate() {
     const [ postJudge, setJudge ] = useState([]);
     const [ hasChair, setHasChair ] = useState(false);
     const [ waitValue, setWaitValue ] = useState(false);
+    const [ allUsers, setAllUsers] = useState([]);
 
     useEffect(() => {
+
+      axiosInstance
+        .get("user/all-from-current-debate/")
+        .then((res) => {
+          setAllUsers(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+
+        axiosInstance
+        .get('user/current/')
+        .then((res) => {
+            setCurrRole(res.data.role);
+        })
 
         const interval = setInterval(() => {
 
@@ -65,17 +81,21 @@ function NewDebate() {
                 }
             });
 
-        }, 2000)
+            axiosInstance
+              .get("user/all-from-current-debate/")
+              .then((res) => {
+                setAllUsers(res.data);
+              })
+              .catch((err) => {
+                console.log(err);
+              })
+
+
+        }, 500)
+
         return () => {clearInterval(interval)};
     }, []);
 
-    useEffect(() => {
-        axiosInstance
-        .get('user/current/')
-        .then((res) => {
-            setCurrRole(res.data.role);
-        })
-    }, [currRole]);
 
     function setJudgeArray(noJudges, hasChair) {
       const judgeArr = [];
@@ -108,7 +128,6 @@ function NewDebate() {
     }
 
     function handleChoose(team, nr) {
-
         if (!ready) {
             let role = team + nr;
             console.log(role);
@@ -122,15 +141,16 @@ function NewDebate() {
                 .catch(() => {
                     console.log('jojo');
                     setCurrRole(role);
+
                     axiosInstance
                     .patch('user/current/', {'role':role})
                     .then((res) => {
-                        // console.log('nice');
+
                     })
                     .catch((err) => {
                         console.log(err);
                     });
-                })
+                });
         } else {
             alert('You must not be ready in order to change role.');
         }
@@ -148,20 +168,44 @@ function NewDebate() {
             })
     }
 
-    const proListed = posts.map((player) =>
+    const proListed = posts.map((player) => {
+      let role = 'pro' + player;
+      let user = allUsers.find(user => user.role == role);
+      let username = user == undefined ? "" : " - " + user.username;
+
+      return (
         <div className="col-2 new-debate--participant" onClick={event => handleChoose('pro', player)} key={player}>
-            {player}
+            {player}{username}
         </div>
+      )
+    }
+
     )
-    const conListed = posts.map((player) =>
+    const conListed = posts.map((player) => {
+      let role = 'con' + player;
+      let user = allUsers.find(user => user.role == role);
+      let username = user == undefined ? "" : " - " + user.username;
+
+      return (
         <div className="col-2 new-debate--participant" onClick={event => handleChoose('con', player)} key={player}>
-            {player}
+            {player}{username}
         </div>
+      )
+    }
+
     )
-    const judgeListed = postJudge.map((player) =>
+    const judgeListed = postJudge.map((player) => {
+      let role = 'judge' + player;
+      let user = allUsers.find(user => user.role == role);
+      let username = user == undefined ? "" : " - " + user.username;
+
+      return (
         <div className="col-2 new-debate--participant" onClick={event => handleChoose('judge', player)} key={player}>
-            {player}
+            {player}{username}
         </div>
+      )
+    }
+
     )
 
     return (

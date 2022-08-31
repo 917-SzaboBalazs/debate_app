@@ -39,7 +39,7 @@ function CreateDebate(props) {
 
         axiosInstance
           .patch('user/current/', {
-            'role': 'judge1'
+            'role': 'spectator'
           })
           .catch((err) => {
             console.log(err);
