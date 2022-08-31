@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axios';
 
-// icon imports 
+// icon imports
 import GreenStart from '../../images/start-green.svg';
 import WhiteStart from '../../images/start-white.svg';
 import RedStop from '../../images/stop-red.svg';
@@ -52,7 +52,7 @@ function InDebateTimer() {
             setLoggedIn(true);
             if (res.data.current_debate != null) {
                 setInDebate(true);
-                
+
                 if (res.data.role != null) {
                     setRole(res.data.role);
                 }
@@ -63,8 +63,8 @@ function InDebateTimer() {
           .catch((err) => {
             console.log(err);
           });
-  
-          
+
+
       }, []);
 
       useEffect(() => {
@@ -94,7 +94,7 @@ function InDebateTimer() {
 
         }, 500);
 
-        return () => clearInterval(interval);  
+        return () => clearInterval(interval);
       }, []);
 
     const handleMouse = () => {
@@ -205,7 +205,7 @@ function InDebateTimer() {
         <>
         <div className="indebate--base base">
             <div className="indebate--container container bg-light">
-                { loggedIn && inDebate ? 
+                { loggedIn && inDebate ?
 
                 <>
                 {
@@ -213,9 +213,9 @@ function InDebateTimer() {
                 <>
                 <div className="in-debate--hiba row d-flex justify-content-center align-items-center">
                         <h1 className='col-12 text-center'>The {winner} won!</h1>
-                        <button 
+                        <button
                             className="in-debate--leave-debate white-text col-12"
-                            onClick={leaveDebate}    
+                            onClick={leaveDebate}
                         >
                             Leave Debate
                         </button>
@@ -235,68 +235,68 @@ function InDebateTimer() {
                 <div className="indebate--stopwatch row text-center">
                     <div className="indebate--numbers">
                         <span>{minutes}:</span>
-                        <span>{seconds}</span>
+                        <span>{seconds < 10 ? "0" + seconds : seconds}</span>
                         {/* <span>{("0" + ((secondsLeft / 100) % 100)).slice(-2)}</span> */}
                     </div>
                     { role == 'judge1' || role == 'judge1 (chair)' ? <>
                     <div className="indebate--buttons text-center">
-                        <button 
+                        <button
                             className={`indebate--button col-12 indebate--start-button ${!running ? 'indebate--start' : 'indebate--stop'}`}
                             onClick={handleStart}
                             onMouseOver={handleMouse}
                             onMouseOut={handleMouse}
                         >
-                            <img src={running ? 
-                                (isMouse ? RedStop : WhiteStop) : 
+                            <img src={running ?
+                                (isMouse ? RedStop : WhiteStop) :
                                 (isMouse ? GreenStart : WhiteStart)
                             } className='indebate--start-stop' />
                         </button>
                         <br/>
-                        <button 
+                        <button
                             className='indebate--button col-12 indebate--reset-button'
                             onClick={handleReset}
                             onMouseOver={handleMouseRes}
                             onMouseOut={handleMouseRes}
-                        >  
+                        >
                             <img src={
-                                !isMouseRes ? 
+                                !isMouseRes ?
                                     WhiteRes :
                                     BlueRes
-                            } 
+                            }
                             className='indebate--reset'
                             />
-                        </button>       
+                        </button>
                         <br/>
-                        <button 
+                        <button
                             className="indebate--button indebate--back-button col-12"
                             onClick={handleBack}
                             onMouseOver={handleMouseBack}
                             onMouseOut={handleMouseBack}
                         >
                             <img src={
-                                !isMouseBack ? 
+                                !isMouseBack ?
                                     WhiteBack :
                                     YellowBack
-                            } 
+                            }
                             className='indebate--back'
                             />
                         </button>
-                        <button 
+                        <button
                             className="indebate--button indebate--next-button col-12 text-center"
                             onClick={handleNext}
                             onMouseOver={handleMouseNext}
                             onMouseOut={handleMouseNext}
                         >
                             <img src={
-                                !isMouseNext ? 
+                                !isMouseNext ?
                                     WhiteNext :
                                     YellowNext
-                            } 
+                            }
                             className='indebate--next'
                             />
                         </button>
                         <div className="row in-debate--finish-field row d-flex justify-content-center p-4">
-                            <button 
+                            <button
                                 className="in-debate--finish-button col-3"
                                 onClick={handleFinish}
                             >
@@ -310,9 +310,9 @@ function InDebateTimer() {
                 </div>
                 </>
                 }
-                </> 
+                </>
 
-                : 
+                :
                 <>
                     <div className="in-debate--hiba row d-flex justify-content-center align-items-center">
                         <h1 className='col-12 text-center'>Valami nagyon em jó tesó</h1>
