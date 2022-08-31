@@ -292,7 +292,7 @@ function NewDebate() {
                 </div>
 
                 <div className="new-debate--spectator  row justify-content-center">
-                    <div className="new-debate--spectator-col new-debate--button col-4 white-text text-center" onClick={event => handleChoose('spectator', '')}>
+                    <div className="new-debate--spectator-col new-debate--button col-4 white-text text-center" onClick={handleChooseSpectator}>
                         Spectator
                     </div>
                 </div>
