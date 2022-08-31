@@ -78,7 +78,7 @@ function Login() {
   return (
     <div className='login-body base'>
       <div className="container">
-        <div className="login--trunk-container row bg-light">
+        <div className="login--trunk-container row">
           {/* <form action="" className=""> */}
             <div className="login-container d-flex align-items-center justify-content-center col-md-6 col-sm-12 ">
                 <div className="login-box align-items-center">

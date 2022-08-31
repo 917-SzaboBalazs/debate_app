@@ -19,7 +19,7 @@
 
 
 .signup--container {
-    background-color: var(--primary);
+    background-color: rgb(243, 234, 226);
     min-height: 100vh; 
     margin-top: 0px;
     /* padding-left: 3rem; */
@@ -39,6 +39,7 @@
 }
 .email{
     margin-bottom: 1.5rem;
+    background-color: rgb(243, 234, 226);
 }
 .password{
     margin-bottom: 1.5rem;

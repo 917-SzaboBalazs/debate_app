@@ -29,16 +29,16 @@
 
 .debates--header-row {
     /*background-image: url('https://img.freepik.com/premium-vector/newborn-dummy-nipple-seamless-pattern-baby-toys-endless-background-template-pale-colored-pacifier_607579-220.jpg');*/
-    background-color: #22344d !important;
+    background-color: #333d4b !important;
     height: 15vh;
 }
 
 .debates--elements-row {
     /*background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b4/Orb%C3%A1n_Viktor_portr%C3%A9.jpg')center center/cover no-repeat;*/
-    background-color: whitesmoke !important;
+    background-color: rgb(243, 234, 226) !important;
     padding-top: 5vh;
     padding-bottom: 5vh;
-    border-top: 2px solid #f2ca10;
+    border-top: 3px solid #437c8b;
     min-height: 85vh;
 }
 
@@ -46,8 +46,8 @@
     text-align: justify;
     width: 90%;
     margin-left: 5%;
-    border-left: 3px solid #f2ca10;
-    border-right: 3px solid #f2ca10;
+    border-left: 3px solid #437c8b;
+    border-right: 3px solid #437c8b;
     padding-left: 2.5vw;
     padding-right: 2.5vw;
     text-indent: 35px;

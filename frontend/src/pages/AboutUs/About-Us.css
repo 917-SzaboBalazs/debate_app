@@ -8,6 +8,10 @@
     padding-top: 4vh;
 } 
 
+.us--container{
+    background-color: rgb(243, 234, 226);
+}
+
 @media only screen and (max-width: 768px) {
     .what--text h1, .why--text h1{
         text-align: center;

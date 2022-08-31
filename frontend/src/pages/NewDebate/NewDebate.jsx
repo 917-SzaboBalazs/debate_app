@@ -265,11 +265,11 @@ function NewDebate() {
                     <div
                         className="new-debate--decision--con new-debate--dec col-sm-3 col-md-3"
                     >
-                        <div className="col-12 new-debate--pro-btn text-center new-debate--label font-weight-bold">CON</div>
+                        <div className="col-12 new-debate--pro-btn text-center new-debate--label font-weight-bold">KONTRA</div>
                         {conListed}
                     </div>
                     <div className="new-debate--decision--judge col-sm-3 col-md-3">
-                        <div className="col-12 new-debate--pro-btn new-debate--dec text-center  new-debate--label font-weight-bold">JUDGE</div>
+                        <div className="col-12 new-debate--pro-btn new-debate--dec text-center  new-debate--label font-weight-bold">BÍRÓ</div>
                         {judgeListed}
                     </div>
                      </>   : null

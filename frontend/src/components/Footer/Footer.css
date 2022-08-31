@@ -1,15 +1,16 @@
 :root {
     --primary: white;
     --secondary: #22344D;
-    --third: #F2CA10;
+    --third: #61c3c3;
+    --bismarck: #437c8b;
 }
 
 .my-footer {
-    border-top: 1rem solid var(--third);
+    border-top: 5px solid #437c8b;
 }
 
 .page-footer{
-    background-color: var(--secondary);
+    background-color: #333d4b;
     color: white;
 }
 

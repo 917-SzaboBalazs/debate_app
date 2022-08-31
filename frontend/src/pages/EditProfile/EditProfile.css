@@ -45,13 +45,13 @@
 }
 
 .profile--about-me-row, .profile--in-debate-row{
-    background-color: whitesmoke !important;
+    background-color: rgb(243, 234, 226) !important;
     box-shadow: none !important;
     border: 2px solid #22334d
 }
  
 .profile--edit-element{
-    background-color: whitesmoke;
+    background-color: rgb(243, 234, 226) !important;
     border-radius: 7px;
     padding: 2vh 2vw;
 }

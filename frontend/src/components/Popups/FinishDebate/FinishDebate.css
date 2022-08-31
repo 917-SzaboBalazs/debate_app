@@ -19,12 +19,11 @@
     width: 640px;
     min-height: 280px;
     height: auto;
-    background-color: var(--secondary);
+    background-color: #333d4b;
     justify-content: center;
     align-items: center;
 
     border-radius: 12px;
-    border: 3px solid var(--third);
 }
 
 .finish-debate--inner .finish-debate--close-btn {
@@ -34,7 +33,7 @@
     width: 1.75rem;
     height: 1.75rem;
     color: whitesmoke;
-    background-color: #22344D;
+    background-color: #333d4b;
     padding: 1px;
     border: none;
     font-weight: bold;
@@ -64,13 +63,13 @@
     text-transform: uppercase;
     font-weight: bold;
     margin: .5rem;
-    border: 5px solid var(--mcc-sarga);
-    color: var(--mcc-sarga);
+    border: 5px solid #437c8b;
+    color: #437c8b;
     transition: .3s;
 }
 
 .finish-debate--button:hover {
-    background-color: var(--mcc-sarga);
+    background-color: #437c8b;
     color: white;
     transition: .3s;
 }

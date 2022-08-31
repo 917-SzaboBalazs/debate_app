@@ -7,7 +7,7 @@
 .new-debate--background{
     height: 100%;
     width: 100%;
-    background-color: #485c7a;
+    background-color: #333d4b;
     z-index: -1;
 }
 
@@ -26,6 +26,7 @@
     max-width: 90vw !important;
     align-items: center;
     justify-content: space-evenly;
+    background-color: rgb(243, 234, 226) !important;
 }
 
 .new-debate--teams {
@@ -103,26 +104,21 @@
     margin-left: 10% !important;
 }
 
-.new-debate--pro-btn{
-    border: 1px solid #f9d342;
-}
-.new-debate--con-btn{
-    border: 1px solid #292826;
-}
-.new-debate--judge-btn{
-    border: 1px solid orange;
+.new-debate--pro-btn, .new-debate--con-btn, .new-debate--judge-btn{
+    border: 1px solid #437c8b !important;
+    background-color: #333d4b !important;
 }
 
 .new-debate--clear-btn-container--btn{
     padding: 1vw;
     border: none;
     border-radius: 7px;
-    background-color: #f9d342;
+    background-color: #61c3c3;
     transition: .1s;
 }
 
 .new-debate--clear-btn-container--btn:hover{
-    background-color: orange;
+    background-color: #61c3c3;
     color: white;
     transition: .2s;
 }
@@ -133,7 +129,7 @@
 
 .new-debate--container{
     min-height: 100vh;
-    background-color: #485c7a;
+    background-color: #525b6c;
     padding-top: 10vh;
 }
 
@@ -145,18 +141,18 @@
 }
 
 .new-debate--participant{
-    background-color: whitesmoke;
+    background-color: rgb(243, 234, 226);
     border-radius: 5px;
     margin-top: 5px;
     width: 100% !important;
     text-align: center;
-    border: 2px solid #f9d342;
+    border: 2px solid #333d4b;
     transition: .1s;
 }
 
 .new-debate--participant:hover{
     border-radius: 12px;
-    background-color: #485c7a;
+    background-color: #333d4b;
     color: whitesmoke;
     border: 2px solid whitesmoke;
     transition: .2s;
@@ -188,10 +184,14 @@
 }
 
 .new-debate--motion-text {
-    font-style: italic;
     font-weight: bold;
 }
 
 .new-debate--decision--pro, .new-debate--decision--con, .new-debate--decision--judge{
     background-color: whitesmoke;
 } 
+
+.new-debate--basic-text, .new-debate--current-role, .new-debate--ready, .new-debate--entry-code{
+    font-size: 24px;
+    font-style: italic;
+}

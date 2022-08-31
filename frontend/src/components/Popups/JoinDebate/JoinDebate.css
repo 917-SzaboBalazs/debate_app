@@ -1,6 +1,6 @@
 :root {
     --primary: white;
-    --secondary: #22344D;
+    --secondary: #333d4b;
     --third: #F2CA10;
 }
 
@@ -25,12 +25,11 @@
     /* width: 100%; */
     width: 640px;
     height: 280px;
-    background-color: var(--secondary);
+    background-color: #333d4b;
     justify-content: center;
     align-items: center;
     border-radius: 12px;
     text-align: center;
-    border: 3px solid var(--third);
 }
 
 .join-debate--inner .join-debate--close-btn {
@@ -40,7 +39,7 @@
     width: 1.75rem;
     height: 1.75rem;
     color: whitesmoke;
-    background-color: #22344D;
+    background-color: #333d4b;
     padding: 1px;
     border: none;
     font-weight: bold;

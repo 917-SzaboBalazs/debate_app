@@ -1,6 +1,6 @@
 :root {
     --primary: white;
-    --secondary: #22344D;
+    --secondary: #333d4b;
     --third: #F2CA10;
     --red: #FF0000;
     --green: #49FF00;
@@ -13,6 +13,7 @@
 .indebate--container {
     min-height: 75vh;
     padding-top: 15vh;
+    background-color: rgb(243, 234, 226);
 }
 
 .indebate--numbers {
@@ -85,8 +86,8 @@
 
 
 .indebate--reset-button {
-    border-color: var(--secondary);
-    background-color: var(--secondary);
+    border-color: #333d4b;
+    background-color: #333d4b;
     transition: .3s;
 }
 
@@ -129,30 +130,45 @@
 }
 
 .indebate--motion-text {
-    font-style: italic;
     font-weight: bold;
 }
 
 .in-debate--finish-button {
     font-weight: bold;
     text-transform: uppercase;
-    color: var(--mcc-kek);
-    background-color: white;
-    border: 4px solid var(--mcc-kek);
+    color: #333d4b;
+    background-color: rgb(243, 234, 226);
+    border: 4px solid #333d4b;
     transition: .3s;
     border-radius: 2rem;
 }
 
 .in-debate--finish-button:hover {
-    color: white;
-    background-color: var(--mcc-kek);
+    color: rgb(243, 234, 226);
+    background-color: #333d4b;
     transition: .3s;
 }
 
 .in-debate--leave-debate {
-    background-color: var(--mcc-kek);
-    height: 3rem;
+    background-color: #333d4b;
+    background-color: #6f0000;
+    /*height: 3rem;*/
+    padding: 2vh 2vw;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 24px;
+    border: none;
+    border-radius: 12px;
+    transition: .2s;
+}
+
+.in-debate--leave-debate:hover{
+    background-color: #437c8b;
+    transition: .2s;
+}
+
+@media screen and (max-width: 768px) {
+    .in-debate--finish-button{
+        width: 80%;
+    }
 }

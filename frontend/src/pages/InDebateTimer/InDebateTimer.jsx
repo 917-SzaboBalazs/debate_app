@@ -40,7 +40,7 @@ function InDebateTimer() {
     const [ motion, setMotion ] = useState('');
     const [ winner, setWinner ] = useState('');
 
-    const speakerRole = [ 'PRO-Start', 'CON-Start', 'PRO-Start', 'CON-Start', 'PRO-End', 'CON-End', 'PRO-End', 'CON-end'];
+    const speakerRole = [ 'Nyitó kormány - 1', 'Nyitó ellenzék - 1', 'Nyitó kormány - 2', 'Nyitó ellenzék - 2', 'Záró kormány - 1', 'Záró ellenzék - 1', 'Záró kormány - 2', 'Záró ellenzék - 2'];
 
     // check if user is logged in
     useEffect(() => {
@@ -204,7 +204,7 @@ function InDebateTimer() {
     return (
         <>
         <div className="indebate--base base">
-            <div className="indebate--container container bg-light">
+            <div className="indebate--container container">
                 { loggedIn && inDebate ? 
 
                 <>
@@ -212,9 +212,9 @@ function InDebateTimer() {
                     winner == 'pro' || winner == 'con' ?
                 <>
                 <div className="in-debate--hiba row d-flex justify-content-center align-items-center">
-                        <h1 className='col-12 text-center'>The {winner} won!</h1>
+                        <h1 className='col-12 text-center'>A {winner} csapat nyert!</h1>
                         <button 
-                            className="in-debate--leave-debate white-text col-12"
+                            className="in-debate--leave-debate white-text col-4"
                             onClick={leaveDebate}    
                         >
                             Leave Debate
@@ -228,8 +228,8 @@ function InDebateTimer() {
                 </div>
                 <div className="row indebate--current-speaker">
                     <div className="col-12 text-center">
-                        <h3>Current speaker: {currentlySpeaking} ({speakerRole[currentlySpeaking - 1]})</h3>
-                        <h3>You are: {role}</h3>
+                        <h3>Jelenlegi beszélő: {currentlySpeaking} ({speakerRole[currentlySpeaking - 1]})</h3>
+                        <h3>A te szereped: {role}</h3>
                     </div>
                 </div>
                 <div className="indebate--stopwatch row text-center">
@@ -315,7 +315,7 @@ function InDebateTimer() {
                 : 
                 <>
                     <div className="in-debate--hiba row d-flex justify-content-center align-items-center">
-                        <h1 className='col-12 text-center'>Valami nagyon em jó tesó</h1>
+                        <h1 className='col-12 text-center'>Valami nagyon nem jó tesó</h1>
                     </div>
                 </>
                 }

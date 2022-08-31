@@ -51,8 +51,8 @@
 
   .trunk--signin-button {
     transition: .3s;
-    background-color: var(--secondary);
-    border: 2px solid var(--secondary);
+    background-color: #333d4b;
+    border: 2px solid #333d4b;
     border-radius: 1.25rem;
     color: white;
     padding: 15px;

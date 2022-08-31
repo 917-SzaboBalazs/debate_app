@@ -114,7 +114,7 @@ function CollapsibleExample() {
                 <Nav.Link onClick={leaveDebate} className='yellow-text'>Leave Debate</Nav.Link>
               </>
             }
-            <Nav.Link href="/in-debate" className='nav-link'>Timer Page</Nav.Link>
+            {/* <Nav.Link href="/in-debate" className='nav-link'>Timer Page</Nav.Link> */}
           </Nav>
           <Nav>
             { !loggedIn ?

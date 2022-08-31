@@ -72,9 +72,13 @@ h5 {
 input {
     border-width: 0px;
     border-bottom-width: 2px;
-    border-color: var(--secondary);
+    border-color: rgb(243, 234, 226);
     color: var(--secondary);
     font-size: 24px;
+}
+
+.username, .password{
+    background-color: rgb(243, 234, 226);
 }
 
 .login--dont-have-account span{
@@ -91,6 +95,10 @@ input {
 .login--bg-img{
     height: 100vh;
     align-self: center;
+}
+
+.login-container{
+    background-color: rgb(243, 234, 226);
 }
 
 @media only screen and (max-width: 767px) {

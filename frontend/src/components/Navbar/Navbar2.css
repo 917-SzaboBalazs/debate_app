@@ -1,7 +1,7 @@
 :root {
-    --primary: white;
-    --secondary: #22344D;
-    --third: #F2CA10;
+    --primary: rgb(255, 231, 211);
+    --secondary: #333d4b;
+    --third: #61c3c3;
 }
 
 /* @media (min-width: 1200px) {
@@ -17,6 +17,7 @@
     z-index: 7;
     position: fixed;
     width: 100%;
+    background-color: #333d4b !important;
 }
 
 .nav-brand {
@@ -26,11 +27,11 @@
 }
 
 .nav-brand .nav--span {
-    color: var(--third);
+    color: #61c3c3;
 }
 
 .nav-brand:hover {
-    color: var(--third);
+    color: #61c3c3;
     transition: .4s;
 }
 
@@ -49,7 +50,7 @@
 }
 
 .navbar-toggler {
-    background-color: var(--third);
+    background-color: #61c3c3;
 }
 
 .nav--separator-line {
@@ -57,5 +58,5 @@
 }
 
 .yellow-text {
-    color: var(--mcc-sarga);
+    color: #61c3c3;
 }
