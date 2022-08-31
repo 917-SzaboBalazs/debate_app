@@ -98,7 +98,7 @@
     color: whitesmoke;
 }
 
-.create-debate--no-judges {
+.create-debate--no-judges, .create-debate--speaker-time {
     text-align: center;
     border-radius: 10px;
 }

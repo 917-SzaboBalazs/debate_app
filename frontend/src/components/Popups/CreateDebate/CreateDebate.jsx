@@ -12,6 +12,7 @@ function CreateDebate(props) {
   const [ debateType, setType ] = useState('british');
   const navigate = useNavigate();
   const [ noJudges, setNoJudges ] = useState(1);
+  const [ speakerTime, setSpeakerTime ] = useState(6);
   const [ hasChair, setChair ] = useState(false);
   const [ motion, setMotion ] = useState('');
 
@@ -32,7 +33,7 @@ function CreateDebate(props) {
     }
 
     axiosInstance
-      .post('debate/', { 'type': debateType, 'motion': motion, 'no_judges': noJudges, 'has_chair': hasChair, 'status': 'lobby'})
+      .post('debate/', { 'type': debateType, 'motion': motion, 'no_judges': noJudges, 'speaker_time': speakerTime, 'has_chair': hasChair, 'status': 'lobby'})
       .then((res) => {
         navigate('/new-debate');
         window.location.reload(false);
@@ -57,6 +58,10 @@ function CreateDebate(props) {
     setNoJudges(val.target.value);
   }
 
+  const handleSpeakerTime = (val) => {
+    setSpeakerTime(val.target.value);
+  }
+
   const handleCheckBox = () => {
     setChair(!hasChair);
   }
@@ -79,11 +84,17 @@ function CreateDebate(props) {
               onChange={(e) => setType(e.value)}
               />
             <h3 className="create-debate--text col-12">
-              Select nr. of judges (opt)
+              Select nr. of judges
             </h3>
             <input type="number" className="create-debate--no-judges create-debate--input col-12" value={noJudges} onChange={ev => handleNumber(ev)}/>
+
+            <h3 className="create-debate--text col-12">
+              Speaker time
+            </h3>
+            <input type="number" className="create-debate--speaker-time create-debate--input col-12" value={speakerTime} onChange={ev => handleSpeakerTime(ev)}/>
+
             <h3 className="create-debate--text col-8">
-              Chair? (opt)
+              Chair?
             </h3>
             <input type="checkbox" className="create-debate--chair create-debate--input col-4" value={hasChair} onChange={handleCheckBox}/>
             <button className="create-debate--create-btn" onClick={handleCreate}>
