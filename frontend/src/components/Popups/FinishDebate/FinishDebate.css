@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .finish-debate--inner {
@@ -59,7 +60,7 @@
 
 .finish-debate--button{
     border-radius: 1.5rem;
-    padding: .5rem; 
+    padding: .5rem;
     text-transform: uppercase;
     font-weight: bold;
     margin: .5rem;

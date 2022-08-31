@@ -39,6 +39,7 @@ function InDebateTimer() {
     const [ inDebate, setInDebate ] = useState(false);
     const [ motion, setMotion ] = useState('');
     const [ winner, setWinner ] = useState('');
+    const [ status, setStatus ] = useState('');
 
     const speakerRole = [ 'Nyitó kormány - 1', 'Nyitó ellenzék - 1', 'Nyitó kormány - 2', 'Nyitó ellenzék - 2', 'Záró kormány - 1', 'Záró ellenzék - 1', 'Záró kormány - 2', 'Záró ellenzék - 2'];
 
@@ -76,6 +77,7 @@ function InDebateTimer() {
                 setMotion(res.data.motion);
                 setCurrentlySpeaking(res.data.current_number);
                 setWinner(res.data.winner);
+                setStatus(res.data.status);
                 // console.log(winner);
             })
             .catch((err) => {
@@ -205,14 +207,14 @@ function InDebateTimer() {
         <>
         <div className="indebate--base base">
             <div className="indebate--container container">
-                { loggedIn && inDebate ? 
+                { loggedIn && inDebate ?
                 <>
                 {
-                    winner == 'pro' || winner == 'con' ?
+                    status == "finished" ?
                 <>
                 <div className="in-debate--hiba row d-flex justify-content-center align-items-center">
                         <h1 className='col-12 text-center'>A {winner} csapat nyert!</h1>
-                        <button 
+                        <button
                             className="in-debate--leave-debate white-text col-4"
                             onClick={leaveDebate}
                         >
