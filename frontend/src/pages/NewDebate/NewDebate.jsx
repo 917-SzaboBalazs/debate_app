@@ -135,8 +135,24 @@ function NewDebate() {
             axiosInstance
                 .get('user/role/', {params:{'role':role}})
                 .then(() => {
-                    console.log('nemjo');
-                    alert(role + 'is already chosen')
+                    if (role != "spectator")
+                    {
+                      console.log('nemjo');
+                      alert(role + 'is already chosen')
+                    }
+                    else
+                    {
+                      setCurrRole(role);
+
+                      axiosInstance
+                      .patch('user/current/', {'role':role})
+                      .then((res) => {
+
+                      })
+                      .catch((err) => {
+                          console.log(err);
+                      });
+                    }
                 })
                 .catch(() => {
                     console.log('jojo');
