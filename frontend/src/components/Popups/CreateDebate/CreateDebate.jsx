@@ -72,7 +72,7 @@ function CreateDebate(props) {
             <button className="create-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
            { props.loggedIn ?
             <>
-            <h3 className="create--debate-text white-text">Give the motion:</h3>
+            <h3 className="create--debate-text white-text">Give the motion</h3>
             <input type="text" className="create-debate--motion input" onChange={(ev) => {setMotion(ev.target.value)}}/>
             <h3 className="create-debate--text">
                 Select debate type

@@ -87,6 +87,16 @@ function InDebateTimer() {
             axiosInstance
                 .get('timer/')
                 .then((res) => {
+
+                    if (res.data.state == "paused")
+                    {
+                      setRunning(false);
+                    }
+                    else
+                    {
+                      setRunning(true);
+                    }
+
                     var secs = res.data["remaining-time"];
                     let min = Math.floor(secs / 60);
                     let sec = secs - min * 60;
