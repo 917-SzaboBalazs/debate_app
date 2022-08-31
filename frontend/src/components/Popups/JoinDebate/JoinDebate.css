@@ -100,3 +100,13 @@
     margin-top: 1vh;
     padding: 2vh 2vw;
 }
+
+@media only screen and (max-width: 768px) {
+    .join-debate--inner{
+        width: 90%;
+    }
+    .join-debate{
+        position: fixed;
+        z-index: 12;
+    }
+}

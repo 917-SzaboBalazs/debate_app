@@ -21,10 +21,8 @@ const Footer = () => <footer className="page-footer font-small pt-4 my-footer">
             <div className="col-md-3 mb-md-0 mb-3">
                 <h5 className="text-uppercase footer--list-tag white-text">Links</h5>
                 <ul className="list-unstyled white-text">
-                    <li><a href="#!" className="white-text">Link 1</a></li>
-                    <li><a href="#!" className="white-text">Link 1</a></li>
-                    <li><a href="#!" className="white-text">Link 1</a></li>
-                    <li><a href="#!" className="white-text">Link 1</a></li>
+                    <li><a href="/about-us" className="white-text">About Us</a></li>
+                    <li><a href="/debates" className="white-text">Debates</a></li>
                 </ul>
             </div>
 
