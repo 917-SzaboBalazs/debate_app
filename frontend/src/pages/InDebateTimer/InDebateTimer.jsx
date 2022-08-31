@@ -91,7 +91,8 @@ function InDebateTimer() {
                     setMinutes(min);
                     setSeconds(sec);
                 })
-        }, 1000);
+
+        }, 500);
 
         return () => clearInterval(interval);  
       }, []);
