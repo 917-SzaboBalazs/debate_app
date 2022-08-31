@@ -237,7 +237,7 @@ function InDebateTimer() {
                         <span>{seconds}</span>
                         {/* <span>{("0" + ((secondsLeft / 100) % 100)).slice(-2)}</span> */}
                     </div>
-                    { role == 'judge1' ? <>
+                    { role == 'judge1' || role == 'judge1 (chair)' ? <>
                     <div className="indebate--buttons text-center">
                         <button 
                             className={`indebate--button col-12 indebate--start-button ${!running ? 'indebate--start' : 'indebate--stop'}`}
