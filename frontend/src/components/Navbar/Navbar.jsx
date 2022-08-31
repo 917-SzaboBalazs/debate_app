@@ -15,6 +15,8 @@ import axiosInstance from '../../axios';
 import './Navbar.css';
 import './Navbar2.css';
 
+import Logo from '../../images/logo.svg';
+
 
 function CollapsibleExample() {
     let navigate = useNavigate();
@@ -119,7 +121,7 @@ function CollapsibleExample() {
     <>
     <Navbar collapseOnSelect expand="lg" bg="primary" className='nav'>
       <Container>
-        <Navbar.Brand href="/" className='nav-brand'>Debate <span className='nav--span'>Culture</span></Navbar.Brand>
+        <Navbar.Brand href="/" className='nav-brand'><img src={Logo} className='nav--logo'/></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" color='white'/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
