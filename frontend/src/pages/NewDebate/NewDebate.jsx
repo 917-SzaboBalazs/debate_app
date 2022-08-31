@@ -24,7 +24,7 @@ function NewDebate() {
     const [ ready, setReady ] = useState(false);
     const [ posts, setPosts ] = useState([]);
     const [ postJudge, setJudge ] = useState([]);
-
+    const [ hasChair, setHasChair ] = useState(false);
     const [ waitValue, setWaitValue ] = useState(false);
 
     useEffect(() => {
@@ -43,7 +43,9 @@ function NewDebate() {
                 setMotion(res.data.motion);
                 setJudge(setJudgeArray(res.data.no_judges, res.data.has_chair));
                 setPosts(setDebaterArray(res.data.team_size));
+                setHasChair(res.data.has_chair);
                 setWaitValue(true);
+                console.log(hasChair);
                 if (res.data.status != 'lobby') {
                     navigate('/in-debate');
                 }
@@ -244,7 +246,7 @@ function NewDebate() {
                         </div>
                 </div>
                 {
-                    ready && currRole == 'judge1' ?
+                    ready && ( ( !hasChair && currRole == 'judge1' ) || ( hasChair && currRole == 'judge1 (chair)') )?
                     <>
                         <div className="new-debate--start row justify-content-center">
                             <div
