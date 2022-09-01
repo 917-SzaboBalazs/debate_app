@@ -2,11 +2,10 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import dayjs from 'dayjs';
 
-const baseURL = 'http://localhost:8000/api/';
+const baseURL = 'http://192.168.8.110:8000/api/';
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
-  timeout: 5000,
   headers: {
     Authorization: localStorage.getItem('access_token') ? 'JWT ' + localStorage.getItem('access_token') : null,
     'Content-Type': 'application/json',

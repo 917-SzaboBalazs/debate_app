@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ve^drp8p3_ni@)(adehdwnsk^x&nsts8^$+5v3m)q50n($uz_t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,6 +125,7 @@ USE_L10N = False
 USE_TZ = True
 
 DATE_FORMAT = 'Y-m-d'
+CONN_MAX_AGE = 5
 
 
 # Static files (CSS, JavaScript, Images)
@@ -132,6 +133,7 @@ DATE_FORMAT = 'Y-m-d'
 
 STATIC_URL = '/static/'
 
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]

@@ -91,7 +91,7 @@ function NewDebate() {
               })
 
 
-        }, 500)
+        }, 900)
 
         return () => {clearInterval(interval)};
     }, []);
