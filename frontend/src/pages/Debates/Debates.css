@@ -1,0 +1,80 @@
+.debates--base {
+    min-height: 100vh;
+}
+
+.debates--container {
+    min-height: 100vh;
+    padding-top: 10vh;
+}
+
+.debates--header-title-cont {
+    font-weight: bold;
+    color: whitesmoke !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Trebuchet MS";
+    text-align: center !important;
+    width: 100%;
+}
+.debates--header-title{
+    color: whitesmoke;
+}
+
+.debates--header-elements {
+    text-align: right;
+    color: whitesmoke !important;
+    display: none;
+}
+
+.debates--header-row {
+    /*background-image: url('https://img.freepik.com/premium-vector/newborn-dummy-nipple-seamless-pattern-baby-toys-endless-background-template-pale-colored-pacifier_607579-220.jpg');*/
+    background-color: #333d4b !important;
+    height: 15vh;
+}
+
+.debates--elements-row {
+    /*background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b4/Orb%C3%A1n_Viktor_portr%C3%A9.jpg')center center/cover no-repeat;*/
+    background-color: rgb(243, 234, 226) !important;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    border-top: 3px solid #437c8b;
+    min-height: 85vh;
+}
+
+.readmore--paragraph{
+    text-align: justify;
+    width: 90%;
+    margin-left: 5%;
+    border-left: 3px solid #437c8b;
+    border-right: 3px solid #437c8b;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    text-indent: 35px;
+}
+
+.debates--elements--title{
+    text-align: center;
+    margin-bottom: 7vh;
+    margin-top: 5vh;
+}
+
+@media only screen and (max-width: 768px) {
+    .debates--elements-row{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .debates--elements-col{
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .readmore--paragraph{
+        border: none;
+        padding: 0;
+        border-bottom: 3px solid #f2ca10;
+        padding-bottom: 5vh;
+
+    }
+}

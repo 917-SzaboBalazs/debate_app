@@ -1,85 +1,166 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import { Button } from "../Button/Button";
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import CreateDebate from './Popups/CreateDebate/CreateDebate';
+import { useNavigate } from 'react-router-dom';
+
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
+import CreateDebate from '../Popups/CreateDebate/CreateDebate';
+import JoinDebate from '../Popups/JoinDebate/JoinDebate';
+
+import axiosInstance from '../../axios';
 
 import './Navbar.css';
+import './Navbar2.css';
 
-function Navbar() {
+import Logo from '../../images/logo.svg';
 
-  const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
-  const [createDebate, setCreate] = useState(false);
 
-  useEffect(() => {
-    showButton();
-  }, []);
+function CollapsibleExample() {
+    let navigate = useNavigate();
 
-  const handleClick = () => {
-    setClick(!click);
-  }
+    const [ triggerCreate, setTriggerCreate ] = useState(false);
+    const [ triggerJoin, setTriggerJoin ] = useState(false);
+    const [ loggedIn, setLoggedIn ] = useState(false);
+    const [ userName, setUserName ] = useState('');
+    const [ inDebate, setInDebate ] = useState(false);
 
-  const closeMobileMenu = () => {
-    setClick(false);
-  }
+    // check if user is logged in
+    useEffect(() => {
 
-  const showButton = () => {
-    if (window.innerWidth < 960) {
-      setButton(false);
-    } else {
-      setButton(true);
+      axiosInstance
+        .get('user/current/')
+        .then((res) => {
+          console.log(res);
+          setUserName(res.data.username);
+          setLoggedIn(true);
+          console.log(userName);
+
+          if (res.data.current_debate != null) {
+            setInDebate(true);
+          } else {
+            setInDebate(false);
+          }
+
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    }, []);
+
+    const handleClickTriggerCreate = () => {
+        setTriggerCreate(true);
+        console.log(triggerCreate);
     }
-  }
 
-  window.addEventListener('resize', showButton);
+    const handleClickTriggerJoin = () => {
+      setTriggerJoin(true);
+    }
 
-  const handleClickCreate = () => {
-    setCreate(true);
-  }
+    const logOut = () => {
+      axiosInstance
+        .post('user/logout/blacklist/', {
+  			refresh_token: localStorage.getItem('refresh_token'),
+  		})
+        .then((res) => {
+          localStorage.removeItem('access_token');
+      		localStorage.removeItem('refresh_token');
+      		axiosInstance.defaults.headers['Authorization'] = null;
+
+          setLoggedIn(false);
+
+          navigate('/');
+          window.location.reload(false);
+      })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+
+    const leaveDebate = () => {
+      axiosInstance
+        .get('user/current/')
+        .then((userRes) => {
+          axiosInstance
+            .get('debate/current/')
+            .then((debateRes) => {
+              if (userRes.data.role == "spectator" || debateRes.data.status != "running")
+              {
+                axiosInstance
+                  .patch('user/current/', {"current_debate": null, 'role': null})
+                  .then(() => {
+                    console.log('Sikeres kilépés');
+                    navigate('/');
+                    window.location.reload(false);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                    console.log('Baj van');
+                  })
+              }
+              else
+              {
+                alert("Cannot leave now");
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+
+
+    }
 
   return (
-    <nav className='navbar'>
-        <div className="navbar-container">
-          <Link to="/" className="navbar-logo" onClick={handleClick}>
-                LogO <i className='fab fa-typo3' />
-            </Link>
-          <div className="menu-icons" onClick={handleClick}>
-                <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-          </div>
-          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-              <li className='nav-item' onClick={closeMobileMenu}>
-                <Button 
-                    to="debates"
-                    buttonSize="btn--medium"
-                >
-                  Debates
-                </Button>
-              </li>
-              <li className='nav-item' onClick={closeMobileMenu}>
-                <button className="nav-links" onClick={handleClickCreate}>Create a Debate</button>
-              </li>
-              <li  className='nav-item' onClick={closeMobileMenu}>
-                <Button
-                  className='nav-links'
-                  to="join-a-debate"
-                >
-                  Join a Debate
-                </Button>
-              </li>
-              <li  className='nav-item' onClick={closeMobileMenu}>
-                <Button
-                  className='nav-links'
-                  to="about-us"
-                >
-                  About Us
-                </Button>
-              </li>
-          </ul>
-          <CreateDebate trigger={createDebate} setTrigger={setCreate}/>
-        </div>
-    </nav>
-  )
+    <>
+    <Navbar collapseOnSelect expand="lg" bg="primary" className='nav'>
+      <Container>
+        <Navbar.Brand href="/" className='nav-brand'><img src={Logo} className='nav--logo'/></Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" color='white'/>
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/about-us" className='nav-link'>About Us</Nav.Link>
+            <Nav.Link href="/debates" className='nav-link'>Debates</Nav.Link>
+            {
+              !inDebate ?
+              <>
+                <Nav.Link onClick={handleClickTriggerCreate} className='nav-link yellow-text'>Create a Debate</Nav.Link>
+                <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link>
+              </>
+              :
+              <>
+                <Nav.Link href="/new-debate" className='yellow-text'>Current Debate</Nav.Link>
+                <Nav.Link onClick={leaveDebate} className='yellow-text'>Leave Debate</Nav.Link>
+              </>
+            }
+            {/* <Nav.Link href="/in-debate" className='nav-link'>Timer Page</Nav.Link> */}
+          </Nav>
+          <Nav>
+            { !loggedIn ?
+                <>
+                  <Nav.Link href="/log-In">Log In</Nav.Link>
+                  <Nav.Link href="/sign-up">Register</Nav.Link>
+                </>
+                :
+                <>
+                  <Nav.Link href='/profile'>{userName} </Nav.Link>
+                  <Nav.Link onClick={logOut}>Log Out</Nav.Link>
+                </>
+            }
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+    <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} />
+    <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} />
+    </>
+  );
 }
 
-export default Navbar
+export default CollapsibleExample;

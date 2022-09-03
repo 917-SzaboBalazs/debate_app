@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/static/css/main.eebcd295.css",
+    "main.js": "/static/js/main.6e6c7725.js",
+    "static/js/787.19ef1592.chunk.js": "/static/js/787.19ef1592.chunk.js",
+    "static/media/evil6os.jpg": "/static/media/evil6os.3b46acf21dfc7a2cdcaf.jpg",
+    "static/media/signup7.jpg": "/static/media/signup7.9cbff762a17f33f29d81.jpg",
+    "static/media/signup3.jpg": "/static/media/signup3.c5ba2e2169808001f17f.jpg",
+    "static/media/mikrofon2.jpg": "/static/media/mikrofon2.522c5c476fae58121571.jpg",
+    "static/media/signup6.jpg": "/static/media/signup6.2ff5d6818c0cdcd6ffca.jpg",
+    "static/media/signup4.jpg": "/static/media/signup4.8a8e9b3ac020ed471138.jpg",
+    "static/media/signup5.jpg": "/static/media/signup5.5fe248d7786c818c9700.jpg",
+    "static/media/signup2.jpg": "/static/media/signup2.bd1a1df755ed5eca3e72.jpg",
+    "static/media/signup1.jpg": "/static/media/signup1.560ab51e1d09eb22af8f.jpg",
+    "static/media/WhatsApp.png": "/static/media/WhatsApp.b28612899d1b33a032b3.png",
+    "static/media/logo.svg": "/static/media/logo.df4c4bb91d733acc152f0741a5dcdbb7.svg",
+    "static/media/insta.png": "/static/media/insta.1c6949979183de20d19d.png",
+    "static/media/facebook.png": "/static/media/facebook.bcb074c49d01b34477dc.png",
+    "static/media/face1.svg": "/static/media/face1.338286226288761e74cfbbdc8114f9bd.svg",
+    "static/media/back-white.svg": "/static/media/back-white.9af71290e6ce1ae327603a2ffd6447a5.svg",
+    "static/media/back-yellow.svg": "/static/media/back-yellow.9fc358e0915e1e184a8a18f64708ab1c.svg",
+    "static/media/next-white.svg": "/static/media/next-white.5413661f4f928938295c8991bf3c5ea9.svg",
+    "index.html": "/index.html",
+    "static/media/next-yellow.svg": "/static/media/next-yellow.a90f87fb088b39c9d7cf5ab33cb89c6d.svg",
+    "static/media/start-green.svg": "/static/media/start-green.1e0a7af09287159a3d412f96b30444a2.svg",
+    "static/media/start-white.svg": "/static/media/start-white.e85f0a6ebfe8c8414112ac7959133c95.svg",
+    "static/media/stop-white.svg": "/static/media/stop-white.e496a9591df7f4b1c71d393313ee8c43.svg",
+    "static/media/stop-red.svg": "/static/media/stop-red.a8848495fbc65e2f5988a7d1ab891f71.svg",
+    "static/media/reset-blue.svg": "/static/media/reset-blue.c8c01c07aba7e3e806c26a8a65e3d802.svg",
+    "static/media/reset-white.svg": "/static/media/reset-white.3261fbd36012f07316ca57a0096cfe64.svg",
+    "main.eebcd295.css.map": "/static/css/main.eebcd295.css.map",
+    "main.6e6c7725.js.map": "/static/js/main.6e6c7725.js.map",
+    "787.19ef1592.chunk.js.map": "/static/js/787.19ef1592.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eebcd295.css",
+    "static/js/main.6e6c7725.js"
+  ]
+}

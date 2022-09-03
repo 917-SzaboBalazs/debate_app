@@ -1,0 +1,111 @@
+:root {
+    --primary: white;
+    --secondary: #333d4b;
+    --third: #F2CA10;
+}
+
+.join-debate {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.join-debate--inner {
+    display: grid;
+    position: relative;
+    padding: 32px;
+    /* width: 100%; */
+    width: 640px;
+    height: 280px;
+    background-color: #333d4b;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.join-debate--inner .join-debate--close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 1.75rem;
+    height: 1.75rem;
+    color: whitesmoke;
+    background-color: #333d4b;
+    padding: 1px;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+.join-debate--inner .join-debate--close-btn:hover {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    transition: .3s;
+    transform: rotate(180deg);
+    color: #f24810;
+    background-color: whitesmoke;
+}
+
+.join-debate--next-btn{
+    width: 100%;
+    border: .3rem solid var(--primary);
+    /* margin-top: 1rem; */
+    border-radius: .75rem;
+    background-color: transparent;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--primary);
+    transition: .3s;
+}
+
+.join-debate--next-btn:hover {
+    width: 100%;
+    /* border: .3rem solid var(--primary); */
+    /* margin-top: 1rem; */
+    border-radius: .75rem;
+    background-color: var(--primary);
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--secondary);
+    transition: .3s;
+}
+
+.join-debate--code {
+    /* margin-top: 2rem; */
+    border-radius: .7rem;
+    padding: 5px;
+    margin-bottom: 2rem;
+}
+
+.join-debate--inner h1{
+    color: whitesmoke;
+    margin-top: 1vh;
+    padding: 2vh 2vw;
+}
+
+@media only screen and (max-width: 768px) {
+    .join-debate--inner{
+        width: 90%;
+    }
+    .join-debate{
+        position: fixed;
+        z-index: 12;
+    }
+}

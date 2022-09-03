@@ -1,0 +1,10 @@
+.readmore--paragraph {
+    white-space: pre-wrap; /* or pre-line */
+}
+
+.readmore--read-hide {
+    color: grey;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
+}

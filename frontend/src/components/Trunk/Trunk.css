@@ -3,52 +3,96 @@
   --secondary: #22344D;
   --third: #F2CA10;
 }
-  
+
+.home--container{
+  background: url( '../../images/mikrofon2.jpg') center center/cover no-repeat;
+  background-attachment: fixed;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+}
+
   .trunk--container {
-    background: url( '../../images/giraffes.jpeg') center center/cover no-repeat;
     height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    
     object-fit: contain;
     text-align: center;
-    border-bottom: 2rem solid var(--third);
+    padding-top: 15vh;
   }
-  
+
   .trunk--container > h1 {
     color: var(--primary);
     font-size: 100px;
+    font-weight: 800;
     margin-top: -100px;
   }
-  
+
   .trunk--container > p {
     margin-top: 8px;
     color: #fff;
-    font-size: 32px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-      'Lucida Sans', Arial, sans-serif;
-  }
-  
-  .trunk--btns {
-    margin-top: 32px;
-  }
-  
-  .trunk--btns .btn {
-    margin: 6px;
-  }
-  
-  .fa-play-circle {
-    margin-left: 4px;
+    font-size: 28px;
+    font-family: 'Trebuchet MS';
+    font-style: italic;
+    justify-content: space-between;
   }
 
-  .btn--outline:hover {
-    background: var(--primary);
-    color: var(--secondary);
-    transition: 250ms;
-}
+  .trunk--link-text {
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .trunk--link-text:hover {
+    text-decoration: none;
+    color: white;
+  }
+
+  .trunk--signin-button {
+    transition: .3s;
+    background-color: #333d4b;
+    border: 2px solid #333d4b;
+    border-radius: 1.25rem;
+    color: white;
+    padding: 15px;
+
+    margin-left: 5px;
+    min-width: 7rem;
+  }
+  
+  .trunk--signin-button:hover{
+    box-shadow: 0px 0px 30px black;
+    background-color: transparent;
+    transition: .3s;
+  }
+
+  .trunk--login-button {
+    transition: .3s;
+    border: 4px soid white;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 1.25rem;
+    color: white;
+    padding: 15px;
+    transition: .3s;
+    
+    margin-right: 5px;
+    min-width: 7rem;
+  }
+
+  .trunk--login-button:hover{
+    box-shadow: 0px 0px 20px black;
+    transition: .3s;
+  }
+
+  .trunk--login-link {
+    color: white;
+  }
+
+  .trunk--signup-link {
+    color: white;
+  }
 
 
   @media screen and (max-width: 960px) {
@@ -57,22 +101,23 @@
       margin-top: -150px;
     }
   }
-  
+
   @media screen and (max-width: 768px) {
     .trunk--container > h1 {
       font-size: 50px;
       margin-top: -100px;
     }
-  
+
     .trunk--container > p {
-      font-size: 30px;
+      font-size: 20px;
+      margin-bottom: 5vh;
     }
-  
+
     .trunk--mobile {
       display: block;
       text-decoration: none;
     }
-  
+
     .btn {
       width: 100%;
     }

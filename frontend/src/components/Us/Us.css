@@ -1,12 +1,12 @@
 .us--container {
-    background-color: #22344D;
+
     justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
-    margin-right: 13rem;
-    margin-left: 13rem;
+    /* margin-right: 13rem;
+    margin-left: 13rem; */
     padding: 2rem;
-    border:.5rem solid white;
+    /* border:.5rem solid white; */
 }

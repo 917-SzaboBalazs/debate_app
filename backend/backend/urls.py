@@ -14,8 +14,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+from rest_framework.schemas import get_schema_view
+from rest_framework.documentation import include_docs_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/user/', include('users.urls', namespace='users')),
+    path('api/debate/', include('debate.urls', namespace='debate')),
+    path('api/timer/', include('timer.urls', namespace='timer')),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('schema/', get_schema_view(
+        title="Debate-Culture",
+        description="Akos majd ir ide valamit",
+        version="1.0.0"
+    ), name="openapi-schema"),
+    path('docs/', include_docs_urls(title='Debate-Culture')),
 ]

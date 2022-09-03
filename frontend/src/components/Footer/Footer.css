@@ -1,94 +1,39 @@
 :root {
-    --primary: rgb(255, 255, 255);
-    --primary2: rgba(255, 255, 255, 0.577);
-    --secondary: #22344d;
-    --third: #F2CA10;
-    --forth: #5f6268;
+    --primary: white;
+    --secondary: #22344D;
+    --third: #61c3c3;
+    --bismarck: #437c8b;
 }
 
-.footer--container {
-    width: 100%;
-    /* border-bottom: 2rem solid var(--third); */
-    background-color: var(--secondary);
-    color: var(--primary2);
-    padding: 2rem;
-    justify-content: start;
+.page-footer{
+    background-color: #333d4b;
+    color: white;
 }
 
-.logo {
-    max-width: 50px;
-    max-height: 50px;
-    padding: .5rem;
-    cursor: pointer;
+
+
+.footer-copyright a {
+    color: white;
+}
+/* 
+a:hover {
+    color: var(--third);
+} */
+
+.footer--facebook, .footer--whatsapp, .footer--insta{
+    max-height: 25px;
+    transition: .2s;
 }
 
-.basic-elements {
-    display: flex;
-    flex-direction: row;
-    max-height: 5rem;
-    width: 100%;
+.footer--facebook:hover, .footer--whatsapp:hover, .footer--insta:hover{
+    box-shadow: 0px 0px 10px 10px #152437;
+    border-radius: 50%;
 }
 
-.contact {
-    margin-bottom: .5rem;
+.footer--icon {
+    margin-bottom: 15px;
 }
 
-.basic-elements--1 > div {
-    margin-right: 2rem;
-}
-
-.basic-elements--1 {
-    width: 75%;
-    display: inline-flex;
-    flex-wrap: wrap;
-    max-height: 5rem;
-    float:left;
-    height: fit-content;
-}
-
-.footer--log {
-    margin-top: 3rem;
-    justify-self: end;
-}
-
-.footer--log.btn-mobile {
-    margin-bottom: 5rem;
-}
-
-.lower-tag {
-    max-height: 1rem;
-    margin-top: 5rem;
-    color: var(--forth);
-    width: 100%;
-    text-align: center;
-}
-
-@media only screen and (max-width: 600px) {
-    .footer--container {
-        width: 100%;
-        /* border-bottom: 2rem solid var(--third); */
-        background-color: var(--secondary);
-        color: var(--primary2);
-        padding: 2rem;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .basic-elements {
-        display: flex;
-        flex-direction: column;
-        /* max-height: 5rem; */
-        width: 100%;
-    }
-
-    .footer--log {
-        margin-top: 3rem;
-        /* justify-self: end; */
-    }
-    
-    .footer--log.btn-mobile {
-        /* margin-bottom: 5rem; */
-    }
+.footer--list-tag {
+    margin-bottom: 15px;
 }

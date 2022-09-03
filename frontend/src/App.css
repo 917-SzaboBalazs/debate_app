@@ -1,6 +1,53 @@
+:root {
+  --black: #404040;
+  --mcc-sarga: #F2CA10;
+  --mcc-kek: #22344D;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'PT Sans', sans-serif;
+  font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif; 
+  color: var(--black);
 }
+
+.base {
+  /*background-image: url('./images/mikrofon.jpg') center center/cover no-repeat;
+  background-attachment: fixed;*/
+  background-color: #437c8b;
+}
+
+.white-text {
+  color: white;
+}
+
+.yellow-text {
+  color: var(--mcc-sarga);
+}
+
+/* container width */
+@media only screen and (min-width: 1400px) {
+  .container {
+    min-width: 1350px; 
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .container {
+    min-width: 1550px; 
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .container {
+    min-width: 1750px; 
+  }
+}
+
+@media only screen and (min-width: 1900px) {
+  .container {
+    max-width: 1850px; 
+  }
+}
+/* container width*/
