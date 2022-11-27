@@ -15,10 +15,6 @@
 .footer-copyright a {
     color: white;
 }
-/* 
-a:hover {
-    color: var(--third);
-} */
 
 .footer--facebook, .footer--whatsapp, .footer--insta{
     max-height: 25px;
@@ -36,4 +32,23 @@ a:hover {
 
 .footer--list-tag {
     margin-bottom: 15px;
+}
+
+
+.list-unstyled li {
+    text-decoration: none;
+    margin: 0 0 5px 0;
+    
+}
+
+.list-unstyled li a {
+    text-decoration: none;
+    color: var(--third);
+    font-size: 20px;
+    
+}
+
+.list-horizontal li {
+    display: inline-block;
+    margin: 5px 15px 0px 15px;
 }

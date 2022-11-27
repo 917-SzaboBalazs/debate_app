@@ -27,18 +27,14 @@ const Footer = () => <footer className="page-footer font-small pt-4 my-footer">
             </div>
 
             <div className="col-md-3 mb-md-0 mb-3">
-                <h5 className="text-uppercase  white-text footer--list-tag">Contact-us!</h5>
-                <ul className="list-unstyled">
+                <h5 className="text-uppercase  white-text footer--list-tag">Contact Us!</h5>
+                <ul className="list-unstyled list-horizontal">
                     <li><a href="https://www.facebook.com"><img src={fb} alt="Facebook" className="footer--icon footer--facebook" /></a></li>
                     <li><a href="https://www.instagram.com" ><img src={insta} alt="Instagramm" className="footer--icon footer--insta" /></a></li>
                     <li><a href="https://www.WhatsApp.com"><img src={wa} alt="WhatsApp" className="footer--icon footer--whatsapp" /></a></li>
                 </ul>
             </div>
         </div>
-    </div>
-
-    <div className="footer-copyright white-text text-center py-3">© 2020 Copyright:
-        <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
     </div>
 
 </footer>

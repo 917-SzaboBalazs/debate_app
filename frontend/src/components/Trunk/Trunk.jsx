@@ -67,23 +67,8 @@ function Trunk() {
         <div className="container">
             <div className="trunk--container">
                 <h1>DEBATE CULTURE</h1>
-                <p>„It is better to debate a question without settling it than to settle a question without debating it.”</p>
+                <p>"It is better to debate a question without settling it than to settle a question without debating it."</p>
                 <div className="trunk--btns">
-                { !loggedIn ?
-                    <>
-                    <button
-                        className='trunk--login-button text-uppercase'
-                    >
-                        <Link className='trunk--login-link trunk--link-text' to='/log-In'><span className='white-text'>Log In</span></Link>
-                    </button>
-                    <button
-                        className='trunk--signin-button text-uppercase'
-                    >
-                        <Link className="trunk--signup-link trunk--link-text" to='/sign-up'><span className='white-text'>Register</span></Link>
-                    </button>
-                    </>
-                :
-                    <>
                         {
                             !inDebate ?
                             <>
@@ -119,8 +104,6 @@ function Trunk() {
                                 </button>
                             </>
                         }
-                    </>
-                }
                 </div>
             </div>
         </div>

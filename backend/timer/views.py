@@ -2,13 +2,13 @@ from django.shortcuts import render
 
 # Create your views here.
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 
 class CurrentTimeView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get(self, request):
         if request.user.current_debate.timer.remaining_time().seconds == 0:

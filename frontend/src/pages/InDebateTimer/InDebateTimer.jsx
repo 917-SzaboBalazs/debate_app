@@ -106,7 +106,7 @@ function InDebateTimer() {
                     setSeconds(sec);
                 })
 
-        }, 5000);
+        }, 500);
 
         return () => clearInterval(interval);
       }, []);

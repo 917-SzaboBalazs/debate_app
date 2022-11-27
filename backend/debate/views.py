@@ -16,7 +16,7 @@ from debate.serializers import DebateSerializer
 
 
 class CurrentDebateView(generics.RetrieveUpdateAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     queryset = Debate.objects.all()
     serializer_class = DebateSerializer
 
@@ -34,7 +34,7 @@ class CurrentDebateView(generics.RetrieveUpdateAPIView):
 
 
 class CreateDebateView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     queryset = Debate.objects.all()
 
     def post(self, request):
@@ -55,11 +55,11 @@ class CreateDebateView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def generate_random_unique_code(self):
-        random_string = ''.join(random.choices(string.ascii_lowercase, k=8))
+        random_string = ''.join(random.choices(string.digits, k=4))
         debate_with_same_code = self.queryset.filter(entry_code=random_string)
 
         while len(debate_with_same_code) != 0:
-            random_string = ''.join(random.choices(string.ascii_lowercase, k=8))
+            random_string = ''.join(random.choices(string.digits, k=4))
             debate_with_same_code = self.queryset.filter(entry_code=random_string)
 
         return random_string
