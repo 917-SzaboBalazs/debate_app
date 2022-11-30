@@ -1,8 +1,8 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 
 .new-debate--background{
     height: 100%;
@@ -10,10 +10,10 @@
     z-index: -1;
 }
 
-.main{
+/* .main{
     min-height: 100vh;
     background-color: lightcoral;
-}
+} */
 
 .new-debate--decision--pro, .new-debate--decision--con, .new-debate--decision--judge{
     /*background-color: whitesmoke;*/
@@ -25,7 +25,8 @@
     max-width: 90vw !important;
     align-items: center;
     justify-content: space-evenly;
-    background-color: rgb(243, 234, 226) !important;
+    /* padding: 1rem; */
+    /* background-color: rgb(243, 234, 226) !important; */
 }
 
 .new-debate--teams {
@@ -55,7 +56,8 @@
 }
 
 .new-debate--decision{
-    padding-top: 1rem;
+    /* padding-top: 4rem; */
+
 }
 
 .pro_team, .con_team{
@@ -93,21 +95,6 @@
     margin-top: 5vh !important;
 }
 
-.new-debate--pro-btn, .new-debate--con-btn, .new-debate--judge-btn{
-    border-radius: 7px;
-    background-color: #485c7a !important;
-    padding: 0;
-    /*box-shadow: 0px 0px 80px 5px black;*/
-    color: whitesmoke !important;
-    width: 80% !important;
-    margin-left: 10% !important;
-}
-
-.new-debate--pro-btn, .new-debate--con-btn, .new-debate--judge-btn{
-    border: 1px solid #437c8b !important;
-    background-color: #333d4b !important;
-}
-
 .new-debate--clear-btn-container--btn{
     padding: 1vw;
     border: none;
@@ -128,7 +115,8 @@
 
 .new-debate--container{
     min-height: 100vh;
-    background-color: #525b6c;
+    /* background-color: #525b6c; */
+    background-color: var(--mcc-kek);
     padding-top: 10vh;
 }
 
@@ -176,21 +164,60 @@
 
 .new-debate--label {
     margin-left: 5px;
-    margin-bottom: 2rem;
-    background-color: var(--mcc-sarga);
-    color: var(--mcc-kek);
+    /* margin-bottom: 2rem; */
+    /* background-color: var(--mcc-sarga); */
+    /* color: var(--mcc-kek); */
+    color: white;
     font-weight: bold;
+
+}
+
+.new-debate--line {
+    border-top: 3px solid white;
+    color: white;
+    opacity: 100%;
 }
 
 .new-debate--motion-text {
     font-weight: bold;
 }
 
-.new-debate--decision--pro, .new-debate--decision--con, .new-debate--decision--judge{
-    background-color: whitesmoke;
-} 
-
 .new-debate--basic-text, .new-debate--current-role, .new-debate--ready, .new-debate--entry-code{
-    font-size: 24px;
-    font-style: italic;
+    font-size:28px;
+    font-style: bold;
+}
+
+
+/* NEW DEBATE CARD  */
+.new-debate--card {
+    padding: 1rem;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 20px black;
+    color: white;
+    margin-bottom: 1rem;
+
+}
+
+.new-debate--card--label {
+    color:white;
+    margin-bottom: 1rem;
+}
+
+.new-debate--card--participant {
+    /* margin-top: 1rem; */
+    
+}
+
+.new-debate--card--participant--img {
+    color:white;
+    height: 5rem;
+}
+
+.new-debate--card--picture {
+    max-height: 5rem;
+}
+
+
+.new-debate--card--participant--name {
+    color:white;
 }

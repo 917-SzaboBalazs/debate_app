@@ -1,9 +1,9 @@
 
-:root {
+/* :root {
     --primary: white;
     --secondary: #22344D;
     --third: #F2CA10;
-}
+} */
 
 .navbar{
     background-color: var(--secondary);

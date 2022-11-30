@@ -2,6 +2,9 @@
   --black: #404040;
   --mcc-sarga: #F2CA10;
   --mcc-kek: #22344D;
+  --primary: #333d4b;
+  --secondary: #61c3c3;
+  
 }
 
 * {
@@ -15,7 +18,7 @@
 .base {
   /*background-image: url('./images/mikrofon.jpg') center center/cover no-repeat;
   background-attachment: fixed;*/
-  background-color: #437c8b;
+  background-color: var(--mcc-kek);
 }
 
 .white-text {

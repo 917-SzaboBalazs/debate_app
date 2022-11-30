@@ -7,17 +7,18 @@ import './NewDebate.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axiosInstance from '../../axios';
-import axios from 'axios';
+
+import face1 from '../../images/faces/face1.svg';
 
 function NewDebate() {
     // const location = useLocation();
     // const type = location.state.type;
     const navigate = useNavigate();
-    const [ debateType, setDebateType ] = useState('');
+    const [ debateType, setDebateType ] = useState(''); // -ez lehet nem fog kelleni most
     const [ entryCode, setEntryCode ] = useState('');
     const [ someError, setSomeError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState('');
-    const [ noJudges, setNoJudges ] = useState(1);
+    const [ noJudges, setNoJudges ] = useState(1); // szerintem ez sem
     const [ motion, setMotion ] = useState('');
     const [ currRole, setCurrRole ] = useState('spectator');
 
@@ -202,11 +203,57 @@ function NewDebate() {
     const proListed = posts.map((player) => {
       let role = 'pro' + player;
       let user = allUsers.find(user => user.role == role);
-      let username = user == undefined ? "" : " - " + user.username;
+      let username = user == undefined ? "" : user.username;
 
+      // megadom a roleok nevet
+      let label_to_print;
+      switch(player) {
+        case 1: label_to_print = "Prime Minister"; break;
+        case 2: label_to_print = "Deputy Prime Minister"; break;
+        case 3: label_to_print = "Member of The Government"; break;
+        case 4: label_to_print = "Government Whip"; break;
+      }
+
+      // ez az ami kilistazza a formakat, tehat itt lehet editelni a "nevkartyakat"
       return (
-        <div className="col-2 new-debate--participant" onClick={event => handleChoose('pro', player)} key={player}>
-            {player}{username}
+        // egy sort terit vissza amiben van 2 sor
+        <div className="
+            new-debate--card
+            row
+            justify-content-center
+            align-items-center
+            "
+            onClick={event => handleChoose('pro', player)} key={player}
+            >
+            <div className="row">
+                <div className="
+                    col-12
+                    text-center
+                    new-debate--card--label
+                    "
+                >
+                    {label_to_print}
+                </div>
+            </div>
+            <div className="row new-debate--card--participant" >
+                {/* Ide jon a kep */}
+                <div className="col-md-6 col-sm-12 new-debate--card--participant--img">
+                    <img src={face1} className="new-debate--card--picture"  />
+                </div>
+                {/* Ide jon a username */}
+                <div className='
+                    col-md-6 
+                    col-sm-12
+                    new-debate--card--participant--name
+                    text-center
+                    d-flex
+                    justify-content-center
+                    align-items-center
+                    '
+                    >
+                        {username}
+                </div>
+            </div>
         </div>
       )
     }
@@ -215,11 +262,58 @@ function NewDebate() {
     const conListed = posts.map((player) => {
       let role = 'con' + player;
       let user = allUsers.find(user => user.role == role);
-      let username = user == undefined ? "" : " - " + user.username;
+      let username = user == undefined ? "" :  user.username;
 
+      // megadom a roleok nevet
+      let label_to_print;
+      switch(player) {
+        case 1: label_to_print = "Leader of The Opposition"; break;
+        case 2: label_to_print = "Deputy Leader of The Opposition"; break;
+        case 3: label_to_print = "Member of Opposition"; break;
+        case 4: label_to_print = "Opposition Whip"; break;
+      }
+
+      // ez az ami kilistazza a formakat, tehat itt lehet editelni a "nevkartyakat"
       return (
-        <div className="col-2 new-debate--participant" onClick={event => handleChoose('con', player)} key={player}>
-            {player}{username}
+
+        // egy sort terit vissza amiben van 2 sor
+        <div className="
+            new-debate--card
+            row
+            justify-content-center
+            align-items-center
+            "
+            onClick={event => handleChoose('con', player)} key={player}
+            >
+            <div className="row">
+                <div className="
+                    col-12
+                    text-center
+                    new-debate--card--label
+                    "
+                >
+                    {label_to_print}
+                </div>
+            </div>
+            <div className="row new-debate--card--participant" >
+                {/* Ide jon a kep */}
+                <div className="col-md-6 col-sm-12 new-debate--card--participant--img">
+                    <img src={face1} className="new-debate--card--picture"  />
+                </div>
+                {/* Ide jon a username */}
+                <div className='
+                    col-md-6 
+                    col-sm-12
+                    new-debate--card--participant--name
+                    text-center
+                    d-flex
+                    justify-content-center
+                    align-items-center
+                    '
+                    >
+                        {username}
+                </div>
+            </div>
         </div>
       )
     }
@@ -243,6 +337,7 @@ function NewDebate() {
         <div className='new-debate--background base'>
             <div className="new-debate--container container">
                 {
+                    
                     someError ?
                         <>
                             <div className="new-debate--not-logged-in-cont row ">
@@ -255,48 +350,73 @@ function NewDebate() {
                     :
                     <>
 
-                <div className="row">
-                    <h1 className='new-debate--motion col-12 text-center p-4'><span className="new-debate--motion-text white-text">"{motion}"</span></h1>
-                </div>
-                <div className="row pt-4">
+                {/* Gyakorlatilag ez a container sor */}
+                <div className="new-debate--decision row justify-content-evenly">
+                {/* ezek voltak azok amik nem kellettek (nem merem kitorolni meg xd) */}
+                {/* <div className="row pt-4">
                     <h2 className='new-debate--basic-text col-md-6 col-sm-12 text-center white-text'>Vita típus: {debateType}</h2>
                     <h2 className='new-debate--current-role col-md-6 col-sm-12 text-center white-text'>Szerep: {currRole}</h2>
                 </div>
                 <div className="row">
                     <h2 className='new-debate--ready col-md-6 col-sm-12 text-center white-text'>Kész: {ready ? 'true' : 'false'}</h2>
                     <h2 className='new-debate--entry-code col-md-6 col-sm-12 text-center white-text'>Vita kód: {entryCode}</h2>
-                </div>
+                </div> */}
 
-                <div className="new-debate--procon-row row pt-2 justify-content-around">
-                </div>
-                <div className="new-debate--decision row justify-content-evenly">
                     { waitValue ? <>
                     <div
-                        className="new-debate--decision--pro new-debate--dec col-sm-3 col-md-3"
+                        className="new-debate--decision--pro new-debate--dec col-3"
                     >
-                        <div className="col-12 new-debate--pro-btn new-debate--label text-center font-weight-bold">PRO</div>
+                        <div className="col-12 new-debate--pro-btn new-debate--label text-center font-weight-bold">Government</div>
+                        <hr className='new-debate--line'></hr>
                         {proListed}
                     </div>
+                    {/* Itt van a motion  + entry_code*/}
+                    <h1 className='new-debate--motion col-6 text-center p-4'>
+                        <div className="row">
+                            <span className="new-debate--motion-text white-text">"{motion}"</span>
+                        </div>
+                        <div className="row">
+                            <h2 className='
+                                new-debate--entry-code  
+                                text-center 
+                                white-text'
+                                >
+                                {entryCode}
+                            </h2>
+                        </div>
+                    </h1>
                     <div
-                        className="new-debate--decision--con new-debate--dec col-sm-3 col-md-3"
+                        className="new-debate--decision--con new-debate--dec col-3"
                     >
-                        <div className="col-12 new-debate--pro-btn text-center new-debate--label font-weight-bold">KONTRA</div>
+                        <div className="col-12 new-debate--pro-btn text-center new-debate--label font-weight-bold">Opposition</div>
+                        <hr className='new-debate--line'></hr>
                         {conListed}
                     </div>
-                    <div className="new-debate--decision--judge col-sm-3 col-md-3">
+
+                    {/* birok nem fognak kelleni */}
+                    {/* <div className="new-debate--decision--judge col-sm-3 col-md-3">
                         <div className="col-12 new-debate--pro-btn new-debate--dec text-center  new-debate--label font-weight-bold">BÍRÓ</div>
                         {judgeListed}
-                    </div>
+                    </div> */}
                      </>   : null
                     }
                 </div>
 
                 <div className="new-debate--spectator  row justify-content-center">
-                    <div className="new-debate--spectator-col new-debate--button col-4 white-text text-center" onClick={handleChooseSpectator}>
-                        Szemlélő
+                    <div 
+                        className="
+                            new-debate--spectator-col 
+                            new-debate--button 
+                            col-4 white-text 
+                            text-center" 
+                            onClick={handleChooseSpectator}
+                        >
+                        spectator
                     </div>
                 </div>
 
+
+                {/* Ez ejsye nem fog kelleni */}
                 <div className="new-debate--clear-btn-container row justify-content-center">
                         <div
                             className="col-4 new-debate--button white-text text-center"
@@ -311,17 +431,19 @@ function NewDebate() {
                             {
                                 ready ?
                                 <>
-                                    Nem állok készen
+                                    not ready
                                 </>
                                 :
                                 <>
-                                    Készen állok
+                                    ready
                                 </>
                             }
                         </div>
                 </div>
+                
+                {/* ha megvan minden fontos, el lehet inditani a vitat --  de ez sem biztos hogy kell  */}
                 {
-                    ready && ( ( !hasChair && currRole == 'judge1' ) || ( hasChair && currRole == 'judge1 (chair)') )?
+                    ready ?//&& ( ( !hasChair && currRole == 'judge1' ) || ( hasChair && currRole == 'judge1 (chair)') )?
                     <>
                         <div className="new-debate--start row justify-content-center">
                             <div

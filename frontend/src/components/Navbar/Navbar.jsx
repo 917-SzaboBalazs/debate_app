@@ -12,7 +12,7 @@ import JoinDebate from '../Popups/JoinDebate/JoinDebate';
 
 import axiosInstance from '../../axios';
 
-import './Navbar.css';
+// import './Navbar.css';
 import './Navbar2.css';
 
 import Logo from '../../images/logo.svg';
@@ -135,8 +135,8 @@ function CollapsibleExample() {
               </>
               :
               <>
-                <Nav.Link href="/new-debate" className='yellow-text'>Current Debate</Nav.Link>
-                <Nav.Link onClick={leaveDebate} className='yellow-text'>Leave Debate</Nav.Link>
+                <Nav.Link href="/new-debate" className='nav-link yellow-text'>Current Debate</Nav.Link>
+                <Nav.Link onClick={leaveDebate} className='nav-link yellow-text'>Leave Debate</Nav.Link>
               </>
             }
             {/* <Nav.Link href="/in-debate" className='nav-link'>Timer Page</Nav.Link> */}
