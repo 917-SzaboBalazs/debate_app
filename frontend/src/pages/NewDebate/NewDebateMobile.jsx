@@ -218,6 +218,21 @@ function NewDebateMobile() {
 
     }
 
+    const handleChooseJudge = () => {
+        if (!ready) {
+            setCurrRole('judge');
+
+            axiosInstance
+            .patch('user/current/', {'role':'judge'})
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        }
+    }
+
     // hozza kell meg adjam a motiont
     const startDebate = () => {
         axiosInstance
@@ -446,12 +461,22 @@ function NewDebateMobile() {
                     }
                 </div>
 
-                <div className="new-debate--spectator  row justify-content-center">
+                <div className="new-debate--spectator  row justify-content-evenly">
+                    <div 
+                                className="
+                                    new-debate--spectator-col 
+                                    new-debate--button 
+                                    col-3 white-text 
+                                    text-center" 
+                                    onClick={handleChooseJudge}
+                                >
+                                judge
+                            </div>    
                     <div 
                         className="
                             new-debate--spectator-col 
                             new-debate--button 
-                            col-4 white-text 
+                            col-3 white-text 
                             text-center" 
                             onClick={handleChooseSpectator}
                         >

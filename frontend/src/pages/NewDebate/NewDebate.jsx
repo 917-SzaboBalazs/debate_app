@@ -530,44 +530,6 @@ function NewDebate() {
                      </>   : null
                     }
                 </div>
-
-                {/* <div className="new-debate--spectator  row justify-content-center">
-                    <div 
-                        className="
-                            new-debate--spectator-col 
-                            new-debate--button 
-                            col-4 white-text 
-                            text-center" 
-                            onClick={handleChooseSpectator}
-                        >
-                        spectator
-                    </div>
-                </div> */}
-
-                {/* Ez a regi ready gomb  */}
-                {/* <div className="new-debate--clear-btn-container row justify-content-center">
-                        <div
-                            className="col-4 new-debate--button white-text text-center"
-                            onClick={() => {
-                                if (currRole != null) {
-                                    setReady(!ready);
-                                } else {
-                                    alert('choose a role first');
-                                }
-                            }}
-                        >
-                            {
-                                ready ?
-                                <>
-                                    not ready
-                                </>
-                                :
-                                <>
-                                    ready
-                                </>
-                            }
-                        </div>
-                </div> */}
                 
                 </>
                 }
