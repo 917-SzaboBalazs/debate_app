@@ -1,4 +1,4 @@
-// A NEW DEBATE ASZTALI VERZIOJA
+// A NEW DEBATE MOBIL VERZIOJA
 
 import React from 'react'
 import { useState, useEffect } from 'react';
@@ -11,7 +11,7 @@ import axiosInstance from '../../axios';
 
 import face1 from '../../images/faces/face1.svg';
 
-function NewDebate() {
+function NewDebateMobile() {
     // const location = useLocation();
     // const type = location.state.type;
     const navigate = useNavigate();
@@ -202,21 +202,6 @@ function NewDebate() {
         }
     }
 
-    const handleChooseJudge = () => {
-        if (!ready) {
-            setCurrRole('judge');
-
-            axiosInstance
-            .patch('user/current/', {'role':'judge'})
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-        }
-    }
-
     const handleMotion = (e) => {
         setMotion(e);
         axiosInstance
@@ -283,13 +268,12 @@ function NewDebate() {
             </div>
             <div className="row new-debate--card--participant" >
                 {/* Ide jon a kep */}
-                <div className="col-md-6 col-sm-12 new-debate--card--participant--img">
+                <div className="col-12 new-debate--card--participant--img">
                     <img src={face1} className="new-debate--card--picture"  />
                 </div>
                 {/* Ide jon a username */}
                 <div className='
-                    col-md-6 
-                    col-sm-12
+                    col-12
                     new-debate--card--participant--name
                     text-center
                     d-flex
@@ -343,13 +327,12 @@ function NewDebate() {
             </div>
             <div className="row new-debate--card--participant" >
                 {/* Ide jon a kep */}
-                <div className="col-md-6 col-sm-12 new-debate--card--participant--img">
+                <div className="col-12 new-debate--card--participant--img">
                     <img src={face1} className="new-debate--card--picture"  />
                 </div>
                 {/* Ide jon a username */}
                 <div className='
-                    col-md-6 
-                    col-sm-12
+                    col-12
                     new-debate--card--participant--name
                     text-center
                     d-flex
@@ -396,20 +379,8 @@ function NewDebate() {
                     :
                     <>
 
-                {/* Gyakorlatilag ez a container sor */}
-                <div className="new-debate--decision row justify-content-evenly">
-
-                    { waitValue ? <>
-                    <div
-                        className="new-debate--decision--pro new-debate--dec col-3"
-                    >
-                        <div className="col-12 new-debate--pro-btn new-debate--label text-center font-weight-bold">Government</div>
-                        <hr className='new-debate--line'></hr>
-                        {proListed}
-                    </div>
-
-                    {/* Itt van a kozepso sor*/}
-                    <div className='new-debate--motion col-6 text-center p-4'>
+                <div className="row">
+                    <h1 className='new-debate--motion col-12 text-center mt-3 mb-0'>
                         {/* Ez egy textfield lesz, hogy at lehessen irni ha arra volna igeny */}
                         <div className="row">
                             {/* <span className="new-debate--motion-text white-text">{motion}</span> */}
@@ -434,73 +405,22 @@ function NewDebate() {
                                 {entryCode}
                             </h2>
                         </div>
+                    </h1>
+                </div>
+                {/* Gyakorlatilag ez a container sor */}
+                <div className="new-debate--decision row justify-content-evenly">
 
-                        {/* ide jon most a NEXT, setDebateType, spectator gomb */}
-                        <div className="row new-debate--spacemaker"></div>
-                        <div className="row new-debate--selectDebate">SELECT TYPE: </div>
-                        <div className="row new-debate--start"> 
-                            {/* ha megvan minden fontos, el lehet inditani a vitat --  de ez sem biztos hogy kell  */}
-                            {
-                                ready ?//&& ( ( !hasChair && currRole == 'judge1' ) || ( hasChair && currRole == 'judge1 (chair)') )?
-                                <>
-                                    <div className="new-debate--start row justify-content-center">
-                                        <div
-                                            className="new-debate--button col-4 white-text text-center"
-                                            onClick={startDebate}
-                                        >
-                                            start
-                                        </div>
-                                    </div>
-                                </>
-                                : null
-                            }
-                        </div>
-                        <div className="row new-debate--judge--spectator justify-content-evenly"> 
-                            <div 
-                                className="
-                                    new-debate--spectator-col 
-                                    new-debate--button 
-                                    col-3 white-text 
-                                    text-center" 
-                                    onClick={handleChooseJudge}
-                                >
-                                judge
-                            </div>    
-                            <div 
-                                className="
-                                    new-debate--spectator-col 
-                                    new-debate--button 
-                                    col-3 white-text 
-                                    text-center" 
-                                    onClick={handleChooseSpectator}
-                                >
-                                spectator
-                            </div>
-                            <div
-                                className="col-3 new-debate--button white-text text-center"
-                                onClick={() => {
-                                    if (currRole != null) {
-                                        setReady(!ready);
-                                    } else {
-                                        alert('choose a role first');
-                                    }
-                                }}
-                            >
-                                {
-                                    ready ?
-                                    <>
-                                        not ready
-                                    </>
-                                    :
-                                    <>
-                                        ready
-                                    </>
-                                }
-                            </div>
-                        </div>
-                    </div>
+                    { waitValue ? <>
                     <div
-                        className="new-debate--decision--con new-debate--dec col-3"
+                        className="new-debate--decision--pro new-debate--dec col-5"
+                    >
+                        <div className="col-12 new-debate--pro-btn new-debate--label text-center font-weight-bold">Government</div>
+                        <hr className='new-debate--line'></hr>
+                        {proListed}
+                    </div>
+                    
+                    <div
+                        className="new-debate--decision--con new-debate--dec col-5"
                     >
                         <div className="col-12 new-debate--pro-btn text-center new-debate--label font-weight-bold">Opposition</div>
                         <hr className='new-debate--line'></hr>
@@ -516,7 +436,7 @@ function NewDebate() {
                     }
                 </div>
 
-                {/* <div className="new-debate--spectator  row justify-content-center">
+                <div className="new-debate--spectator  row justify-content-center">
                     <div 
                         className="
                             new-debate--spectator-col 
@@ -527,9 +447,10 @@ function NewDebate() {
                         >
                         spectator
                     </div>
-                </div> */}
+                </div>
 
 
+                {/* Ez ejsye nem fog kelleni */}
                 <div className="new-debate--clear-btn-container row justify-content-center">
                         <div
                             className="col-4 new-debate--button white-text text-center"
@@ -554,6 +475,21 @@ function NewDebate() {
                         </div>
                 </div>
                 
+                {/* ha megvan minden fontos, el lehet inditani a vitat --  de ez sem biztos hogy kell  */}
+                {
+                    ready ?//&& ( ( !hasChair && currRole == 'judge1' ) || ( hasChair && currRole == 'judge1 (chair)') )?
+                    <>
+                        <div className="new-debate--start row justify-content-center">
+                            <div
+                                className="new-debate--button col-4 white-text text-center"
+                                onClick={startDebate}
+                            >
+                                start
+                            </div>
+                        </div>
+                    </>
+                    : null
+                }
                 </>
                 }
             </div>
@@ -561,4 +497,4 @@ function NewDebate() {
     )
 }
 
-export default NewDebate
+export default NewDebateMobile

@@ -41,6 +41,10 @@
     justify-content: space-between;
   }
 
+  .trunk--container h1 {
+    color: white;
+  }
+
   .trunk--link-text {
     text-decoration: none;
     font-weight: bold;

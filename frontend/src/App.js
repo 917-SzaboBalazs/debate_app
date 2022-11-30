@@ -5,6 +5,7 @@ import Login from './pages/LoginSignup/Login';
 import AboutUs from './pages/AboutUs/About-Us';
 import Signup from './pages/LoginSignup/Signup';
 import NewDebate from './pages/NewDebate/NewDebate';
+import NewDebateWrapper from './pages/NewDebate/NewDebateWrapper';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Debates from './pages/Debates/Debates';
@@ -26,7 +27,7 @@ function App() {
           <Route path='/log-In' exact element={<Login />} />
           <Route path='/sign-up' exact element={<Signup/>} />
           <Route path='/about-us' exact element={<AboutUs />} />
-          <Route path='/new-debate' exact element={<NewDebate />} />
+          <Route path='/new-debate' exact element={<NewDebateWrapper />} />
           <Route path='/debates' exact element={<Debates />} />
           <Route path='/in-debate' exact element={<InDebateTimer />} />
           <Route path='/profile' exact element={<Profile />} />

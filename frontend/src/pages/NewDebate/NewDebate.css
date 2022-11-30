@@ -6,14 +6,10 @@
 
 .new-debate--background{
     height: 100%;
+    min-height: 100vh;
     width: 100%;
     z-index: -1;
 }
-
-/* .main{
-    min-height: 100vh;
-    background-color: lightcoral;
-} */
 
 .new-debate--decision--pro, .new-debate--decision--con, .new-debate--decision--judge{
     /*background-color: whitesmoke;*/
@@ -29,67 +25,17 @@
     /* background-color: rgb(243, 234, 226) !important; */
 }
 
-.new-debate--teams {
-    padding-top: 10vh;
-    margin-left: 5vw;
-    margin-right: 5vw;
-}
-
-.new-debate--people{
-    padding-top: 2rem;
-    padding-left: 3vw;
-    padding-right: 3vw;
-}
-
-.new-debate--person{
-    background-color: lightgoldenrodyellow;
-    border-radius: 7px;
-    margin: 12px;
-    transition: .2s;
-    min-width: 100px;
-}
-
-.new-debate--person:hover{
-    background-color: orangered;
-    color: whitesmoke;
-    transition: .2s;
-}
-
 .new-debate--decision{
     /* padding-top: 4rem; */
-
 }
-
-.pro_team, .con_team{
-    background-color: transparent;
-    min-width: 100px;
-    border-radius: 7px;
-    transition: .2s;
-    margin: 12px;
-
-}
-
-.pro_team:hover {
-    background-color: #f9d342;
-    transition: .2s;
-}
-
-.con_team:hover{
-    background-color: #292826;
-    color: whitesmoke;
-}
-
-.new-debate--next_btn_section{
-    margin-bottom: 5vh;
-}
-
+/* 
 .new-debate--next-btn{
     padding: 2vh;
     background-color: #f9d342;
     color: #292826;
     border-radius: 7px;
     width: 20vw;
-}
+} */
 
 .new-debate--procon-row{
     margin-top: 5vh !important;
@@ -109,14 +55,11 @@
     transition: .2s;
 }
 
-.new-debate--background{
-    min-height: 100vh;
-}
 
 .new-debate--container{
     min-height: 100vh;
-    /* background-color: #525b6c; */
-    background-color: var(--mcc-kek);
+    /* A bgcolor megkapja a hatternek a szinet */
+    background-color: transparent;
     padding-top: 10vh;
 }
 
@@ -180,6 +123,22 @@
 
 .new-debate--motion-text {
     font-weight: bold;
+    color: white;
+    background-color: transparent;
+    border-bottom: none;
+    text-align: center;
+    /* width: auto; */
+    /* overflow: visible; */
+    text-overflow:ellipsis;
+}
+
+.new-debate--motion-set {
+    color: white;
+    text-decoration: underline;
+    font-size: 20px;
+    cursor: pointer;
+
+    margin-bottom: 1rem;
 }
 
 .new-debate--basic-text, .new-debate--current-role, .new-debate--ready, .new-debate--entry-code{
@@ -195,7 +154,7 @@
     box-shadow: 0px 0px 20px black;
     color: white;
     margin-bottom: 1rem;
-
+    height: 13rem;
 }
 
 .new-debate--card--label {

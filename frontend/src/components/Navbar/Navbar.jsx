@@ -87,8 +87,8 @@ function CollapsibleExample() {
           axiosInstance
             .get('debate/current/')
             .then((debateRes) => {
-              if (userRes.data.role == "spectator" || debateRes.data.status != "running")
-              {
+              // if (userRes.data.role == "spectator" || debateRes.data.status != "running")
+              // {
                 axiosInstance
                   .patch('user/current/', {"current_debate": null, 'role': null})
                   .then(() => {
@@ -100,11 +100,11 @@ function CollapsibleExample() {
                     console.log(err);
                     console.log('Baj van');
                   })
-              }
-              else
-              {
-                alert("Cannot leave now");
-              }
+              // }
+              // else
+              // {
+              //   alert("Cannot leave now");
+              // }
             })
             .catch((err) => {
               console.log(err);
