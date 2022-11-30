@@ -4,9 +4,9 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import './NewDebate.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './NewDebate.css';
 import axiosInstance from '../../axios';
 
 import face1 from '../../images/faces/face1.svg';
@@ -20,7 +20,7 @@ function NewDebate() {
     const [ someError, setSomeError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState('');
     const [ noJudges, setNoJudges ] = useState(1); // szerintem ez sem
-    const [ motion, setMotion ] = useState('');
+    const [ motion, setMotion ] = useState('Motion');
     const [ currRole, setCurrRole ] = useState('spectator');
 
     const [ ready, setReady ] = useState(false);
@@ -263,6 +263,7 @@ function NewDebate() {
       // ez az ami kilistazza a formakat, tehat itt lehet editelni a "nevkartyakat"
       return (
         // egy sort terit vissza amiben van 2 sor
+        <>
         <div className="
             new-debate--card
             row
@@ -301,6 +302,10 @@ function NewDebate() {
                 </div>
             </div>
         </div>
+        {
+            (player == 2) ?  <br></br>: null
+        }
+        </>
       )
     }
 
@@ -323,6 +328,7 @@ function NewDebate() {
       return (
 
         // egy sort terit vissza amiben van 2 sor
+        <>
         <div className="
             new-debate--card
             row
@@ -361,6 +367,10 @@ function NewDebate() {
                 </div>
             </div>
         </div>
+        {
+            (player == 2) ?  <br></br>: null
+        }
+        </>
       )
     }
 
@@ -416,13 +426,17 @@ function NewDebate() {
                             <div className="row">
                                 <input  type="text" 
                                         className="new-debate--motion-text col-12" 
+                                        defaultValue={motion} 
                                         placeholder={motion} 
                                         onChange={(ev) => {setMotion(ev.target.value)}}/>
                             </div>
                             <div className="row">
-                            <div 
-                                className="new-debate--motion-set col-12"
-                                onClick={handleMotion}>set</div>
+                                <div 
+                                    className="new-debate--motion-set col-12"
+                                    onClick={handleMotion}
+                                >
+                                    set
+                                </div>
                             </div>
                         </div>
                         <div className="row">
@@ -441,7 +455,7 @@ function NewDebate() {
                         <div className="row new-debate--start"> 
                             {/* ha megvan minden fontos, el lehet inditani a vitat --  de ez sem biztos hogy kell  */}
                             {
-                                ready ?//&& ( ( !hasChair && currRole == 'judge1' ) || ( hasChair && currRole == 'judge1 (chair)') )?
+                                ready  && ( ( currRole == 'judge' ) )?
                                 <>
                                     <div className="new-debate--start row justify-content-center">
                                         <div
@@ -498,6 +512,7 @@ function NewDebate() {
                                 }
                             </div>
                         </div>
+                        <div className="row">Ide be kene tenni a birot, az fasza lenne sztem (vagyis legalulra)</div>
                     </div>
                     <div
                         className="new-debate--decision--con new-debate--dec col-3"
@@ -529,8 +544,8 @@ function NewDebate() {
                     </div>
                 </div> */}
 
-
-                <div className="new-debate--clear-btn-container row justify-content-center">
+                {/* Ez a regi ready gomb  */}
+                {/* <div className="new-debate--clear-btn-container row justify-content-center">
                         <div
                             className="col-4 new-debate--button white-text text-center"
                             onClick={() => {
@@ -552,7 +567,7 @@ function NewDebate() {
                                 </>
                             }
                         </div>
-                </div>
+                </div> */}
                 
                 </>
                 }

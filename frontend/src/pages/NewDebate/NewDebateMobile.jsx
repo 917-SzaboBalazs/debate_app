@@ -248,6 +248,7 @@ function NewDebateMobile() {
       // ez az ami kilistazza a formakat, tehat itt lehet editelni a "nevkartyakat"
       return (
         // egy sort terit vissza amiben van 2 sor
+        <>
         <div className="
             new-debate--card
             row
@@ -285,6 +286,10 @@ function NewDebateMobile() {
                 </div>
             </div>
         </div>
+        {
+            (player == 2) ?  <br></br>: null
+        }
+        </>
       )
     }
 
@@ -307,6 +312,7 @@ function NewDebateMobile() {
       return (
 
         // egy sort terit vissza amiben van 2 sor
+        <>
         <div className="
             new-debate--card
             row
@@ -344,6 +350,10 @@ function NewDebateMobile() {
                 </div>
             </div>
         </div>
+        {
+            (player == 2) ?  <br></br>: null
+        }
+        </>
       )
     }
 
@@ -384,13 +394,13 @@ function NewDebateMobile() {
                         {/* Ez egy textfield lesz, hogy at lehessen irni ha arra volna igeny */}
                         <div className="row">
                             {/* <span className="new-debate--motion-text white-text">{motion}</span> */}
-                            <div className="row">
+                            <div className="row new-debate--motion-text-row">
                                 <input  type="text" 
                                         className="new-debate--motion-text col-12" 
                                         placeholder={motion} 
                                         onChange={(ev) => {setMotion(ev.target.value)}}/>
                             </div>
-                            <div className="row">
+                            <div className="row new-debate--motion-set-row">
                             <div 
                                 className="new-debate--motion-set col-12"
                                 onClick={handleMotion}>set</div>

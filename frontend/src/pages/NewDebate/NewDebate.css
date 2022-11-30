@@ -124,11 +124,10 @@
 .new-debate--motion-text {
     font-weight: bold;
     color: white;
+    font-size: 48px;
     background-color: transparent;
     border-bottom: none;
     text-align: center;
-    /* width: auto; */
-    /* overflow: visible; */
     text-overflow:ellipsis;
 }
 
@@ -137,8 +136,11 @@
     text-decoration: underline;
     font-size: 20px;
     cursor: pointer;
-
     margin-bottom: 1rem;
+}
+
+.new-debate--motion-set-row {
+    margin-left: 0 !important;
 }
 
 .new-debate--basic-text, .new-debate--current-role, .new-debate--ready, .new-debate--entry-code{
@@ -155,6 +157,17 @@
     color: white;
     margin-bottom: 1rem;
     height: 13rem;
+    transition: .3s;
+}
+
+.new-debate--card:hover{
+    padding: 1rem;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 20px white;
+    color: white;
+    margin-bottom: 1rem;
+    height: 13rem;
+    transition: .3s;
 }
 
 .new-debate--card--label {
