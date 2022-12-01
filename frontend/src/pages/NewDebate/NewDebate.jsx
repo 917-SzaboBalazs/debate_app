@@ -70,11 +70,11 @@ function NewDebate() {
                 setErrorMessage('');
                 setDebateType(res.data.type);
                 setEntryCode(res.data.entry_code);
-                setNoJudges(res.data.no_judges);
+                //setNoJudges(res.data.no_judges)
                 setMotion(res.data.motion);
-                setJudge(setJudgeArray(res.data.no_judges, res.data.has_chair));
-                setPosts(setDebaterArray(res.data.team_size));
-                setHasChair(res.data.has_chair);
+                //setJudge(setJudgeArray(res.data.no_judges, res.data.has_chair));
+                setPosts(setDebaterArray(4));
+                //setHasChair(res.data.has_chair);
                 setWaitValue(true);
                 console.log(hasChair);
                 if (res.data.status != 'lobby') {
@@ -247,6 +247,7 @@ function NewDebate() {
     }
 
     const proListed = posts.map((player) => {
+        
       let role = 'pro' + player;
       let user = allUsers.find(user => user.role == role);
       let username = user == undefined ? "" : user.username;
