@@ -15,18 +15,30 @@ class DebateManager(models.Manager):
 
 
 class Debate(models.Model):
-    entry_code = models.CharField(max_length=8, unique=True)
-    type = models.CharField(max_length=50, default="british")
+    entry_code = models.CharField(max_length=8, unique=True, help_text="Random 4 digits number, uniquely "
+                                                                       "identifies every debate.")
+    type = models.CharField(max_length=50, default="british", help_text="Default value is <b>british</b>. Other "
+                                                                        "possible values: <b>british</b>.")
 
-    result = models.CharField(max_length=50, null=True, blank=True)
-    status = models.CharField(max_length=50, default="lobby")
-    date_time = models.DateTimeField(default=timezone.now)
-    motion = models.CharField(max_length=100, null=True, blank=True)
+    result = models.CharField(max_length=50, null=True, blank=True, help_text="Stores the result of the debate."
+                                                                              "Default value is <b>NULL</b>.")
+    status = models.CharField(max_length=50, default="lobby", help_text="Signals current status of the debate."
+                                                                        "Default value is <b>lobby</b>. Other possible"
+                                                                        " values: <b>lobby</b> | <b>running</b> | "
+                                                                        "<b>finished</b>.")
+    date_time = models.DateTimeField(default=timezone.now, help_text="Stores the creation time of the debate.")
+    motion = models.CharField(max_length=100, null=True, blank=True, help_text="Motion can be generated random from"
+                                                                               "our database or type manually by"
+                                                                               "the host. Default value is "
+                                                                               "<b>NULL</b>.")
 
-    current_number = models.IntegerField(default=1)
+    current_number = models.IntegerField(default=1, help_text="Indicates the number of the current speaker."
+                                                              "You should increase this when a new debater starts"
+                                                              "to speak. Default value is <b>1</b>.")
 
     # options
-    speaker_time = models.IntegerField(default=6)
+    speaker_time = models.IntegerField(default=6, help_text="Expresses speakers time in minutes. Default value is"
+                                                            "<b>6</b>.")
 
     objects = DebateManager()
 

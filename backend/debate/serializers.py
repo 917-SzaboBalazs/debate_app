@@ -25,7 +25,8 @@ class DebateSerializer(serializers.ModelSerializer):
 
         return new_debate
 
-    def get_participants(self, obj):
+    @staticmethod
+    def get_participants(obj):
         custom_debate_query = models.NewUser.objects.filter(current_debate=obj.id)
         serializer = RegisterUserSerializer(custom_debate_query, many=True)
         return serializer.data
