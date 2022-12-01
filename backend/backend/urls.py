@@ -30,10 +30,5 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('schema/', get_schema_view(
-        title="Debate-Culture",
-        description="Akos majd ir ide valamit",
-        version="1.0.0"
-    ), name="openapi-schema"),
-    path('docs/', include_docs_urls(title='Debate-Culture')),
+    path('docs/', include_docs_urls(title='Debate Culture')),
 ]

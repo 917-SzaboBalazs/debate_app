@@ -15,11 +15,9 @@ class DebateSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def create(self, validated_data):
-        type = validated_data.pop('type', None)
         entry_code = validated_data.pop('entry_code', None)
-        motion = validated_data.pop('motion', None)
 
-        new_debate = self.Meta.model.objects.create_debate(type, entry_code, motion, **validated_data)
+        new_debate = self.Meta.model.objects.create_debate(entry_code, **validated_data)
         new_debate.save()
 
         new_timer = CustomCountdownTimer.objects.create(debate=new_debate, duration_in_minutes=new_debate.speaker_time)
