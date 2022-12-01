@@ -41,14 +41,17 @@
     
 }
 
-.list-unstyled li a {
-    text-decoration: none;
-    color: var(--third);
-    font-size: 20px;
-    
-}
-
 .list-horizontal li {
     display: inline-block;
     margin: 5px 15px 0px 15px;
+}
+
+.footer--list-link {
+    color: white;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.footer--list-link:hover {
+    color: var(--secondary);
 }
