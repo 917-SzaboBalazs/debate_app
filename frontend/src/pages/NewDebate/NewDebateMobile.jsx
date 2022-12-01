@@ -4,11 +4,11 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './NewDebate.css';
 
 import axiosInstance from '../../axios';
+import handleChoose from './Functions/handleChoose';
+import handleMotion from './Functions/handleMotion';
 
 import face1 from '../../images/faces/face1.svg';
 
@@ -21,115 +21,71 @@ function NewDebateMobile() {
     const [ someError, setSomeError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState('');
     const [ noJudges, setNoJudges ] = useState(1); // szerintem ez sem
-    const [ motion, setMotion ] = useState('');
+    const [ motion, setMotion ] = useState('default mo');
     const [ currRole, setCurrRole ] = useState('spectator');
 
     const [ ready, setReady ] = useState(false);
     const [ posts, setPosts ] = useState([]);
-    const [ postJudge, setJudge ] = useState([]);
-    const [ hasChair, setHasChair ] = useState(false);
-    const [ waitValue, setWaitValue ] = useState(false);
     const [ allUsers, setAllUsers] = useState([]);
 
-    // const [ size, setSize ] = useState(this.resize.bind(this));
-
-    // winSize();
-
-    // const winSize = (() => {
-    //     window.addEventListener("resize", this.resize.bind(this))
-    //     this.resize()
-    // })
-
-    // const resize = (() =>{
-    //     this.setState({innerWidth: window.innerWidth})
-    // })
-
     useEffect(() => {
-
-      axiosInstance
-        .get("user/all-from-current-debate/")
-        .then((res) => {
-          setAllUsers(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-
-        axiosInstance
-        .get('user/current/')
-        .then((res) => {
-            setCurrRole(res.data.role);
-        })
-
-        const interval = setInterval(() => {
-
-        axiosInstance
-            .get('debate/current/')
-            .then((res) => {
-                // console.log(res);
-                setSomeError(false);
-                setErrorMessage('');
-                setDebateType(res.data.type);
-                setEntryCode(res.data.entry_code);
-                setNoJudges(res.data.no_judges);
-                setMotion(res.data.motion);
-                setJudge(setJudgeArray(res.data.no_judges, res.data.has_chair));
-                setPosts(setDebaterArray(res.data.team_size));
-                setHasChair(res.data.has_chair);
-                setWaitValue(true);
-                console.log(hasChair);
-                if (res.data.status != 'lobby') {
-                    navigate('/in-debate');
-                }
-            })
-            .catch((err) => {
-                setSomeError(true);
-                if (err.response.status === 401) {
-                    console.log('Valaki nincs bejelentkezve');
-                    setErrorMessage('Jelentkezz be rigó');
-                } else if (err.response.status === 404) {
-                    console.log('Valaki vitátlan');
-                    setErrorMessage('Lépj be egy vitába előbb, s utána keménykedj');
-                }
-                else {
-                    console.log('Nagy a baj');
-                    setErrorMessage('Valamit nagyon elcsűrtél');
-                }
-            });
-
-            axiosInstance
-              .get("user/all-from-current-debate/")
+  
+          axiosInstance
+          .get('user/current/')
+          .then((res) => {
+              setCurrRole(res.data.role);
+          })
+  
+          const interval = setInterval(() => {
+  
+          axiosInstance
+              .get('debate/current/')
               .then((res) => {
-                setAllUsers(res.data);
+                    console.log(res);
+                  setSomeError(false);
+                  setErrorMessage('');
+                  setDebateType(res.data.type);
+                  setAllUsers(res.data.participants);
+                  setEntryCode(res.data.entry_code);
+                  if (res.data.motion != null) {
+                      setMotion(res.data.motion);
+                      console.log(res.data.motion)
+                  }
+                  setPosts(setDebaterArray(4));
+                  if (res.data.status != 'lobby') {
+                      navigate('/in-debate');
+                  }
               })
               .catch((err) => {
-                console.log(err);
-              })
+                  setSomeError(true);
+                  if (err.response.status === 401) {
+                      console.log('Valaki nincs bejelentkezve');
+                      setErrorMessage('Jelentkezz be rigó');
+                  } else if (err.response.status === 404) {
+                      console.log('Valaki vitátlan');
+                      setErrorMessage('Lépj be egy vitába előbb, s utána keménykedj');
+                  }
+                  else {
+                      console.log('Nagy a baj');
+                      setErrorMessage('Valamit nagyon elcsűrtél');
+                  }
+              });
+  
+              axiosInstance
+                .get("user/all-from-current-debate/")
+                .then((res) => {
+                  setAllUsers(res.data);
+                })
+                .catch((err) => {
+                  console.log(err);
+                })
+  
+  
+          }, 500)
+  
+          return () => {clearInterval(interval)};
+      }, []);
 
-
-        }, 500)
-
-        return () => {clearInterval(interval)};
-    }, []);
-
-
-    function setJudgeArray(noJudges, hasChair) {
-      const judgeArr = [];
-
-      for (let i = 1; i <= noJudges; i++)
-      {
-          if (i == 1 && hasChair)
-          {
-            judgeArr.push("1 (chair)")
-          }
-          else
-          {
-            judgeArr.push(i);
-          }
-        }
-
-      return judgeArr;
-    }
 
     function setDebaterArray(teamSize)
     {
@@ -143,96 +99,20 @@ function NewDebateMobile() {
         return debaterArr;
     }
 
-    function handleChoose(team, nr) {
-        if (!ready) {
-            let role = team + nr;
-            console.log(role);
+    // const handleMotion = () => {
+    //     console.log(motion);
+    //     axiosInstance
+    //         .patch('debate/current/', {'motion': motion })
+    //         .then((res) => {
+    //             console.log(res);
+    //             }
+    //         )
+    //         .catch((err) => {
+    //             console.log(err);
+    //             }
+    //         )
 
-            axiosInstance
-                .get('user/role/', {params:{'role':role}})
-                .then(() => {
-                    if (role != "spectator")
-                    {
-                      console.log('nemjo');
-                      alert(role + 'is already chosen')
-                    }
-                    else
-                    {
-                      setCurrRole(role);
-
-                      axiosInstance
-                      .patch('user/current/', {'role':role})
-                      .then((res) => {
-
-                      })
-                      .catch((err) => {
-                          console.log(err);
-                      });
-                    }
-                })
-                .catch(() => {
-                    console.log('jojo');
-                    setCurrRole(role);
-
-                    axiosInstance
-                    .patch('user/current/', {'role':role})
-                    .then((res) => {
-
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-                });
-        } else {
-            alert('You must not be ready in order to change role.');
-        }
-    }
-
-    const handleChooseSpectator = () => {
-        if (!ready) {
-            setCurrRole('spectator');
-
-            axiosInstance
-            .patch('user/current/', {'role':'spectator'})
-            .then((res) => {
-
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-        }
-    }
-
-    const handleMotion = (e) => {
-        setMotion(e);
-        axiosInstance
-            .patch('debate/', {'motion': motion })
-            .then((res) => {
-                console.log(res);
-                alert('sikerult');
-                }
-            )
-            .catch((err) => {
-                console.log(err);
-                }
-            )
-
-    }
-
-    const handleChooseJudge = () => {
-        if (!ready) {
-            setCurrRole('judge');
-
-            axiosInstance
-            .patch('user/current/', {'role':'judge'})
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-        }
-    }
+    // }
 
     // hozza kell meg adjam a motiont
     const startDebate = () => {
@@ -271,7 +151,7 @@ function NewDebateMobile() {
             justify-content-center
             align-items-center
             "
-            onClick={event => handleChoose('pro', player)} key={player}
+            onClick={event => handleChoose('pro', player, ready, setCurrRole)} key={player}
             >
             <div className="row">
                 <div className="
@@ -335,7 +215,7 @@ function NewDebateMobile() {
             justify-content-center
             align-items-center
             "
-            onClick={event => handleChoose('con', player)} key={player}
+            onClick={event => handleChoose('con', player, ready, setCurrRole)} key={player}
             >
             <div className="row">
                 <div className="
@@ -371,22 +251,7 @@ function NewDebateMobile() {
         }
         </>
       )
-    }
-
-    )
-    const judgeListed = postJudge.map((player) => {
-      let role = 'judge' + player;
-      let user = allUsers.find(user => user.role == role);
-      let username = user == undefined ? "" : " - " + user.username;
-
-      return (
-        <div className="col-2 new-debate--participant" onClick={event => handleChoose('judge', player)} key={player}>
-            {player}{username}
-        </div>
-      )
-    }
-
-    )
+    })
 
     return (
         <div className='new-debate--background base'>
@@ -413,13 +278,13 @@ function NewDebateMobile() {
                             <div className="row new-debate--motion-text-row">
                                 <input  type="text" 
                                         className="new-debate--motion-text col-12" 
-                                        placeholder={motion} 
+                                        placeholder='--' 
                                         onChange={(ev) => {setMotion(ev.target.value)}}/>
                             </div>
                             <div className="row new-debate--motion-set-row">
                             <div 
                                 className="new-debate--motion-set col-12"
-                                onClick={handleMotion}>set</div>
+                                onClick={() => handleMotion(motion)}>set</div>
                             </div>
                         </div>
                         <div className="row">
@@ -436,7 +301,7 @@ function NewDebateMobile() {
                 {/* Gyakorlatilag ez a container sor */}
                 <div className="new-debate--decision row justify-content-evenly">
 
-                    { waitValue ? <>
+                    { true ? <>
                     <div
                         className="new-debate--decision--pro new-debate--dec col-5"
                     >
@@ -469,7 +334,7 @@ function NewDebateMobile() {
                                     new-debate--button 
                                     col-3 white-text 
                                     text-center" 
-                                    onClick={handleChooseJudge}
+                                    onClick={() => handleChoose('judge', null, ready, setCurrRole)}
                                 >
                                 judge
                             </div>    
@@ -479,7 +344,7 @@ function NewDebateMobile() {
                             new-debate--button 
                             col-3 white-text 
                             text-center" 
-                            onClick={handleChooseSpectator}
+                            onClick={() => handleChoose('spectator', null, ready, setCurrRole)}
                         >
                         spectator
                     </div>

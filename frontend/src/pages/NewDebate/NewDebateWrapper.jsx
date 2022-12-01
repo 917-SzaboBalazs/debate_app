@@ -2,7 +2,9 @@ import React from "react";
 
 import NewDebate from "./NewDebate";
 import NewDebateMobile from "./NewDebateMobile";
-// import useViewport from "./useViewport";
+
+import './NewDebate.css';
+
 
 const useViewport = () => {
     const [width, setWidth] = React.useState(window.innerWidth);
