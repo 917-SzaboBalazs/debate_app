@@ -2,7 +2,7 @@ import random
 import string
 
 from rest_framework import status
-from rest_framework.generics import ListCreateAPIView, CreateAPIView, RetrieveUpdateAPIView
+from rest_framework.generics import ListCreateAPIView, CreateAPIView, RetrieveUpdateAPIView, get_object_or_404
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
@@ -70,30 +70,26 @@ class RetrieveUpdateCurrentDebateView(RetrieveUpdateAPIView):
     def get(self, request, *args, **kwargs):
         # code entered, assign user to debate
         if "entry-code" in self.request.query_params and self.request.query_params.get("entry-code") is not None:
+            new_debate = get_object_or_404(queryset=self.queryset,
+                                           entry_code=self.request.query_params.get("entry-code"))
 
-            new_entry_code = self.request.query_params.get("entry-code")
-            new_debate_dict = self.queryset.filter(entry_code=new_entry_code)
-
-            if len(new_debate_dict) == 0:
-                return Response(status=status.HTTP_404_NOT_FOUND)
-
-            new_debate = new_debate_dict.values()[0]
-
-            self.request.user.current_debate = new_debate_dict[0]
+            self.request.user.current_debate = new_debate
             self.request.user.save()
 
-            return Response(data=new_debate, status=status.HTTP_202_ACCEPTED)
+            serializer = DebateSerializer(new_debate)
+
+            return Response(data=serializer.data, status=status.HTTP_202_ACCEPTED)
 
         # code not entered, user not in debate
         if self.request.user.current_debate is None:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         # code not entered, user in debate, return debate
-        current_debate = self.queryset.filter(id=self.request.user.current_debate.id)
+        current_debate = get_object_or_404(queryset=self.queryset,
+                                           id=self.request.user.current_debate.id)
 
-        current_debate = current_debate.values()[0]
-
-        return Response(current_debate, status=status.HTTP_202_ACCEPTED)
+        serializer = DebateSerializer(current_debate)
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     def patch(self, request, *args, **kwargs):
         if self.request.user.current_debate is None:
