@@ -3,37 +3,29 @@ from django.utils import timezone
 
 
 class DebateManager(models.Manager):
-    def create_debate(self, type, entry_code, motion, **other_fields):
-        other_fields.setdefault('no_judges', 3)
-        other_fields.setdefault('has_chair', False)
+    def create_debate(self, entry_code, **other_fields):
         other_fields.setdefault('speaker_time', 6)
 
-        if type == "british":
-            return self.create_british_parliamentary_debate(type, entry_code, motion, **other_fields)
-        return None
+        return self.create_british_parliamentary_debate(entry_code, **other_fields)
 
-    def create_british_parliamentary_debate(self, type, entry_code, motion, **other_fields):
-        other_fields['team_size'] = 4
-
-        debate = self.model(type=type, entry_code=entry_code, motion=motion, **other_fields)
+    def create_british_parliamentary_debate(self, entry_code, **other_fields):
+        debate = self.model(entry_code=entry_code, **other_fields)
 
         return debate
 
 
 class Debate(models.Model):
-    type = models.CharField(max_length=50)
     entry_code = models.CharField(max_length=8, unique=True)
-    winner = models.CharField(max_length=50, default="no winner")
+    type = models.CharField(max_length=50, default="british")
+
+    result = models.CharField(max_length=50, null=True, blank=True)
     status = models.CharField(max_length=50, default="lobby")
     date_time = models.DateTimeField(default=timezone.now)
-    motion = models.CharField(max_length=100)
+    motion = models.CharField(max_length=100, null=True, blank=True)
 
     current_number = models.IntegerField(default=1)
 
     # options
-    team_size = models.IntegerField(default=1)
-    no_judges = models.IntegerField(default=1)
-    has_chair = models.BooleanField(default=False)
     speaker_time = models.IntegerField(default=6)
 
     objects = DebateManager()
