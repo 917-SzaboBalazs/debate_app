@@ -43,7 +43,7 @@ function Trunk() {
 
         // alapertelmezetten britt parlamenti a vitafomatum
         axiosInstance
-        .post('debate/', { 'type': 'british'})
+        .post('debate/create/')
         .then((res) => {
             navigate('/new-debate');
             window.location.reload(false);
