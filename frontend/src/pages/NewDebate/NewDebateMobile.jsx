@@ -4,9 +4,10 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import './NewDebate.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './NewDebate.css';
+
 import axiosInstance from '../../axios';
 
 import face1 from '../../images/faces/face1.svg';
@@ -404,7 +405,7 @@ function NewDebateMobile() {
                     :
                     <>
 
-                <div className="row">
+                <div className="row new-debate--container-row">
                     <h1 className='new-debate--motion col-12 text-center mt-3 mb-0'>
                         {/* Ez egy textfield lesz, hogy at lehessen irni ha arra volna igeny */}
                         <div className="row">

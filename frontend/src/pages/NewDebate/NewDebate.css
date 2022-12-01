@@ -121,6 +121,12 @@
     opacity: 100%;
 }
 
+.new-debate--motion-text-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+
 .new-debate--motion-text {
     font-weight: bold;
     color: white;
@@ -141,11 +147,22 @@
 
 .new-debate--motion-set-row {
     margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.new-debate--motion-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 .new-debate--basic-text, .new-debate--current-role, .new-debate--ready, .new-debate--entry-code{
     font-size:28px;
     font-style: bold;
+}
+
+.new-debate--container-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 
