@@ -39,7 +39,28 @@ function Trunk() {
 
     const handleClickTriggerCreate = () => {
         console.log('Create pressed');
-        setTriggerCreate(true);
+        // setTriggerCreate(true);
+
+        // alapertelmezetten britt parlamenti a vitafomatum
+        axiosInstance
+        .post('debate/', { 'type': 'british'})
+        .then((res) => {
+            navigate('/new-debate');
+            window.location.reload(false);
+
+            axiosInstance
+            .patch('user/current/', {
+                'role': 'spectator'
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            }
+        )
+        .catch((err) => {
+            console.log(err);
+            }
+        )
     }
 
     const handleClickTriggerJoin = () => {
