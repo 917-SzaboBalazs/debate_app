@@ -32,6 +32,7 @@ function CreateDebate(props) {
       return;
     }
 
+    // amikor mindent atkuld a debaterol
     axiosInstance
       .post('debate/', { 'type': debateType, 'motion': motion, 'no_judges': noJudges, 'speaker_time': speakerTime, 'has_chair': hasChair, 'status': 'lobby'})
       .then((res) => {
@@ -51,6 +52,8 @@ function CreateDebate(props) {
         console.log(err);
         }
       )
+
+    
 
   };
 
