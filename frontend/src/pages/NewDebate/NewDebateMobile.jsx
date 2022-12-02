@@ -11,17 +11,16 @@ import handleChoose from './Functions/handleChoose';
 import handleMotion from './Functions/handleMotion';
 import listerMobile from './Functions/listerMobile';
 
-import face1 from '../../images/faces/face1.svg';
-
 function NewDebateMobile() {
     const navigate = useNavigate();
     const [ debateType, setDebateType ] = useState(''); // -ez lehet nem fog kelleni most
     const [ entryCode, setEntryCode ] = useState('');
     const [ someError, setSomeError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState('');
-    const [ motion, setMotion ] = useState('default mo');
+    const [ motion, setMotion ] = useState();
     const [ newMotion, setNewmotion ] = useState('Set a motion pls'); // a motion setter
     const [ currRole, setCurrRole ] = useState('spectator');
+    const [ focused, setFocused ] = useState(false);
 
     const [ ready, setReady ] = useState(false);
     const [ posts, setPosts ] = useState([]);
@@ -40,19 +39,21 @@ function NewDebateMobile() {
           axiosInstance
               .get('debate/current/')
               .then((res) => {
-                  setSomeError(false);
-                  setErrorMessage('');
-                  setDebateType(res.data.type);
-                  setAllUsers(res.data.participants);
-                  setEntryCode(res.data.entry_code);
-                  if (res.data.motion != null) {
-                      setMotion(res.data.motion);
-                    //   console.log(res.data.motion)
-                  }
-                  setPosts(setDebaterArray(4));
-                  if (res.data.status != 'lobby') {
-                      navigate('/in-debate');
-                  }
+                  // console.log(res);
+                setSomeError(false);
+                setErrorMessage('');
+                setDebateType(res.data.type);
+                setEntryCode(res.data.entry_code);
+
+                // ha nincs fokuszban a textfield, csak akkor frissitse a motiont
+                if (!focused) {
+                    setMotion(res.data.motion);
+                }
+                setAllUsers(res.data.participants);
+                setPosts(setDebaterArray(4));
+                if (res.data.status != 'lobby') {
+                    navigate('/in-debate');
+                }
               })
               .catch((err) => {
                   setSomeError(true);
@@ -123,17 +124,17 @@ function NewDebateMobile() {
                         <div className="row">
                             {/* <span className="new-debate--motion-text white-text">{motion}</span> */}
                             <div className="row new-debate--motion-text-row">
-                                <input  type="text" 
-                                        className="new-debate--motion-text col-12" 
-                                        placeholder='--' 
-                                        value={motion}
-                                        onChange={(ev) => {setNewmotion(ev.target.value)}}/>
-                            </div>
-                            <div className="row new-debate--motion-set-row">
-                            <div 
-                                className="new-debate--motion-set col-12"
-                                onClick={() => handleMotion(newMotion)}>set</div>
-                            </div>
+                            <input  type="text" 
+                                    className="new-debate--motion-text col-12" 
+                                    defaultValue={motion} 
+                                    placeholder={motion} 
+                                    onFocus={() => setFocused(true)}
+                                    onBlur={() => {
+                                        handleMotion(newMotion);
+                                        setFocused(false);
+                                    }}
+                                    onChange={(ev) => {setNewmotion(ev.target.value)}}/>
+                            </div>    
                         </div>
                         <div className="row">
                             <h2 className='

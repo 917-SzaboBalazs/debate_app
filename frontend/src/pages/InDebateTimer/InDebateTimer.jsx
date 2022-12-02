@@ -18,7 +18,6 @@ import WhiteBack from '../../images/back-white.svg';
 import FinishDebate from '../../components/Popups/FinishDebate/FinishDebate';
 
 import './InDebateTimer.css'
-import axios from 'axios';
 
 function InDebateTimer() {
     const navigate = useNavigate();

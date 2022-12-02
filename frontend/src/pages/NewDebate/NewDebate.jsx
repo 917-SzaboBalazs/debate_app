@@ -22,6 +22,8 @@ function NewDebate() {
     const [ newMotion, setNewmotion ] = useState('Set a motion pls'); // a motion setter
     const [ currRole, setCurrRole ] = useState('spectator');
 
+    const [ focused, setFocused ] = useState(false);
+
     const [ ready, setReady ] = useState(false);
     const [ posts, setPosts ] = useState([]);
     const [ waitValue, setWaitValue ] = useState(false);
@@ -45,7 +47,11 @@ function NewDebate() {
                 setErrorMessage('');
                 setDebateType(res.data.type);
                 setEntryCode(res.data.entry_code);
-                setMotion(res.data.motion);
+
+                // ha nincs fokuszban a textfield, csak akkor frissitse a motiont
+                if (!focused) {
+                    setMotion(res.data.motion);
+                }
                 setAllUsers(res.data.participants);
                 setPosts(setDebaterArray(4));
                 setWaitValue(true);
@@ -156,13 +162,18 @@ function NewDebate() {
                                         className="new-debate--motion-text col-12" 
                                         defaultValue={motion} 
                                         placeholder={motion} 
+                                        onFocus={() => setFocused(true)}
+                                        onBlur={() => {
+                                            handleMotion(newMotion);
+                                            setFocused(false);
+                                        }}
                                         onChange={(ev) => {setNewmotion(ev.target.value)}}/>
                             </div>
-                            <div className="row">
+                            {/* <div className="row">
                                 <div 
                                     className="new-debate--motion-set col-12"
                                     onClick={() => handleMotion(newMotion)}>set</div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="row">
                             <h2 className='
