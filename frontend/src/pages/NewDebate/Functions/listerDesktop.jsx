@@ -36,7 +36,9 @@ function listerDesktop(team, posts, allUsers, handleChoose, ready, setCurrRole) 
                 justify-content-center
                 align-items-center
                 "
-                onClick={() => handleChoose(team, player, ready, setCurrRole)} key={player}
+                onClick={() => {
+                    handleChoose(team, player, ready, setCurrRole);
+                    }} key={player}
                 >
                 <div className="row">
                     <div className="

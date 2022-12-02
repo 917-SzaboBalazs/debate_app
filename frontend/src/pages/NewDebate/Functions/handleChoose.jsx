@@ -1,6 +1,7 @@
 import axiosInstance from '../../../axios';
 
 function handleChoose(team, nr, ready, setCurrRole) {
+    console.log("handleChhhose");
     if (!ready) {
         let role;
         if ( nr != null) {
@@ -8,41 +9,40 @@ function handleChoose(team, nr, ready, setCurrRole) {
         } else {
             role = team;
         } 
-        console.log(role);
 
         axiosInstance
             .get('user/role/', {params:{'role':role}})
-            .then(() => {
+            .then((res) => {
                 if (role != "spectator")
                 {
-                  console.log('nemjo');
-                  alert(role + 'is already chosen')
+                    console.log('nemjo');
+                    alert(role + 'is already chosen')
                 }
                 else
                 {
-                  setCurrRole(role);
-
-                  axiosInstance
-                  .patch('user/current/', {'role':role})
-                  .then((res) => {
-
-                  })
-                  .catch((err) => {
-                      console.log(err);
-                  });
+                    setCurrRole(role);
+                    
+                    axiosInstance
+                    .patch('user/current/', {'role':role})
+                    .then((res) => {
+                        
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
                 }
             })
             .catch(() => {
                 console.log('jojo');
                 setCurrRole(role);
-
+                
                 axiosInstance
                 .patch('user/current/', {'role':role})
                 .then((res) => {
 
                 })
                 .catch((err) => {
-                    console.log(err);
+                    // console.log(err);
                 });
             });
     } else {
