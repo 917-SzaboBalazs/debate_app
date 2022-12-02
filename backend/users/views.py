@@ -1,5 +1,7 @@
+import string
+
 from rest_framework import status, generics
-from rest_framework.exceptions import ParseError, APIException
+from rest_framework.exceptions import ParseError
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -12,6 +14,7 @@ from users.serializers import RegisterUserSerializer, CurrentUserSerializer
 
 class CustomUserCreate(APIView):
     permission_classes = [AllowAny]
+    queryset = NewUser.objects.all()
 
     def post(self, request):
         reg_serializer = RegisterUserSerializer(data=request.data)
@@ -69,4 +72,3 @@ class GetDebaterByCurrentNumberView(generics.RetrieveAPIView):
         current_number = self.request.user.current_debate.current_number
         return get_object_or_404(queryset=self.queryset, current_debate=self.request.user.current_debate,
                                  number=current_number)
-

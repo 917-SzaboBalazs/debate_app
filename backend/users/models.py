@@ -20,6 +20,19 @@ class CustomAccountManager(BaseUserManager):
 
         return self.create_user(username, email, password, **other_fields)
 
+    def create_guest_user(self):
+        no_guests = self.model.objects.all().filter(username__startswith="guest").count()
+
+        username = "guest{0:04}".format(no_guests)
+        email = "guest{0:04}@guest.com".format(no_guests)
+        password = "Guest0000"
+
+        other_fields = dict()
+        other_fields.setdefault('is_active', False)
+        other_fields.setdefault('is_guest', True)
+
+        return self.create_user(username, email, password, **other_fields)
+
     def create_user(self, username, email, password, **other_fields):
         if not username:
             raise ValueError('You must provide a username.')
@@ -44,6 +57,7 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     start_date = models.DateTimeField(default=timezone.now)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    is_guest = models.BooleanField(default=False)
 
     current_debate = models.ForeignKey(to=Debate, on_delete=models.PROTECT, blank=True, null=True)
     role = models.CharField(max_length=50, blank=True, null=True)
