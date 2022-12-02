@@ -9,6 +9,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import CreateDebate from '../Popups/CreateDebate/CreateDebate';
 import JoinDebate from '../Popups/JoinDebate/JoinDebate';
 
+import handleClickTriggerCreate from '../Functions/handleClickCreate';
+
 import axiosInstance from '../../axios';
 
 // import './Navbar.css';
@@ -50,10 +52,10 @@ function CollapsibleExample() {
 
     }, []);
 
-    const handleClickTriggerCreate = () => {
-        setTriggerCreate(true);
-        console.log(triggerCreate);
-    }
+    // const handleClickTriggerCreate = () => {
+    //     setTriggerCreate(true);
+    //     console.log(triggerCreate);
+    // }
 
     const handleClickTriggerJoin = () => {
       setTriggerJoin(true);
@@ -129,7 +131,9 @@ function CollapsibleExample() {
             {
               !inDebate ?
               <>
-                <Nav.Link onClick={handleClickTriggerCreate} className='nav-link yellow-text'>Create a Debate</Nav.Link>
+                <Nav.Link 
+                  onClick={() => { handleClickTriggerCreate(navigate)}}
+                  className='nav-link yellow-text'>Create a Debate</Nav.Link>
                 <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link>
               </>
               :

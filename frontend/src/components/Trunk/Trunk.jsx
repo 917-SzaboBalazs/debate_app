@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axios';
+import handleClickTriggerCreate from '../Functions/handleClickCreate';
 
 import JoinDebate from '../Popups/JoinDebate/JoinDebate';
 import CreateDebate from '../Popups/CreateDebate/CreateDebate';
@@ -36,32 +37,6 @@ function Trunk() {
         });
 
     }, []);
-
-    const handleClickTriggerCreate = () => {
-        console.log('Create pressed');
-        // setTriggerCreate(true);
-
-        // alapertelmezetten britt parlamenti a vitafomatum
-        axiosInstance
-        .post('debate/create/')
-        .then((res) => {
-            navigate('/new-debate');
-            window.location.reload(false);
-
-            axiosInstance
-            .patch('user/current/', {
-                'role': 'spectator'
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-            }
-        )
-        .catch((err) => {
-            console.log(err);
-            }
-        )
-    }
 
     const handleClickTriggerJoin = () => {
         console.log('Join pressed');
@@ -101,7 +76,9 @@ function Trunk() {
                                 </button>
                                 <button
                                     className='trunk--signin-button text-uppercase'
-                                    onClick={handleClickTriggerCreate}
+                                    onClick={() => {
+                                        handleClickTriggerCreate(navigate)
+                                    }}
                                 >
                                     <div className="trunk--signup-link trunk--link-text" ><span className='white-text'>Create</span></div>
                                 </button>
