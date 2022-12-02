@@ -51,7 +51,7 @@ function listerMobile(team, posts, allUsers, handleChoose, ready, setCurrRole) {
               <div className="row new-debate--card--participant" >
                   {/* Ide jon a kep */}
                   <div className="col-12 new-debate--card--participant--img">
-                      <img src={face1} className="new-debate--card--picture"  />
+                      <img src={face1} className="new-debate--card--picture-mobile"  />
                   </div>
                   {/* Ide jon a username */}
                   <div className='

@@ -74,15 +74,6 @@ function NewDebate() {
                 }
             });
 
-            axiosInstance
-              .get("user/all-from-current-debate/")
-              .then((res) => {
-                setAllUsers(res.data);
-              })
-              .catch((err) => {
-                console.log(err);
-              })
-
 
         }, 500)
 

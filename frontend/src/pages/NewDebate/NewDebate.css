@@ -15,27 +15,15 @@
     /*background-color: whitesmoke;*/
     border-radius: 12px;
     min-height: 20vh;
-    margin-top: 5vh;
+    /* margin-top: 2vh; */
     margin-bottom: 5vh;
-    padding: 2vh;
+    /* padding: 2vh; */
     max-width: 90vw !important;
     align-items: center;
     justify-content: space-evenly;
     /* padding: 1rem; */
     /* background-color: rgb(243, 234, 226) !important; */
 }
-
-.new-debate--decision{
-    /* padding-top: 4rem; */
-}
-/* 
-.new-debate--next-btn{
-    padding: 2vh;
-    background-color: #f9d342;
-    color: #292826;
-    border-radius: 7px;
-    width: 20vw;
-} */
 
 .new-debate--procon-row{
     margin-top: 5vh !important;
@@ -60,7 +48,11 @@
     min-height: 100vh;
     /* A bgcolor megkapja a hatternek a szinet */
     background-color: transparent;
-    padding-top: 10vh;
+    padding-top: 8vh;
+}
+
+.new-debate--container-row {
+    padding: 0;
 }
 
 .new-debate--not-logged-in-cont {
@@ -173,23 +165,17 @@
     box-shadow: 0px 0px 20px black;
     color: white;
     margin-bottom: 1rem;
-    height: 13rem;
+    height: 11rem;
     transition: .3s;
 }
 
 .new-debate--card:hover{
-    padding: 1rem;
-    border-radius: 2rem;
     box-shadow: 0px 0px 20px white;
-    color: white;
-    margin-bottom: 1rem;
-    height: 13rem;
-    transition: .3s;
 }
 
 .new-debate--card--label {
     color:white;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
 }
 
 .new-debate--card--participant {
@@ -204,6 +190,10 @@
 
 .new-debate--card--picture {
     max-height: 5rem;
+}
+
+.new-debate--card--picture-mobile {
+    max-height: 4rem;
 }
 
 

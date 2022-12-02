@@ -29,6 +29,11 @@
   color: var(--mcc-sarga);
 }
 
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 /* container width */
 @media only screen and (min-width: 1400px) {
   .container {
