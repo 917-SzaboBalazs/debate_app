@@ -10,6 +10,8 @@ import axiosInstance from '../../axios';
 import handleChoose from './Functions/handleChoose';
 import handleMotion from './Functions/handleMotion';
 import listerMobile from './Functions/listerMobile';
+import getDebateCurrent from './Functions/getDebateCurrent';
+import getUserCurrent from './Functions/getUserCurrent';
 
 function NewDebateMobile() {
     const navigate = useNavigate();
@@ -27,50 +29,23 @@ function NewDebateMobile() {
     const [ allUsers, setAllUsers] = useState([]);
 
     useEffect(() => {
+        getUserCurrent(setCurrRole);
   
-          axiosInstance
-          .get('user/current/')
-          .then((res) => {
-              setCurrRole(res.data.role);
-          })
-  
-          const interval = setInterval(() => {
-  
-          axiosInstance
-              .get('debate/current/')
-              .then((res) => {
-                  // console.log(res);
-                setSomeError(false);
-                setErrorMessage('');
-                setDebateType(res.data.type);
-                setEntryCode(res.data.entry_code);
+        const interval = setInterval(() => {
+        getDebateCurrent (
+            setSomeError,
+            setErrorMessage,
+            setDebateType,
+            setEntryCode,
+            focused,
+            setMotion,
+            setAllUsers,
+            setPosts,
+            setDebaterArray,
+            navigate
+        )
 
-                // ha nincs fokuszban a textfield, csak akkor frissitse a motiont
-                if (!focused) {
-                    setMotion(res.data.motion);
-                }
-                setAllUsers(res.data.participants);
-                setPosts(setDebaterArray(4));
-                if (res.data.status != 'lobby') {
-                    navigate('/in-debate');
-                }
-              })
-              .catch((err) => {
-                  setSomeError(true);
-                  if (err.response.status === 401) {
-                      console.log('Valaki nincs bejelentkezve');
-                      setErrorMessage('Jelentkezz be rigó');
-                  } else if (err.response.status === 404) {
-                      console.log('Valaki vitátlan');
-                      setErrorMessage('Lépj be egy vitába előbb, s utána keménykedj');
-                  }
-                  else {
-                      console.log('Nagy a baj');
-                      setErrorMessage('Valamit nagyon elcsűrtél');
-                  }
-              });
-  
-          }, 500)
+        }, 500)
   
           return () => {clearInterval(interval)};
       }, []);
