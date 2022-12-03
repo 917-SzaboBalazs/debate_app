@@ -7,10 +7,10 @@ import handleChoose from './Functions/handleChoose';
 import handleMotion from './Functions/handleMotion';
 import getDebateCurrent from './Functions/getDebateCurrent';
 import getUserCurrent from './Functions/getUserCurrent';
-import axiosInstance from '../../axios';
-
-
 import listerDesktop from './Functions/listerDesktop';
+import axiosInstance from '../../axios';
+import RandomMotionSetter from './Components/randomMotionSetter';
+
 
 function NewDebate() {
     // const location = useLocation();
@@ -119,7 +119,6 @@ function NewDebate() {
                     <div className='new-debate--motion col-6 text-center p-4'>
                         {/* Ez egy textfield lesz, hogy at lehessen irni ha arra volna igeny */}
                         <div className="row">
-                            {/* <span className="new-debate--motion-text white-text">{motion}</span> */}
                             <div className="row">
                                 <input  type="text" 
                                         className="new-debate--motion-text col-12" 
@@ -132,6 +131,7 @@ function NewDebate() {
                                         }}
                                         onChange={(ev) => {setNewmotion(ev.target.value)}}/>
                             </div>
+                            <RandomMotionSetter/>
                         </div>
                         <div className="row">
                             <h2 className='

@@ -12,6 +12,7 @@ import handleMotion from './Functions/handleMotion';
 import listerMobile from './Functions/listerMobile';
 import getDebateCurrent from './Functions/getDebateCurrent';
 import getUserCurrent from './Functions/getUserCurrent';
+import RandomMotionSetter from './Components/randomMotionSetter';
 
 function NewDebateMobile() {
     const navigate = useNavigate();
@@ -111,6 +112,7 @@ function NewDebateMobile() {
                                     onChange={(ev) => {setNewmotion(ev.target.value)}}/>
                             </div>    
                         </div>
+                        <RandomMotionSetter/>
                         <div className="row">
                             <h2 className='
                                 new-debate--entry-code  

@@ -34,18 +34,6 @@ function getDebateCurrent(
         // abban az esetben ha nincs current user (tehat guest lesz)
         .catch((err) => {
             console.log("nem vagy bejelentkezve");
-        //   setSomeError(true);
-        //   if (err.response.status === 401) {
-        //       console.log('Valaki nincs bejelentkezve');
-        //       setErrorMessage('Jelentkezz be rigó');
-        //   } else if (err.response.status === 404) {
-        //       console.log('Valaki vitátlan');
-        //       setErrorMessage('Lépj be egy vitába előbb, s utána keménykedj');
-        //   }
-        //   else {
-        //       console.log('Nagy a baj');
-        //       setErrorMessage('Valamit nagyon elcsűrtél');
-        //   }
         });
 }
 

@@ -147,6 +147,10 @@
     margin-right: 0 !important;
 }
 
+.new-debate--motion-random-text {
+    cursor: pointer;
+}
+
 .new-debate--basic-text, .new-debate--current-role, .new-debate--ready, .new-debate--entry-code{
     font-size:28px;
     font-style: bold;
