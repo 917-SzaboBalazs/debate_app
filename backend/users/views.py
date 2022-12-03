@@ -72,3 +72,13 @@ class GetDebaterByCurrentNumberView(generics.RetrieveAPIView):
         current_number = self.request.user.current_debate.current_number
         return get_object_or_404(queryset=self.queryset, current_debate=self.request.user.current_debate,
                                  number=current_number)
+
+
+class ListUsersView(generics.ListAPIView):
+    queryset = NewUser.objects.all()
+    serializer_class = CurrentUserSerializer
+
+
+class RetrieveUserView(generics.RetrieveUpdateAPIView):
+    queryset = NewUser.objects.all()
+    serializer_class = CurrentUserSerializer

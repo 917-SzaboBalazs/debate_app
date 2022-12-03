@@ -30,6 +30,7 @@ class CustomAccountManager(BaseUserManager):
         other_fields = dict()
         other_fields.setdefault('is_active', False)
         other_fields.setdefault('is_guest', True)
+        other_fields.setdefault('role', 'spectator')
 
         return self.create_user(username, email, password, **other_fields)
 

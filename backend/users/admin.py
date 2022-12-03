@@ -10,12 +10,13 @@ class UserAdminConfig(UserAdmin):
     search_fields = ('username', 'first_name', 'last_name', )
     list_filter = ('is_active', 'is_staff', 'is_guest', )
     list_display = ('username', 'get_name', 'is_active', 'is_staff', 'is_guest', )
+    readonly_fields = ('current_debate', 'role', 'start_date', )
 
     fieldsets = (
         ('Login info', {'fields': ('username', 'email', 'password', )}),
         ('Permissions', {'fields': ('is_superuser', 'is_active', 'is_staff', 'is_guest', )}),
         ('Personal', {'fields': ('first_name', 'last_name', 'birthday', 'about_me', )}),
-        ('Debate', {'fields': ('current_debate', 'role', 'number', )}),
+        ('Debate', {'fields': ('current_debate', 'role', )}),
         ('Other', {'fields': ('start_date', )}),
     )
 

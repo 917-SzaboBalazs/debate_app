@@ -2,7 +2,7 @@ import random
 import string
 
 from rest_framework import status
-from rest_framework.generics import ListCreateAPIView, CreateAPIView, RetrieveUpdateAPIView, get_object_or_404
+from rest_framework.generics import CreateAPIView, RetrieveUpdateAPIView, get_object_or_404
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
@@ -40,8 +40,8 @@ class CreateDebateView(CreateAPIView):
 
             if self.request.user.is_anonymous:
                 if 'guest_user' in cookies:
-                    guest_user_name = cookies['guest_user']
-                    guest_user = NewUser.objects.get(username=guest_user_name)
+                    guest_user_id = cookies['guest_user']
+                    guest_user = NewUser.objects.get(id=guest_user_id)
 
                 if guest_user is None:
                     guest_user = NewUser.objects.create_guest_user()
@@ -55,7 +55,7 @@ class CreateDebateView(CreateAPIView):
             response = Response(serializer.data, status=status.HTTP_201_CREATED)
 
             if guest_user:
-                response.set_cookie('guest_user', guest_user)
+                response.set_cookie('guest_user', guest_user.id)
 
             return response
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -99,8 +99,8 @@ class RetrieveUpdateCurrentDebateView(RetrieveUpdateAPIView):
 
             if self.request.user.is_anonymous:
                 if 'guest_user' in cookies:
-                    guest_user_name = cookies['guest_user']
-                    guest_user = NewUser.objects.get(username=guest_user_name)
+                    guest_user_id = cookies['guest_user']
+                    guest_user = NewUser.objects.get(id=guest_user_id)
 
                 if guest_user is None:
                     guest_user = NewUser.objects.create_guest_user()
@@ -116,14 +116,14 @@ class RetrieveUpdateCurrentDebateView(RetrieveUpdateAPIView):
             response = Response(data=serializer.data, status=status.HTTP_202_ACCEPTED)
 
             if guest_user:
-                response.set_cookie('guest_user', guest_user)
+                response.set_cookie('guest_user', guest_user.id)
 
             return response
 
         if self.request.user.is_anonymous:
             if 'guest_user' in cookies:
-                guest_user_name = cookies['guest_user']
-                guest_user = NewUser.objects.get(username=guest_user_name)
+                guest_user_id = cookies['guest_user']
+                guest_user = NewUser.objects.get(id=guest_user_id)
 
             self.request.user = guest_user
 

@@ -9,3 +9,4 @@ class DebateAdmin(admin.ModelAdmin):
         ('Debate Info', {'fields': ('type', 'entry_code', 'motion', 'status', 'date_time', 'result', 'current_number', )}),
         ('Custom options', {'fields': ('speaker_time', )}),
     )
+    readonly_fields = ('entry_code', 'status', 'date_time', 'result', 'current_number', )

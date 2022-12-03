@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'countdowntimer_model',
     'users',
     'debate',
-    'timer'
+    'timer',
+    'motion',
 ]
 
 MIDDLEWARE = [
