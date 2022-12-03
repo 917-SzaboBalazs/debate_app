@@ -157,12 +157,6 @@ function NewDebateMobile() {
                                 setCurrRole)
                         }
                     </div>
-
-                    {/* birok nem fognak kelleni */}
-                    {/* <div className="new-debate--decision--judge col-sm-3 col-md-3">
-                        <div className="col-12 new-debate--pro-btn new-debate--dec text-center  new-debate--label font-weight-bold">BÍRÓ</div>
-                        {judgeListed}
-                    </div> */}
                      </>   : null
                     }
                 </div>
@@ -218,7 +212,7 @@ function NewDebateMobile() {
                 
                 {/* ha megvan minden fontos, el lehet inditani a vitat --  de ez sem biztos hogy kell  */}
                 {
-                    ready ?//&& ( ( !hasChair && currRole == 'judge1' ) || ( hasChair && currRole == 'judge1 (chair)') )?
+                    ready  && ( ( currRole == 'judge' ) )?
                     <>
                         <div className="new-debate--start row justify-content-center">
                             <div
