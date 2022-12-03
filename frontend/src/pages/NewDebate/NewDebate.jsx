@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import handleChoose from './Functions/handleChoose';
 import handleMotion from './Functions/handleMotion';
+import getDebateCurrent from './Functions/getDebateCurrent';
+import getUserCurrent from './Functions/getUserCurrent';
 import axiosInstance from '../../axios';
 
 
@@ -18,7 +20,7 @@ function NewDebate() {
     const [ entryCode, setEntryCode ] = useState('');
     const [ someError, setSomeError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState('');
-    const [ motion, setMotion ] = useState('Motion');
+    const [ motion, setMotion ] = useState();
     const [ newMotion, setNewmotion ] = useState('Set a motion pls'); // a motion setter
     const [ currRole, setCurrRole ] = useState('spectator');
 
@@ -26,54 +28,24 @@ function NewDebate() {
 
     const [ ready, setReady ] = useState(false);
     const [ posts, setPosts ] = useState([]);
-    const [ waitValue, setWaitValue ] = useState(false);
     const [ allUsers, setAllUsers] = useState([]);
 
     useEffect(() => {
-
-        axiosInstance
-        .get('user/current/')
-        .then((res) => {
-            setCurrRole(res.data.role);
-        })
+        getUserCurrent(setCurrRole);
 
         const interval = setInterval(() => {
-
-        axiosInstance
-            .get('debate/current/')
-            .then((res) => {
-                // console.log(res);
-                setSomeError(false);
-                setErrorMessage('');
-                setDebateType(res.data.type);
-                setEntryCode(res.data.entry_code);
-
-                // ha nincs fokuszban a textfield, csak akkor frissitse a motiont
-                if (!focused) {
-                    setMotion(res.data.motion);
-                }
-                setAllUsers(res.data.participants);
-                setPosts(setDebaterArray(4));
-                setWaitValue(true);
-                if (res.data.status != 'lobby') {
-                    navigate('/in-debate');
-                }
-            })
-            .catch((err) => {
-                setSomeError(true);
-                if (err.response.status === 401) {
-                    console.log('Valaki nincs bejelentkezve');
-                    setErrorMessage('Jelentkezz be rigó');
-                } else if (err.response.status === 404) {
-                    console.log('Valaki vitátlan');
-                    setErrorMessage('Lépj be egy vitába előbb, s utána keménykedj');
-                }
-                else {
-                    console.log('Nagy a baj');
-                    setErrorMessage('Valamit nagyon elcsűrtél');
-                }
-            });
-
+          getDebateCurrent (
+              setSomeError,
+              setErrorMessage,
+              setDebateType,
+              setEntryCode,
+              focused,
+              setMotion,
+              setAllUsers,
+              setPosts,
+              setDebaterArray,
+              navigate
+          )
 
         }, 500)
 
@@ -126,7 +98,7 @@ function NewDebate() {
                 {/* Gyakorlatilag ez a container sor */}
                 <div className="new-debate--decision row justify-content-evenly">
 
-                    { waitValue ? <>
+                    { true ? <>
                     <div
                         className="new-debate--decision--pro new-debate--dec col-3"
                     >
@@ -160,11 +132,6 @@ function NewDebate() {
                                         }}
                                         onChange={(ev) => {setNewmotion(ev.target.value)}}/>
                             </div>
-                            {/* <div className="row">
-                                <div 
-                                    className="new-debate--motion-set col-12"
-                                    onClick={() => handleMotion(newMotion)}>set</div>
-                            </div> */}
                         </div>
                         <div className="row">
                             <h2 className='

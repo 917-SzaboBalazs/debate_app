@@ -1,7 +1,6 @@
 import axiosInstance from '../../../axios';
 
 function handleChoose(team, nr, ready, setCurrRole) {
-    console.log("handleChhhose");
     if (!ready) {
         let role;
         if ( nr != null) {
@@ -28,12 +27,10 @@ function handleChoose(team, nr, ready, setCurrRole) {
                         
                     })
                     .catch((err) => {
-                        console.log(err);
                     });
                 }
             })
             .catch(() => {
-                console.log('jojo');
                 setCurrRole(role);
                 
                 axiosInstance
@@ -42,7 +39,6 @@ function handleChoose(team, nr, ready, setCurrRole) {
 
                 })
                 .catch((err) => {
-                    // console.log(err);
                 });
             });
     } else {
