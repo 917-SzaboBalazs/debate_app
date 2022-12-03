@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 const baseURL = 'http://127.0.0.1:8000/api/';
 
 const axiosInstance = axios.create({
+  withCredentials: true,
   baseURL: baseURL,
   headers: {
     Authorization: localStorage.getItem('access_token') ? 'JWT ' + localStorage.getItem('access_token') : null,
