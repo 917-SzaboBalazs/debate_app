@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 
 from debate.models import Debate
-from timer.models import CustomCountdownTimer
+from timer.models import SpeakerTime, POITime
 from users import models
 from users.serializers import RegisterUserSerializer
 
@@ -20,7 +20,7 @@ class DebateSerializer(serializers.ModelSerializer):
         new_debate = self.Meta.model.objects.create_debate(entry_code, **validated_data)
         new_debate.save()
 
-        new_timer = CustomCountdownTimer.objects.create(debate=new_debate, duration_in_minutes=new_debate.speaker_time)
+        new_timer = SpeakerTime.objects.create(debate=new_debate, duration_in_minutes=new_debate.speaker_time)
         new_timer.save()
 
         return new_debate
