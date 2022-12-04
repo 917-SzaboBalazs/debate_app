@@ -43,4 +43,6 @@ class Debate(models.Model):
     objects = DebateManager()
 
     def __str__(self):
-        return self.type + "(" + str(self.id) + ")"
+        if self.motion is not None:
+            return self.motion + " --- " + self.type + "(id = " + str(self.id) + ")"
+        return self.type + "(id =" + str(self.id) + ")"
