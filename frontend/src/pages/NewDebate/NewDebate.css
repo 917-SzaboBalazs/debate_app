@@ -8,6 +8,10 @@
     height: 100%;
     min-height: 100vh;
     width: 100%;
+    background: url( '../../images/mikrofon2.jpg') center center/cover no-repeat, linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
+    /*background-attachment: fixed;
+    background-blend-mode: overlay;
+    height: 100vh;*/
     z-index: -1;
 }
 
@@ -19,6 +23,7 @@
     margin-bottom: 5vh;
     /* padding: 2vh; */
     max-width: 90vw !important;
+    margin-top: 7vh;
     align-items: center;
     justify-content: space-evenly;
     /* padding: 1rem; */
@@ -167,6 +172,7 @@
     padding: 1rem;
     border-radius: 2rem;
     box-shadow: 0px 0px 20px black;
+    background-color: var(--primary);
     color: white;
     margin-bottom: 1rem;
     height: 11rem;
@@ -174,7 +180,7 @@
 }
 
 .new-debate--card:hover{
-    box-shadow: 0px 0px 20px white;
+    box-shadow: 0px 0px 40px black;
 }
 
 .new-debate--card--label {
@@ -203,4 +209,29 @@
 
 .new-debate--card--participant--name {
     color:white;
+}
+
+.new-debate--decision--pro--mobile, .new-debate--decision--con--mobile{
+    margin-top: 7vh;
+}
+
+.new-debate--pro-btn--mobile, .new-debate--con-btn--mobile{
+    font-size: 26px;
+    margin-bottom: 2vh;
+}
+
+.new-debate--card--mobile{
+    height: 12vh;
+}
+
+.new-debate--motion--mobile{
+    margin-top: 7vh !important;
+}
+
+.new-debate--motion-text--mobile{
+    font-size: 32px;
+}
+
+.new-debate--background--mobile{
+    background-color: var(--mcc-kek);
 }

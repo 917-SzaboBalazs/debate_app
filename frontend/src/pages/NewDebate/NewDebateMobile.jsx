@@ -78,7 +78,7 @@ function NewDebateMobile() {
     }
 
     return (
-        <div className='new-debate--background base'>
+        <div className='new-debate--background new-debate--background--mobile  base'>
             <div className="new-debate--container container">
                 {
                     
@@ -95,13 +95,13 @@ function NewDebateMobile() {
                     <>
 
                 <div className="row new-debate--container-row">
-                    <h1 className='new-debate--motion col-12 text-center mt-3 mb-0'>
+                    <h1 className='new-debate--motion new-debate--motion--mobile col-12 text-center mt-3 mb-0'>
                         {/* Ez egy textfield lesz, hogy at lehessen irni ha arra volna igeny */}
                         <div className="row">
                             {/* <span className="new-debate--motion-text white-text">{motion}</span> */}
                             <div className="row new-debate--motion-text-row">
                             <input  type="text" 
-                                    className="new-debate--motion-text col-12" 
+                                    className="new-debate--motion-text new-debate--motion-text--mobile col-12" 
                                     defaultValue={motion} 
                                     placeholder={motion} 
                                     onFocus={() => setFocused(true)}
@@ -129,9 +129,9 @@ function NewDebateMobile() {
 
                     { true ? <>
                     <div
-                        className="new-debate--decision--pro new-debate--dec col-5"
+                        className="new-debate--decision--pro new-debate--decision--pro--mobile  new-debate--dec col-12"
                     >
-                        <div className="col-12 new-debate--pro-btn new-debate--label text-center font-weight-bold">Government</div>
+                        <div className="col-12 new-debate--pro-btn new-debate--pro-btn--mobile new-debate--label text-center font-weight-bold">Government</div>
                         <hr className='new-debate--line'></hr>
                         {
                             listerMobile (
@@ -145,9 +145,9 @@ function NewDebateMobile() {
                     </div>
                     
                     <div
-                        className="new-debate--decision--con new-debate--dec col-5"
+                        className="new-debate--decision--con .new-debate--decision--con--mobile new-debate--dec col-12"
                     >
-                        <div className="col-12 new-debate--pro-btn text-center new-debate--label font-weight-bold">Opposition</div>
+                        <div className="col-12 new-debate--pro-btn new-debate--pro-btn--mobile text-center new-debate--label font-weight-bold">Opposition</div>
                         <hr className='new-debate--line'></hr>
                         {
                             listerMobile (
@@ -168,7 +168,7 @@ function NewDebateMobile() {
                                 className="
                                     new-debate--spectator-col 
                                     new-debate--button 
-                                    col-3 white-text 
+                                    col-4 white-text 
                                     text-center" 
                                     onClick={() => handleChoose('judge', null, ready, setCurrRole)}
                                 >
@@ -178,7 +178,7 @@ function NewDebateMobile() {
                         className="
                             new-debate--spectator-col 
                             new-debate--button 
-                            col-3 white-text 
+                            col-4 white-text 
                             text-center" 
                             onClick={() => handleChoose('spectator', null, ready, setCurrRole)}
                         >

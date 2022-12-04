@@ -32,40 +32,49 @@ function listerMobile(team, posts, allUsers, handleChoose, ready, setCurrRole) {
           <>
           <div className="
               new-debate--card
+              new-debate--card--mobile
               row
               justify-content-center
               align-items-center
               "
               onClick={() => handleChoose(team, player, ready, setCurrRole)} key={player}
               >
-              <div className="row">
-                  <div className="
-                      col-12
-                      text-center
-                      new-debate--card--label
-                      "
-                  >
-                      {label_to_print}
-                  </div>
-              </div>
-              <div className="row new-debate--card--participant" >
+              
+              {/* <div className="new-debate--card--participant" > */}
                   {/* Ide jon a kep */}
-                  <div className="col-12 new-debate--card--participant--img">
+                  <div className="col-4 new-debate--card--participant--img">
                       <img src={face1} className="new-debate--card--picture-mobile"  />
                   </div>
                   {/* Ide jon a username */}
                   <div className='
-                      col-12
+                      col-8
                       new-debate--card--participant--name
                       text-center
-                      d-flex
                       justify-content-center
                       align-items-center
                       '
                       >
-                          {username}
+                        <div className="
+                            row
+                            text-center
+                            new-debate--card--label
+                            "
+                        >
+                            <div className="col-12
+                                            text-center">
+                                {label_to_print}
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-12
+                                            text-center">
+                                {username}
+                            </div>
+                        </div>
                   </div>
-              </div>
+              {/* </div> */}
+              {/* <div className="row"> */}
+              {/* </div> */}
           </div>
           {
               (player == 2) ?  <br></br>: null
