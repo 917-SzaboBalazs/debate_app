@@ -13,14 +13,23 @@ from motion.serializers import MotionSerializer
 
 
 class ListMotionsView(generics.ListAPIView):
-
+    """
+    get:
+        List all the motions.
+    """
     queryset = Motion.objects.all()
     permission_classes = [AllowAny]
     serializer_class = MotionSerializer
 
 
 class RandomMotionView(generics.RetrieveAPIView):
-
+    """
+    get:
+        Generate a random available motion and returns it
+        both in english and hungarian.
+        Available motion means that its pick rate is less
+        than 0.8.
+    """
     queryset = Motion.objects.all()
     serializer_class = MotionSerializer
 

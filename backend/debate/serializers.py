@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 
 from debate.models import Debate
-from timer.models import SpeakerTime, POITime
+from timer.models import SpeakerTime
 from users import models
 from users.serializers import RegisterUserSerializer
 

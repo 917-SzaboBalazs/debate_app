@@ -33,6 +33,7 @@ class MotionAdminConfig(admin.ModelAdmin):
     list_display = ('id', 'text_in_hungarian', 'text_in_english', 'is_available', )
     fields = ('text_in_hungarian', 'text_in_english', )
     list_filter = (IsAvailableFilter, )
+    search_fields = ('text_in_hungarian', 'text_in_english', )
 
     @admin.display(boolean=True)
     def is_available(self, obj: Motion):
