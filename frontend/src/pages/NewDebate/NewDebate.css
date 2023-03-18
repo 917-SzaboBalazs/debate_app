@@ -203,6 +203,7 @@
 
 .new-debate--card--picture {
     max-height: 5rem;
+
 }
 
 .new-debate--spectator-card {
@@ -210,6 +211,8 @@
 }
 
 .new-debate--spectator-card--picture {
+    border-left: 2px solid var(--mcc-kek);
+    padding-left: 10px;
     max-height: 2.5rem;
 }
 
@@ -247,6 +250,9 @@
     background-color: var(--mcc-kek);
 }
 
+/* .new-debate--spectator-card {
+} */
+
 .new-debate--center-spectators-row {
     /* background-color: rgba(255, 255, 255, 0.679); */
     background-color: var(--opac-white);
@@ -256,4 +262,8 @@
 
 .new-debate--spectator-card--username {
     color: var(--mcc-kek);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid var(--mcc-kek);
 }
