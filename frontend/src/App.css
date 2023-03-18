@@ -4,7 +4,7 @@
   --mcc-kek: #22344D;
   --primary: #333d4b;
   --secondary: #61c3c3;
-  
+  --opac-white: rgba(255, 255, 255, 0.679);
 }
 
 * {

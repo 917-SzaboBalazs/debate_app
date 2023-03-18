@@ -10,6 +10,7 @@ import getUserCurrent from './Functions/getUserCurrent';
 import listerDesktop from './Functions/listerDesktop';
 import axiosInstance from '../../axios';
 import RandomMotionSetter from './Components/randomMotionSetter';
+import spectatorLister from './Functions/spectatorLister';
 
 
 function NewDebate() {
@@ -77,6 +78,7 @@ function NewDebate() {
             })
     }
 
+    console.log(allUsers);
     
     return (
         <div className='new-debate--background base'>
@@ -206,7 +208,12 @@ function NewDebate() {
                                 }
                             </div>
                         </div>
-                        <div className="row">Ide be kene tenni a birot, az fasza lenne sztem (vagyis legalulra)</div>
+                        {/* <div className="row">Ide be kene tenni a birot, az fasza lenne sztem (vagyis legalulra)</div> */}
+                        <div className="row new-debate--center-spectators-row"> 
+                        {
+                            spectatorLister(allUsers)
+                        }
+                        </div>
                     </div>
                     <div
                         className="new-debate--decision--con new-debate--dec col-3"
