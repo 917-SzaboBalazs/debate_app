@@ -78,7 +78,6 @@ function NewDebate() {
             })
     }
 
-    console.log(allUsers);
     
     return (
         <div className='new-debate--background base'>
