@@ -4,7 +4,7 @@ from rest_framework.fields import SerializerMethodField
 from debate.models import Debate
 from timer.models import SpeakerTime
 from users import models
-from users.serializers import RegisterUserSerializer
+from users.serializers import UserSerializer
 
 
 class DebateSerializer(serializers.ModelSerializer):
@@ -28,5 +28,5 @@ class DebateSerializer(serializers.ModelSerializer):
     @staticmethod
     def get_participants(obj):
         custom_debate_query = models.NewUser.objects.filter(current_debate=obj.id)
-        serializer = RegisterUserSerializer(custom_debate_query, many=True)
+        serializer = UserSerializer(custom_debate_query, many=True)
         return serializer.data

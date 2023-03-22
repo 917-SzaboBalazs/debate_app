@@ -3,10 +3,10 @@ from rest_framework import serializers
 from users.models import NewUser
 
 
-class RegisterUserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewUser
-        exclude = ['is_superuser', 'is_staff', 'is_active', 'start_date']
+        fields = "__all__"
         extra_kwargs = {
             'password': {
                 'write_only': True,
@@ -15,9 +15,3 @@ class RegisterUserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return self.Meta.model.objects.create_user(**validated_data)
-
-
-class CurrentUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = NewUser
-        exclude = ['is_superuser', 'is_staff', 'is_active', 'start_date', 'password', ]
