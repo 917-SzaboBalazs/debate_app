@@ -13,6 +13,7 @@ import listerMobile from './Functions/listerMobile';
 import getDebateCurrent from './Functions/getDebateCurrent';
 import getUserCurrent from './Functions/getUserCurrent';
 import RandomMotionSetter from './Components/randomMotionSetter';
+import spectatorLister from './Functions/spectatorLister';
 
 function NewDebateMobile() {
     const navigate = useNavigate();
@@ -159,6 +160,11 @@ function NewDebateMobile() {
                                 setCurrRole)
                         }
                     </div>
+                    <div className="row new-debate--center-spectators-row"> 
+                        {
+                            spectatorLister(allUsers)
+                        }
+                        </div>
                      </>   : null
                     }
                 </div>

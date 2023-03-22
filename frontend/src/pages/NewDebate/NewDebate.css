@@ -206,8 +206,13 @@
 
 }
 
+.new-debate--center-spectators-row {
+    border: 3rem;
+}
+
 .new-debate--spectator-card {
     padding: .5rem;
+    /* margin: 3rem; */
 }
 
 .new-debate--spectator-card--picture {
@@ -250,14 +255,11 @@
     background-color: var(--mcc-kek);
 }
 
-/* .new-debate--spectator-card {
-} */
-
 .new-debate--center-spectators-row {
     /* background-color: rgba(255, 255, 255, 0.679); */
     background-color: var(--opac-white);
     border-radius: 1rem;
-    margin-top: 3rem;
+    margin: 3rem;
 }
 
 .new-debate--spectator-card--username {
