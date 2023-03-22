@@ -12,7 +12,9 @@ function handleChoose(team, nr, ready, setCurrRole) {
         axiosInstance
             .get('user/', {params:{'role':role}})
             .then((res) => {
-                if (res.length == 0) {
+		console.log(res.data)
+		console.log(res.data.length)
+                if (res.data.length == 0) {
                     setCurrRole(role);
                 
                     axiosInstance
