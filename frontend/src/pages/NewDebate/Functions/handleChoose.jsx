@@ -12,25 +12,40 @@ function handleChoose(team, nr, ready, setCurrRole) {
         axiosInstance
             .get('user/', {params:{'role':role}})
             .then((res) => {
-                if (role != "spectator")
-                {
-                    console.log('nemjo');
-                    alert(role + 'is already chosen')
-                }
-                else
-                {
+                if (res.length == 0) {
                     setCurrRole(role);
-                    
+                
                     axiosInstance
                     .patch('user/current/', {'role':role})
                     .then((res) => {
-                        
+    
                     })
                     .catch((err) => {
                     });
+
+
+                } else {
+                    if (role != "spectator")
+                    {
+                        console.log('nemjo');
+                        alert(role + 'is already chosen')
+                    }
+                    else
+                    {
+                        setCurrRole(role);
+                        
+                        axiosInstance
+                        .patch('user/current/', {'role':role})
+                        .then((res) => {
+                            
+                        })
+                        .catch((err) => {
+                        });
+                    }
                 }
             })
             .catch(() => {
+                console.log('Baj van teso');
                 setCurrRole(role);
                 
                 axiosInstance
