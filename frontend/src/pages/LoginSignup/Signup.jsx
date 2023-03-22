@@ -123,7 +123,7 @@ function Signup() {
     if (checkInformation()) {
 
       axiosInstance
-          .post('user/register/', {
+          .post('user/', {
             username: userName,
             email: email,
             password: password

@@ -10,7 +10,7 @@ function handleChoose(team, nr, ready, setCurrRole) {
         } 
 
         axiosInstance
-            .get('user/role/', {params:{'role':role}})
+            .get('user/', {params:{'role':role}})
             .then((res) => {
                 if (role != "spectator")
                 {
