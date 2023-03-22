@@ -27,6 +27,7 @@ function CollapsibleExample() {
     const [ loggedIn, setLoggedIn ] = useState(false);
     const [ userName, setUserName ] = useState('');
     const [ inDebate, setInDebate ] = useState(false);
+    const [ debateStatus, setDebateStatus ] = useState('/new-debate');
 
     // check if user is logged in
     useEffect(() => {
@@ -50,12 +51,24 @@ function CollapsibleExample() {
           console.log(err);
         });
 
-    }, []);
+      // lekerem a debate statuszat
+      axiosInstance
+        .get('debate/current/')
+        .then((res) => {
+          // console.log(res.data.status)
+          if (res.data.status == 'lobby') {
+            setDebateStatus('/new-debate')
+          } else if (res.data.status == 'running') {
+            setDebateStatus('/in-debate')
+          } else if (res.data.status == 'finished') {
+            setDebateStatus('/finished-debate')
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
 
-    // const handleClickTriggerCreate = () => {
-    //     setTriggerCreate(true);
-    //     console.log(triggerCreate);
-    // }
+    }, []);
 
     const handleClickTriggerJoin = () => {
       setTriggerJoin(true);
@@ -129,7 +142,7 @@ function CollapsibleExample() {
               </>
               :
               <>
-                <Nav.Link href="/new-debate" className='nav-link yellow-text'>Current Debate</Nav.Link>
+                <Nav.Link href={debateStatus} className='nav-link yellow-text'>Current Debate</Nav.Link>
                 <Nav.Link onClick={leaveDebate} className='nav-link yellow-text'>Leave Debate</Nav.Link>
               </>
             }

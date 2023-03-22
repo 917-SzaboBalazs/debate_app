@@ -73,13 +73,16 @@ function InDebateTimer() {
             axiosInstance
             .get('debate/current/')
             .then((res) => {
-                // console.log(res.data.speaker_time);
                 setSpeakerTime(res.data.speaker_time);
                 setMotion(res.data.motion);
                 setCurrentlySpeaking(res.data.current_number);
                 setWinner(res.data.winner);
                 setStatus(res.data.status);
-                // console.log(winner);
+
+                if (res.data.status == 'finished') {
+                    navigate('/finished-debate')
+                }
+
             })
             .catch((err) => {
                 console.log(err);
@@ -271,7 +274,7 @@ function InDebateTimer() {
                         <span>{seconds < 10 ? "0" + seconds : seconds}</span>
                         {/* <span>{("0" + ((secondsLeft / 100) % 100)).slice(-2)}</span> */}
                     </div>
-                    { role == 'judge1' || role == 'judge1 (chair)' ? <>
+                    { role == 'judge' || role == 'judge1 (chair)' ? <>
                     <div className="indebate--buttons text-center">
                         <button
                             className={`indebate--button col-12 indebate--start-button ${!running ? 'indebate--start' : 'indebate--stop'}`}

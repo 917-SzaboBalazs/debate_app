@@ -15,6 +15,8 @@ function Trunk() {
     const [ triggerCreate, setTriggerCreate ] = useState(false);
     const [ triggerJoin, setTriggerJoin ] = useState(false);
     const [ inDebate, setInDebate ] = useState(false);
+    const [ status, setStatus ] = useState('/new-debate')
+
     const navigate = useNavigate();
 
     // let navigate = useNavigate();
@@ -35,6 +37,22 @@ function Trunk() {
         .catch((err) => {
           console.log(err);
         });
+
+        axiosInstance
+            .get('debate/current/')
+            .then((res) => {
+                if (res.data.status == 'lobby') {
+                    setStatus('/new-debate')
+                } else if (res.data.status == 'running') {
+                    setStatus('/in-debate')
+                } else if (res.data.status == 'finished') {
+                    setStatus('/finished-debate')
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            }, []);
+
 
     }, []);
 
@@ -87,12 +105,8 @@ function Trunk() {
                             <>
                                 <button
                                     className='trunk--login-button text-uppercase'
-                                    href='/new-debate'
-                                    onClick={() => {
-                                        navigate('/new-debate');
-                                    }}
                                 >
-                                    <Link className='trunk--login-link trunk--link-text' to='/new-debate'><span className='white-text'>Current</span></Link>
+                                    <Link className='trunk--login-link trunk--link-text' to={status}><span className='white-text'>Current</span></Link>
                                 </button>
                                 <button
                                     className='trunk--signin-button text-uppercase'
