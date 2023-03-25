@@ -25,9 +25,6 @@ class CreateDebateView(CreateAPIView):
     queryset = Debate.objects.all()
 
     def post(self, request, *args, **kwargs):
-        cookies = self.request.COOKIES
-        guest_user = None
-
         entry_code = self.__generate_random_unique_code()
 
         custom_data = request.data
@@ -38,26 +35,10 @@ class CreateDebateView(CreateAPIView):
         if serializer.is_valid():
             new_debate = serializer.save()
 
-            if self.request.user.is_anonymous:
-                if 'guest_user' in cookies:
-                    guest_user_id = cookies['guest_user']
-                    guest_user = NewUser.objects.get(id=guest_user_id)
-
-                if guest_user is None:
-                    guest_user = NewUser.objects.create_guest_user()
-                    guest_user.save()
-
-                self.request.user = guest_user
-
             self.request.user.current_debate = new_debate
             self.request.user.save()
 
-            response = Response(serializer.data, status=status.HTTP_201_CREATED)
-
-            if guest_user:
-                response.set_cookie('guest_user', guest_user.id)
-
-            return response
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def __generate_random_unique_code(self):
@@ -90,48 +71,20 @@ class RetrieveUpdateCurrentDebateView(RetrieveUpdateAPIView):
 
     def get(self, request, *args, **kwargs):
         # code entered, assign user to debate
-        cookies = self.request.COOKIES
-        guest_user = None
 
         if "entry-code" in self.request.query_params and self.request.query_params.get("entry-code") is not None:
             new_debate = get_object_or_404(queryset=self.queryset,
                                            entry_code=self.request.query_params.get("entry-code"))
-
-            if self.request.user.is_anonymous:
-                if 'guest_user' in cookies:
-                    guest_user_id = cookies['guest_user']
-                    guest_user = NewUser.objects.get(id=guest_user_id)
-
-                if guest_user is None:
-                    guest_user = NewUser.objects.create_guest_user()
-                    guest_user.save()
-
-                self.request.user = guest_user
 
             self.request.user.current_debate = new_debate
             self.request.user.save()
 
             serializer = DebateSerializer(new_debate)
 
-            response = Response(data=serializer.data, status=status.HTTP_202_ACCEPTED)
-
-            if guest_user:
-                response.set_cookie('guest_user', guest_user.id)
-
-            return response
-
-        if self.request.user.is_anonymous:
-            if 'guest_user' in cookies:
-                guest_user_id = cookies['guest_user']
-                guest_user = NewUser.objects.get(id=guest_user_id)
-
-            self.request.user = guest_user
-
-        if self.request.user is None:
-            return Response(data={"detail": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response(data=serializer.data, status=status.HTTP_202_ACCEPTED)
 
         # code not entered, user not in debate
-        if self.request.user and self.request.user.current_debate is None:
+        if not self.request.user.is_anonymous and self.request.user.current_debate is None:
             return Response(data={"detail": "User not in debate"}, status=status.HTTP_404_NOT_FOUND)
 
         # code not entered, user in debate, return debate

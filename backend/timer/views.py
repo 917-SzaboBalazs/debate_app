@@ -29,15 +29,6 @@ class CurrentTimeView(generics.RetrieveUpdateAPIView):
     http_method_names = ["patch", "get"]
 
     def get(self, request, *args, **kwargs):
-        cookies = request.COOKIES
-        guest_user = None
-
-        if request.user.is_anonymous:
-            if 'guest_user' in cookies:
-                guest_user_id = cookies['guest_user']
-                guest_user = NewUser.objects.get(id=guest_user_id)
-
-            request.user = guest_user
 
         if request.user.current_debate.timer.remaining_time().seconds == 0:
             request.user.current_debate.timer.state = request.user.current_debate.timer.STATE.PAUSED
@@ -45,6 +36,7 @@ class CurrentTimeView(generics.RetrieveUpdateAPIView):
 
         if request.user.current_debate.timer.state == request.user.current_debate.timer.STATE.RUNNING:
             curr_state = "running"
+
         else:
             curr_state = "paused"
 
@@ -54,25 +46,18 @@ class CurrentTimeView(generics.RetrieveUpdateAPIView):
         })
 
     def patch(self, request, *args, **kwargs):
-        cookies = request.COOKIES
-        guest_user = None
-
-        if request.user.is_anonymous:
-            if 'guest_user' in cookies:
-                guest_user_id = cookies['guest_user']
-                guest_user = NewUser.objects.get(id=guest_user_id)
-
-            request.user = guest_user
 
         if 'state' in request.data:
             if request.data.get('state') == "paused":
                 request.user.current_debate.timer.state = request.user.current_debate.timer.STATE.PAUSED
                 request.user.current_debate.timer.save()
+
                 return Response(status=status.HTTP_202_ACCEPTED)
 
             elif request.data.get('state') == "running":
                 request.user.current_debate.timer.state = request.user.current_debate.timer.STATE.RUNNING
                 request.user.current_debate.timer.save()
+
                 return Response(status=status.HTTP_202_ACCEPTED)
 
             elif request.data.get('state') == "reset":
@@ -82,6 +67,7 @@ class CurrentTimeView(generics.RetrieveUpdateAPIView):
                 request.user.current_debate.timer.state = request.user.current_debate.timer.STATE.PAUSED
                 request.user.current_debate.timer.duration_in_minutes = request.user.current_debate.speaker_time
                 request.user.current_debate.timer.save()
+
                 return Response(status=status.HTTP_202_ACCEPTED)
 
             return Response(data={"detail": "Invalid state option (available options: paused, running, reset)"},
@@ -102,16 +88,6 @@ class CreatePOITimerView(generics.ListCreateAPIView):
     serializer_class = POISerializer
 
     def post(self, request, *args, **kwargs):
-        cookies = request.COOKIES
-        guest_user = None
-
-        if request.user.is_anonymous:
-            if 'guest_user' in cookies:
-                guest_user_id = cookies['guest_user']
-                guest_user = NewUser.objects.get(id=guest_user_id)
-
-            request.user = guest_user
-
         try:
             has_poi = (request.user.current_debate.poi is not None)
         except POITime.DoesNotExist:
@@ -130,16 +106,6 @@ class CreatePOITimerView(generics.ListCreateAPIView):
         })
 
     def get(self, request, *args, **kwargs):
-        cookies = request.COOKIES
-        guest_user = None
-
-        if request.user.is_anonymous:
-            if 'guest_user' in cookies:
-                guest_user_id = cookies['guest_user']
-                guest_user = NewUser.objects.get(id=guest_user_id)
-
-            request.user = guest_user
-
         if request.user.current_debate is None:
             return Response(data={
                 "detail": "User not in debate"

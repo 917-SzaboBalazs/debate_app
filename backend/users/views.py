@@ -15,6 +15,16 @@ from users.serializers import UserSerializer
 class ListCreateUsersView(generics.ListCreateAPIView):
     serializer_class = UserSerializer
 
+    def post(self, request, *args, **kwargs):
+
+        if "guest" in request.data and request.data["guest"]:
+            guest_user = NewUser.objects.create_guest_user()
+            guest_user_serializer = UserSerializer(instance=guest_user)
+
+            return Response(data=guest_user_serializer.data, status=status.HTTP_201_CREATED)
+
+        return self.create(request, args, kwargs)
+
     def get_queryset(self):
         queryset = NewUser.objects.all()
 

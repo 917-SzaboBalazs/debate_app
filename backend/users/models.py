@@ -1,6 +1,9 @@
+import random
+
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
+from django.db.models import Q
 from django.utils import timezone
 
 from debate.models import Debate
@@ -21,18 +24,33 @@ class CustomAccountManager(BaseUserManager):
         return self.create_user(username, email, password, **other_fields)
 
     def create_guest_user(self):
-        no_guests = self.model.objects.all().filter(username__startswith="guest").count()
+        max_digits_id = 4
+        guest_id = self.__generate_guest_id(max_digits_id)
 
-        username = "guest{0:04}".format(no_guests)
-        email = "guest{0:04}@guest.com".format(no_guests)
-        password = "Guest0000"
+        username = "guest{0:04}".format(guest_id)
+        email = "guest{0:04}@guest.com".format(guest_id)
+        password = "pass{0:04}".format(guest_id)
 
         other_fields = dict()
         other_fields.setdefault('is_active', False)
         other_fields.setdefault('is_guest', True)
-        other_fields.setdefault('role', 'spectator')
 
         return self.create_user(username, email, password, **other_fields)
+
+    def __generate_guest_id(self, max_no_digits):
+        lower_bound = 0
+        upper_bound = 10 ** max_no_digits
+
+        while True:
+            guest_id = random.randrange(lower_bound, upper_bound)
+            generated_username = "guest{0:04}".format(guest_id)
+            generated_email = "guest{0:04}@guest.com".format(guest_id)
+
+            users_with_same_data = NewUser.objects.filter(Q(username=generated_username) | Q(email=generated_email))
+
+            if len(users_with_same_data) == 0:
+                return guest_id
+
 
     def create_user(self, username, email, password, **other_fields):
         if not username:
