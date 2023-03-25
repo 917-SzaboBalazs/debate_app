@@ -3,7 +3,7 @@ import string
 
 from rest_framework import status
 from rest_framework.generics import CreateAPIView, RetrieveUpdateAPIView, get_object_or_404
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 
 from debate.models import Debate
@@ -20,9 +20,9 @@ class CreateDebateView(CreateAPIView):
         Create a british parliamentary debate by default. You don't have to pass any arguments.
     """
 
-    permission_classes = [AllowAny]
     serializer_class = DebateSerializer
     queryset = Debate.objects.all()
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
         entry_code = self.__generate_random_unique_code()
@@ -64,8 +64,8 @@ class RetrieveUpdateCurrentDebateView(RetrieveUpdateAPIView):
         You can change any field by passing the name of the argument and the new value as a json object.
     """
 
-    permission_classes = [AllowAny]
     serializer_class = DebateSerializer
+    permission_classes = [IsAuthenticated]
     queryset = Debate.objects.all()
     http_method_names = ["patch", "get"]
 

@@ -5,7 +5,7 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework import generics
 from rest_framework.generics import GenericAPIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from rest_framework.views import APIView
 
 from motion.models import Motion
@@ -18,8 +18,8 @@ class ListMotionsView(generics.ListAPIView):
         List all the motions.
     """
     queryset = Motion.objects.all()
-    permission_classes = [AllowAny]
     serializer_class = MotionSerializer
+    permission_classes = [IsAdminUser]
 
 
 class RandomMotionView(generics.RetrieveAPIView):
@@ -32,6 +32,7 @@ class RandomMotionView(generics.RetrieveAPIView):
     """
     queryset = Motion.objects.all()
     serializer_class = MotionSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_object(self):
         return self.__generate_random_motion()

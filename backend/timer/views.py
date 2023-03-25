@@ -24,9 +24,9 @@ class CurrentTimeView(generics.RetrieveUpdateAPIView):
         (available options: running | paused | reset)
     """
 
-    permission_classes = [AllowAny]
     serializer_class = SpeakerTimeSerializer
     http_method_names = ["patch", "get"]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
 
@@ -84,7 +84,7 @@ class CreatePOITimerView(generics.ListCreateAPIView):
             Create a POI timer and set the duration to 15 seconds.
     """
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     serializer_class = POISerializer
 
     def post(self, request, *args, **kwargs):

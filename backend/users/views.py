@@ -9,7 +9,7 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from users.models import NewUser
-from users.serializers import UserSerializer
+from users.serializers import UserSerializer, UserSerializer
 
 
 class ListCreateUsersView(generics.ListCreateAPIView):
@@ -24,6 +24,24 @@ class ListCreateUsersView(generics.ListCreateAPIView):
             return Response(data=guest_user_serializer.data, status=status.HTTP_201_CREATED)
 
         return self.create(request, args, kwargs)
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_anonymous:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        if self.request.user.is_staff:
+            data = self.get_queryset().values()
+
+        else:
+            data = [{
+                "id": user.id,
+                "username": user.username,
+                "role": user.role,
+                "number": user.number,
+                "current_debate": user.current_debate
+            } for user in self.get_queryset()]
+
+        return Response(data=data, status=status.HTTP_200_OK)
 
     def get_queryset(self):
         queryset = NewUser.objects.all()
@@ -51,7 +69,12 @@ class ListCreateUsersView(generics.ListCreateAPIView):
 
 class RetrieveUserView(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer
-    queryset = NewUser.objects.all()
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        if self.request.user.is_staff:
+            return NewUser.objects.all()
+        return NewUser.objects.filter(id=self.request.user.id)
 
     def get_object(self, pk=None):
         if self.kwargs.get("pk") is None:
@@ -61,8 +84,7 @@ class RetrieveUserView(generics.RetrieveUpdateAPIView):
 
 
 class BlacklistTokenUpdateView(APIView):
-    permission_classes = [AllowAny]
-    authentication_classes = ()
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         try:

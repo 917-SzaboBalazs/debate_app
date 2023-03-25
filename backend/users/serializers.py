@@ -14,7 +14,4 @@ class UserSerializer(serializers.ModelSerializer):
         }
 
     def create(self, validated_data):
-        if 'guest' in validated_data and validated_data['guest']:
-            return self.Meta.model.objects.create_guest_user()
-
         return self.Meta.model.objects.create_user(**validated_data)
