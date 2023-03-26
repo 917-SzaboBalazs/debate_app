@@ -1,25 +1,21 @@
-import string
-
 from rest_framework import status, generics
-from rest_framework.exceptions import ParseError
 from rest_framework.generics import get_object_or_404
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from users.models import NewUser
-from users.serializers import UserSerializer, UserSerializer
+from users.serializers import UserSerializer, RegisterUserSerializer
 
 
 class ListCreateUsersView(generics.ListCreateAPIView):
-    serializer_class = UserSerializer
 
     def post(self, request, *args, **kwargs):
 
         if "guest" in request.data and request.data["guest"]:
             guest_user = NewUser.objects.create_guest_user()
-            guest_user_serializer = UserSerializer(instance=guest_user)
+            guest_user_serializer = RegisterUserSerializer(instance=guest_user)
 
             return Response(data=guest_user_serializer.data, status=status.HTTP_201_CREATED)
 
@@ -28,6 +24,9 @@ class ListCreateUsersView(generics.ListCreateAPIView):
     def get(self, request, *args, **kwargs):
         if request.user.is_anonymous:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        if request.user.current_debate is None:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
         if self.request.user.is_staff:
             data = self.get_queryset().values()
@@ -38,8 +37,8 @@ class ListCreateUsersView(generics.ListCreateAPIView):
                 "username": user.username,
                 "role": user.role,
                 "number": user.number,
-                "current_debate": user.current_debate
-            } for user in self.get_queryset()]
+                "current_debate": user.current_debate.id
+            } for user in self.get_queryset().filter(current_debate=request.user.current_debate.id)]
 
         return Response(data=data, status=status.HTTP_200_OK)
 
@@ -65,6 +64,11 @@ class ListCreateUsersView(generics.ListCreateAPIView):
                 return []
 
         return queryset
+
+    def get_serializer_class(self):
+        if not self.request.user.is_authenticated or not self.request.user.is_staff:
+            return RegisterUserSerializer
+        return UserSerializer
 
 
 class RetrieveUserView(generics.RetrieveUpdateAPIView):

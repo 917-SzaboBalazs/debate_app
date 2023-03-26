@@ -27,10 +27,11 @@ class CreateDebateView(CreateAPIView):
     def post(self, request, *args, **kwargs):
         entry_code = self.__generate_random_unique_code()
 
-        custom_data = request.data
-        custom_data['entry_code'] = entry_code
+        request.data._mutable = True
+        request.data['entry_code'] = entry_code
+        request.data._mutable = False
 
-        serializer = self.serializer_class(data=custom_data)
+        serializer = self.serializer_class(data=request.data)
 
         if serializer.is_valid():
             new_debate = serializer.save()
