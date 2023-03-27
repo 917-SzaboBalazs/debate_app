@@ -66,7 +66,7 @@ class ListCreateUsersView(generics.ListCreateAPIView):
         return queryset
 
     def get_serializer_class(self):
-        if not self.request.user.is_authenticated or not self.request.user.is_staff:
+        if self.request is None or not self.request.user.is_authenticated or not self.request.user.is_staff:
             return RegisterUserSerializer
         return UserSerializer
 
