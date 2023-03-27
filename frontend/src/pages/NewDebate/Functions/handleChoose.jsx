@@ -30,7 +30,6 @@ function handleChoose(team, nr, ready, setCurrRole) {
                     if (role != "spectator")
                     {
                         console.log('nemjo');
-                        alert(role + 'is already chosen')
                     }
                     else
                     {
@@ -59,7 +58,6 @@ function handleChoose(team, nr, ready, setCurrRole) {
                 });
             });
     } else {
-        alert('You must not be ready in order to change role.');
     }
 }
 

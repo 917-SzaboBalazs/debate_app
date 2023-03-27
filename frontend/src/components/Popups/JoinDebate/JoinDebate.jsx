@@ -11,7 +11,6 @@ function JoinDebate(props) {
 
     const handleNext = () => {
         if (debateCode === '') {
-            alert('The input fied is empty');
             return;
         }
 
@@ -33,7 +32,7 @@ function JoinDebate(props) {
                   })
             })
             .catch((err) => {
-                alert('Non existing code');
+
             })
     }
 

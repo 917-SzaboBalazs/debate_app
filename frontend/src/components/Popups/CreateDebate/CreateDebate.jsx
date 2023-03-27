@@ -27,8 +27,8 @@ function CreateDebate(props) {
     console.log(debateType);
     props.setTrigger(false);
 
-    if (motion == '' ) {
-      alert(' You have to give the motion first');
+    if (motion === '' ) {
+
       return;
     }
 

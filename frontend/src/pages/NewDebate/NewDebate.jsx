@@ -191,7 +191,7 @@ function NewDebate() {
                                     if (currRole != null) {
                                         setReady(!ready);
                                     } else {
-                                        alert('choose a role first');
+
                                     }
                                 }}
                             >
