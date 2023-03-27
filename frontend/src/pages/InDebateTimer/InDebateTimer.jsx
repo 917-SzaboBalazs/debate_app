@@ -41,6 +41,9 @@ function InDebateTimer() {
     const [ status, setStatus ] = useState('');
     const [ speakerTime, setSpeakerTime ] = useState('');
 
+    const [ poi, setPOI ] = useState[false];
+    const [ POIseconds, setPOIseconds ] = useState(15);
+
     const speakerRole = [ 'Nyitó kormány - 1', 'Nyitó ellenzék - 1', 'Nyitó kormány - 2', 'Nyitó ellenzék - 2', 'Záró kormány - 1', 'Záró ellenzék - 1', 'Záró kormány - 2', 'Záró ellenzék - 2'];
 
     // check if user is logged in
@@ -112,6 +115,10 @@ function InDebateTimer() {
 
         return () => clearInterval(interval);
       }, []);
+
+    const handlePOI = () => {
+        setPOI(true);
+    }
 
     const handleMouse = () => {
         setMouse(prev => !prev);
@@ -245,7 +252,7 @@ function InDebateTimer() {
                 { loggedIn && inDebate ?
                 <>
                 {
-                    status == "finished" ?
+                    status === "finished" ?
                 <>
                 <div className="in-debate--hiba row d-flex justify-content-center align-items-center">
                         <h1 className='col-12 text-center'>A {winner} csapat nyert!</h1>
@@ -274,7 +281,21 @@ function InDebateTimer() {
                         <span>{seconds < 10 ? "0" + seconds : seconds}</span>
                         {/* <span>{("0" + ((secondsLeft / 100) % 100)).slice(-2)}</span> */}
                     </div>
-                    { role == 'judge' || role == 'judge1 (chair)' ? <>
+                    { role === 'judge' || role === 'judge1 (chair)' ? <>
+                        {
+                            !poi ? <>    
+                            <button 
+                                className="poi-button"
+                                onClick={handlePOI}
+                            >
+                                P.O.I.
+                            </button>
+                            </>
+                            : 
+                            <div className="in-debate--poi-seconds">
+                                {POIseconds}
+                            </div>
+                        }   
                     <div className="indebate--buttons text-center">
                         <button
                             className={`indebate--button col-12 indebate--start-button ${!running ? 'indebate--start' : 'indebate--stop'}`}
