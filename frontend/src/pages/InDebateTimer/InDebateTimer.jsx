@@ -30,7 +30,7 @@ function InDebateTimer() {
     const [ isMouseBack, setMouseBack ] = useState(false);
     const [ currentlySpeaking, setCurrentlySpeaking ] = useState(1);
     const [ trigger, setTrigger ] = useState(false);
-    const [ secondsLeft, setSecondsLeft ] = useState(0);
+    // const [ secondsLeft, setSecondsLeft ] = useState(0);
     const [ seconds, setSeconds ] = useState(0);
     const [ minutes, setMinutes ] = useState(0);
     const [ role, setRole ] = useState('');
@@ -118,6 +118,7 @@ function InDebateTimer() {
 
     const handlePOI = () => {
         setPOI(true);
+        // ide kell egy axios-posts
     }
 
     const handleMouse = () => {
@@ -283,16 +284,17 @@ function InDebateTimer() {
                     </div>
                     { role === 'judge' || role === 'judge1 (chair)' ? <>
                         {
-                            !poi ? <>    
-                            <button 
-                                className="poi-button"
-                                onClick={handlePOI}
-                            >
-                                P.O.I.
-                            </button>
+                            !poi ? 
+                            <>    
+                                <button 
+                                    className="poi-button poi-element"
+                                    onClick={handlePOI}
+                                >
+                                    P.O.I.
+                                </button>
                             </>
                             : 
-                            <div className="in-debate--poi-seconds">
+                            <div className="in-debate--poi-seconds poi-element">
                                 {POIseconds}
                             </div>
                         }   

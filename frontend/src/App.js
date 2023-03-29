@@ -15,6 +15,8 @@ import Profile from './pages/Profile/Profile';
 import Error from './pages/Error404/Error'
 import EditProfile from './pages/EditProfile/EditProfile';
 
+import TesterPage from './pages/TesterPage/Test';
+
 import './App.css';
 
 
@@ -50,6 +52,9 @@ function App() {
 
           {/* Baj van, ha ide kerul valaki  */}
           <Route path='*' exact element={<Error />} />
+
+          {/* Tester oldal  */}
+          <Route path='/testing' exact element={<TesterPage/>}/>
         </Routes>
       
       {/* Footer  */}
