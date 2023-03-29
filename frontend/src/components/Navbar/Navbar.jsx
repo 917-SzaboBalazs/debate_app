@@ -10,6 +10,8 @@ import CreateDebate from '../Popups/CreateDebate/CreateDebate';
 import JoinDebate from '../Popups/JoinDebate/JoinDebate';
 
 import handleClickTriggerCreate from '../Functions/handleClickCreate';
+import getUserCurrent from '../Functions/getUserCurrent';
+import leaveDebate from '../Functions/leaveDebate';
 
 import axiosInstance from '../../axios';
 
@@ -32,24 +34,7 @@ function CollapsibleExample() {
     // check if user is logged in
     useEffect(() => {
 
-      axiosInstance
-        .get('user/current/')
-        .then((res) => {
-          console.log(res);
-          setUserName(res.data.username);
-          setLoggedIn(true);
-          console.log(userName);
-
-          if (res.data.current_debate != null) {
-            setInDebate(true);
-          } else {
-            setInDebate(false);
-          }
-
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      getUserCurrent(setUserName, setLoggedIn, setInDebate);
 
       // lekerem a debate statuszat
       axiosInstance
@@ -94,33 +79,31 @@ function CollapsibleExample() {
         })
     }
 
-    const leaveDebate = () => {
-      axiosInstance
-        .get('user/current/')
-        .then((userRes) => {
-          axiosInstance
-            .get('debate/current/')
-            .then((debateRes) => {
-                axiosInstance
-                  .patch('user/current/', {"current_debate": null, 'role': null})
-                  .then(() => {
-                    navigate('/');
-                    window.location.reload(false);
-                  })
-                  .catch((err) => {
-                    console.log(err);
-                  })
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-
-
-    }
+    // const leaveDebate = () => {
+    //   axiosInstance
+    //     .get('user/current/')
+    //     .then((userRes) => {
+    //       axiosInstance
+    //         .get('debate/current/')
+    //         .then((debateRes) => {
+    //             axiosInstance
+    //               .patch('user/current/', {"current_debate": null, 'role': null})
+    //               .then(() => {
+    //                 navigate('/');
+    //                 getUserCurrent(setUserName, setLoggedIn, setInDebate);
+    //                 })
+    //               .catch((err) => {
+    //                 console.log(err);
+    //               })
+    //         })
+    //         .catch((err) => {
+    //           console.log(err);
+    //         });
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     })
+      leaveDebate(setUserName, setLoggedIn, setInDebate, navigate);
 
   return (
     <>
