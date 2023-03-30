@@ -119,7 +119,7 @@ function InDebateTimer() {
               .get('timer/poi/')
               .then((res) => {
                 setPOI(true);
-                // setPOIseconds(res.data.remainig_time)
+                setPOIseconds(res.data['remaining-time']);
               })
               .catch((err) => {
                 setPOI(false);
@@ -166,7 +166,6 @@ function InDebateTimer() {
             axiosInstance
                 .patch('debate/current/', {'current_number': currentNumber})
                 .then((res) => {
-                    // console.log(res);
                     setCurrentlySpeaking(currentNumber);
                 })
                 .catch((err) => {
@@ -248,7 +247,6 @@ function InDebateTimer() {
     }
 
     const handleSetTime = (ev) => {
-        console.log(ev);
         axiosInstance
             .patch('debate/current/', {'speaker_time': ev.target.value})
             .then(() => {
