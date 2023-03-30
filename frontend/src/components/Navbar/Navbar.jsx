@@ -103,7 +103,7 @@ function CollapsibleExample() {
     //     .catch((err) => {
     //       console.log(err);
     //     })
-      leaveDebate(setUserName, setLoggedIn, setInDebate, navigate);
+      
 
   return (
     <>
@@ -119,14 +119,19 @@ function CollapsibleExample() {
               !inDebate ?
               <>
                 <Nav.Link 
-                  onClick={() => { handleClickTriggerCreate(navigate)}}
+                  onClick={async () => { 
+                    await handleClickTriggerCreate(navigate);
+                  }}
                   className='nav-link yellow-text'>Create a Debate</Nav.Link>
                 <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link>
               </>
               :
               <>
                 <Nav.Link href={debateStatus} className='nav-link yellow-text'>Current Debate</Nav.Link>
-                <Nav.Link onClick={leaveDebate} className='nav-link yellow-text'>Leave Debate</Nav.Link>
+                <Nav.Link onClick={
+                  () => {
+                  leaveDebate(setUserName, setLoggedIn, setInDebate, navigate);
+                  }} className='nav-link yellow-text'>Leave Debate</Nav.Link>
               </>
             }
             {/* <Nav.Link href="/in-debate" className='nav-link'>Timer Page</Nav.Link> */}
