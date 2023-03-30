@@ -10,15 +10,6 @@ const handleClickTriggerCreate = (navigate) => {
     .post('debate/create/')
     .then((res) => {
         navigate('/new-debate');
-        console.log(res.data.id)
-        axiosInstance
-        .patch('user/current/', {
-          'role': 'spectator'
-          // 'current_debate': res.data.id
-        })
-        .catch((err) => {
-          console.log(err);
-        })
         window.location.reload(false);
       }
     )

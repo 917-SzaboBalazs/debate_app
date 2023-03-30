@@ -175,6 +175,11 @@
     border-radius: 1.5rem;
 }
 
+.poi-button {
+  color: black;
+  margin: 0rem !important;
+}
+
 @media screen and (max-width: 768px) {
     .in-debate--finish-button{
         width: 80%;

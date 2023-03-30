@@ -41,11 +41,11 @@ function Trunk() {
         axiosInstance
             .get('debate/current/')
             .then((res) => {
-                if (res.data.status == 'lobby') {
+                if (res.data.status === 'lobby') {
                     setStatus('/new-debate')
-                } else if (res.data.status == 'running') {
+                } else if (res.data.status === 'running') {
                     setStatus('/in-debate')
-                } else if (res.data.status == 'finished') {
+                } else if (res.data.status === 'finished') {
                     setStatus('/finished-debate')
                 }
             })

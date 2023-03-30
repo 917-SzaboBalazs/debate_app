@@ -41,7 +41,7 @@ function InDebateTimer() {
     const [ status, setStatus ] = useState('');
     const [ speakerTime, setSpeakerTime ] = useState('');
 
-    const [ poi, setPOI ] = useState[false];
+    const [ poi, setPOI ] = useState(false);
     const [ POIseconds, setPOIseconds ] = useState(15);
 
     const speakerRole = [ 'Nyitó kormány - 1', 'Nyitó ellenzék - 1', 'Nyitó kormány - 2', 'Nyitó ellenzék - 2', 'Záró kormány - 1', 'Záró ellenzék - 1', 'Záró kormány - 2', 'Záró ellenzék - 2'];
@@ -73,6 +73,8 @@ function InDebateTimer() {
 
       useEffect(() => {
         const interval=setInterval(() =>{
+
+            // debate-status
             axiosInstance
             .get('debate/current/')
             .then((res) => {
@@ -91,6 +93,7 @@ function InDebateTimer() {
                 console.log(err);
             }, []);
 
+            // timer
             axiosInstance
                 .get('timer/')
                 .then((res) => {
@@ -111,13 +114,32 @@ function InDebateTimer() {
                     setSeconds(sec);
                 })
 
+            // POI
+            axiosInstance
+              .get('timer/poi/')
+              .then((res) => {
+                setPOI(true);
+                // setPOIseconds(res.data.remainig_time)
+              })
+              .catch((err) => {
+                setPOI(false);
+              });
+
         }, 500);
 
         return () => clearInterval(interval);
       }, []);
 
     const handlePOI = () => {
-        setPOI(true);
+      axiosInstance
+        .post('timer/poi/')
+        .then(() => {
+            console.log('Poi set');
+        })
+        .catch(() => {
+
+        })
+
         // ide kell egy axios-posts
     }
 
@@ -242,8 +264,6 @@ function InDebateTimer() {
             .catch((err) => {
                 console.log(err);
             })
-
-
     }
 
     return (
@@ -285,14 +305,16 @@ function InDebateTimer() {
                     { role === 'judge' || role === 'judge1 (chair)' ? <>
                         {
                             !poi ? 
-                            <>    
+                            <div className="row justify-content-center">    
                                 <button 
-                                    className="poi-button poi-element"
-                                    onClick={handlePOI}
+                                    className="poi-button poi-element col-3"
+                                    onClick={() => {
+                                        handlePOI();
+                                    }}
                                 >
                                     P.O.I.
                                 </button>
-                            </>
+                            </div>
                             : 
                             <div className="in-debate--poi-seconds poi-element">
                                 {POIseconds}
