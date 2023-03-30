@@ -11,10 +11,11 @@ const handleClickTriggerCreate = (navigate) => {
     .then((res) => {
         navigate('/new-debate');
         window.location.reload(false);
-
+        console.log(res.data.id)
         axiosInstance
         .patch('user/current/', {
-            'role': 'spectator'
+            'role': 'spectator',
+            'current_debate': res.data.id
         })
         .catch((err) => {
             console.log(err);
