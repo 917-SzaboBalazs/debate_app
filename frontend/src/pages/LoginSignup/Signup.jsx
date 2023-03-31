@@ -210,7 +210,7 @@ function Signup() {
                         id="username"
                         name="username"
                         type="text"
-                        placeholder='eg.: myUserName'
+                        placeholder='username'
                         className="username"
                         value={userName}
                         onChange = {(e) => {
@@ -222,7 +222,7 @@ function Signup() {
                         id="email"
                         name="email"
                         type="text"
-                        placeholder='eg.: me@lol.com'
+                        placeholder='lukrecia@cicamail.hu'
                         className="email"
                         value={email}
                         onChange = {(e) => {
@@ -234,7 +234,7 @@ function Signup() {
                         id="password"
                         name="password"
                         type="password"
-                        placeholder='eg.: Passwd1234'
+                        placeholder='min 8 chars: capital, number, spec char'
                         className='password'
                         value={password}
                         onChange = {(e) => {
@@ -246,7 +246,7 @@ function Signup() {
                         id="passwordAgain"
                         name="passwordAgain"
                         type="password"
-                        placeholder='eg.: Passwd1234'
+                        placeholder='min 8 chars: capital, number, spec char'
                         className='password'
                         value={passwordAgain}
                         onChange = {(e) => {

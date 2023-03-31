@@ -89,7 +89,7 @@ function Login() {
                     <input 
                       value={userName}
                       type="text"
-                      placeholder='eg.: myUserName' 
+                      placeholder='username' 
                       className="username" 
                       onChange={(e) => setUserName(e.target.value)}  
                     />
@@ -97,7 +97,7 @@ function Login() {
                     <input 
                       value={password}
                       type="password" 
-                      placeholder='eg.: Passwd1234' 
+                      placeholder='password' 
                       className='password' 
                       onChange={(e) => setPassword(e.target.value)}
                       />
