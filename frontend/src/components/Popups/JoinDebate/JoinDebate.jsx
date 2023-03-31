@@ -47,7 +47,7 @@ function JoinDebate(props) {
                     type="text"
                     value={debateCode}
                     placeholder='kód'
-                    className="join-debate--code"
+                    id="join-debate--code"
                     onChange={(e) => {
                         setDebateCode(e.target.value);
                     }}

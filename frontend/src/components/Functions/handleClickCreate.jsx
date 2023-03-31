@@ -1,9 +1,6 @@
 import axiosInstance from "../../axios";
-import { useNavigate } from 'react-router-dom';
 
 const handleClickTriggerCreate = (navigate) => {
-    console.log('Create pressed');
-    // setTriggerCreate(true);
 
     // alapertelmezetten britt parlamenti a vitafomatum
     axiosInstance

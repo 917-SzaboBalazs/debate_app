@@ -65,33 +65,33 @@
 
 .join-debate--next-btn{
     width: 100%;
-    border: .3rem solid var(--primary);
+    border: .3rem solid white;
     /* margin-top: 1rem; */
     border-radius: .75rem;
     background-color: transparent;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    transition: .3s;
+}
+
+.join-debate--next-btn:hover {
+    width: 100%;
+    border-radius: .75rem;
+    background-color: white;
     font-size: 22px;
     font-weight: bold;
     color: var(--primary);
     transition: .3s;
 }
 
-.join-debate--next-btn:hover {
-    width: 100%;
-    /* border: .3rem solid var(--primary); */
-    /* margin-top: 1rem; */
-    border-radius: .75rem;
-    background-color: var(--primary);
-    font-size: 22px;
-    font-weight: bold;
-    color: var(--secondary);
-    transition: .3s;
-}
-
-.join-debate--code {
+#join-debate--code {
     /* margin-top: 2rem; */
     border-radius: .7rem;
     padding: 5px;
     margin-bottom: 2rem;
+    border: 0px solid none;
+    color: var(--primary);
 }
 
 .join-debate--inner h1{
