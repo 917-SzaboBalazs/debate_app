@@ -11,9 +11,11 @@ function FinishedDebate() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axiosInstance('debates/current/')
+        axiosInstance
+        .get('debate/current/')
         .then((res) => {
-            setWinnerTeam(res.data.winner)
+          console.log(res.data);
+          setWinnerTeam(res.data.result);
         })
         .catch((err) => {
             console.log(err)
