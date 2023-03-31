@@ -49,7 +49,7 @@ function Profile() {
         loggedIn ?
         <>
             <div className="profile--base base">
-                <div className="profile--container container bg-light">
+                <div className="profile--container container">
                     <div className="profile--base-row row">
                         <div className="profile--left-side col-md-5 col-sm-12">
                             <div className="profile--img row d-flex justify-content-center">

@@ -9,7 +9,7 @@
 } 
 
 .us--container{
-    background-color: rgb(243, 234, 226);
+    background-color: var(--primary);
 }
 
 @media only screen and (max-width: 768px) {
@@ -21,8 +21,8 @@
         text-align: justify;
         padding-bottom: 5vh;
         padding-top: 5vh;
-        border-bottom: 2px solid #F2CA10;
-        border-top: 2px solid #F2CA10;
+        border-bottom: 2px solid var(--secondary);
+        border-top: 2px solid var(--secondary);
     }
 
     .why--text{

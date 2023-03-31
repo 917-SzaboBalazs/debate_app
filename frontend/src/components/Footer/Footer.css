@@ -8,6 +8,7 @@
 .page-footer{
     background-color: #333d4b;
     color: white;
+    border-top: 3px solid var(--secondary);
 }
 
 

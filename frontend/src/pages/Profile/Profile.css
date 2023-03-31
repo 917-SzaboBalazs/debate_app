@@ -12,7 +12,7 @@
 
 .profile--left-side {
     min-height: 100vh;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: var(--black);
     padding: 2rem;
     padding-top: 15vh;
 }
@@ -21,7 +21,7 @@
     min-height: 100vh;
     padding: 2rem;
     padding-top: 20vh;
-    background-color: rgb(243, 234, 226);
+    background-color: var(--primary);
 }
 
 .profile--element {
@@ -69,7 +69,12 @@
 }
 
 .profile--about-me-row, .profile--ind-debate-row{
-    background-color: rgb(243, 234, 226) !important;
+    background-color: var(--primary) !important;
+    color: var(--primary);
+}
+
+.profile--about-me-title, .profile--right-element h1{
+    color: var(--primary);
 }
 
 @media only screen and (max-width: 767px) {
