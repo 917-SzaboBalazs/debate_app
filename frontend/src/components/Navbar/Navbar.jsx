@@ -118,12 +118,13 @@ function CollapsibleExample() {
             {
               !inDebate ?
               <>
+                <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link>
                 <Nav.Link 
                   onClick={async () => { 
                     await handleClickTriggerCreate(navigate);
                   }}
-                  className='nav-link yellow-text'>Create a Debate</Nav.Link>
-                <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link>
+                  className='nav-link yellow-text'>Create a Debate
+                </Nav.Link>
               </>
               :
               <>
