@@ -1,0 +1,70 @@
+.judges-drag--base{
+    background-color: var(--primary);
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.team-holder{
+    position: relative;
+    top: 25vh;
+    width: 20vw;
+    height: 50vh;
+    background-color: var(--mcc-kek);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+    border: 2px solid var(--secondary);
+}
+
+.ordered-holder{
+    position: relative;
+    margin-left: 20vw;
+    top: 25vh;
+    width: 20vw;
+    height: 50vh;
+    background-color: var(--mcc-kek);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+    border: 2px solid var(--secondary);
+}
+
+.ordering-places{
+    display: flex;
+    width: 80%;
+    height: 18%;
+    margin-left: 10%;
+    border-radius: 10px;
+    background-color: var(--secondary);
+    justify-content: center;
+    align-items: center;
+}
+
+#og, #oo, #cg, #co{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--opac-white);
+    color: var(--primary);
+    height: 18%;
+    width: 60%;
+    margin-left: 20%;
+    border-radius: 10px;
+}
+
+#done-btn{
+    display: flex;
+    position: absolute;
+    height: 7vh;
+    width: 10vw;
+    left: 45vw;
+    top: 85vh;
+    background-color: var(--secondary);
+    color: whitesmoke;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
