@@ -1,3 +1,12 @@
+.finished-debate--base {
+  min-height: 100vh;
+  /* padding-top: 7rem; */
+}
+
 .finished-debate--base h1{
     color: black;
+}
+
+.finished-debate--base li {
+  color: black;
 }

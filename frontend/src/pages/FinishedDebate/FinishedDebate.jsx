@@ -5,17 +5,29 @@ import { useNavigate } from 'react-router-dom';
 
 import './FinishedDebate.css'
 
+const ListResult = (props) => {
+  const winnerTeam = Object.values(props.res);
+  const listItems = winnerTeam.map(elem => 
+    <li>{elem}</li>
+  );
+
+  return listItems;
+}
+
 function FinishedDebate() {
-    const [ winnerTeam, setWinnerTeam ] = useState('Nem lehet tudni, az egyik dev elbaszott valamit')
+    const [ winnerTeam, setWinnerTeam ] = useState(['Nem lehet tudni, az egyik dev elbaszott valamit'])
     
     const navigate = useNavigate();
+
+    
 
     useEffect(() => {
         axiosInstance
         .get('debate/current/')
         .then((res) => {
-          console.log(res.data);
-          setWinnerTeam(res.data.result);
+          // console.log(res.data);
+          const results = JSON.parse(res.data.result);
+          setWinnerTeam(results);
         })
         .catch((err) => {
             console.log(err)
@@ -39,8 +51,8 @@ function FinishedDebate() {
 
   return (
     <div className='finished-debate--base row d-flex justify-content-center align-items-center'>
-        <div className="in-debate--hiba row d-flex justify-content-center align-items-center">
-            <h1 className='col-12 text-center'>A {winnerTeam} csapat nyert!</h1>
+        <div className="finished-debate--hiba row d-flex justify-content-evenly align-items-center">
+            <ol className="col-12 d-flex flex-column align-items-center"><ListResult res={winnerTeam} /></ol>
             <button
                 className="in-debate--leave-debate white-text col-4"
                 onClick={leaveDebate}

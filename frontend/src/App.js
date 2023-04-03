@@ -10,6 +10,7 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Debates from './pages/Debates/Debates';
 import InDebateTimer from './pages/InDebateTimer/InDebateTimer';
+import Results from './pages/Results/Results';
 import FinishedDebate from './pages/FinishedDebate/FinishedDebate';
 import Profile from './pages/Profile/Profile';
 import Error from './pages/Error404/Error'
@@ -44,6 +45,7 @@ function App() {
           {/* Ezt a kettot majd egybe fog kelleni cuccoljam */}
           <Route path='/new-debate' exact element={<NewDebateWrapper />} />
           <Route path='/in-debate' exact element={<InDebateTimer />} />
+          <Route path='/results' exact element={<Results/>} />
           <Route path='/finished-debate' exact element={<FinishedDebate />}></Route>
 
           {/* Profile */}

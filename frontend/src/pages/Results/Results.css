@@ -1,0 +1,13 @@
+.results--container {
+  min-height: 100vh;
+  background-color: var(--primary);
+}
+
+.results--selection, .results--results {
+  border-bottom: 2px solid white;
+  margin-bottom: 1rem;
+}
+
+.results--submit-button {
+  color: black;
+}

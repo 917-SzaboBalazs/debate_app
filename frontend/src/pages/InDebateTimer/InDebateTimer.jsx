@@ -242,8 +242,9 @@ function InDebateTimer() {
     const handleFinish = () => {
         //if (currentlySpeaking == 8) {
             // setFinished(true);
-            setTrigger(true);
+            // setTrigger(true);
         //}
+        navigate('/results');
     }
 
     const handleSetTime = (ev) => {
