@@ -26,10 +26,10 @@ function Results() {
 
   useEffect(() => {
     const initialValue = [
-      'pro1',
-      'pro2',
-      'con1',
-      'con2',
+      '1st',
+      '2nd',
+      '3rd',
+      '4th',
     ];
 
     setResults(initialValue);
@@ -81,6 +81,21 @@ function Results() {
               }))
   }
 
+  const diffBackground = (element) => {
+    const team1 = document.getElementById('results--pro1');
+    const team2 = document.getElementById('results--pro2');
+    const team3 = document.getElementById('results--con1');
+    const team4 = document.getElementById('results--con2');
+
+    team1.style.backgroundColor = 'whitesmoke';
+    team2.style.backgroundColor = 'whitesmoke';
+    team3.style.backgroundColor = 'whitesmoke';
+    team4.style.backgroundColor = 'whitesmoke';
+
+    const selected = document.getElementById(element);
+    selected.style.backgroundColor = 'orange';
+  }
+
   const handleSubmit = () => {
     checkResults(results)
       .then(() => {
@@ -115,6 +130,7 @@ function Results() {
               className="row results--selection"
               onClick = { () => {
                 handleSelect(0);
+                diffBackground('results--pro1');
               }}
             >
               <p className="col-12">Pro1</p>
@@ -124,6 +140,7 @@ function Results() {
               className="row results--selection"
               onClick = { () => {
                 handleSelect(1);
+                diffBackground('results--pro2');
               }}
             >
               <p className="col-12">Pro2</p>
@@ -133,6 +150,7 @@ function Results() {
               className="row results--selection"
               onClick = { () => {
                 handleSelect(2);
+                diffBackground('results--con1');
               }}
             >
               <p className="col-12">Con1</p>
@@ -142,6 +160,7 @@ function Results() {
               className="row results--selection"
               onClick = { () => {
                 handleSelect(3);
+                diffBackground('results--con2');
               }}
             >
               <p className="col-12">Con2</p>

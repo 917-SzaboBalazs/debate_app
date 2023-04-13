@@ -4,10 +4,30 @@
 }
 
 .results--selection, .results--results {
-  border-bottom: 2px solid white;
-  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--feher);
+  border-radius: 10px;
+  margin-bottom: 5vh;
+  height: 7vh;
+  width: 10vw;
+  text-align: center;
+}
+
+.results--selection p, .results--results p{
+  color: var(--primary);
 }
 
 .results--submit-button {
   color: black;
+  height: 10vh;
+  width: 10vw;
+  margin-left: 43vw;
+  border-radius: 10px;
+}
+
+.results--selected-text{
+  margin-top: 10vh;
+  font-size: xx-large;
 }
