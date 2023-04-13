@@ -11,6 +11,8 @@ import listerDesktop from './Functions/listerDesktop';
 import axiosInstance from '../../axios';
 import RandomMotionSetter from './Components/randomMotionSetter';
 import spectatorLister from './Functions/spectatorLister';
+import LoginPopup from '../../components/Popups/NotReady/NotReady';
+import NotReady from '../../components/Popups/NotReady/NotReady';
 
 
 function NewDebate() {
@@ -24,6 +26,9 @@ function NewDebate() {
     const [ motion, setMotion ] = useState();
     const [ newMotion, setNewmotion ] = useState('Set a motion pls'); // a motion setter
     const [ currRole, setCurrRole ] = useState('spectator');
+    
+    const [ trigger, setTrigger ] = useState(false);
+    const [ message, setMessage ] = useState('');
 
     const [ focused, setFocused ] = useState(false);
 
@@ -236,6 +241,10 @@ function NewDebate() {
                 
                 </>
                 }
+
+                <NotReady trigger={trigger} setTrigger={setTrigger}>
+                    <h3>{message}</h3>
+                </NotReady>
             </div>
         </div>
     )
