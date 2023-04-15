@@ -11,6 +11,10 @@
   color: black;
 }
 
+.finished-debate--base{
+  background-color: var(--beige);
+}
+
 .place--finished{
   width: 20vw;
   display: flex;
