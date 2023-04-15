@@ -10,14 +10,20 @@
     min-height: 75vh;
 }
 
+.poi-button{
+    height: 5vh;
+    border-radius: 1.5rem;
+}
+
 .indebate--container {
-    min-height: 75vh;
+    /* min-height: 75vh; */
     padding-top: 15vh;
     background-color: var(--primary);
+    min-height: 100vh;
 }
 
 .indebate--numbers {
-    font-size: 36px;
+    font-size: 72px;
     font-weight: bold;
 }
 
@@ -173,6 +179,8 @@
 
 .in-debate--speaker-time-element {
     border-radius: 1.5rem;
+    margin-top: 2vh;
+    height: 10vh;
 }
 
 .poi-button {
