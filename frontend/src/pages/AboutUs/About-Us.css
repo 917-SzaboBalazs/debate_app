@@ -6,10 +6,12 @@
 
 .about-us--container {
     padding-top: 4vh;
+    height: 100vh;
 } 
 
 .us--container{
     background-color: var(--primary);
+    height: 100vh;
 }
 
 @media only screen and (max-width: 768px) {
