@@ -166,6 +166,12 @@ function Signup() {
     setTrigger(true);
   };
 
+  document.addEventListener('keydown', function(event) {
+    if (event.keyCode === 13) {
+      handleSubmit(event);
+    }
+  });
+
 
   const images = [
     image1,   

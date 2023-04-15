@@ -50,6 +50,14 @@ function Login() {
         })
     }
 
+    document.addEventListener('keydown', function(event) {
+      console.log("nyomva")
+      if (event.keyCode === 13) {
+        console.log("enter")
+        handleSubmit();
+      }
+    });
+
     const images = [
       image1,   
       image2,
