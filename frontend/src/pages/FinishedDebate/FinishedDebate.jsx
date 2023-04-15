@@ -5,13 +5,15 @@ import { useNavigate } from 'react-router-dom';
 
 import './FinishedDebate.css'
 
-const ListResult = (props) => {
+const ListResult = (props, index) => {
   const winnerTeam = Object.values(props.res);
-  const listItems = winnerTeam.map(elem => 
-    <li>{elem}</li>
-  );
+  console.log(winnerTeam)
+  console.log(props.index)
+  // const listItems = winnerTeam.map(elem => 
+  //   <li>{elem}</li>
+  // );
 
-  return listItems;
+  return winnerTeam[props.index];
 }
 
 function FinishedDebate() {
@@ -51,8 +53,24 @@ function FinishedDebate() {
 
   return (
     <div className='finished-debate--base row d-flex justify-content-center align-items-center'>
-        <div className="finished-debate--hiba row d-flex justify-content-evenly align-items-center">
-            <ol className="col-12 d-flex flex-column align-items-center"><ListResult res={winnerTeam} /></ol>
+        <div className="finished-debate--hiba row d-flex justify-content-evenly">
+          <div id="p1st" class='place--finished'>
+            <p><ListResult res={winnerTeam} index={0}/></p>
+            <div className="take-place--results">First</div>  
+          </div>
+          <div id="p2nd" class='place--finished'>
+            <p><ListResult res={winnerTeam} index={1}/></p>
+            <div className="take-place--results">Second</div>  
+          </div>
+          <div id="p3rd" class='place--finished'>
+            <p><ListResult res={winnerTeam} index={2}/></p>
+            <div className="take-place--results">Third</div>  
+          </div>
+          <div id="p4th" class='place--finished'>
+              <p><ListResult res={winnerTeam} index={3}/></p>
+              <div className="take-place--results">Fourth</div>  
+          </div>
+            {/* <ol className="col-12 d-flex flex-column align-items-center"><ListResult res={winnerTeam} /></ol> */}
             <button
                 className="in-debate--leave-debate white-text col-4"
                 onClick={leaveDebate}
