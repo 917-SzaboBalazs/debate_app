@@ -49,19 +49,19 @@ function Results() {
   const handleSelect = (option) => {
     switch (option) {
       case 0:
-        setSelected('pro1');
+        setSelected('OG');
         break;
 
       case 1:
-        setSelected('pro2');
+        setSelected('CG');
         break;
 
       case 2:
-        setSelected('con1');
+        setSelected('OO');
         break;
 
       case 3:
-        setSelected('con2');
+        setSelected('CO');
         break;
 
       default:
@@ -122,50 +122,7 @@ function Results() {
         selected: {selected}
       </div>
       <div className="row">
-        <div className=" row d-flex align-align-items-center justify-content-evenly ">
-          {/* Selection */}
-          <div className="col-4 d-flex align-items-center  justify-content-center flex-column">
-            <div 
-              id="results--pro1" 
-              className="row results--selection"
-              onClick = { () => {
-                handleSelect(0);
-                diffBackground('results--pro1');
-              }}
-            >
-              <p className="col-12">Pro1</p>
-            </div>
-            <div 
-              id="results--pro2" 
-              className="row results--selection"
-              onClick = { () => {
-                handleSelect(1);
-                diffBackground('results--pro2');
-              }}
-            >
-              <p className="col-12">Pro2</p>
-            </div>
-            <div 
-              id="results--con1" 
-              className="row results--selection"
-              onClick = { () => {
-                handleSelect(2);
-                diffBackground('results--con1');
-              }}
-            >
-              <p className="col-12">Con1</p>
-            </div>
-            <div 
-              id="results--con2" 
-              className="row results--selection"
-              onClick = { () => {
-                handleSelect(3);
-                diffBackground('results--con2');
-              }}
-            >
-              <p className="col-12">Con2</p>
-            </div>
-          </div>
+        <div className=" row d-flex align-align-items-center justify-content-evenly " id="col-holder--results">
           {/* Results */}
           <div className="col-4 d-flex align-items-center  justify-content-center flex-column">
             <div 
@@ -207,6 +164,49 @@ function Results() {
               }
             >
               <div className="col-12"><p>{results[3]}</p></div>
+            </div>
+          </div>
+          {/* Selection */}
+          <div className="col-4 d-flex align-items-center  justify-content-center flex-column" id="teams-holder--results">
+            <div 
+              id="results--pro1" 
+              className="row results--selection"
+              onClick = { () => {
+                handleSelect(0);
+                diffBackground('results--pro1');
+              }}
+            >
+              <p className="col-12">OG</p>
+            </div>
+            <div 
+              id="results--pro2" 
+              className="row results--selection"
+              onClick = { () => {
+                handleSelect(1);
+                diffBackground('results--pro2');
+              }}
+            >
+              <p className="col-12">CG</p>
+            </div>
+            <div 
+              id="results--con1" 
+              className="row results--selection"
+              onClick = { () => {
+                handleSelect(2);
+                diffBackground('results--con1');
+              }}
+            >
+              <p className="col-12">OO</p>
+            </div>
+            <div 
+              id="results--con2" 
+              className="row results--selection"
+              onClick = { () => {
+                handleSelect(3);
+                diffBackground('results--con2');
+              }}
+            >
+              <p className="col-12">CO</p>
             </div>
           </div>
         </div>
