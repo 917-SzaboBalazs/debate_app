@@ -101,7 +101,7 @@ function NewDebateMobile() {
                         <div className="row">
                             {/* <span className="new-debate--motion-text white-text">{motion}</span> */}
                             <div className="row new-debate--motion-text-row">
-                            <input  type="text" 
+                            <textarea  type="text" 
                                     className="new-debate--motion-text new-debate--motion-text--mobile col-12" 
                                     defaultValue={motion} 
                                     placeholder={motion} 

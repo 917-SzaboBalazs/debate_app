@@ -123,7 +123,7 @@ function NewDebate() {
                         {/* Ez egy textfield lesz, hogy at lehessen irni ha arra volna igeny */}
                         <div className="row">
                             <div className="row">
-                                <input  type="text" 
+                                <textarea  type="text" 
                                         className="new-debate--motion-text col-12" 
                                         defaultValue={motion} 
                                         placeholder={motion} 
