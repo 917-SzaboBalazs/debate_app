@@ -11,7 +11,8 @@ function NotReady(props) {
         <div className='join-debate'>
             <div className="join-debate--inner">
                 <button className="join-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
-                { props.loggedIn ?
+                <h1>The ranking is not correct. You have to include every team once.</h1>
+                {/* { props.loggedIn ?
                 <>
                 <h3 className="join-debate--text white-text">Sorry, but you first have to be ready...</h3>
                 <button
@@ -22,7 +23,7 @@ function NotReady(props) {
                 </>
                 :
                 <h1>You have to be logged in first, in order to join a debate.</h1>
-                }
+                } */}
             </div>
         </div>
     ) : "";

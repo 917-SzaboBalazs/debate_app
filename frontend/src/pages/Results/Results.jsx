@@ -2,36 +2,10 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axiosInstance from '../../axios';
 import { useNavigate } from 'react-router-dom';
+import NotReady from '../../components/Popups/NotReady/NotReady';
 
 
 import './Results.css'
-
-const checkResults = (results) => {
-  return new Promise ((resolve, reject) => {
-    const str = JSON.stringify(results);
-
-    if(!str.includes("OG")){
-      reject("OG is not in the list")
-    }
-    if(!str.includes("CG")){
-      reject("CG is not in the list")
-    }
-    if(!str.includes("OO")){
-      reject("OO is not in the list")
-    }
-    if(!str.includes("CO")){
-      reject("CO is not in the list")
-    }
-
-    resolve("Siker")
-
-    // if (results.length === new Set(results).size) {
-    //   resolve('Siker');
-    // } else {
-    //   reject('Duplikátum található');
-    // }
-  })
-}
 
 function Results() {
   const navigate = useNavigate();
@@ -40,6 +14,8 @@ function Results() {
   const [ results, setResults ] = useState([]);
   const [ selected, setSelected ] = useState('none');
   const [ isJudge, setIsJudge ] = useState(false);
+  const [ trigger, setTrigger ] = useState(false);
+  const [ message, setMessage ] = useState('');
 
   useEffect(() => {
     const initialValue = [
@@ -88,7 +64,7 @@ function Results() {
 
   const handleRes = (index) => {
     selected === 'none' ?
-              alert('Select something') :
+              setMessage("Select something") :
               setResults(prev => prev.map((element, i) => {
                 if (i === index) {
                   return selected;
@@ -96,6 +72,41 @@ function Results() {
                   return element;
                 }
               }))
+  }
+
+  const checkResults = (results) => {
+    return new Promise ((resolve, reject) => {
+      const str = JSON.stringify(results);
+  
+      if(!str.includes("OG")){
+        reject("OG is not in the list")
+        setMessage("OG is not in the list")
+        setTrigger(true);
+      }
+      if(!str.includes("CG")){
+        reject("CG is not in the list")
+        setMessage("CG is not in the list")
+        setTrigger(true);
+      }
+      if(!str.includes("OO")){
+        setMessage("OO is not in the list")
+        reject("OO is not in the list")
+        setTrigger(true);
+      }
+      if(!str.includes("CO")){
+        setMessage("CO is not in the list")
+        reject("CO is not in the list")
+        setTrigger(true);
+      }
+  
+      resolve("Siker")
+  
+      // if (results.length === new Set(results).size) {
+      //   resolve('Siker');
+      // } else {
+      //   reject('Duplikátum található');
+      // }
+    })
   }
 
   const diffBackground = (element) => {
@@ -126,7 +137,7 @@ function Results() {
             })
       })
       .catch((err) => {
-        alert(err);
+        // alert(err);
       })
   }
 
@@ -236,6 +247,9 @@ function Results() {
           Submit
         </button>
       </div>
+      <NotReady trigger={trigger} setTrigger={setTrigger}>
+        <h3>{message}</h3>
+      </NotReady>
     </div>
     :
     <></>
