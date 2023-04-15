@@ -8,11 +8,28 @@ import './Results.css'
 
 const checkResults = (results) => {
   return new Promise ((resolve, reject) => {
-    if (results.length === new Set(results).size) {
-      resolve('Siker');
-    } else {
-      reject('Duplikátum található');
+    const str = JSON.stringify(results);
+
+    if(!str.includes("OG")){
+      reject("OG is not in the list")
     }
+    if(!str.includes("CG")){
+      reject("CG is not in the list")
+    }
+    if(!str.includes("OO")){
+      reject("OO is not in the list")
+    }
+    if(!str.includes("CO")){
+      reject("CO is not in the list")
+    }
+
+    resolve("Siker")
+
+    // if (results.length === new Set(results).size) {
+    //   resolve('Siker');
+    // } else {
+    //   reject('Duplikátum található');
+    // }
   })
 }
 
