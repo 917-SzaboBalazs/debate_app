@@ -19,10 +19,12 @@
 .why--text >h1 {
     font-size: 48px;
     text-align: left;
+    color: white;
 }
 
 .why--text >p {
     margin-top: 14px;
     font-size: 20px;
     line-height: 1.75rem;
+    color: white;
 }

@@ -3,10 +3,12 @@
   --mcc-sarga: #F2CA10;
   --mcc-kek: #22344D;
   --primary: #333d4b;
+  --primary-opacity: rgba(51, 61, 75, 0.7);
   --secondary: #61c3c3;
   --opac-white: rgba(255, 255, 255, 0.679);
   --feher: whitesmoke;
   --beige: #F5F5DC;
+  --pastel: #f3f5f6;
 }
 
 * {
@@ -21,6 +23,9 @@
   /*background-image: url('./images/mikrofon.jpg') center center/cover no-repeat;
   background-attachment: fixed;*/
   background-color: var(--mcc-kek);
+  background: url( 'images/mikrofon2.jpg') center center/cover no-repeat, linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
+  background-attachment: fixed;
+  background-blend-mode: overlay;
 }
 
 .white-text {

@@ -9,7 +9,7 @@ function Debates() {
   return (
     <div className="debates--base base">
         <div className="container debates--container">
-            <div className="row debates--header-row bg-light p-4">
+            <div className="row debates--header-row p-4">
                 <div className="col-4 debates--header-title-cont">
                     <h1 className="debates--header-title">
                         Vitaformátumok
