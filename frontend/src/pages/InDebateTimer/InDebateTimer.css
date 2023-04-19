@@ -190,8 +190,18 @@
 }
 
 .poi-button {
-  color: black;
+  border: 4px solid white;
+  color: white;
+  background-color: #333d4b;
+  /* color: black; */
   margin: 0rem !important;
+  transition: .3s;
+  font-weight: bolder;
+}
+
+.poi-button:hover {
+  background-color: white;
+  color:#333d4b
 }
 
 @media screen and (max-width: 768px) {
