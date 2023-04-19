@@ -11,7 +11,7 @@ function leaveDebate(setUserName, setLoggedIn, setInDebate, navigate) {
             .patch('user/current/', {"current_debate": null, 'role': null})
             .then((res) => {
             console.log('Sikeres kilépés');
-            // navigate('/');
+            navigate('/');
             window.location.reload(false);
             })
             .catch((err) => {
