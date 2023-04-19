@@ -142,17 +142,23 @@
 .in-debate--finish-button {
     font-weight: bold;
     text-transform: uppercase;
-    color: #333d4b;
-    background-color: var(--primary);
-    border: 4px solid #333d4b;
+    /* color: #333d4b; */
+    color: white;
+    /* background-color: var(--primary); */
+    background-color: #333d4b;
+    /* border: 4px solid #333d4b; */
+    border: 4px solid white;
     transition: .3s;
     border-radius: 2rem;
 }
 
 .in-debate--finish-button:hover {
-    color: rgb(243, 234, 226);
-    background-color: #333d4b;
-    transition: .3s;
+    /* color: rgb(243, 234, 226); */
+    color: #333d4b;
+    /* background-color: #333d4b; */
+    background-color: white;
+    border: 4px solid white;
+    /* transition: .3s; */
 }
 
 .in-debate--leave-debate {
