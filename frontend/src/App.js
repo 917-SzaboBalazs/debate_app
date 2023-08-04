@@ -38,8 +38,6 @@ function App() {
           <Route path='/log-In' exact element={<Login />} />
           <Route path='/sign-up' exact element={<Signup/>} />
 
-          {/* Random szarok  */}
-          {/* En csak akkor, amikor akarok. Meg jok a zaroizmaim.  */}
           <Route path='/about-us' exact element={<AboutUs />} />
           <Route path='/debates' exact element={<Debates />} />
 
