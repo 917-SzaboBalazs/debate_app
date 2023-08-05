@@ -161,6 +161,9 @@ AUTH_USER_MODEL = "users.NewUser"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=10),
