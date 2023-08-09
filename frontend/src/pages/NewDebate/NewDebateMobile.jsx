@@ -22,7 +22,7 @@ function NewDebateMobile() {
     const [ someError, setSomeError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState('');
     const [ motion, setMotion ] = useState();
-    const [ newMotion, setNewmotion ] = useState('Set a motion pls'); // a motion setter
+    const [ newMotion, setNewmotion ] = useState(''); // a motion setter
     const [ currRole, setCurrRole ] = useState('spectator');
     const [ focused, setFocused ] = useState(false);
 

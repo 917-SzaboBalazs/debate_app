@@ -15,6 +15,8 @@ import leaveDebate from '../Functions/leaveDebate';
 
 import axiosInstance from '../../axios';
 
+import { Link } from 'react-router-dom';
+
 // import './Navbar.css';
 import './Navbar2.css';
 
@@ -125,12 +127,13 @@ function CollapsibleExample() {
     <>
     <Navbar collapseOnSelect expand="lg" bg="primary" className='nav'>
       <Container>
-        <Navbar.Brand href="/" className='nav-brand'><img src={Logo} className='nav--logo'/></Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" className='nav-brand'><img src={Logo} className='nav--logo'/></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" color='white'/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/about-us" className='nav-link'>About Us</Nav.Link>
-            <Nav.Link href="/debates" className='nav-link'>Debates</Nav.Link>
+          <Nav.Link as={Link} to="/about-us" className='nav-link'>About Us</Nav.Link>
+          <Nav.Link as={Link} to="/debates" className='nav-link'>Debates</Nav.Link>
+
             {
               !inDebate ?
               <>
@@ -150,12 +153,13 @@ function CollapsibleExample() {
           <Nav>
             { !loggedIn ?
                 <>
-                  <Nav.Link href="/log-In">Log In</Nav.Link>
-                  <Nav.Link href="/sign-up">Register</Nav.Link>
+                  <Nav.Link as={Link} to="/log-In" className='nav-link'>Log In</Nav.Link>
+                  <Nav.Link as={Link} to="/sign-up" className='nav-link'>Register</Nav.Link>
+
                 </>
                 :
                 <>
-                  <Nav.Link href='/profile'>{userName} </Nav.Link>
+                  <Nav.Link as={Link} to="/profile" className='nav-link'>{userName}</Nav.Link>
                   <Nav.Link onClick={logOut}>Log Out</Nav.Link>
                 </>
             }
