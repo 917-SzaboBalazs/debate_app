@@ -133,7 +133,8 @@
     border-bottom: none;
     text-align: center;
     border-radius: 1rem;
-    height: 20vh;
+    height: 10vh;
+    margin-top: 10vh;
 }
 
 .new-debate--motion-set {
@@ -228,6 +229,7 @@
 
 .new-debate--card--participant--name {
     color:white;
+    padding:0.5rem;
 }
 
 .new-debate--decision--pro--mobile, .new-debate--decision--con--mobile{

@@ -64,7 +64,7 @@ function Profile() {
                             <p className="profile--about-me-box row d-flex justify-content-center">
                                 {aboutMe}
                             </p>
-                            {
+                            {/* {
                                 inDebate ?
                                 <>
                                     <p className="profile--element d-flex justify-content-center row">You are in a debate as</p>
@@ -72,7 +72,7 @@ function Profile() {
                                 </>
                                 :
                                     <p className="profile--element d-flex justify-content-center">You are not in a debate</p>
-                            }
+                            } */}
                             <h1 className="profile--firstname-element profile--element row d-flex justify-content-center">Firstname: {firstName}</h1>
                             <div className="profile--lastname row d-flex justify-content-center">
                                 <h1 className="profile--lastname-element profile--element d-flex justify-content-center">Lastname: {lastName}</h1>
