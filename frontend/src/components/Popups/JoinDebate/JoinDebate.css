@@ -100,6 +100,14 @@
     padding: 2vh 2vw;
 }
 
+.join-debate--inner .error-message {
+  padding-top: 1rem;
+}
+
+.join-debate--inner .error-message p{
+  color: rgb(253, 135, 135) !important;
+}
+
 @media only screen and (max-width: 768px) {
     .join-debate--inner{
         width: 90%;

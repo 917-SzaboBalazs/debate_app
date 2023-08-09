@@ -150,11 +150,11 @@ function CollapsibleExample() {
                 </>
             }
           </Nav>
+          <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} />
+          <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} />
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} />
-    <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} />
     </>
   );
 }
