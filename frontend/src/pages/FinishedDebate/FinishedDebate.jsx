@@ -13,7 +13,20 @@ const ListResult = (props, index) => {
   //   <li>{elem}</li>
   // );
 
-  return winnerTeam[props.index];
+  switch (winnerTeam[props.index]) {
+    case "OG":
+      return "Opening Government";
+    case "OO":
+      return "Opening Opposition";
+    case "CG":
+      return "Closing Government";
+    case "CO":
+      return "Closing Opposition";
+    default: 
+      return "null";
+  }
+
+  // return winnerTeam[props.index];
 }
 
 function FinishedDebate() {

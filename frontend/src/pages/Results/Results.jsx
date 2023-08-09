@@ -204,7 +204,7 @@ function Results() {
                 diffBackground('results--pro1');
               }}
             >
-              <p className="col-12">OG</p>
+              <p className="col-12">Opening Government</p>
             </div>
             <div 
               id="results--pro2" 
@@ -214,7 +214,7 @@ function Results() {
                 diffBackground('results--pro2');
               }}
             >
-              <p className="col-12">CG</p>
+              <p className="col-12">Closing Government</p>
             </div>
             <div 
               id="results--con1" 
@@ -224,7 +224,7 @@ function Results() {
                 diffBackground('results--con1');
               }}
             >
-              <p className="col-12">OO</p>
+              <p className="col-12">Opening Opposition</p>
             </div>
             <div 
               id="results--con2" 
@@ -234,7 +234,7 @@ function Results() {
                 diffBackground('results--con2');
               }}
             >
-              <p className="col-12">CO</p>
+              <p className="col-12">Closing Opposition</p>
             </div>
           </div>
         </div>
