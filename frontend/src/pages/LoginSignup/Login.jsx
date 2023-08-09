@@ -32,7 +32,6 @@ function Login() {
           password: password
         })
         .then((res) => {
-          console.log(res);
           localStorage.setItem('access_token', res.data.access);
           localStorage.setItem('refresh_token', res.data.refresh);
           axiosInstance.defaults.headers['Autorization'] = 
@@ -46,17 +45,8 @@ function Login() {
         .catch((err) => {
           setMessage('Wrong username - password combination.');
           setTrigger(true);
-          console.log(err);
         })
     }
-
-    document.addEventListener('keydown', function(event) {
-      console.log("nyomva")
-      if (event.keyCode === 13) {
-        console.log("enter")
-        handleSubmit();
-      }
-    });
 
     const images = [
       image1,   
