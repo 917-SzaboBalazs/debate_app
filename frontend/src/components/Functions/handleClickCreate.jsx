@@ -11,8 +11,8 @@ const handleClickTriggerCreate = (navigate) => {
       }
     )
     .catch((err) => {
-        console.log(err);
-        }
+        alert('You have to be logged in for creating a debate.');
+    }
     )
 }
 

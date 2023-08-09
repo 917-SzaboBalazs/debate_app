@@ -20,6 +20,22 @@ import './Navbar2.css';
 
 import Logo from '../../images/logo.svg';
 
+function CreateDebateComponent(props) {
+  const { loggedIn, navigate } = props;
+
+  if (loggedIn) {
+    return (
+      <Nav.Link 
+        onClick={async () => { 
+          await handleClickTriggerCreate(navigate);
+        }}
+        className='nav-link yellow-text'>Create a Debate
+      </Nav.Link>
+    )
+  }
+
+  return(<></>)
+}
 
 function CollapsibleExample() {
     let navigate = useNavigate();
@@ -119,12 +135,7 @@ function CollapsibleExample() {
               !inDebate ?
               <>
                 <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link>
-                <Nav.Link 
-                  onClick={async () => { 
-                    await handleClickTriggerCreate(navigate);
-                  }}
-                  className='nav-link yellow-text'>Create a Debate
-                </Nav.Link>
+                <CreateDebateComponent loggedIn={loggedIn} navigate={navigate} />
               </>
               :
               <>
@@ -135,7 +146,6 @@ function CollapsibleExample() {
                   }} className='nav-link yellow-text'>Leave Debate</Nav.Link>
               </>
             }
-            {/* <Nav.Link href="/in-debate" className='nav-link'>Timer Page</Nav.Link> */}
           </Nav>
           <Nav>
             { !loggedIn ?
