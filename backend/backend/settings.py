@@ -28,7 +28,10 @@ SECRET_KEY = 'django-insecure-ve^drp8p3_ni@)(adehdwnsk^x&nsts8^$+5v3m)q50n($uz_t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['35.187.28.118',
+				 'debateculture.mooo.com',
+				 'localhost',
+				 '127.0.0.1']
 
 
 # Application definition
@@ -137,7 +140,8 @@ CONN_MAX_AGE = 5
 STATIC_URL = '/static/'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:3000"
+    "http://127.0.0.1:3000",
+	"https://debateculture.com"
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
