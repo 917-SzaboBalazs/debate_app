@@ -375,10 +375,10 @@ function InDebateTimer() {
                             className='indebate--next'
                             />
                         </button>
-                        <div className="in-debate--speaker-time row d-flex justify-content-center">
+                        {/* <div className="in-debate--speaker-time row d-flex justify-content-center">
                             <h2 className="in-debate--speaker-time-text col-md-2">Set time:</h2>
                             <input type="number" className="in-debate--speaker-time-element col-md-3 p-sm-2 text-center" value={speakerTime} onChange={(ev) => {handleSetTime(ev)}}/>
-                        </div>
+                        </div> */}
                         <div className="row in-debate--finish-field row d-flex justify-content-center p-4">
                             <button
                                 className="in-debate--finish-button col-3"
