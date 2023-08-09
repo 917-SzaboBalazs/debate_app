@@ -1,17 +1,35 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../../axios';
 
 import './JoinDebate.css';
 
+function ErrorMessage(props) {
+  const { errorState } = props;
+
+  if ( !errorState ) return <></>;
+
+  return (
+    <div className="error-message">
+      <p>Invalid code</p>
+    </div>
+  );
+}
+
 function JoinDebate(props) {
     const [ debateCode, setDebateCode ] = useState('');
+    const [ errorState, setErrorState ] = useState(false);
+
     let navigate = useNavigate();
 
+    const handleClose = useCallback((props) => {
+      setErrorState(false);
+      props.setTrigger(false);
+    }, [setErrorState]);
+    
     const handleNext = () => {
         if (debateCode === '') {
-            alert('The input fied is empty');
             return;
         }
 
@@ -33,22 +51,22 @@ function JoinDebate(props) {
                   })
             })
             .catch((err) => {
-                alert('Non existing code');
+              setErrorState(true);
             })
     }
 
     return (props.trigger) ? (
         <div className='join-debate'>
             <div className="join-debate--inner">
-                <button className="join-debate--close-btn" onClick={() => props.setTrigger(false)}>X</button>
+                <button className="join-debate--close-btn" onClick={() => handleClose(props)}>X</button>
                 { props.loggedIn ?
                 <>
-                <h3 className="join-debate--text white-text">Vita kódja: </h3>
+                <h3 className="join-debate--text white-text">Debate Code: </h3>
                 <input
                     type="text"
                     value={debateCode}
                     placeholder='kód'
-                    className="join-debate--code"
+                    id="join-debate--code"
                     onChange={(e) => {
                         setDebateCode(e.target.value);
                     }}
@@ -57,8 +75,9 @@ function JoinDebate(props) {
                     className="join-debate--next-btn"
                     onClick={handleNext}
                 >
-                    Következő
+                    Next
                 </button>
+                <ErrorMessage errorState={errorState} />
                 </>
                 :
                 <h1>You have to be logged in first, in order to join a debate.</h1>

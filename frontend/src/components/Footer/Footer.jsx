@@ -1,6 +1,4 @@
 import React from "react"
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './Footer.css';
 
 import fb from '../../images/facebook.png';
@@ -21,8 +19,8 @@ const Footer = () => <footer className="page-footer font-small pt-4 my-footer">
             <div className="col-md-3 mb-md-0 mb-3">
                 <h5 className="text-uppercase footer--list-tag white-text">Links</h5>
                 <ul className="list-unstyled white-text">
-                    <li><a href="/about-us" className="white-text">About Us</a></li>
-                    <li><a href="/debates" className="white-text">Debates</a></li>
+                    <li><a href="/about-us" className="footer--list-link">About Us</a></li>
+                    <li><a href="/debates" className="footer--list-link">Debates</a></li>
                 </ul>
             </div>
 

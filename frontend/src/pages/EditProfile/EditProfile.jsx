@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import axiosInstance from '../../axios'
+import { Link } from 'react-router-dom';
 
 import './EditProfile.css';
 
@@ -52,23 +53,12 @@ function EditProfile() {
   return (
     <>
         <div className="edit--base base">
-            <div className="edit--container bg-light container">
+            <div className="edit--container container">
                 {
                     loggedIn ?
                     <>
                         <div className="edit--title row text-center">
                             <h1 className="col-12">Edit Your Profile!</h1>
-                        </div>
-                        <div className="edit--username edit--element row">
-                            <h1 className="edit--username-text col-md-5 col-sm-12">Username: </h1>
-                            <input
-                                type="text"
-                                className="edit--username-input col-md-7 col-sm-12"
-                                value={newUserName}
-                                onChange={(e) => {
-                                    setNewUserName(e.target.value);
-                                }}
-                            />
                         </div>
                         <div className="edit--firstname edit--element row">
                             <h1 className="edit--firstname-text col-md-5 col-sm-12">Firstname: </h1>
@@ -117,16 +107,21 @@ function EditProfile() {
                         <div className="edit--aboutme edit--element row">
                             <h1 className="edit--aboutme-text col-md-5 col-sm-12">About me: </h1>
                             <textarea
-                                className="edit--aboutme-input col-md-7 col-sm-12"
+                                className="col-md-7 col-sm-12"
                                 value={newAboutMe}
                                 onChange={(e) => {
                                     setNewAboutMe(e.target.value);
                                 }}
                             />
                         </div>
-                        <div className="edit--save-button-row row d-flex justify-content-center text-center">
+
+                        {/* <Link to='/profile' className="edit--save-button-row row d-flex justify-content-center text-center">
                             <div
-                                className="edit--save-button-element col-3"
+                                className="row d-flex justify-content-center text-center"
+                                
+                            >   
+                            <Link to='/profile' >
+                                <div className="edit--save-button-element"
                                 onClick={() => {
                                     axiosInstance
                                         .patch('user/current/', {
@@ -143,11 +138,36 @@ function EditProfile() {
                                         .catch((err) => {
                                             console.log(err);
                                         })
-                                }}
-                            >
-                                Save
+                                }}>
+                                <p>Save changes</p>
+                                </div>
+                                </Link>
+
                             </div>
-                        </div>
+                            </Link> */}
+                            <div className="profile--edit row d-flex justify-content-center">
+                                <Link to="/profile" className="profile--edit-element col-4 text-center d-flex justify-content-center">
+                                    <h3 onClick={() => {
+                                    axiosInstance
+                                        .patch('user/current/', {
+                                                'username': newUserName,
+                                                'first_name': newFirstName,
+                                                'last_name': newLastName,
+                                                'birthday': newBirthday,
+                                                'email': newEmail,
+                                                'about_me': newAboutMe
+                                                })
+                                        .then((res) => {
+                                            navigate('/profile')
+                                        })
+                                        .catch((err) => {
+                                            console.log(err);
+                                        })
+                                }}>Save changes</h3>
+                                    </Link>
+                            </div>
+
+
                     </>
                     :
                     <>

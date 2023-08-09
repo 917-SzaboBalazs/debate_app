@@ -32,7 +32,6 @@ function Login() {
           password: password
         })
         .then((res) => {
-          console.log(res);
           localStorage.setItem('access_token', res.data.access);
           localStorage.setItem('refresh_token', res.data.refresh);
           axiosInstance.defaults.headers['Autorization'] = 
@@ -46,7 +45,6 @@ function Login() {
         .catch((err) => {
           setMessage('Wrong username - password combination.');
           setTrigger(true);
-          console.log(err);
         })
     }
 
@@ -89,7 +87,7 @@ function Login() {
                     <input 
                       value={userName}
                       type="text"
-                      placeholder='eg.: myUserName' 
+                      placeholder='username' 
                       className="username" 
                       onChange={(e) => setUserName(e.target.value)}  
                     />
@@ -97,7 +95,7 @@ function Login() {
                     <input 
                       value={password}
                       type="password" 
-                      placeholder='eg.: Passwd1234' 
+                      placeholder='password' 
                       className='password' 
                       onChange={(e) => setPassword(e.target.value)}
                       />

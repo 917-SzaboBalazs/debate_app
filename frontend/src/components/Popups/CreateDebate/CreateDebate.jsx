@@ -27,11 +27,12 @@ function CreateDebate(props) {
     console.log(debateType);
     props.setTrigger(false);
 
-    if (motion == '' ) {
-      alert(' You have to give the motion first');
+    if (motion === '' ) {
+
       return;
     }
 
+    // amikor mindent atkuld a debaterol
     axiosInstance
       .post('debate/', { 'type': debateType, 'motion': motion, 'no_judges': noJudges, 'speaker_time': speakerTime, 'has_chair': hasChair, 'status': 'lobby'})
       .then((res) => {
@@ -51,6 +52,8 @@ function CreateDebate(props) {
         console.log(err);
         }
       )
+
+    
 
   };
 

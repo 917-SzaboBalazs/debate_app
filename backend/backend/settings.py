@@ -14,6 +14,8 @@ from pathlib import Path
 from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.contrib import admin
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -45,7 +47,8 @@ INSTALLED_APPS = [
     'countdowntimer_model',
     'users',
     'debate',
-    'timer'
+    'timer',
+    'motion',
 ]
 
 MIDDLEWARE = [
@@ -133,22 +136,23 @@ CONN_MAX_AGE = 5
 
 STATIC_URL = '/static/'
 
-CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://127.0.0.1:3000"
 ]
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
-    
+
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ),
 
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -156,6 +160,9 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = "users.NewUser"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 SIMPLE_JWT = {
@@ -189,3 +196,4 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+

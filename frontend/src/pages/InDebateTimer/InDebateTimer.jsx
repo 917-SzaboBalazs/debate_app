@@ -18,7 +18,6 @@ import WhiteBack from '../../images/back-white.svg';
 import FinishDebate from '../../components/Popups/FinishDebate/FinishDebate';
 
 import './InDebateTimer.css'
-import axios from 'axios';
 
 function InDebateTimer() {
     const navigate = useNavigate();
@@ -31,7 +30,7 @@ function InDebateTimer() {
     const [ isMouseBack, setMouseBack ] = useState(false);
     const [ currentlySpeaking, setCurrentlySpeaking ] = useState(1);
     const [ trigger, setTrigger ] = useState(false);
-    const [ secondsLeft, setSecondsLeft ] = useState(0);
+    // const [ secondsLeft, setSecondsLeft ] = useState(0);
     const [ seconds, setSeconds ] = useState(0);
     const [ minutes, setMinutes ] = useState(0);
     const [ role, setRole ] = useState('');
@@ -41,6 +40,9 @@ function InDebateTimer() {
     const [ winner, setWinner ] = useState('');
     const [ status, setStatus ] = useState('');
     const [ speakerTime, setSpeakerTime ] = useState('');
+
+    const [ poi, setPOI ] = useState(false);
+    const [ POIseconds, setPOIseconds ] = useState(15);
 
     const speakerRole = [ 'Nyitó kormány - 1', 'Nyitó ellenzék - 1', 'Nyitó kormány - 2', 'Nyitó ellenzék - 2', 'Záró kormány - 1', 'Záró ellenzék - 1', 'Záró kormány - 2', 'Záró ellenzék - 2'];
 
@@ -71,21 +73,27 @@ function InDebateTimer() {
 
       useEffect(() => {
         const interval=setInterval(() =>{
+
+            // debate-status
             axiosInstance
             .get('debate/current/')
             .then((res) => {
-                // console.log(res.data.speaker_time);
                 setSpeakerTime(res.data.speaker_time);
                 setMotion(res.data.motion);
                 setCurrentlySpeaking(res.data.current_number);
                 setWinner(res.data.winner);
                 setStatus(res.data.status);
-                // console.log(winner);
+
+                if (res.data.status == 'finished') {
+                    navigate('/finished-debate')
+                }
+
             })
             .catch((err) => {
                 console.log(err);
             }, []);
 
+            // timer
             axiosInstance
                 .get('timer/')
                 .then((res) => {
@@ -106,10 +114,34 @@ function InDebateTimer() {
                     setSeconds(sec);
                 })
 
+            // POI
+            axiosInstance
+              .get('timer/poi/')
+              .then((res) => {
+                setPOI(true);
+                setPOIseconds(res.data['remaining-time']);
+              })
+              .catch((err) => {
+                setPOI(false);
+              });
+
         }, 500);
 
         return () => clearInterval(interval);
       }, []);
+
+    const handlePOI = () => {
+      axiosInstance
+        .post('timer/poi/')
+        .then(() => {
+            console.log('Poi set');
+        })
+        .catch(() => {
+
+        })
+
+        // ide kell egy axios-posts
+    }
 
     const handleMouse = () => {
         setMouse(prev => !prev);
@@ -134,7 +166,6 @@ function InDebateTimer() {
             axiosInstance
                 .patch('debate/current/', {'current_number': currentNumber})
                 .then((res) => {
-                    // console.log(res);
                     setCurrentlySpeaking(currentNumber);
                 })
                 .catch((err) => {
@@ -211,12 +242,12 @@ function InDebateTimer() {
     const handleFinish = () => {
         //if (currentlySpeaking == 8) {
             // setFinished(true);
-            setTrigger(true);
+            // setTrigger(true);
         //}
+        navigate('/results');
     }
 
     const handleSetTime = (ev) => {
-        console.log(ev);
         axiosInstance
             .patch('debate/current/', {'speaker_time': ev.target.value})
             .then(() => {
@@ -232,8 +263,6 @@ function InDebateTimer() {
             .catch((err) => {
                 console.log(err);
             })
-
-
     }
 
     return (
@@ -243,7 +272,7 @@ function InDebateTimer() {
                 { loggedIn && inDebate ?
                 <>
                 {
-                    status == "finished" ?
+                    status === "finished" ?
                 <>
                 <div className="in-debate--hiba row d-flex justify-content-center align-items-center">
                         <h1 className='col-12 text-center'>A {winner} csapat nyert!</h1>
@@ -272,7 +301,24 @@ function InDebateTimer() {
                         <span>{seconds < 10 ? "0" + seconds : seconds}</span>
                         {/* <span>{("0" + ((secondsLeft / 100) % 100)).slice(-2)}</span> */}
                     </div>
-                    { role == 'judge1' || role == 'judge1 (chair)' ? <>
+                    { role === 'judge' || role === 'judge1 (chair)' ? <>
+                        {
+                            !poi ? 
+                            <div className="row justify-content-center">    
+                                <button 
+                                    className="poi-button poi-element col-3"
+                                    onClick={() => {
+                                        handlePOI();
+                                    }}
+                                >
+                                    P.O.I.
+                                </button>
+                            </div>
+                            : 
+                            <div className="in-debate--poi-seconds poi-element">
+                                {POIseconds}
+                            </div>
+                        }   
                     <div className="indebate--buttons text-center">
                         <button
                             className={`indebate--button col-12 indebate--start-button ${!running ? 'indebate--start' : 'indebate--stop'}`}
@@ -329,10 +375,10 @@ function InDebateTimer() {
                             className='indebate--next'
                             />
                         </button>
-                        <div className="in-debate--speaker-time row d-flex justify-content-center">
+                        {/* <div className="in-debate--speaker-time row d-flex justify-content-center">
                             <h2 className="in-debate--speaker-time-text col-md-2">Set time:</h2>
                             <input type="number" className="in-debate--speaker-time-element col-md-3 p-sm-2 text-center" value={speakerTime} onChange={(ev) => {handleSetTime(ev)}}/>
-                        </div>
+                        </div> */}
                         <div className="row in-debate--finish-field row d-flex justify-content-center p-4">
                             <button
                                 className="in-debate--finish-button col-3"

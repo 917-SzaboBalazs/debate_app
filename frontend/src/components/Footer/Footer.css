@@ -1,13 +1,14 @@
-:root {
+/* :root {
     --primary: white;
     --secondary: #22344D;
     --third: #61c3c3;
     --bismarck: #437c8b;
-}
+} */
 
 .page-footer{
     background-color: #333d4b;
     color: white;
+    border-top: 3px solid var(--secondary);
 }
 
 
@@ -41,14 +42,17 @@
     
 }
 
-.list-unstyled li a {
-    text-decoration: none;
-    color: var(--third);
-    font-size: 20px;
-    
-}
-
 .list-horizontal li {
     display: inline-block;
     margin: 5px 15px 0px 15px;
+}
+
+.footer--list-link {
+    color: white;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.footer--list-link:hover {
+    color: var(--secondary);
 }

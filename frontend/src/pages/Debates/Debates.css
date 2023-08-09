@@ -1,10 +1,16 @@
 .debates--base {
+    height: max-content;
     min-height: 100vh;
+    padding-top: 4vh;
 }
 
 .debates--container {
     min-height: 100vh;
-    padding-top: 10vh;
+    padding-top: 5vh;
+    width: 100%;
+    border: 0px;
+    justify-content: center;
+    max-width: max-content;
 }
 
 .debates--header-title-cont {
@@ -18,7 +24,10 @@
     width: 100%;
 }
 .debates--header-title{
-    color: whitesmoke;
+    color: white;
+    font-size:70px;
+    /* background-color: white;
+    opacity: 0.5; */
 }
 
 .debates--header-elements {
@@ -29,34 +38,46 @@
 
 .debates--header-row {
     /*background-image: url('https://img.freepik.com/premium-vector/newborn-dummy-nipple-seamless-pattern-baby-toys-endless-background-template-pale-colored-pacifier_607579-220.jpg');*/
-    background-color: #333d4b !important;
-    height: 15vh;
+    /* background-color: #333d4b !important; */
+    height: 10vh;
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+
 }
 
 .debates--elements-row {
-    /*background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b4/Orb%C3%A1n_Viktor_portr%C3%A9.jpg')center center/cover no-repeat;*/
-    background-color: rgb(243, 234, 226) !important;
     padding-top: 5vh;
     padding-bottom: 5vh;
-    border-top: 3px solid #437c8b;
-    min-height: 85vh;
+    min-height: 64vh;
+    justify-content: center;
+    width: 100%;
 }
 
 .readmore--paragraph{
     text-align: justify;
-    width: 90%;
+    width: 94%;
     margin-left: 5%;
-    border-left: 3px solid #437c8b;
-    border-right: 3px solid #437c8b;
-    padding-left: 2.5vw;
-    padding-right: 2.5vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
     text-indent: 35px;
+    color:white;
+    font-size:calc(15px + 0.390625vw);
 }
 
 .debates--elements--title{
     text-align: center;
     margin-bottom: 7vh;
     margin-top: 5vh;
+    color:white;
+    font-size:46px;
+}
+
+.debates--elements-col{
+    background-color: var(--primary);
+    margin-left:1vw;
+    margin-right:1vw;
+    border-radius: 20px;
+    width: 30%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -66,15 +87,23 @@
     }
     
     .debates--elements-col{
-        width: 80%;
-        margin-left: 10%;
+        width: 88%;
+        margin-left: 6%;
+        margin-top: 4vh;
     }
 
     .readmore--paragraph{
         border: none;
         padding: 0;
-        border-bottom: 3px solid #f2ca10;
-        padding-bottom: 5vh;
+        /* border-bottom: 3px solid var(--secondary); */
+        margin-bottom: 5vh;
 
+    }
+    .debates--header-title{
+        font-size: 46px;
+    }
+
+    .debates--elements--title{
+        font-size:36px;
     }
 }

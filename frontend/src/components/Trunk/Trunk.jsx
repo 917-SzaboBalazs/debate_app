@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axios';
+import handleClickTriggerCreate from '../Functions/handleClickCreate';
 
 import JoinDebate from '../Popups/JoinDebate/JoinDebate';
 import CreateDebate from '../Popups/CreateDebate/CreateDebate';
@@ -14,6 +15,8 @@ function Trunk() {
     const [ triggerCreate, setTriggerCreate ] = useState(false);
     const [ triggerJoin, setTriggerJoin ] = useState(false);
     const [ inDebate, setInDebate ] = useState(false);
+    const [ status, setStatus ] = useState('/new-debate')
+
     const navigate = useNavigate();
 
     // let navigate = useNavigate();
@@ -35,12 +38,23 @@ function Trunk() {
           console.log(err);
         });
 
-    }, []);
+        axiosInstance
+            .get('debate/current/')
+            .then((res) => {
+                if (res.data.status === 'lobby') {
+                    setStatus('/new-debate')
+                } else if (res.data.status === 'running') {
+                    setStatus('/in-debate')
+                } else if (res.data.status === 'finished') {
+                    setStatus('/finished-debate')
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            }, []);
 
-    const handleClickTriggerCreate = () => {
-        console.log('Create pressed');
-        setTriggerCreate(true);
-    }
+
+    }, []);
 
     const handleClickTriggerJoin = () => {
         console.log('Join pressed');
@@ -80,7 +94,9 @@ function Trunk() {
                                 </button>
                                 <button
                                     className='trunk--signin-button text-uppercase'
-                                    onClick={handleClickTriggerCreate}
+                                    onClick={() => {
+                                        handleClickTriggerCreate(navigate)
+                                    }}
                                 >
                                     <div className="trunk--signup-link trunk--link-text" ><span className='white-text'>Create</span></div>
                                 </button>
@@ -89,12 +105,8 @@ function Trunk() {
                             <>
                                 <button
                                     className='trunk--login-button text-uppercase'
-                                    href='/new-debate'
-                                    onClick={() => {
-                                        navigate('/new-debate');
-                                    }}
                                 >
-                                    <Link className='trunk--login-link trunk--link-text' to='/new-debate'><span className='white-text'>Current</span></Link>
+                                    <Link className='trunk--login-link trunk--link-text' to={status}><span className='white-text'>Current</span></Link>
                                 </button>
                                 <button
                                     className='trunk--signin-button text-uppercase'

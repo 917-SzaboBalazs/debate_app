@@ -10,22 +10,15 @@
     min-height: 100vh;
 }
 
-.profile--left-side {
+.profile--base-row {
     min-height: 100vh;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: var(--primary-opacity);
     padding: 2rem;
     padding-top: 15vh;
 }
 
-.profile--right-side {
-    min-height: 100vh;
-    padding: 2rem;
-    padding-top: 20vh;
-    background-color: rgb(243, 234, 226);
-}
-
 .profile--element {
-    color: white;
+    /* color: white; */
     font-size: 24px;
     margin-top: 1rem;
     margin-bottom: .5rem;
@@ -43,33 +36,33 @@
 }
 
 .profile--edit-element {
-    text-decoration: underline;
     transition: .3s;
     margin-top:2rem;
     font-size: 18px;
+    text-decoration: none;
+    background-color: var(--secondary);
+    border-radius: 15px;
+    width: 14rem;
+}
+.profile--edit-element > h3 {
+    padding:0.5rem;
+    color: white
 }
 
 .profile--edit-element:hover {
     text-decoration: none;
-    background-color: white;
+    /* background-color: white; */
     transition: .3s;
     border-radius: 15px;
+    filter: brightness(80%);
 }
 
-.profile--right-element {
-    padding: 2rem;
-    box-shadow: 20px 20px 50px 10px var(--mcc-sarga) inset;
-    border-radius: 15px;
-
-    margin-bottom: 2rem;
+.profile--edit-element:hover > h3 {
+    color: white;
 }
 
 .profile--about-me-box {
     font-size: 20px;
-}
-
-.profile--about-me-row, .profile--ind-debate-row{
-    background-color: rgb(243, 234, 226) !important;
 }
 
 @media only screen and (max-width: 767px) {

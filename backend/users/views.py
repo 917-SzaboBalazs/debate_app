@@ -1,32 +1,94 @@
 from rest_framework import status, generics
-from rest_framework.exceptions import ParseError, APIException
 from rest_framework.generics import get_object_or_404
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from users.models import NewUser
-from users.serializers import RegisterUserSerializer, CurrentUserSerializer
+from users.serializers import UserSerializer, RegisterUserSerializer
 
 
-class CustomUserCreate(APIView):
-    permission_classes = [AllowAny]
+class ListCreateUsersView(generics.ListCreateAPIView):
 
-    def post(self, request):
-        reg_serializer = RegisterUserSerializer(data=request.data)
+    def post(self, request, *args, **kwargs):
 
-        if reg_serializer.is_valid():
-            new_user = reg_serializer.save()
-            if new_user:
-                return Response(reg_serializer.data, status=status.HTTP_201_CREATED)
+        if "guest" in request.data and request.data["guest"]:
+            guest_user = NewUser.objects.create_guest_user()
+            guest_user_serializer = RegisterUserSerializer(instance=guest_user)
 
-        return Response(reg_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data=guest_user_serializer.data, status=status.HTTP_201_CREATED)
+
+        return self.create(request, args, kwargs)
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_anonymous:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        if request.user.current_debate is None:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        if self.request.user.is_staff:
+            data = self.get_queryset().values()
+
+        else:
+            data = [{
+                "id": user.id,
+                "username": user.username,
+                "role": user.role,
+                "number": user.number,
+                "current_debate": user.current_debate.id
+            } for user in self.get_queryset().filter(current_debate=request.user.current_debate.id)]
+
+        return Response(data=data, status=status.HTTP_200_OK)
+
+    def get_queryset(self):
+        queryset = NewUser.objects.all()
+
+        # Filter based on role in a debate
+
+        if "role" in self.request.query_params:
+            if self.request.user.is_authenticated and self.request.user.current_debate:
+                queryset = queryset.filter(role=self.request.query_params["role"],
+                                           current_debate=self.request.user.current_debate)
+            else:
+                return []
+
+        # Filter based on number in a debate
+
+        if "number" in self.request.query_params:
+            if self.request.user.is_authenticated and self.request.user.current_debate:
+                queryset = queryset.filter(number=self.request.query_params["number"],
+                                           current_debate=self.request.user.current_debate)
+            else:
+                return []
+
+        return queryset
+
+    def get_serializer_class(self):
+        if self.request is None or not self.request.user.is_authenticated or not self.request.user.is_staff:
+            return RegisterUserSerializer
+        return UserSerializer
+
+
+class RetrieveUserView(generics.RetrieveUpdateAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        if self.request.user.is_staff:
+            return NewUser.objects.all()
+        return NewUser.objects.filter(id=self.request.user.id)
+
+    def get_object(self, pk=None):
+        if self.kwargs.get("pk") is None:
+            return get_object_or_404(self.get_queryset(), id=self.request.user.id)
+
+        return get_object_or_404(self.get_queryset(), id=self.kwargs.get("pk"))
 
 
 class BlacklistTokenUpdateView(APIView):
-    permission_classes = [AllowAny]
-    authentication_classes = ()
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         try:
@@ -34,54 +96,6 @@ class BlacklistTokenUpdateView(APIView):
             token = RefreshToken(refresh_token)
             token.blacklist()
             return Response(status=status.HTTP_205_RESET_CONTENT)
+
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-
-
-class CurrentUserView(generics.RetrieveUpdateAPIView):
-    permission_classes = [IsAuthenticated]
-    serializer_class = CurrentUserSerializer
-    queryset = NewUser.objects.all()
-
-    def get_object(self):
-        return get_object_or_404(queryset=self.queryset, username=self.request.user)
-
-
-class GetDebaterByRoleView(generics.RetrieveUpdateAPIView):
-    permission_classes = [IsAuthenticated]
-    serializer_class = CurrentUserSerializer
-    queryset = NewUser.objects.all()
-
-    def get_object(self):
-        if 'role' not in self.request.query_params:
-            raise ParseError(detail="Role must be defined", code=400)
-
-        return get_object_or_404(queryset=self.queryset, current_debate=self.request.user.current_debate,
-                                 role=self.request.query_params.get('role'))
-
-
-class GetDebaterByCurrentNumberView(generics.RetrieveAPIView):
-    permission_classes = [IsAuthenticated]
-    serializer_class = CurrentUserSerializer
-    queryset = NewUser.objects.all()
-
-    def get_object(self):
-        current_number = self.request.user.current_debate.current_number
-        return get_object_or_404(queryset=self.queryset, current_debate=self.request.user.current_debate,
-                                 number=current_number)
-
-
-class GetAllDebatersFromCurrentDebateView(generics.ListAPIView):
-    permission_classes = [IsAuthenticated]
-    serializer_class = CurrentUserSerializer
-
-    def get(self, request, *args, **kwargs):
-        if request.user.current_debate is None:
-            return Response(status=status.HTTP_400_BAD_REQUEST, data={"detail": "The current user is not in debate now"})
-
-        serialized_res = self.serializer_class(self.get_queryset(), many=True)
-
-        return Response(data=serialized_res.data)
-
-    def get_queryset(self):
-        return NewUser.objects.all().filter(current_debate=self.request.user.current_debate)

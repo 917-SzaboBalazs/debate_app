@@ -1,0 +1,17 @@
+.test-container {
+    height: 100vh;
+    padding-top: 3rem;
+    /* margin: 10rem; */
+}
+
+.test-timer {
+    margin: 10rem;
+}
+
+.test-timer span {
+    color:black;
+}
+
+.poi-button {
+    margin: 10rem;
+}

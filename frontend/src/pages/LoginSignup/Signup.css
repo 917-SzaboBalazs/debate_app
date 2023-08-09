@@ -1,8 +1,8 @@
-:root {
+/* :root {
     --primary: white;
     --secondary: #22344D;
     --third: #F2CA10;
-}
+} */
 
 /* @media (min-width: 1200px) {
     .container{
@@ -18,7 +18,7 @@
 
 
 .signup--container {
-    background-color: rgb(243, 234, 226);
+    background-color: var(--primary);
     min-height: 100vh; 
     margin-top: 0px;
     /* padding-left: 3rem; */
@@ -38,11 +38,13 @@
 }
 .email{
     margin-bottom: 1.5rem;
-    background-color: rgb(243, 234, 226);
+    background-color: var(--primary);
 }
 .password{
     margin-bottom: 1.5rem;
 }
+
+
 
 .signup-img {
     /*
@@ -128,8 +130,17 @@ input {
     align-self: center;
 }
 
+#username, #password, #email, #passwordAgain{
+    font-size: medium;
+    width: 90%;
+}
+
 @media only screen and (max-width: 768px) {
     .signup--left-side {
         display: none;
+    }
+
+    #username, #password, #email, #passwordAgain{
+        width: 80vw;
     }
 }

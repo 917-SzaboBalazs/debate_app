@@ -1,15 +1,18 @@
-:root {
-    --primary: white;
-    --secondary: #22344D;
-    --third: #F2CA10;
-}
+/* regi */
 
-.about-us--container {
+
+
+/* .about-us--container {
     padding-top: 4vh;
+    height: 100vh;
 } 
 
 .us--container{
-    background-color: rgb(243, 234, 226);
+    background-color: var(--pastel);
+    margin-top: 6vh;
+    height: 88vh;
+    border-radius: 40px;
+    opacity: 0.8;
 }
 
 @media only screen and (max-width: 768px) {
@@ -21,11 +24,130 @@
         text-align: justify;
         padding-bottom: 5vh;
         padding-top: 5vh;
-        border-bottom: 2px solid #F2CA10;
-        border-top: 2px solid #F2CA10;
+        border-bottom: 2px solid var(--secondary);
+        border-top: 2px solid var(--secondary);
     }
 
     .why--text{
         margin-top: 10vh;
     }
+} */
+
+
+/* uj */
+
+.about-us--title{
+    margin-top:5vh;
+    margin-bottom:5vh;
+    text-align: center;
 }
+
+.about-us--container {
+    padding-top: 8vh;
+    padding-bottom: 4vh;
+    min-height: 100vh;
+    height: max-content;
+} 
+
+.us--container{
+    background-color: var(--primary-opacity);
+    min-height: 72vh;
+    height: fit-content;
+    border-radius: 2vh;
+    color: white;
+    margin-left: 8vw;
+    margin-right: 8vw;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 2rem;
+}
+
+.us--container > h1{
+    font-size: 46px;
+}
+.us--container > img{
+    width: 50%;
+    max-height: 98%;
+    border-radius: 2vh;
+}
+
+.us--container > p{
+    padding-left: 3vw;
+    padding-right: 3vw;
+    border-radius: 2vh;
+    font-family: "Trebuchet MS";
+    font-size:calc(15px + 0.390625vw);
+}
+
+
+.teammember{
+    width: 20vw;
+    min-height: 50vh;
+    height: fit-content;
+    vertical-align: middle;
+    flex-direction: column;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: var(--primary-opacity);
+    margin: 1vw;
+    border-radius: 2vh;
+}
+
+.teammember > img{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    margin-top: 2vh;
+}
+
+.teammember > h2{
+    padding: 1vh;
+}
+
+.teammember > h3{
+    padding: 1vh;
+}
+
+.team{
+    display: flex;
+    align-items: center;    
+    padding-left: 8vw;
+    padding-right: 8vw;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+
+.team > .teammember{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .us--container{
+        flex-direction: column;
+    }
+    .us--container > img{
+        width: 70vw;
+    }
+    .team{
+        flex-direction: column-reverse;
+    }
+    .teammember{
+        width: 60vw;
+    }
+    .us--container > p{
+        margin-top: 2vh;
+    }
+
+}
+
+
+
+
+
+
+

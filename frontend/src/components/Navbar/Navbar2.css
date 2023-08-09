@@ -1,8 +1,8 @@
-:root {
+/* :root {
     --primary: rgb(255, 231, 211);
     --secondary: #333d4b;
     --third: #61c3c3;
-}
+} */
 
 /* @media (min-width: 1200px) {
     .container{
@@ -17,7 +17,8 @@
     z-index: 7;
     position: fixed;
     width: 100%;
-    background-color: #333d4b !important;
+    background-color: var(--primary) !important;
+    /* background-color: var(--black) !important; */
 }
 
 .nav-brand {
@@ -28,6 +29,12 @@
 
 .nav-brand .nav--span {
     color: #61c3c3;
+}
+
+.nav-link:hover {
+    background-color: white;
+    color: var(--primary);
+    transition: .4s;
 }
 
 .nav-brand:hover {
@@ -43,11 +50,6 @@
 
 }
 
-.nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.844);
-    color: var(--secondary);
-    transition: .4s;
-}
 
 .navbar-toggler {
     background-color: #61c3c3;

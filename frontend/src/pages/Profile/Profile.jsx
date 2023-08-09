@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import axiosInstance from '../../axios';
+import { Link } from 'react-router-dom';
 
 import './Profile.css';
 
@@ -15,6 +16,7 @@ function Profile() {
     const [ bDay, setbDay ] = useState('');
     const [ aboutMe, setAboutMe ] = useState('');
     const [ role, setRole ] = useState('');
+    const [ username, setUserName ] = useState('');
 
     useEffect(() => {
 
@@ -29,6 +31,7 @@ function Profile() {
             setbDay(res.data.birthday);
             setAboutMe(res.data.about_me);
             setRole(res.data.role);
+            setUserName(res.data.username);
 
             if (res.data.current_debate != null) {
               setInDebate(true);
@@ -49,49 +52,39 @@ function Profile() {
         loggedIn ?
         <>
             <div className="profile--base base">
-                <div className="profile--container container bg-light">
-                    <div className="profile--base-row row">
-                        <div className="profile--left-side col-md-5 col-sm-12">
+                <div className="profile--container container d-flex justify-content-center">
+                    <div className="profile--base-row row justify-content-center align-items-center">
+                        <div className="col-md-12">
                             <div className="profile--img row d-flex justify-content-center">
                                 <img src={face1} alt="" className="profile--img-element profile-element col-12" />
                             </div>
-                            <div className="profile--firstname row">
-                                <h1 className="profile--firstname-element profile--element col-12">Firstname: {firstName}</h1>
+                            <h3 className="profile--about-me-box row d-flex justify-content-center">
+                                {username}
+                                </h3>
+                            <p className="profile--about-me-box row d-flex justify-content-center">
+                                {aboutMe}
+                            </p>
+                            {
+                                inDebate ?
+                                <>
+                                    <p className="profile--element d-flex justify-content-center row">You are in a debate as</p>
+                                    <p className="profile--element d-flex justify-content-center row"> {role}</p>
+                                </>
+                                :
+                                    <p className="profile--element d-flex justify-content-center">You are not in a debate</p>
+                            }
+                            <h1 className="profile--firstname-element profile--element row d-flex justify-content-center">Firstname: {firstName}</h1>
+                            <div className="profile--lastname row d-flex justify-content-center">
+                                <h1 className="profile--lastname-element profile--element d-flex justify-content-center">Lastname: {lastName}</h1>
                             </div>
-                            <div className="profile--lastname row">
-                                <h1 className="profile--lastname-element profile--element col-12">Lastname: {lastName}</h1>
+                            <div className="profile--birthday row d-flex justify-content-center ">
+                                <h1 className="profile--birthday-element profile--element d-flex justify-content-center">Birthday: {bDay}</h1>
                             </div>
-                            <div className="profile--birthday row">
-                                <h1 className="profile--birthday-element profile--element col-12">Birthday: {bDay}</h1>
+                            <div className="profile--email row d-flex justify-content-center">
+                                <h1 className="profile--email-element profile--element d-flex justify-content-center">Email: {email}</h1>
                             </div>
-                            <div className="profile--email row">
-                                <h1 className="profile--email-element profile--element col-12">Email: {email}</h1>
-                            </div>
-                            <div className="profile--edit row">
-                                <h3 className="profile--edit-element col-4 text-center"><a href='/edit-profile'>Edit Profile</a></h3>
-                            </div>
-                        </div>
-                        <div className="profile--right-side d-flex flex-row align-items-center justify-content-center col-md-7 col-sm-12">
-                            <div className="row m-4">
-                                <div className="profile--about-me-row align-self-start profile--right-element row">
-                                    <h1 className="profile--about-me-title col-12">About me:</h1>
-                                    <p className="profile--about-me-box col-12">
-                                        {aboutMe}
-                                    </p>
-                                </div>
-                                <div className="profile--in-debate-row profile--right-element align-self-end row">
-                                    {
-                                        inDebate ?
-                                        <>
-                                            <h1 className="col-12">Your are in a debate</h1>
-                                            <h1 className="col-12">Role: {role}</h1>
-                                        </>
-                                        :
-                                        <>
-                                            <h1 className="col-12">Your are not in a debate</h1>
-                                        </>
-                                    }
-                                </div>
+                            <div className="profile--edit row d-flex justify-content-center">
+                                <Link to="/edit-profile" className="profile--edit-element col-4 text-center d-flex justify-content-center"><h3>Edit Profile</h3></Link>
                             </div>
                         </div>
                     </div>
@@ -103,7 +96,7 @@ function Profile() {
             <div className="profile--base base text-center">
                     <div className="profile--container-error container bg-light text-center d-flex align-items-center justify-content-center">
                         <h1 className="profile--not-logged-in">
-                            Jelentkezz be előbb te fegyenc.
+                            Log in first, to access this page
                         </h1>
                     </div>
             </div>

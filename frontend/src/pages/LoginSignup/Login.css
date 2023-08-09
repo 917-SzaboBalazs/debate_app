@@ -1,8 +1,8 @@
-:root {
+/* :root {
     --primary: white;
     --secondary: #22344D;
     --third: #F2CA10;
-}
+} */
 
 /* @media (min-width: 1200px) {
     .container{
@@ -71,13 +71,13 @@ h5 {
 input {
     border-width: 0px;
     border-bottom-width: 2px;
-    border-color: rgb(243, 234, 226);
+    border-color: var(--primary);
     color: var(--secondary);
     font-size: 24px;
 }
 
 .username, .password{
-    background-color: rgb(243, 234, 226);
+    background-color: var(--primary);
 }
 
 .login--dont-have-account span{
@@ -97,7 +97,7 @@ input {
 }
 
 .login-container{
-    background-color: rgb(243, 234, 226);
+    background-color: var(--primary);
 }
 
 @media only screen and (max-width: 767px) {

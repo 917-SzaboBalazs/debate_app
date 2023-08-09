@@ -1,6 +1,4 @@
-import axios from 'axios';
 import React from 'react';
-import { useState } from 'react';
 
 import axiosInstance from '../../../axios';
 
@@ -11,7 +9,7 @@ function FinishDebate(props) {
 
     const handlePro = () => {
         axiosInstance
-            .patch('debate/current/', {'winner': 'pro', 'status':'finished'})
+            .patch('debate/current/', {'result': 'pro', 'status':'finished'})
             .then((res) => {
                 props.setTrigger(false);
             })
