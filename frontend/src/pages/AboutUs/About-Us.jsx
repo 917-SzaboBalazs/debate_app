@@ -12,7 +12,10 @@ import andris from '../../images/csapat/andris.jpg';
 
 function AboutUs() {
   return (
-    <div className="about-us--container base">
+    <>
+    <div className="base">
+    </div>
+    <div className="about-us--container">
       <h1 className='about-us--title'>Kik vagyunk?</h1>
 
         <div className="us--container">
@@ -60,6 +63,7 @@ function AboutUs() {
         </div>
         
       </div>
+    </>
   )
 }
 
