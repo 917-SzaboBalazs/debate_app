@@ -26,17 +26,11 @@
   background: url( 'images/mikrofon2.jpg') center center/cover no-repeat, linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
   background-attachment: fixed;
   background-blend-mode: overlay;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
 }
 
 @media screen and (max-width: 1000px) {
   .base {
-    background-attachment: scroll;
+    
   }
 }
 

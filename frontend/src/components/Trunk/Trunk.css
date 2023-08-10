@@ -5,7 +5,7 @@
 } */
 
 .home--container{
-  height: 500px;
+  height: 600px;
 }
 
   .trunk--container {
@@ -18,7 +18,7 @@
     
     object-fit: contain;
     text-align: center;
-    padding-top: 180px;
+    padding-top: calc(50vh - 60px);
   }
 
   .trunk--container > h1 {
