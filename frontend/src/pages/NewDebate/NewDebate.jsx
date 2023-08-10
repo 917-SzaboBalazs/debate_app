@@ -23,8 +23,7 @@ function NewDebate() {
     const [ entryCode, setEntryCode ] = useState('');
     const [ someError, setSomeError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState('');
-    const [ motion, setMotion ] = useState();
-    const [ newMotion, setNewmotion ] = useState('Set a motion pls'); // a motion setter
+    const [ motion, setMotion ] = useState("");
     const [ currRole, setCurrRole ] = useState('spectator');
 
     const [ focused, setFocused ] = useState(false);
@@ -53,6 +52,21 @@ function NewDebate() {
         }, 500)
 
         return () => {clearInterval(interval)};
+    }, []);
+
+    useEffect(() => {
+        axiosInstance
+        .get('debate/current/')
+        .then((res) => {
+            // console.log(res);
+      
+            setMotion(res.data.motion);
+        
+        })
+        // abban az esetben ha nincs current user (tehat guest lesz)
+        .catch((err) => {
+            console.log("nem vagy bejelentkezve");
+        });
     }, []);
 
     function setDebaterArray(teamSize)
@@ -124,17 +138,12 @@ function NewDebate() {
                         <div className="row">
                             <div className="row">
                                 <textarea  type="text" 
+                                        value={motion}
                                         className="new-debate--motion-text col-12" 
-                                        defaultValue={motion} 
-                                        placeholder={motion} 
-                                        onFocus={() => setFocused(true)}
-                                        onBlur={() => {
-                                            handleMotion(newMotion);
-                                            setFocused(false);
-                                        }}
-                                        onChange={(ev) => {setNewmotion(ev.target.value)}}/>
+                                        onChange={(e) => { setMotion(e.target.value); handleMotion(e.target.value) }}
+                                        />
                             </div>
-                            <RandomMotionSetter/>
+                            <RandomMotionSetter setMotion={setMotion} />
                         </div>
                         <div className="row">
                             <h2 className='
