@@ -9,7 +9,7 @@ function Debates() {
   return (
     <div className="debates--base base">
         <div className="container debates--container">
-            <div className="row debates--header-row p-4">
+            <div className="row debates--header-row">
                 <div className="col-4 debates--header-title-cont">
                     <h1 className="debates--header-title">
                         Vitaformátumok
@@ -21,8 +21,8 @@ function Debates() {
                     {/*</h2>*/}
                 </div>
             </div>
-            <div className="row debates--elements-row p-4">
-                <div className="debates--elements-col col-4">
+            <div className="row debates--elements-row">
+                <div className="debates--elements-col">
                     <h1 className="debates--elements--title">
                         Brit Parlamenti
                     </h1>
@@ -32,7 +32,7 @@ Az oldalak első felszólalói definiálják a tételmondatot, majd felsorolják
 
                     </ReadMore>
                 </div>
-                <div className="debates--elements-col col-4">
+                <div className="debates--elements-col">
                     <h1 className="debates--elements--title">
                         World Schools
                     </h1>
@@ -40,7 +40,7 @@ Az oldalak első felszólalói definiálják a tételmondatot, majd felsorolják
                         A World Schools Style Debating (vagy WSS) a brit parlamenti és az ausztrál-ázsiai vitázási formátumok kombinációja, amelyet az iskolai vitaversenyek világbajnokságának igényeihez terveztek. Minden vita nyolc beszédből áll, amelyeket két háromfős csapat tart, a javaslattevő és az ellenzéki oldal képviseletében. Az első hat beszéd nyolc percig tart, majd mindkét csapat egy négyperces záróbeszéddel fejezi be a vitát. A csapatoknak 30-60 perc áll rendelkezésükre a beszédek előkészítésére.
                     </ReadMore>
                 </div>
-                <div className="debates--elements-col col-4">
+                <div className="debates--elements-col">
                     <h1 className="debates--elements--title">
                         Karl Popper
                     </h1>

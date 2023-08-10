@@ -5,11 +5,7 @@
 } */
 
 .home--container{
-  background: url( '../../images/mikrofon2.jpg') center center/cover no-repeat, linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
-  background-attachment: fixed;
-  background-blend-mode: overlay;
   height: 100vh;
-  /*box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);*/
 }
 
   .trunk--container {
