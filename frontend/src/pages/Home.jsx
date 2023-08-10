@@ -5,10 +5,9 @@ import '../App.css'
 
 function Home() {
   return (
-      <>
-        <div className="base"></div>
+      <div className="base">
         <Trunk />
-      </>
+      </div>
   )
 }
 

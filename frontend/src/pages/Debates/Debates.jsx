@@ -7,9 +7,7 @@ const text = " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque 
 
 function Debates() {
   return (
-    <>
-    <div className="base"></div>
-    <div className="debates--base">
+    <div className="debates--base base">
         <div className="container debates--container">
             <div className="row debates--header-row">
                 <div className="col-4 debates--header-title-cont">
@@ -53,7 +51,6 @@ Az oldalak első felszólalói definiálják a tételmondatot, majd felsorolják
             </div>
         </div>
     </div>
-    </>
   )
 }
 

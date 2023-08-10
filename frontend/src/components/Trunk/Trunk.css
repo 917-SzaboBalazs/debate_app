@@ -18,7 +18,7 @@
     
     object-fit: contain;
     text-align: center;
-    padding-top: 180px;
+    padding-top: calc(50vh - 60px);
   }
 
   .trunk--container > h1 {
