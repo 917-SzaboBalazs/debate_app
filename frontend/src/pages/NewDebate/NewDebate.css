@@ -4,18 +4,6 @@
     box-sizing: border-box;
 } */
 
-
-.new-debate--background{
-    height: 100%;
-    min-height: 100vh;
-    width: 100%;
-    background: url( '../../images/mikrofon2.jpg') center center/cover no-repeat, linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
-    /*background-attachment: fixed;
-    background-blend-mode: overlay;
-    height: 100vh;*/
-    z-index: -1;
-}
-
 .new-debate--decision--pro, .new-debate--decision--con, .new-debate--decision--judge{
     /*background-color: whitesmoke;*/
     border-radius: 12px;
@@ -128,13 +116,14 @@
 .new-debate--motion-text {
     font-weight: bold;
     color: var(--mcc-kek);
-    font-size: 28px;
+    font-size: 19px;
     background-color: var(--opac-white);
     border-bottom: none;
     text-align: center;
     border-radius: 1rem;
     height: 10vh;
-    margin-top: 10vh;
+    margin: 10px 0 20px 0;
+    padding: 2px 0;
 }
 
 .new-debate--motion-set {
@@ -233,25 +222,23 @@
 }
 
 .new-debate--decision--pro--mobile, .new-debate--decision--con--mobile{
-    margin-top: 7vh;
+    margin-top: 20px;
+    margin-bottom: 0;
 }
 
 .new-debate--pro-btn--mobile, .new-debate--con-btn--mobile{
     font-size: 26px;
-    margin-bottom: 2vh;
 }
 
 .new-debate--card--mobile{
     height: 12vh;
 }
 
-.new-debate--motion--mobile{
-    margin-top: 7vh !important;
-}
-
 .new-debate--motion-text--mobile{
     font-size: 30px;
-    height: 25vh;
+    height: 80px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .new-debate--background--mobile{
@@ -262,7 +249,7 @@
     /* background-color: rgba(255, 255, 255, 0.679); */
     background-color: var(--opac-white);
     border-radius: 1rem;
-    margin: 3rem;
+    margin-bottom: 30px;
 }
 
 .new-debate--spectator-card--username {
@@ -271,4 +258,9 @@
     align-items: center;
     justify-content: center;
     /* border-right: 2px solid var(--mcc-kek); */
+}
+
+@media screen and (max-width: 1000px) {
+    
+    
 }

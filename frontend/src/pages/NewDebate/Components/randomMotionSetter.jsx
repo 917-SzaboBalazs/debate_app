@@ -2,14 +2,14 @@ import React from 'react'
 import axiosInstance from '../../../axios'
 import handleMotion from '../Functions/handleMotion'
 
-function RandomMotionSetter() {
+function RandomMotionSetter({ setMotion }) {
 
     const handleSetRandom = () => {
         axiosInstance
             .get('motion/random/')
             .then((res) => {
-                // setNewmotion(res.data.text_in_english);
                 handleMotion(res.data.text_in_english);
+                setMotion(res.data.text_in_english);
             })
             .catch((err) => {
                 console.log(err);
@@ -32,4 +32,4 @@ function RandomMotionSetter() {
     )
 }
 
-export default RandomMotionSetter
+export default RandomMotionSetter;
