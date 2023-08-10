@@ -1,7 +1,7 @@
 // A NEW DEBATE MOBIL VERZIOJA
 
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './NewDebate.css';
@@ -29,6 +29,8 @@ function NewDebateMobile() {
     const [ posts, setPosts ] = useState([]);
     const [ allUsers, setAllUsers] = useState([]);
 
+    const ref = useRef(null);
+
     useEffect(() => {
         getUserCurrent(setCurrRole);
   
@@ -49,7 +51,7 @@ function NewDebateMobile() {
         }, 500)
   
           return () => {clearInterval(interval)};
-      }, []);
+      }, [focused]);
 
       useEffect(() => {
         axiosInstance
@@ -116,9 +118,12 @@ function NewDebateMobile() {
                             {/* <span className="new-debate--motion-text white-text">{motion}</span> */}
                             <div className="row new-debate--motion-text-row">
                             <textarea  type="text" 
+                                        ref={ref}
                                         value={motion}
                                         className="new-debate--motion-text col-12" 
                                         onChange={(e) => { setMotion(e.target.value); handleMotion(e.target.value) }}
+                                        onFocus={(e) => setFocused(true)}
+                                        onBlur={(e) => setFocused(false)}
                                         />
                             </div>    
                         </div>

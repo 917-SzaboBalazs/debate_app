@@ -1,7 +1,7 @@
 // A NEW DEBATE ASZTALI VERZIOJA
 
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import handleChoose from './Functions/handleChoose';
 import handleMotion from './Functions/handleMotion';
@@ -32,6 +32,8 @@ function NewDebate() {
     const [ posts, setPosts ] = useState([]);
     const [ allUsers, setAllUsers] = useState([]);
 
+    const ref = useRef(null);
+
     useEffect(() => {
         getUserCurrent(setCurrRole);
 
@@ -52,7 +54,7 @@ function NewDebate() {
         }, 500)
 
         return () => {clearInterval(interval)};
-    }, []);
+    }, [focused]);
 
     useEffect(() => {
         axiosInstance
@@ -138,9 +140,12 @@ function NewDebate() {
                         <div className="row">
                             <div className="row">
                                 <textarea  type="text" 
+                                        ref={ref}
                                         value={motion}
                                         className="new-debate--motion-text col-12" 
                                         onChange={(e) => { setMotion(e.target.value); handleMotion(e.target.value) }}
+                                        onFocus={(e) => setFocused(true)}
+                                        onBlur={(e) => setFocused(false)}
                                         />
                             </div>
                             <RandomMotionSetter setMotion={setMotion} />

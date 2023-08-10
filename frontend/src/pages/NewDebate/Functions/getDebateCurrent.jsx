@@ -22,9 +22,9 @@ function getDebateCurrent(
         setEntryCode(res.data.entry_code);
 
         // ha nincs fokuszban a textfield, csak akkor frissitse a motiont
-        /*if (!focused) {
+        if (!focused) {
             setMotion(res.data.motion);
-        }*/
+        }
         setAllUsers(res.data.participants);
         setPosts(setDebaterArray(4));
         if (res.data.status != 'lobby') {
