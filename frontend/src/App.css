@@ -28,14 +28,6 @@
   background-blend-mode: overlay;
 }
 
-@media screen and (max-width: 1000px) {
-  .base {
-    
-  }
-}
-
-
-
 .white-text {
   color: white;
 }
