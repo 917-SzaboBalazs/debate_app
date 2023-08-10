@@ -84,7 +84,9 @@ function Login() {
     }, [value])
 
   return (
-    <div className='login-body base'>
+    <>
+    <div className="base"></div>
+    <div className='login-body'>
       <div className="container">
         <div className="login--trunk-container row">
           {/* <form action="" className=""> */}
@@ -140,6 +142,7 @@ function Login() {
           </div>
         </div>
     </div>
+    </>
   )
 }
 
