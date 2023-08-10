@@ -199,95 +199,98 @@ function Signup() {
   }, [value])
 
   return (
-    <div className='signup-body base'>
-      <div className="container">
-        <form>
-        <div className="trunk-container row">
-            <div className="signup--left-side p-0 col-md-6 col-sm-12" >
-              <img src={images[value]} className='signup--bg-img'/>
-            
-            </div>
-            <div className="signup--container d-flex align-items-center justify-content-center col-md-6 col-sm-12">
-                <div className="signup-box ">
-                    {/* <div className="signup-box-2 col-12"> */}
-                    <h1 className="signup--signup-title">Register</h1>
-                    <h5 className="username-text">Username:</h5>
-                    <input
-                        id="username"
-                        name="username"
-                        type="text"
-                        placeholder='username'
-                        className="username"
-                        value={userName}
-                        onChange = {(e) => {
-                          setUserName(e.target.value);
-                        } }
-                    />
-                    <h5 className="email-text">Email:</h5>
-                    <input
-                        id="email"
-                        name="email"
-                        type="text"
-                        placeholder='lukrecia@cicamail.hu'
-                        className="email"
-                        value={email}
-                        onChange = {(e) => {
-                          setEmail(e.target.value);
-                        } }
-                    />
-                    <h5 className="password-text">Password:</h5>
-                    <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        placeholder='min 8 chars: capital, number, spec char'
-                        className='password'
-                        value={password}
-                        onChange = {(e) => {
-                          setPassword(e.target.value);
-                        } }
-                    />
-                    <h5 className="password-text">Password again:</h5>
-                    <input
-                        id="passwordAgain"
-                        name="passwordAgain"
-                        type="password"
-                        placeholder='min 8 chars: capital, number, spec char'
-                        className='password'
-                        value={passwordAgain}
-                        onChange = {(e) => {
-                          setPasswordAgain(e.target.value);
-                        } }
-                    />
-                    {/* </div> */}
-                    {/* <p className="signup--password-help text-center">
-                      The password needs to be at least 8 characters long, has to contain a capital letter and a number at least.
-                    </p> */}
-                    
-                    <div className="signup--btn-row row">
-                      <div className="singup--btn-cont col-12">
-                        <button
-                            className='signup-btn'
-                            type='submit'
-                            onClick={handleSubmit}
-                        >
-                            Register
-                        </button>
-                      </div>
-                      <div className="signup--already-cont row">
-                        <Link className="signup--already-have-an-account col-12" to='/log-In'><span>Already have an account</span></Link>
-                      </div>
-                   {/* </div> */}
-                   </div>
-                  </div>
+    <>
+      <div className="base"></div>
+      <div className='signup-body'>
+        <div className="container">
+          <form>
+          <div className="trunk-container row">
+              <div className="signup--left-side p-0 col-md-6 col-sm-12" >
+                <img src={images[value]} className='signup--bg-img'/>
+              
               </div>
+              <div className="signup--container d-flex align-items-center justify-content-center col-md-6 col-sm-12">
+                  <div className="signup-box ">
+                      {/* <div className="signup-box-2 col-12"> */}
+                      <h1 className="signup--signup-title">Register</h1>
+                      <h5 className="username-text">Username:</h5>
+                      <input
+                          id="username"
+                          name="username"
+                          type="text"
+                          placeholder='username'
+                          className="username"
+                          value={userName}
+                          onChange = {(e) => {
+                            setUserName(e.target.value);
+                          } }
+                      />
+                      <h5 className="email-text">Email:</h5>
+                      <input
+                          id="email"
+                          name="email"
+                          type="text"
+                          placeholder='lukrecia@cicamail.hu'
+                          className="email"
+                          value={email}
+                          onChange = {(e) => {
+                            setEmail(e.target.value);
+                          } }
+                      />
+                      <h5 className="password-text">Password:</h5>
+                      <input
+                          id="password"
+                          name="password"
+                          type="password"
+                          placeholder='min 8 chars: capital, number, spec char'
+                          className='password'
+                          value={password}
+                          onChange = {(e) => {
+                            setPassword(e.target.value);
+                          } }
+                      />
+                      <h5 className="password-text">Password again:</h5>
+                      <input
+                          id="passwordAgain"
+                          name="passwordAgain"
+                          type="password"
+                          placeholder='min 8 chars: capital, number, spec char'
+                          className='password'
+                          value={passwordAgain}
+                          onChange = {(e) => {
+                            setPasswordAgain(e.target.value);
+                          } }
+                      />
+                      {/* </div> */}
+                      {/* <p className="signup--password-help text-center">
+                        The password needs to be at least 8 characters long, has to contain a capital letter and a number at least.
+                      </p> */}
+                      
+                      <div className="signup--btn-row row">
+                        <div className="singup--btn-cont col-12">
+                          <button
+                              className='signup-btn'
+                              type='submit'
+                              onClick={handleSubmit}
+                          >
+                              Register
+                          </button>
+                        </div>
+                        <div className="signup--already-cont row">
+                          <Link className="signup--already-have-an-account col-12" to='/log-In'><span>Already have an account</span></Link>
+                        </div>
+                    {/* </div> */}
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <SignupPopup trigger={trigger} setTrigger={setTrigger}>
+              <h3>{finalMessage}</h3>
+            </SignupPopup>
+            </form>
           </div>
-          <SignupPopup trigger={trigger} setTrigger={setTrigger}>
-            <h3>{finalMessage}</h3>
-          </SignupPopup>
-          </form>
-        </div>
-    </div>
+      </div>
+    </>
   )
 }
 
