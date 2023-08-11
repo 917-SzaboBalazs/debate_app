@@ -146,11 +146,33 @@
 
 .new-debate--motion-random-text {
     cursor: pointer;
+    font-size: 20px;
+}
+
+.new-debate--motion-random-row {
+    display: inline-block;
+    width: auto;
+    height: 20px;
+    margin: 0 auto;
+}
+
+.new-debate--motion-random-col {
+    font-size: 20px;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .new-debate--motion-random-row {
+        margin-bottom: 40px;
+
+    }
+    
 }
 
 .new-debate--basic-text, .new-debate--current-role, .new-debate--ready, .new-debate--entry-code{
     font-size:28px;
     font-style: bold;
+    margin-top: 30px;
 }
 
 .new-debate--container-row {
@@ -177,7 +199,9 @@
 
 .new-debate--card--label {
     color:white;
+    font-size: 14px;
     margin-bottom: .5rem;
+    font-weight: bold;
 }
 
 .new-debate--card--participant {
@@ -189,6 +213,7 @@
 .new-debate--card--participant--img {
     color:white;
     height: 5rem;
+    width: 100px;
 }
 
 .new-debate--card--picture {
@@ -219,6 +244,10 @@
 .new-debate--card--participant--name {
     color:white;
     padding:0.5rem;
+}
+
+.new-debate--card--participant--name > div:nth-child(2) > div {
+    color: #6AB1D4;
 }
 
 .new-debate--decision--pro--mobile, .new-debate--decision--con--mobile{
@@ -261,6 +290,14 @@
 }
 
 @media screen and (max-width: 1000px) {
+
+   
     
-    
+    .new-debate--spectator-card--participant--img {
+        width: 20%;
+    }
+
+    .new-debate--spectator-card--username {
+        width: 80%;
+    }
 }

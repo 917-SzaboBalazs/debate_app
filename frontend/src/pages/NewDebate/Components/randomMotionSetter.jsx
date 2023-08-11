@@ -17,7 +17,7 @@ function RandomMotionSetter({ setMotion }) {
     }
 
     return (
-        <div className="row 
+        <div className=" 
                 new-debate--motion-random-row
                 justify-content-center
                 align-items-center

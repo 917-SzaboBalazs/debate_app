@@ -11,8 +11,6 @@ import listerDesktop from './Functions/listerDesktop';
 import axiosInstance from '../../axios';
 import RandomMotionSetter from './Components/randomMotionSetter';
 import spectatorLister from './Functions/spectatorLister';
-import LoginPopup from '../../components/Popups/NotReady/NotReady';
-import NotReady from '../../components/Popups/NotReady/NotReady';
 
 
 function NewDebate() {
@@ -28,7 +26,6 @@ function NewDebate() {
 
     const [ focused, setFocused ] = useState(false);
 
-    const [ ready, setReady ] = useState(false);
     const [ posts, setPosts ] = useState([]);
     const [ allUsers, setAllUsers] = useState([]);
 
@@ -128,8 +125,7 @@ function NewDebate() {
                                 'pro',
                                 posts, 
                                 allUsers, 
-                                handleChoose, 
-                                ready, 
+                                handleChoose,  
                                 setCurrRole)
                         }
                     </div>
@@ -162,11 +158,10 @@ function NewDebate() {
 
                         {/* ide jon most a NEXT, setDebateType, spectator gomb */}
                         <div className="row new-debate--spacemaker"></div>
-                        <div className="row new-debate--selectDebate">SELECT TYPE: </div>
                         <div className="row new-debate--start"> 
                             {/* ha megvan minden fontos, el lehet inditani a vitat --  de ez sem biztos hogy kell  */}
                             {
-                                ready  && ( ( currRole == 'judge' ) )?
+                                ( currRole == 'judge' ) ?
                                 <>
                                     <div className="new-debate--start row justify-content-center">
                                         <div
@@ -187,7 +182,7 @@ function NewDebate() {
                                     new-debate--button 
                                     col-3 white-text 
                                     text-center" 
-                                    onClick={() => handleChoose('judge', null, ready, setCurrRole)}
+                                    onClick={() => handleChoose('judge', null, setCurrRole)}
                                 >
                                 judge
                             </div>    
@@ -197,30 +192,9 @@ function NewDebate() {
                                     new-debate--button 
                                     col-3 white-text 
                                     text-center" 
-                                    onClick={() => handleChoose('spectator', null, ready, setCurrRole)}
+                                    onClick={() => handleChoose('spectator', null, setCurrRole)}
                                 >
                                 spectator
-                            </div>
-                            <div
-                                className="col-3 new-debate--button white-text text-center"
-                                onClick={() => {
-                                    if (currRole != null) {
-                                        setReady(!ready);
-                                    } else {
-
-                                    }
-                                }}
-                            >
-                                {
-                                    ready ?
-                                    <>
-                                        not ready
-                                    </>
-                                    :
-                                    <>
-                                        ready
-                                    </>
-                                }
                             </div>
                         </div>
                         {/* <div className="row">Ide be kene tenni a birot, az fasza lenne sztem (vagyis legalulra)</div> */}
@@ -240,8 +214,7 @@ function NewDebate() {
                                 'con',
                                 posts, 
                                 allUsers, 
-                                handleChoose, 
-                                ready, 
+                                handleChoose,  
                                 setCurrRole)
                         }
                     </div>

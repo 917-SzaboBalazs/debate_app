@@ -1,5 +1,7 @@
-import React from "react"
-import './Footer.css';
+import React from "react";
+import { useState, useEffect } from "react";
+
+import getUserCurrent from "../Functions/getUserCurrent";
 
 import fb from '../../images/facebook.png';
 import insta from '../../images/insta.png';
@@ -7,8 +9,24 @@ import wa from '../../images/WhatsApp.png';
 
 import { Link } from "react-router-dom";
 
+import './Footer.css';
 
-const Footer = () => <footer className="page-footer font-small pt-4 my-footer">
+export default function Footer() {
+  const [ loggedIn, setLoggedIn ] = useState(false);
+  const [ userName, setUserName ] = useState('');
+  const [ inDebate, setInDebate ] = useState(false);
+
+  useEffect(() => {
+    getUserCurrent(setUserName, setLoggedIn, setInDebate);
+  }, [setUserName, setLoggedIn, setInDebate]);
+
+
+  if (inDebate) {
+    return <></>
+  }
+
+  return (
+    <footer className="page-footer font-small pt-4 my-footer">
     <div className="container  text-center">
         <div className="row">
             <div className="col-md-6 mt-md-0 mt-3">
@@ -37,6 +55,6 @@ const Footer = () => <footer className="page-footer font-small pt-4 my-footer">
         </div>
     </div>
 
-</footer>
-
-export default Footer
+  </footer>
+  )
+}
