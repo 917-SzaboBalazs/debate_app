@@ -45,7 +45,7 @@ function InDebateTimer() {
     const [ POIseconds, setPOIseconds ] = useState(15);
 
     const speakerRole = [ 'Nyitó kormány - 1', 'Nyitó ellenzék - 1', 'Nyitó kormány - 2', 'Nyitó ellenzék - 2', 'Záró kormány - 1', 'Záró ellenzék - 1', 'Záró kormány - 2', 'Záró ellenzék - 2'];
-
+    
     // check if user is logged in
     useEffect(() => {
 
@@ -347,6 +347,7 @@ function InDebateTimer() {
                             />
                         </button>
                         <br/>
+                        <div className="indebate--role-controls">
                         <button
                             className="indebate--button indebate--back-button col-12"
                             onClick={handleBack}
@@ -386,6 +387,7 @@ function InDebateTimer() {
                             >
                                 finish
                             </button>
+                        </div>
                         </div>
                     </div>
                     </>
