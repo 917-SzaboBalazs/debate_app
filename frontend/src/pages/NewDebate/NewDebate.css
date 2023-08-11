@@ -164,7 +164,7 @@
 @media screen and (max-width: 1000px) {
     .new-debate--motion-random-row {
         margin-bottom: 40px;
-
+        
     }
     
 }
@@ -290,14 +290,45 @@
 }
 
 @media screen and (max-width: 1000px) {
+    .new-debate--entry-code {
+        margin-top: 50px;
+    }
 
-   
+    .new-debate--motion-text-row {
+        padding: 0;
+        height: auto;
+    }
+
+    .new-debate--motion--mobile > .row > div {
+        height: auto;
+    }
+
+    .new-debate--motion-text {
+        font-size: 16px;
+        padding: 5px;
+        height: 70px;
+    }
+
+    .new-debate--card {
+        padding: 0;
+        height: 100px;
+    }
     
+    .new-debate--card--participant--name{
+       width: 170px;
+    }
+
+    .new-debate--card--participant--img {
+        width: 75px;
+        height: 75px;
+        margin-top: 7.5px;
+    }
+
     .new-debate--spectator-card--participant--img {
-        width: 20%;
+        width: 75px;
     }
 
     .new-debate--spectator-card--username {
-        width: 80%;
+        width: 170px;
     }
 }
