@@ -29,7 +29,7 @@ function listerDesktop(team, posts, allUsers, handleChoose, ready, setCurrRole) 
         return (
 
             // egy sort terit vissza amiben van 2 sor
-            <>
+            <div key={player}>
             <div className="
                 new-debate--card
                 row
@@ -71,9 +71,9 @@ function listerDesktop(team, posts, allUsers, handleChoose, ready, setCurrRole) 
                 </div>
             </div>
             {
-                (player == 2) ?  <br></br>: null
+                (player === 2) ?  <br></br>: null
             }
-            </>
+            </div>
           )
       })
 }
