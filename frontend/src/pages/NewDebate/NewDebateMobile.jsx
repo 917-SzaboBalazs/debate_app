@@ -25,7 +25,6 @@ function NewDebateMobile() {
     const [ currRole, setCurrRole ] = useState('spectator');
     const [ focused, setFocused ] = useState(false);
 
-    const [ ready, setReady ] = useState(false);
     const [ posts, setPosts ] = useState([]);
     const [ allUsers, setAllUsers] = useState([]);
 
@@ -112,6 +111,16 @@ function NewDebateMobile() {
                     <>
 
                 <div className="row new-debate--container-row">
+                    <div className="row">
+                            <h2 className='
+                                new-debate--entry-code  
+                                text-center 
+                                white-text'
+                                >
+                                Entry Code: {entryCode}
+                            </h2>
+                        </div>
+
                     <h1 className='new-debate--motion new-debate--motion--mobile col-12 text-center mt-3 mb-0'>
                         {/* Ez egy textfield lesz, hogy at lehessen irni ha arra volna igeny */}
                         <div className="row">
@@ -128,15 +137,7 @@ function NewDebateMobile() {
                             </div>    
                         </div>
                         <RandomMotionSetter setMotion={setMotion}/>
-                        <div className="row">
-                            <h2 className='
-                                new-debate--entry-code  
-                                text-center 
-                                white-text'
-                                >
-                                {entryCode}
-                            </h2>
-                        </div>
+                        
                     </h1>
                 </div>
                 {/* Gyakorlatilag ez a container sor */}
@@ -153,8 +154,7 @@ function NewDebateMobile() {
                                 'pro',
                                 posts, 
                                 allUsers, 
-                                handleChoose, 
-                                ready, 
+                                handleChoose,  
                                 setCurrRole)
                         }
                     </div>
@@ -170,10 +170,11 @@ function NewDebateMobile() {
                                 posts, 
                                 allUsers, 
                                 handleChoose, 
-                                ready, 
                                 setCurrRole)
                         }
                     </div>
+                    <div className="col-12 new-debate--pro-btn new-debate--pro-btn--mobile new-debate--label text-center font-weight-bold">Spectators</div>
+                    <hr className='new-debate--line'></hr>
                     <div className="row new-debate--center-spectators-row"> 
                         {
                             spectatorLister(allUsers)
@@ -190,7 +191,7 @@ function NewDebateMobile() {
                                     new-debate--button 
                                     col-4 white-text 
                                     text-center" 
-                                    onClick={() => handleChoose('judge', null, ready, setCurrRole)}
+                                    onClick={() => handleChoose('judge', null, setCurrRole)}
                                 >
                                 judge
                             </div>    
@@ -200,7 +201,7 @@ function NewDebateMobile() {
                             new-debate--button 
                             col-4 white-text 
                             text-center" 
-                            onClick={() => handleChoose('spectator', null, ready, setCurrRole)}
+                            onClick={() => handleChoose('spectator', null, setCurrRole)}
                         >
                         spectator
                     </div>
@@ -208,7 +209,7 @@ function NewDebateMobile() {
 
 
                 {/* Ez ejsye nem fog kelleni */}
-                <div className="new-debate--clear-btn-container row justify-content-center">
+                {/*<div className="new-debate--clear-btn-container row justify-content-center">
                         <div
                             className="col-4 new-debate--button white-text text-center"
                             onClick={() => {
@@ -229,11 +230,11 @@ function NewDebateMobile() {
                                 </>
                             }
                         </div>
-                </div>
+                        </div>*/}
                 
                 {/* ha megvan minden fontos, el lehet inditani a vitat --  de ez sem biztos hogy kell  */}
                 {
-                    ready  && ( ( currRole == 'judge' ) )?
+                    (currRole == 'judge' ) ?
                     <>
                         <div className="new-debate--start row justify-content-center">
                             <div

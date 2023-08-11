@@ -1,6 +1,6 @@
 import face1 from '../../../images/faces/face1.svg';
 
-function listerMobile(team, posts, allUsers, handleChoose, ready, setCurrRole) {
+function listerMobile(team, posts, allUsers, handleChoose, setCurrRole) {
 
     return posts.map((player) => {
         let role = team + player;
@@ -37,7 +37,7 @@ function listerMobile(team, posts, allUsers, handleChoose, ready, setCurrRole) {
               justify-content-center
               align-items-center
               "
-              onClick={() => handleChoose(team, player, ready, setCurrRole)} key={player}
+              onClick={() => handleChoose(team, player, setCurrRole)} key={player}
               >
               
               {/* <div className="new-debate--card--participant" > */}

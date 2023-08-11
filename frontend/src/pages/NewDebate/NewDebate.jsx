@@ -31,8 +31,6 @@ function NewDebate() {
 
     const ref = useRef(null);
 
-    const ready = true;
-
     useEffect(() => {
         getUserCurrent(setCurrRole);
 
@@ -127,8 +125,7 @@ function NewDebate() {
                                 'pro',
                                 posts, 
                                 allUsers, 
-                                handleChoose, 
-                                ready, 
+                                handleChoose,  
                                 setCurrRole)
                         }
                     </div>
@@ -185,7 +182,7 @@ function NewDebate() {
                                     new-debate--button 
                                     col-3 white-text 
                                     text-center" 
-                                    onClick={() => handleChoose('judge', null, ready, setCurrRole)}
+                                    onClick={() => handleChoose('judge', null, setCurrRole)}
                                 >
                                 judge
                             </div>    
@@ -195,7 +192,7 @@ function NewDebate() {
                                     new-debate--button 
                                     col-3 white-text 
                                     text-center" 
-                                    onClick={() => handleChoose('spectator', null, ready, setCurrRole)}
+                                    onClick={() => handleChoose('spectator', null, setCurrRole)}
                                 >
                                 spectator
                             </div>
@@ -217,8 +214,7 @@ function NewDebate() {
                                 'con',
                                 posts, 
                                 allUsers, 
-                                handleChoose, 
-                                ready, 
+                                handleChoose,  
                                 setCurrRole)
                         }
                     </div>

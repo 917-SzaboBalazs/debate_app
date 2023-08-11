@@ -1,6 +1,6 @@
 import face1 from '../../../images/faces/face1.svg';
 
-function listerDesktop(team, posts, allUsers, handleChoose, ready, setCurrRole) {
+function listerDesktop(team, posts, allUsers, handleChoose, setCurrRole) {
 
     return posts.map((player) => {
         let role = team + player;
@@ -37,7 +37,7 @@ function listerDesktop(team, posts, allUsers, handleChoose, ready, setCurrRole) 
                 align-items-center
                 "
                 onClick={() => {
-                    handleChoose(team, player, ready, setCurrRole);
+                    handleChoose(team, player, setCurrRole);
                     }} key={player}
                 >
                 <div className="row">

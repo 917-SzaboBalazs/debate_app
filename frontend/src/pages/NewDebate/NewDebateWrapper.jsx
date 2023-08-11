@@ -20,7 +20,7 @@ const useViewport = () => {
 
 const NewDebateWrapper = () => {
     const { width } = useViewport();
-    const breakpoint = 1050;
+    const breakpoint = 1000;
   
     return width < breakpoint ? <NewDebateMobile/> : <NewDebate />;
 };
