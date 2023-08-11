@@ -209,3 +209,67 @@
         width: 80%;
     }
 }
+
+@media screen and (max-width: 1000px) {
+    .indebate--motion-text {
+        font-size: 19px;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        font-size: 14px;
+    }
+
+    .indebate--current-speaker {
+        margin-bottom: 10px;
+    }
+
+    .indebate--buttons {
+        margin-top: 20px;
+    }
+
+    .indebate--start-button, .indebate--reset-button {
+        height: 40px;
+        width: 150px;
+        margin-bottom: 5px;
+    }
+
+    .indebate--start-button > img, .indebate--reset-button > img {
+        height: 20px;
+        margin-top: -30px;
+    }
+
+    .indebate--role-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .indebate--role-controls > button {
+        margin: 0;
+        min-width: auto;
+        width: 60px;
+    }
+
+    .indebate--role-controls > .in-debate--finish-field {
+        padding: 0 !important;
+    }
+
+    .indebate--role-controls > .in-debate--finish-field > button {
+        margin: 0 5px;
+        min-width: auto;
+        width: 140px;
+       
+    }
+
+    .indebate--role-controls button img {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* ORDER */
+    .indebate--role-controls > button:nth-child(2) {
+       order: 1;
+    }
+}
