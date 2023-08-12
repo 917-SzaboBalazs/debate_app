@@ -83,9 +83,32 @@ function Trunk() {
                 <h1>DEBATE CULTURE</h1>
                 <p>"It is better to debate a question without settling it than to settle a question without debating it."</p>
                 <div className="trunk--btns">
-                        {
-                            !inDebate ?
+
+                        {!loggedIn && 
+                        <>
+                             <h2 className='trunk--btns--helper-text'>Create a Free Account and Start Debating Now!</h2>
+                             <button
+                                className='trunk--login-button text-uppercase'
+                                onClick={() => {
+                                    navigate('/log-in');
+                                }} 
+                            >
+                            <div className='trunk--login-link trunk--link-text' ><span className='white-text'>Log In</span></div>
+                            </button>
+                            <button
+                                className='trunk--signin-button text-uppercase'
+                                onClick={() => {
+                                    navigate('/sign-up')
+                                }}
+                            >
+                            <div className="trunk--signup-link trunk--link-text" ><span className='white-text'>Sign Up</span></div>
+                            </button>
+                            
+                        </>}
+
+                        {loggedIn && !inDebate &&
                             <>
+                                <h2 className='trunk--btns--helper-text'>Let's Start a Debate!</h2>
                                 <button
                                     className='trunk--login-button text-uppercase'
                                     onClick={handleClickTriggerJoin} 
@@ -101,8 +124,11 @@ function Trunk() {
                                     <div className="trunk--signup-link trunk--link-text" ><span className='white-text'>Create</span></div>
                                 </button>
                             </>
-                            :
+                        }
+
+                        {loggedIn && inDebate && 
                             <>
+                                <h2 className='trunk--btns--helper-text'>Go Back To Your Current Debate!</h2>
                                 <button
                                     className='trunk--login-button text-uppercase'
                                 >

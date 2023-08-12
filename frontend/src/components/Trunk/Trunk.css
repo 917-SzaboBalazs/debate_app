@@ -25,7 +25,7 @@
     color: var(--primary);
     font-size: 35px;
     font-weight: 800;
-    
+    margin-top: -80px;
   }
 
   .trunk--container > p {
@@ -49,6 +49,19 @@
   .trunk--link-text:hover {
     text-decoration: none;
     color: white;
+  }
+
+  .trunk--btns {
+    background-color: #1c222bec;
+    width: 850px;
+    margin-top: 50px;
+    padding: 50px 80px;
+    border-radius: 20px;
+  }
+
+  .trunk--btns--helper-text {
+    margin-bottom: 30px;
+    color: #95dad7;
   }
 
   .trunk--signin-button {
@@ -136,5 +149,16 @@
       height: 100px;
       font-size: 30px;
       margin: 0 20px;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .trunk--btns {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .trunk--btns--helper-text {
+      font-size: 20px;
     }
   }
