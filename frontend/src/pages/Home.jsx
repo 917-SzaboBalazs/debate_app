@@ -3,10 +3,10 @@ import Trunk from '../components/Trunk/Trunk'
 
 import '../App.css'
 
-function Home() {
+function Home({ loggedIn, inDebate, setInDebate }) {
   return (
       <div className="base">
-        <Trunk />
+        <Trunk loggedIn={loggedIn} inDebate={inDebate} setInDebate={setInDebate} />
       </div>
   )
 }

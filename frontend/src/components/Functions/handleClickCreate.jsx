@@ -1,13 +1,13 @@
 import axiosInstance from "../../axios";
 
-const handleClickTriggerCreate = (navigate) => {
+const handleClickTriggerCreate = (navigate, setInDebate) => {
 
     // alapertelmezetten britt parlamenti a vitafomatum
     axiosInstance
     .post('debate/create/')
     .then((res) => {
+        setInDebate(true);
         navigate('/new-debate');
-        window.location.reload(false);
       }
     )
     .catch((err) => {

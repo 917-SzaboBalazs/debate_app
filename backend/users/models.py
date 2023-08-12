@@ -67,10 +67,10 @@ class CustomAccountManager(BaseUserManager):
 
 
 class NewUser(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(max_length=150, unique=True)
-    email = models.EmailField(unique=True)
-    first_name = models.CharField(max_length=150, default="", blank=True)
-    last_name = models.CharField(max_length=150, default="", blank=True)
+    username = models.CharField(max_length=20, unique=True)
+    email = models.EmailField(max_length=40, unique=True)
+    first_name = models.CharField(max_length=20, default="", blank=True)
+    last_name = models.CharField(max_length=20, default="", blank=True)
     birthday = models.DateField(blank=True, null=True)
     about_me = models.TextField(max_length=500, default="", blank=True)
     start_date = models.DateTimeField(default=timezone.now)

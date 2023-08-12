@@ -16,7 +16,6 @@ function getUserCurrent(setUserName, setLoggedIn, setInDebate) {
 
     })
     .catch((err) => {
-      console.log(err);
     });
 
 }

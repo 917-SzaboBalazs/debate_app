@@ -28,6 +28,7 @@ function NewDebate() {
 
     const [ posts, setPosts ] = useState([]);
     const [ allUsers, setAllUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const ref = useRef(null);
 
@@ -60,11 +61,12 @@ function NewDebate() {
             // console.log(res);
       
             setMotion(res.data.motion);
-        
+            setLoading(false)
         })
         // abban az esetben ha nincs current user (tehat guest lesz)
         .catch((err) => {
             console.log("nem vagy bejelentkezve");
+            setLoading(false);
         });
     }, []);
 
@@ -93,10 +95,14 @@ function NewDebate() {
             })
     }
 
+    if (loading)
+    {
+        return <div className='new-debate--background base'><div className="new-debate--container container"></div></div>
+    }
     
     return (
-        <div className='new-debate--background base'>
-            <div className="new-debate--container container">
+        <div className='new-debate--background base '>
+            <div className="new-debate--container container fade-in">
                 {
                     
                     someError ?
@@ -152,7 +158,7 @@ function NewDebate() {
                                 text-center 
                                 white-text'
                                 >
-                                {entryCode}
+                                Entry Code: {entryCode}
                             </h2>
                         </div>
 

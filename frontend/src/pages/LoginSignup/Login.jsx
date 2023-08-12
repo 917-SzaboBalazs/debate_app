@@ -16,7 +16,7 @@ import image7 from '../../images/signup7.jpg'
 
 import './Login.css'
 
-function Login() {
+function Login({setLoggedIn}) {
     const [ userName, setUserName ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ trigger, setTrigger ] = useState(false);
@@ -34,13 +34,10 @@ function Login() {
         .then((res) => {
           localStorage.setItem('access_token', res.data.access);
           localStorage.setItem('refresh_token', res.data.refresh);
-          axiosInstance.defaults.headers['Autorization'] = 
-            'JWT ' + localStorage.getItem('access_token'); 
 
-
-          // console.log(res);
           navigate('/');
-          window.location.reload(false);
+          setLoggedIn(true);
+          //window.location.reload(false);
         })
         .catch((err) => {
           setMessage('Wrong username - password combination.');
@@ -62,7 +59,6 @@ function Login() {
     
     const updateCount = () => {
       timer = setInterval(() => {
-        console.log(value);
         setValue(prevCount => (prevCount + 1) % images.length) // new
       }, 5000)
     }

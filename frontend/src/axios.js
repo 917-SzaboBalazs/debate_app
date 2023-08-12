@@ -2,6 +2,7 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import dayjs from 'dayjs';
 
+//const baseURL = 'http://127.0.0.1:8000/api/';
 const baseURL = 'https://debateculture.mooo.com/api/';
 
 const axiosInstance = axios.create({
@@ -14,9 +15,9 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(async function(req) {
-
   const accessToken = localStorage.getItem('access_token');
   const refreshToken = localStorage.getItem('refresh_token');
+  req.headers.Authorization = 'JWT ' + accessToken;
 
   if (!accessToken)
   {
@@ -36,15 +37,17 @@ axiosInstance.interceptors.request.use(async function(req) {
     .then((res) => {
       localStorage.setItem('access_token', res.data.access);
       localStorage.setItem('refresh_token', res.data.refresh);
-      axiosInstance.defaults.headers['Autorization'] =
+      axiosInstance.defaults.headers['Authorization'] =
         'JWT ' + localStorage.getItem('access_token');
     })
     .catch((err) => {
       localStorage.clear('access_token');
       localStorage.clear('refresh_token');
-      axiosInstance.defaults.headers['Autorization'] = null;
+      axiosInstance.defaults.headers['Authorization'] = null;
     });
-
+  
+  
+  
 
   return req;
 

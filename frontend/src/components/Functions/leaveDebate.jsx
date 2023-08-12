@@ -10,13 +10,11 @@ function leaveDebate(setUserName, setLoggedIn, setInDebate, navigate) {
       axiosInstance
             .patch('user/current/', {"current_debate": null, 'role': null})
             .then((res) => {
-            console.log('Sikeres kilépés');
             navigate('/');
-            window.location.reload(false);
+            //window.location.reload(false);
+            setInDebate(false);
             })
             .catch((err) => {
-            console.log(err);
-            console.log('Baj van');
             })
       
     })

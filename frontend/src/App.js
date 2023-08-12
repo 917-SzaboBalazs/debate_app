@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
@@ -20,22 +20,37 @@ import JudgesDrag from './pages/JudgesDrag/JudgesDrag';
 import TesterPage from './pages/TesterPage/Test';
 
 import './App.css';
+import axiosInstance from './axios';
 
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [inDebate, setInDebate] = useState(false);
+
+  useEffect(() => {
+    axiosInstance
+      .get("user/current/")
+      .then((res) => {
+        setLoggedIn(true);
+      })
+      .catch((err) => {
+
+      })
+  })
+
   return (
     <>
       <Router>
         {/* Navbar  */}
-        <Navbar />
+        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate} />
 
         {/* A tobbi oldal elerhetosege  */}
         <Routes>
           {/* Home  */}
-          <Route path='/' exact element={<Home />} />
+          <Route path='/' exact element={<Home loggedIn={loggedIn} inDebate={inDebate} setInDebate={setInDebate} />} />
 
           {/* Login - Signup  */}
-          <Route path='/log-In' exact element={<Login />} />
+          <Route path='/log-In' exact element={<Login setLoggedIn={setLoggedIn} />} />
           <Route path='/sign-up' exact element={<Signup/>} />
 
           <Route path='/about-us' exact element={<AboutUs />} />

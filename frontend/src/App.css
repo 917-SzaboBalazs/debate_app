@@ -19,6 +19,10 @@
   color: white;
 }
 
+body {
+  background-color: #3e4958;
+}
+
 .base {
   /*background-image: url('./images/mikrofon.jpg') center center/cover no-repeat;
   background-attachment: fixed;*/
@@ -74,3 +78,11 @@
   }
 }
 /* container width*/
+
+/* fade in animation */
+.fade-in { animation: fadeIn 0.2s ease-in-out; }
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
