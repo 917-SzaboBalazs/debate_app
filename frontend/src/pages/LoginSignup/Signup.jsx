@@ -38,8 +38,8 @@ function Signup() {
       return false;
     }
 
-    if (username.length < 5 || username.length > 50) {
-      message = 'The username must be between 5 and 51 characters.';
+    if (username.length > 20) {
+      message = 'The length of the username must be maximum 20 characters.';
       return false;
     }
 
@@ -58,18 +58,8 @@ function Signup() {
       return false;
     }
 
-    if (password.length < 8 || password.length > 50) {
-      message = 'The password must be between 8 and 51 characters.';
-      return false;
-    }
-
-    if (!/([A-Z]+)/g.test(password)) {
-      message = 'There must be at least one capital letter in your password.';
-      return false;
-    }
-
-    if (!/([0-9]+)/g.test(password)) {
-      message = 'There must be at least one number in your password.';
+    if (password.length < 8) {
+      message = 'The password must be at least 8 characters';
       return false;
     }
 
@@ -80,6 +70,11 @@ function Signup() {
   const validateEmail = (email) => {
     if (email === '') {
       message = 'The email field must not be empty.';
+      return false;
+    }
+
+    if (email.length > 40) {
+      message = 'The email must be at most 40 characters.';
       return false;
     }
 
@@ -153,7 +148,7 @@ function Signup() {
                 setFinal('This username already exists.');
                 setUserName('');
               } else if (typeof(err.response.data.email) != 'undefined') {
-                setFinal('User with this email already exists.');
+                setFinal('This email address has been used before.');
                 setEmail('');
               } else if (err.response.status === 400){
                 setFinal('Unexpected error');
@@ -166,12 +161,6 @@ function Signup() {
     setTrigger(true);
   };
 
-  document.addEventListener('keydown', function(event) {
-    if (event.keyCode === 13) {
-      handleSubmit(event);
-    }
-  });
-
 
   const images = [
     image1,   
@@ -183,7 +172,7 @@ function Signup() {
   ];
 
   const [value, setValue] = React.useState(0);
-  let timer
+  let timer;
   
   const updateCount = () => {
     timer = setInterval(() => {
