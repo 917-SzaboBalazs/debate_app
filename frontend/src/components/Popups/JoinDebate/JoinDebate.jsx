@@ -44,6 +44,7 @@ function JoinDebate(props) {
                 //window.location.reload(false);
                 props.setInDebate(true);
                 props.setTrigger(false);
+                props.closeMenu();
                 setDebateCode("");
 
                 axiosInstance

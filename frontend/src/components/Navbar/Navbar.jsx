@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -23,12 +23,13 @@ import './Navbar2.css';
 import Logo from '../../images/logo.svg';
 
 function CreateDebateComponent(props) {
-  const { loggedIn, navigate, setInDebate } = props;
+  const { loggedIn, navigate, setInDebate, closeMenu } = props;
 
   if (loggedIn) {
     return (
       <Nav.Link 
         onClick={async () => { 
+          closeMenu();
           await handleClickTriggerCreate(navigate, setInDebate);
         }}
         className='nav-link yellow-text'>Create a Debate
@@ -46,6 +47,7 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
     const [ triggerJoin, setTriggerJoin ] = useState(false);
     const [ userName, setUserName ] = useState('');
     const [ debateStatus, setDebateStatus ] = useState('/new-debate');
+    const [ menuOpen, setMenuOpen ] = useState(false);
 
     const [loading, setLoading] = useState(true);
 
@@ -75,9 +77,11 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
 
     const handleClickTriggerJoin = () => {
       setTriggerJoin(true);
+      
     }
 
     const logOut = () => {
+      closeMenu();
       axiosInstance
         .post('user/logout/blacklist/', {
   			refresh_token: localStorage.getItem('refresh_token'),
@@ -116,7 +120,10 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
     //     })
     //     .catch((err) => {
     //     })
-      
+    
+
+  const closeMenu = () => { setMenuOpen(false); window.scrollTo(0, 0) };
+  const toggleMenu = () => setMenuOpen(menuOpen === "expanded" ? false : "expanded");
 
   if (loading)
   {
@@ -125,47 +132,46 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
 
   return (
     <>
-    <Navbar collapseOnSelect expand="lg" bg="primary" className='nav fade-in'>
+    <Navbar collapseOnSelect expand="lg" bg="primary" className='nav fade-in' expanded={menuOpen}>
       <Container>
-        <Navbar.Brand as={Link} to="/" className='nav-brand'><img src={Logo} className='nav--logo'/></Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" color='white'/>
+        <Navbar.Brand as={Link} to="/" className='nav-brand'><img src={Logo} className='nav--logo' onClick={closeMenu}/></Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" color='white' onClick={toggleMenu} />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-          <Nav.Link as={Link} to="/about-us" className='nav-link'>About Us</Nav.Link>
-          <Nav.Link as={Link} to="/debates" className='nav-link'>Debates</Nav.Link>
+          <Nav.Link as={Link} to="/about-us" className='nav-link' onClick={closeMenu}>About Us</Nav.Link>
+          <Nav.Link as={Link} to="/debates" className='nav-link' onClick={closeMenu}>Debates</Nav.Link>
 
             {
               !inDebate ?
               <>
                 {loggedIn && <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link> }
-                <CreateDebateComponent loggedIn={loggedIn} setInDebate={setInDebate} navigate={navigate} />
+                <CreateDebateComponent loggedIn={loggedIn} setInDebate={setInDebate} navigate={navigate} closeMenu={closeMenu} />
               </>
               :
               <>
-                <Nav.Link as={Link} to={debateStatus} className='nav-link yellow-text'>Current Debate</Nav.Link>
+                <Nav.Link as={Link} to={debateStatus} className='nav-link yellow-text' onClick={closeMenu}>Current Debate</Nav.Link>
                 <Nav.Link onClick={
                   () => {
+                  closeMenu();
                   leaveDebate(setUserName, setLoggedIn, setInDebate, navigate);
                   }} className='nav-link yellow-text'>Leave Debate</Nav.Link>
               </>
             }
-          </Nav>
-          <Nav>
             { !loggedIn ?
                 <>
-                  <Nav.Link as={Link} to="/log-In" className='nav-link'>Log In</Nav.Link>
-                  <Nav.Link as={Link} to="/sign-up" className='nav-link'>Sign Up</Nav.Link>
+                  <Nav.Link as={Link} to="/log-In" className='nav-link' onClick={closeMenu}>Log In</Nav.Link>
+                  <Nav.Link as={Link} to="/sign-up" className='nav-link' onClick={closeMenu}>Sign Up</Nav.Link>
 
                 </>
                 :
                 <>
-                  <Nav.Link as={Link} to="/profile" className='nav-link'>{userName}</Nav.Link>
+                  <Nav.Link as={Link} to="/profile" className='nav-link' onClick={closeMenu}>{userName}</Nav.Link>
                   <Nav.Link onClick={logOut}>Log Out</Nav.Link>
                 </>
             }
           </Nav>
           <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} />
-          <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} setInDebate={setInDebate} />
+          <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} setInDebate={setInDebate} closeMenu={closeMenu}/>
         </Navbar.Collapse>
       </Container>
     </Navbar>
