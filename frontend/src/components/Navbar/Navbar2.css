@@ -37,6 +37,18 @@
     transition: .4s;
 }
 
+.nav-link:focus:hover {
+    color: black;
+}
+
+.nav-link:focus:not(:hover) {
+    color: white;
+}
+
+.nav-link.yellow-text:focus:not(:hover) {
+    color: #61c3c3;
+}
+
 .nav-brand:hover {
     color: #61c3c3;
     transition: .4s;

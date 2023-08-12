@@ -131,7 +131,7 @@ function Signup() {
             const delay = ms => new Promise(res => setTimeout(res, ms));
 
             const waitFunc = async () => {
-              await delay(3500);
+              await delay(2500);
 
               navigate('/');
             }

@@ -17,7 +17,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(async function(req) {
   const accessToken = localStorage.getItem('access_token');
   const refreshToken = localStorage.getItem('refresh_token');
-  req.headers.Authorization = 'JWT ' + accessToken;
+  req.headers.Authorization = accessToken ? 'JWT ' + accessToken : null;
 
   if (!accessToken)
   {

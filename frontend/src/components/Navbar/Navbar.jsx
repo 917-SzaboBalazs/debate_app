@@ -157,6 +157,8 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
                   }} className='nav-link yellow-text'>Leave Debate</Nav.Link>
               </>
             }
+            </Nav>
+            <Nav>
             { !loggedIn ?
                 <>
                   <Nav.Link as={Link} to="/log-In" className='nav-link' onClick={closeMenu}>Log In</Nav.Link>
