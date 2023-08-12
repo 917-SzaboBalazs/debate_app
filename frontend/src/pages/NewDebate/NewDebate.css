@@ -289,6 +289,11 @@
     /* border-right: 2px solid var(--mcc-kek); */
 }
 
+.new-debate--entry-code {
+    height: 28px;
+    margin-bottom: 20px;
+}
+
 @media screen and (max-width: 1000px) {
     .new-debate--entry-code {
         margin-top: 50px;

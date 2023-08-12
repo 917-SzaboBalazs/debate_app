@@ -23,13 +23,13 @@ import './Navbar2.css';
 import Logo from '../../images/logo.svg';
 
 function CreateDebateComponent(props) {
-  const { loggedIn, navigate } = props;
+  const { loggedIn, navigate, setInDebate } = props;
 
   if (loggedIn) {
     return (
       <Nav.Link 
         onClick={async () => { 
-          await handleClickTriggerCreate(navigate);
+          await handleClickTriggerCreate(navigate, setInDebate);
         }}
         className='nav-link yellow-text'>Create a Debate
       </Nav.Link>
@@ -39,15 +39,15 @@ function CreateDebateComponent(props) {
   return(<></>)
 }
 
-function CollapsibleExample() {
+function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
     let navigate = useNavigate();
 
     const [ triggerCreate, setTriggerCreate ] = useState(false);
     const [ triggerJoin, setTriggerJoin ] = useState(false);
-    const [ loggedIn, setLoggedIn ] = useState(false);
     const [ userName, setUserName ] = useState('');
-    const [ inDebate, setInDebate ] = useState(false);
     const [ debateStatus, setDebateStatus ] = useState('/new-debate');
+
+    const [loading, setLoading] = useState(true);
 
     // check if user is logged in
     useEffect(() => {
@@ -58,7 +58,6 @@ function CollapsibleExample() {
       axiosInstance
         .get('debate/current/')
         .then((res) => {
-          // console.log(res.data.status)
           if (res.data.status == 'lobby') {
             setDebateStatus('/new-debate')
           } else if (res.data.status == 'running') {
@@ -66,12 +65,13 @@ function CollapsibleExample() {
           } else if (res.data.status == 'finished') {
             setDebateStatus('/finished-debate')
           }
+          setLoading(false);
         })
         .catch((err) => {
-          console.log(err);
+          setLoading(false);
         })
 
-    }, []);
+    }, [loggedIn, inDebate]);
 
     const handleClickTriggerJoin = () => {
       setTriggerJoin(true);
@@ -90,10 +90,8 @@ function CollapsibleExample() {
           setLoggedIn(false);
 
           navigate('/');
-          window.location.reload(false);
       })
         .catch((err) => {
-          console.log(err);
         })
     }
 
@@ -111,21 +109,23 @@ function CollapsibleExample() {
     //                 getUserCurrent(setUserName, setLoggedIn, setInDebate);
     //                 })
     //               .catch((err) => {
-    //                 console.log(err);
     //               })
     //         })
     //         .catch((err) => {
-    //           console.log(err);
     //         });
     //     })
     //     .catch((err) => {
-    //       console.log(err);
     //     })
       
 
+  if (loading)
+  {
+    return <></>
+  }
+
   return (
     <>
-    <Navbar collapseOnSelect expand="lg" bg="primary" className='nav'>
+    <Navbar collapseOnSelect expand="lg" bg="primary" className='nav fade-in'>
       <Container>
         <Navbar.Brand as={Link} to="/" className='nav-brand'><img src={Logo} className='nav--logo'/></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" color='white'/>
@@ -137,12 +137,12 @@ function CollapsibleExample() {
             {
               !inDebate ?
               <>
-                <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link>
-                <CreateDebateComponent loggedIn={loggedIn} navigate={navigate} />
+                {loggedIn && <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link> }
+                <CreateDebateComponent loggedIn={loggedIn} setInDebate={setInDebate} navigate={navigate} />
               </>
               :
               <>
-                <Nav.Link href={debateStatus} className='nav-link yellow-text'>Current Debate</Nav.Link>
+                <Nav.Link as={Link} to={debateStatus} className='nav-link yellow-text'>Current Debate</Nav.Link>
                 <Nav.Link onClick={
                   () => {
                   leaveDebate(setUserName, setLoggedIn, setInDebate, navigate);
@@ -165,7 +165,7 @@ function CollapsibleExample() {
             }
           </Nav>
           <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} />
-          <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} />
+          <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} setInDebate={setInDebate} />
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -117,3 +117,14 @@
         z-index: 12;
     }
 }
+
+@media screen and (max-width: 1000px) {
+    .join-debate--text {
+        font-size: 20px;
+    }
+    
+    #join-debate--code {
+        width: 100%;
+        margin: 0 auto !important;
+    }
+}

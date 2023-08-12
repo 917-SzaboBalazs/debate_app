@@ -26,6 +26,7 @@ function JoinDebate(props) {
     const handleClose = useCallback((props) => {
       setErrorState(false);
       props.setTrigger(false);
+      setDebateCode("");
     }, [setErrorState]);
     
     const handleNext = () => {
@@ -40,7 +41,10 @@ function JoinDebate(props) {
             }})
             .then((res) => {
                 navigate('/new-debate');
-                window.location.reload(false);
+                //window.location.reload(false);
+                props.setInDebate(true);
+                props.setTrigger(false);
+                setDebateCode("");
 
                 axiosInstance
                   .patch('user/current/', {
