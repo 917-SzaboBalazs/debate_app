@@ -8,7 +8,7 @@ const text = " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque 
 function Debates() {
   return (
     <div className="debates--base base">
-        <div className="container debates--container">
+        <div className="container debates--container fade-in">
             <div className="row debates--header-row">
                 <div className="col-4 debates--header-title-cont">
                     <h1 className="debates--header-title">

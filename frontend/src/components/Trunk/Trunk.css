@@ -104,7 +104,6 @@
     border: 2px solid white;
     border-radius: 1.25rem;
     color: white;
-    padding: 15px;
     transition: .3s;
     
     margin-right: 5px;
@@ -118,6 +117,8 @@
 
   .trunk--login-link {
     color: white;
+    display: inline-block;
+    padding: 15px;
   }
 
   .trunk--signup-link {

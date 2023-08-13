@@ -125,15 +125,15 @@ function Signup() {
           })
           .then((res) => {
             console.log('Succes!');
-            setFinal('Succes! (you will be redirected to home-page in 3 seconds');
+            setFinal('Success! Your account has been created!');
             
             // wait for 3 seconds before redirecting to home page
             const delay = ms => new Promise(res => setTimeout(res, ms));
 
             const waitFunc = async () => {
-              await delay(2500);
+              await delay(1500);
 
-              navigate('/');
+              navigate('/log-in');
             }
             waitFunc();
           })
@@ -190,81 +190,89 @@ function Signup() {
   return (
     <div className='signup-body base'>
       <div className="container">
-        <form>
-        <div className="trunk-container row">
-            <div className="signup--left-side p-0 col-md-6 col-sm-12" >
-              <img src={images[value]} className='signup--bg-img'/>
-            
-            </div>
-            <div className="signup--container d-flex align-items-center justify-content-center col-md-6 col-sm-12">
-                <div className="signup-box ">
+
+        <div className="trunk-container fade-in">
+            <div className="signup--container d-flex align-items-center justify-content-center">
+                <div className="signup-box align-items center">
                     {/* <div className="signup-box-2 col-12"> */}
-                    <h1 className="signup--signup-title">Register</h1>
-                    <h5 className="username-text">Username:</h5>
-                    <input
-                        id="username"
-                        name="username"
-                        type="text"
-                        placeholder='username'
-                        className="username"
-                        value={userName}
-                        onChange = {(e) => {
-                          setUserName(e.target.value);
-                        } }
-                    />
-                    <h5 className="email-text">Email:</h5>
-                    <input
-                        id="email"
-                        name="email"
-                        type="text"
-                        placeholder='lukrecia@cicamail.hu'
-                        className="email"
-                        value={email}
-                        onChange = {(e) => {
-                          setEmail(e.target.value);
-                        } }
-                    />
-                    <h5 className="password-text">Password:</h5>
-                    <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        placeholder='min 8 chars: capital, number, spec char'
-                        className='password'
-                        value={password}
-                        onChange = {(e) => {
-                          setPassword(e.target.value);
-                        } }
-                    />
-                    <h5 className="password-text">Password again:</h5>
-                    <input
-                        id="passwordAgain"
-                        name="passwordAgain"
-                        type="password"
-                        placeholder='min 8 chars: capital, number, spec char'
-                        className='password'
-                        value={passwordAgain}
-                        onChange = {(e) => {
-                          setPasswordAgain(e.target.value);
-                        } }
-                    />
+                    <h1 className="signup--signup-title">Sign Up</h1>
+
+                    <div className="icon-container">
+                      <input
+                          id="username"
+                          name="username"
+                          type="text"
+                          placeholder='Username'
+                          className="username"
+                          value={userName}
+                          onChange = {(e) => {
+                            setUserName(e.target.value);
+                          } }
+                      />
+                      <i>&#xf007;</i>
+                    </div>
+
+                    <div className="icon-container">
+                      <input
+                          id="email"
+                          name="email"
+                          type="text"
+                          placeholder='Email'
+                          className="email"
+                          value={email}
+                          onChange = {(e) => {
+                            setEmail(e.target.value);
+                          } }
+                      />
+                      <i>&#xf003;</i>
+                    </div>
+
+                    <div className="icon-container">
+                      <input
+                          id="password"
+                          name="password"
+                          type="password"
+                          placeholder='Password'
+                          className='password'
+                          value={password}
+                          onChange = {(e) => {
+                            setPassword(e.target.value);
+                          } }
+                      />
+                      <i>&#xf023;</i>
+                    </div>
+
+                    <div className="icon-container">
+                      <input
+                          id="passwordAgain"
+                          name="passwordAgain"
+                          type="password"
+                          placeholder='Password Again'
+                          className='password'
+                          value={passwordAgain}
+                          onChange = {(e) => {
+                            setPasswordAgain(e.target.value);
+                          } }
+                      />
+                      <i>&#xf023;</i>
+                    </div>
                     {/* </div> */}
                     {/* <p className="signup--password-help text-center">
                       The password needs to be at least 8 characters long, has to contain a capital letter and a number at least.
                     </p> */}
                     
-                    <div className="signup--btn-row row">
+                    <div className="signup--btn-row row text-center">
                       <div className="singup--btn-cont col-12">
                         <button
                             className='signup-btn'
                             type='submit'
                             onClick={handleSubmit}
                         >
-                            Register
+                            Create Account
                         </button>
                       </div>
                       <div className="signup--already-cont row">
-                        <Link className="signup--already-have-an-account col-12" to='/log-In'><span>Already have an account</span></Link>
+                        <Link className="signup--already-have-an-account col-12" to='/log-in'><span>Already have an Account? Sign in Now</span></Link>
                       </div>
                    {/* </div> */}
                    </div>
@@ -274,7 +282,7 @@ function Signup() {
           <SignupPopup trigger={trigger} setTrigger={setTrigger}>
             <h3>{finalMessage}</h3>
           </SignupPopup>
-          </form>
+
         </div>
     </div>
   )

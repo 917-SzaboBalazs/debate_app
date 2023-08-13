@@ -26,6 +26,7 @@ import axiosInstance from './axios';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [inDebate, setInDebate] = useState(false);
+  const [ status, setStatus ] = useState('/new-debate');
 
   useEffect(() => {
     axiosInstance
@@ -42,12 +43,12 @@ function App() {
     <>
       <Router>
         {/* Navbar  */}
-        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate} />
+        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate} status={status} setStatus={setStatus}/>
 
         {/* A tobbi oldal elerhetosege  */}
         <Routes>
           {/* Home  */}
-          <Route path='/' exact element={<Home loggedIn={loggedIn} inDebate={inDebate} setInDebate={setInDebate} />} />
+          <Route path='/' exact element={<Home loggedIn={loggedIn} inDebate={inDebate} setInDebate={setInDebate} status={status} setStatus={setStatus} />} />
 
           {/* Login - Signup  */}
           <Route path='/log-In' exact element={<Login setLoggedIn={setLoggedIn} />} />
@@ -62,7 +63,7 @@ function App() {
           <Route path='/in-debate' exact element={<InDebateTimer />} />
           <Route path='/judges-drag' exact element={<JudgesDrag />} />
           <Route path='/results' exact element={<Results />} />
-          <Route path='/finished-debate' exact element={<FinishedDebate />}></Route>
+          <Route path='/finished-debate' exact element={<FinishedDebate setInDebate={setInDebate}/>}></Route>
 
           {/* Profile */}
           <Route path='/profile' exact element={<Profile />} />
@@ -76,7 +77,7 @@ function App() {
         </Routes>
       
       {/* Footer  */}
-      <Footer />
+      <Footer loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate}/>
       </Router>
     </>
   )

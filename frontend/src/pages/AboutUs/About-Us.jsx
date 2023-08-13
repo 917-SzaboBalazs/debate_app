@@ -13,6 +13,7 @@ import andris from '../../images/csapat/andris.jpg';
 function AboutUs() {
   return (
     <div className="about-us--container base">
+      <div className="fade-in">
       <h1 className='about-us--title'>Kik vagyunk?</h1>
 
         <div className="us--container">
@@ -25,7 +26,7 @@ function AboutUs() {
           <div className='teammember'>
               <img src={szabo} alt='Szabó Balázs'></img>
               <h2>Szabó Balázs</h2>
-              <h3>Backend Fejlesztő</h3>
+              <h3>Fullstack Fejlesztő</h3>
           </div>
           <div className='teammember'>
               <img src={kata} alt='Simon Katalin'></img>
@@ -58,7 +59,7 @@ function AboutUs() {
               <h3>Mentor</h3>
           </div>
         </div>
-        
+        </div>
       </div>
   )
 }

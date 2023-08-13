@@ -139,6 +139,8 @@ function NewDebate() {
                     {/* Itt van a kozepso sor*/}
                     <div className='new-debate--motion col-6 text-center p-4'>
                         {/* Ez egy textfield lesz, hogy at lehessen irni ha arra volna igeny */}
+                        <div className="col-12 new-debate--pro-btn new-debate--label text-center font-weight-bold"><h2>Motion</h2></div>
+                        <hr className='new-debate--line'></hr>
                         <div className="row">
                             <div className="row">
                                 <textarea  type="text" 
@@ -154,7 +156,7 @@ function NewDebate() {
                         </div>
                         <div className="row">
                             <h2 className='
-                                new-debate--entry-code  
+                                new-debate--entry-code
                                 text-center 
                                 white-text'
                                 >
@@ -178,7 +180,16 @@ function NewDebate() {
                                         </div>
                                     </div>
                                 </>
-                                : null
+                                : 
+                                <>
+                                <div className="new-debate--start row justify-content-center">
+                                        <div
+                                            className="new-debate--button new-debate--button-disabled col-4 white-text text-center"
+                                        >
+                                            start
+                                        </div>
+                                    </div>
+                    </>
                             }
                         </div>
                         <div className="row new-debate--judge--spectator justify-content-evenly"> 
