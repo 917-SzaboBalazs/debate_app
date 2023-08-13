@@ -85,7 +85,7 @@
     transition: .3s;
 }
 
-.new-debate--button:hover {
+.new-debate--button:not(.new-debate--button-disabled):hover {
     color: var(--mcc-kek);
     background-color: white;
     transition: .3s;
@@ -292,6 +292,10 @@
 .new-debate--entry-code {
     height: 28px;
     margin-bottom: 20px;
+}
+
+.new-debate--button-disabled {
+    opacity: 0.5;
 }
 
 @media screen and (max-width: 1000px) {

@@ -178,7 +178,16 @@ function NewDebate() {
                                         </div>
                                     </div>
                                 </>
-                                : null
+                                : 
+                                <>
+                                <div className="new-debate--start row justify-content-center">
+                                        <div
+                                            className="new-debate--button new-debate--button-disabled col-4 white-text text-center"
+                                        >
+                                            start
+                                        </div>
+                                    </div>
+                    </>
                             }
                         </div>
                         <div className="row new-debate--judge--spectator justify-content-evenly"> 

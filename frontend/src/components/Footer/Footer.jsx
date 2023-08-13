@@ -7,21 +7,23 @@ import fb from '../../images/facebook.png';
 import insta from '../../images/insta.png';
 import wa from '../../images/WhatsApp.png';
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import './Footer.css';
 
-export default function Footer() {
-  const [ loggedIn, setLoggedIn ] = useState(false);
+export default function Footer({ loggedIn, inDebate, setLoggedIn, setInDebate }) {
   const [ userName, setUserName ] = useState('');
-  const [ inDebate, setInDebate ] = useState(false);
+
+  const location = useLocation();
+  const hideFooterURLs = ['/new-debate', '/in-debate', '/results', '/finished-debate'];
 
   useEffect(() => {
     getUserCurrent(setUserName, setLoggedIn, setInDebate);
   }, [setUserName, setLoggedIn, setInDebate]);
 
-
-  if (inDebate) {
+  console.log(location.pathname);
+  if (hideFooterURLs.includes(location.pathname)) {
+    
     return <></>
   }
 

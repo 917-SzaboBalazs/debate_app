@@ -21,7 +21,7 @@ function NewDebateMobile() {
     const [ entryCode, setEntryCode ] = useState('');
     const [ someError, setSomeError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState('');
-    const [ motion, setMotion ] = useState();
+    const [ motion, setMotion ] = useState("");
     const [ currRole, setCurrRole ] = useState('spectator');
     const [ focused, setFocused ] = useState(false);
 
@@ -50,7 +50,7 @@ function NewDebateMobile() {
         }, 500)
   
           return () => {clearInterval(interval)};
-      }, [focused]);
+      }, [focused, navigate]);
 
       useEffect(() => {
         axiosInstance
@@ -95,7 +95,7 @@ function NewDebateMobile() {
 
     return (
         <div className='new-debate--background new-debate--background--mobile  base'>
-            <div className="new-debate--container container">
+            <div className="new-debate--container container fade-in">
                 {
                     
                     someError ?
@@ -191,7 +191,7 @@ function NewDebateMobile() {
                                     new-debate--button 
                                     col-4 white-text 
                                     text-center" 
-                                    onClick={() => handleChoose('judge', null, setCurrRole)}
+                                    onClick={() => { handleChoose('judge', null, setCurrRole); window.scrollTo(0, document.body.scrollHeight); }}
                                 >
                                 judge
                             </div>    
@@ -233,20 +233,29 @@ function NewDebateMobile() {
                         </div>*/}
                 
                 {/* ha megvan minden fontos, el lehet inditani a vitat --  de ez sem biztos hogy kell  */}
+                <div className="new-debate--start row justify-content-center">
                 {
                     (currRole == 'judge' ) ?
                     <>
-                        <div className="new-debate--start row justify-content-center">
+                        
                             <div
                                 className="new-debate--button col-4 white-text text-center"
                                 onClick={startDebate}
                             >
                                 start
                             </div>
-                        </div>
+                        
                     </>
-                    : null
+                    : 
+                    <>
+                         <div
+                                className="new-debate--button new-debate--button-disabled col-4 white-text text-center"
+                            >
+                                start
+                            </div>
+                    </>
                 }
+                </div>
                 </>
                 }
             </div>

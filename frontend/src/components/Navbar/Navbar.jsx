@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -49,6 +49,7 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
     const [ menuOpen, setMenuOpen ] = useState(false);
 
     const [loading, setLoading] = useState(true);
+    const location = useLocation();
 
     // check if user is logged in
     useEffect(() => {
@@ -73,6 +74,10 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
         })
 
     }, [loggedIn, inDebate]);
+
+    useEffect(() => {
+      closeMenu();
+    }, [location]);
 
     const handleClickTriggerJoin = () => {
       setTriggerJoin(true);

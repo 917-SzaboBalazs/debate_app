@@ -77,7 +77,7 @@ function App() {
         </Routes>
       
       {/* Footer  */}
-      <Footer />
+      <Footer loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate}/>
       </Router>
     </>
   )

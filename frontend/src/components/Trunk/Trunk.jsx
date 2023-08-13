@@ -143,7 +143,7 @@ function Trunk({ loggedIn, inDebate, setInDebate, status, setStatus, closeMenu }
                 </div>
             </div>
         </div>
-        <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} />
+        <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} setInDebate={setInDebate} />
         <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} setInDebate={setInDebate} status={status} setStatus={setStatus} />
     </div>
   )
