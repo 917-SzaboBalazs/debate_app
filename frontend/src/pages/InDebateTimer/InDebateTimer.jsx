@@ -44,6 +44,8 @@ function InDebateTimer() {
     const [ poi, setPOI ] = useState(false);
     const [ POIseconds, setPOIseconds ] = useState(15);
 
+    const [loading, setLoading] = useState(true);
+
     const speakerRole = [ 'Nyitó kormány - 1', 'Nyitó ellenzék - 1', 'Nyitó kormány - 2', 'Nyitó ellenzék - 2', 'Záró kormány - 1', 'Záró ellenzék - 1', 'Záró kormány - 2', 'Záró ellenzék - 2'];
     
     // check if user is logged in
@@ -88,9 +90,12 @@ function InDebateTimer() {
                     navigate('/finished-debate')
                 }
 
+                setLoading(false);
+
             })
             .catch((err) => {
                 console.log(err);
+                setLoading(false);
             }, []);
 
             // timer
@@ -265,10 +270,14 @@ function InDebateTimer() {
             })
     }
 
+    if (loading) {
+        return <div className="indebate--base base"><div className="indebate--container container fade-in"></div></div>
+    }
+
     return (
         <>
         <div className="indebate--base base">
-            <div className="indebate--container container">
+            <div className="indebate--container container fade-in">
                 { loggedIn && inDebate ?
                 <>
                 {

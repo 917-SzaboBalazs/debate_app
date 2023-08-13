@@ -29,7 +29,7 @@ const ListResult = (props, index) => {
   // return winnerTeam[props.index];
 }
 
-function FinishedDebate() {
+function FinishedDebate({ setInDebate }) {
     const [ winnerTeam, setWinnerTeam ] = useState(['Nem lehet tudni, az egyik dev elbaszott valamit'])
     
     const navigate = useNavigate();
@@ -54,13 +54,11 @@ function FinishedDebate() {
         axiosInstance
             .patch('user/current/', {"current_debate": null, 'role': null})
             .then((res) => {
-                console.log('Sikeres kilépés');
+                setInDebate(false);
                 navigate('/');
-                window.location.reload(false);
+                
             })
             .catch((err) => {
-                console.log(err);
-                console.log('Baj van');
             })
     }
 

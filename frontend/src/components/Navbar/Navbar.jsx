@@ -40,13 +40,12 @@ function CreateDebateComponent(props) {
   return(<></>)
 }
 
-function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
+function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, status, setStatus }) {
     let navigate = useNavigate();
 
     const [ triggerCreate, setTriggerCreate ] = useState(false);
     const [ triggerJoin, setTriggerJoin ] = useState(false);
     const [ userName, setUserName ] = useState('');
-    const [ debateStatus, setDebateStatus ] = useState('/new-debate');
     const [ menuOpen, setMenuOpen ] = useState(false);
 
     const [loading, setLoading] = useState(true);
@@ -61,11 +60,11 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
         .get('debate/current/')
         .then((res) => {
           if (res.data.status == 'lobby') {
-            setDebateStatus('/new-debate')
+            setStatus('/new-debate')
           } else if (res.data.status == 'running') {
-            setDebateStatus('/in-debate')
+            setStatus('/in-debate')
           } else if (res.data.status == 'finished') {
-            setDebateStatus('/finished-debate')
+            setStatus('/finished-debate')
           }
           setLoading(false);
         })
@@ -149,12 +148,12 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
               </>
               :
               <>
-                <Nav.Link as={Link} to={debateStatus} className='nav-link yellow-text' onClick={closeMenu}>Current Debate</Nav.Link>
-                <Nav.Link onClick={
+                {loggedIn && <Nav.Link as={Link} to={status} className='nav-link yellow-text' onClick={closeMenu}>Current Debate</Nav.Link>}
+                {loggedIn && <Nav.Link onClick={
                   () => {
                   closeMenu();
                   leaveDebate(setUserName, setLoggedIn, setInDebate, navigate);
-                  }} className='nav-link yellow-text'>Leave Debate</Nav.Link>
+                  }} className='nav-link yellow-text'>Leave Debate</Nav.Link>}
               </>
             }
             </Nav>
@@ -173,7 +172,7 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
             }
           </Nav>
           <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} />
-          <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} setInDebate={setInDebate} closeMenu={closeMenu}/>
+          <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} setInDebate={setInDebate} closeMenu={closeMenu} status={status} setStatus={setStatus}/>
         </Navbar.Collapse>
       </Container>
     </Navbar>

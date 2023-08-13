@@ -34,18 +34,28 @@ function JoinDebate(props) {
             return;
         }
 
-        console.log(debateCode);
         axiosInstance
             .get('debate/current/', {params: {
                 "entry-code":debateCode
             }})
             .then((res) => {
-                navigate('/new-debate');
-                //window.location.reload(false);
+                
                 props.setInDebate(true);
                 props.setTrigger(false);
-                props.closeMenu();
+
+                if (props.closeMenu) {
+                  props.closeMenu();
+                }
                 setDebateCode("");
+                if (res.data.status === 'lobby') {
+                  props.setStatus('/new-debate')
+                } else if (res.data.status === 'running') {
+                  props.setStatus('/in-debate')
+                } else if (res.data.status === 'finished') {
+                  props.setStatus('/finished-debate')
+                }
+
+                navigate(props.status);
 
                 axiosInstance
                   .patch('user/current/', {
@@ -75,6 +85,7 @@ function JoinDebate(props) {
                     onChange={(e) => {
                         setDebateCode(e.target.value);
                     }}
+                    autoFocus
                 />
                 <button
                     className="join-debate--next-btn"

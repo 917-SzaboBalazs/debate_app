@@ -13,6 +13,7 @@ import andris from '../../images/csapat/andris.jpg';
 function AboutUs() {
   return (
     <div className="about-us--container base">
+      <div className="fade-in">
       <h1 className='about-us--title'>Kik vagyunk?</h1>
 
         <div className="us--container">
@@ -58,7 +59,7 @@ function AboutUs() {
               <h3>Mentor</h3>
           </div>
         </div>
-        
+        </div>
       </div>
   )
 }

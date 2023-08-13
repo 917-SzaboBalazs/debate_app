@@ -10,11 +10,11 @@ import CreateDebate from '../Popups/CreateDebate/CreateDebate';
 
 import './Trunk.css';
 
-function Trunk({ loggedIn, inDebate, setInDebate }) {
+function Trunk({ loggedIn, inDebate, setInDebate, status, setStatus, closeMenu }) {
     const [ triggerCreate, setTriggerCreate ] = useState(false);
     const [ triggerJoin, setTriggerJoin ] = useState(false);
 
-    const [ status, setStatus ] = useState('/new-debate')
+    
 
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
@@ -144,7 +144,7 @@ function Trunk({ loggedIn, inDebate, setInDebate }) {
             </div>
         </div>
         <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} />
-        <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} setInDebate={setInDebate} />
+        <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} setInDebate={setInDebate} status={status} setStatus={setStatus} />
     </div>
   )
 }
