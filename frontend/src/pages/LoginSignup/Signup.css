@@ -1,3 +1,5 @@
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+
 /* :root {
     --primary: white;
     --secondary: #22344D;
@@ -12,135 +14,139 @@
 
 .signup-body {
     min-height: 100vh;
-    /* width: 100%; */
     color: var(--black);
 } 
 
 
-.signup--container {
-    background-color: var(--primary);
-    min-height: 100vh; 
-    margin-top: 0px;
-    /* padding-left: 3rem; */
+.trunk-container {
+    min-height: 100vh;
+    background-color: #3E4958;
+    width: 700px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 }
 
-.signup--password-help {
-    color:rgba(0, 0, 0, 0.5);
-    /* margin-right: 5rem; */
-    margin-top: 3rem;
-    /*text-align: center;*/
-    margin-bottom: 1rem;
-    /* width: 15vw; */
+.signup--container {
+    width: 500px;
+}
+
+.signup--signup-title{
+    margin-top: 90px;
+    margin-bottom: 30px;
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: rgba(216, 216, 216, 0.408);
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .username {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 .email{
-    margin-bottom: 1.5rem;
-    background-color: var(--primary);
+    margin-bottom: 1rem;
 }
 .password{
-    margin-bottom: 1.5rem;
-}
-
-
-
-.signup-img {
-    /*
-    width: 35%;
-    display: flex;
-    justify-content: center;
-
-    padding-top:  22rem;
-    padding-bottom: 22rem;
-    */
-    min-height: 100vh;
-}
-
-.signup--left-side {
-    overflow: hidden;
-    height: 100vh;
-    background-color: black;
-    /* opacity: 0.7; */
-}
-
-/* .signup-box-2 {
-    padding-left: 9rem;
-}
-
-@media only screen and (max-width: 900px) and (min-width: 759px) {
-    .signup-box-2 {
-        padding-left: 5rem;
-    }
-} */
-
-.signup-box{
-    /*
-    margin-top: 15rem;
-    margin-left: 6rem;
-    */
-    /* position: absolute;
-    top: 60%;
-    left: 72%;
-    transform: translate(-28%, -40%); */
-    margin-top: 5vh;
-    padding-top: 5vh;
+    margin-bottom: 1rem;
 }
 
 .signup-btn {
     cursor: pointer;
-    background-color: #333d4b;
-    color: white;
-    padding: 1vw 2vw;
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 15px;
+    width: 90%;
+    margin: 10px auto 5px auto;
+    padding: 3px 10px;
     font-size: 18px;
-    border-radius: 12px;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
-    transition: .1s;
+    transition: all 0.2s;
 }
 
-.signup-btn:hover {
+
+.singup--btn-cont {
+    display: flex;
+}
+
+.signup-btn:active {
     background-color: white;
-    color: var(--secondary);
-    transition: .2s;
-}   
+    color: black
+} 
+
+@media (hover: hover) {
+    .signup-btn:hover {
+        background-color: white;
+        color: black
+    }   
+}
 
 h5 {
     font-size: 24px;
 }
 
 input {
-    border-width: 0px;
-    border-bottom-width: 2px;
-    border-color: var(--secondary);
+    border-width: 2px;
+    border-color: var(--primary);
     color: var(--secondary);
     font-size: 24px;
+    border-radius: 20px;
+}
+
+.username, .password, .email, .passwordAgain{
+    padding: 5px 15px 5px 40px;
+    color: black;
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+    border: none;
+}
+
+.signup--already-have-an-account {
+    color: white;
+    font-size: 16px;
+    transition: .4s;
+    text-align: center;
+    margin-top: 30px;
+    text-decoration: none;
+    transition: all 0.2s;
+    padding: 0;
 }
 
 
-.signup--signup-title{
-    /* margin-top: 7vh;
-    margin-left: 12vw; */
-    margin-bottom: 5rem;
+.signup--already-have-an-account:active {
+    text-decoration: underline;
+    color: white;
 }
 
-.signup--bg-img{
-    height: 100vh;
-    align-self: center;
-}
-
-#username, #password, #email, #passwordAgain{
-    font-size: medium;
-    width: 90%;
-}
-
-@media only screen and (max-width: 768px) {
-    .signup--left-side {
-        display: none;
+@media (hover: hover) {
+    
+    .signup--already-have-an-account:hover {
+        text-decoration: underline;
+        color: white;
     }
-
-    #username, #password, #email, #passwordAgain{
-        width: 80vw;
-    }
 }
+
+  /* ICON */
+  .icon-container {
+    position: relative;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  .icon-container i {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    font-family: FontAwesome;
+    color: grey;
+    margin-left: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 1000px) {
+    .trunk-container, .signup--container, .signup-box, .icon-container {
+        width: 100%;
+    }
+  }

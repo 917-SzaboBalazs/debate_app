@@ -1,3 +1,5 @@
+
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
 /* :root {
     --primary: white;
     --secondary: #22344D;
@@ -11,31 +13,32 @@
 } */
 
 .login-body {
-    color: var(--black);
-}
-
-.login-body {
     min-height: 100vh;
-    /* width: 100%; */
+    color: var(--black);
+    
 }
 
 .login--trunk-container { 
     min-height: 100vh;
+    background-color: #3E4958;
+    width: 700px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 }
-
 
 .login-container {
-    background-color: var(--primary);
-    min-height: 100vh;
-}
-
-.login--right-side {
-    height: 100vh;
-    overflow: hidden;
+    width: 500px;
 }
 
 .login--login-title {
-    margin-bottom: 5rem;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: rgba(216, 216, 216, 0.408);
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .username {
@@ -44,65 +47,81 @@
 
 .login-btn {
     cursor: pointer;
-    background-color: #333d4b;
-    color: white;
-    padding: 1vw 2vw;
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 15px;
+    width: 90%;
+    margin: 10px auto 5px auto;
+    padding: 3px 10px;
     font-size: 18px;
-    border-radius: 12px;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
-    transition: .2s;
+    transition: all 0.2s;
 }
 
 .login--btn-cont{
     display: flex;
 }
 
-.login-btn:hover {
+.login-btn:active {
     background-color: white;
-    color: var(--secondary);
-    transition: .1s;
-}   
+    color: black
+}  
+
+@media (hover: hover) {
+    .login-btn:hover {
+        background-color: white;
+        color: black
+    }   
+}
 
 h5 {
     font-size: 24px;
 }
 
 input {
-    border-width: 0px;
-    border-bottom-width: 2px;
+    border-width: 2px;
     border-color: var(--primary);
     color: var(--secondary);
     font-size: 24px;
+    border-radius: 20px;
 }
 
 .username, .password{
-    background-color: var(--primary);
+    padding: 5px 15px 5px 40px;
+    color: black;
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+    border: none;
 }
 
-.login--dont-have-account span{
-   
+.login--dont-have-account {
+    color: white;
     font-size: 16px;
     transition: .4s;
+    text-align: center;
+    margin-top: 30px;
+    text-decoration: none;
+    transition: all 0.2s;
 }
 
-.login--dont-have-account span:hover{
-    box-shadow: #22344D;
-    transition: .4s;
+
+.login--dont-have-account:active {
+    text-decoration: underline;
+    color: white;
 }
 
-.login--bg-img{
-    height: 100vh;
-    align-self: center;
+@media (hover: hover) {
+    
+    .login--dont-have-account:hover {
+        text-decoration: underline;
+        color: white;
+    }
 }
 
-.login-container{
-    background-color: var(--primary);
-}
 
-@media only screen and (max-width: 767px) {
-    .login--right-side {
-        display: none;
+@media screen and (max-width: 1000px) {
+    .login--trunk-container {
+        width: 100%;
     }
 }
 
@@ -148,3 +167,22 @@ input {
     }
 
   } */
+
+  /* ICON */
+  .icon-container {
+    position: relative;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  .icon-container i {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    font-family: FontAwesome;
+    color: grey;
+    margin-left: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+  }

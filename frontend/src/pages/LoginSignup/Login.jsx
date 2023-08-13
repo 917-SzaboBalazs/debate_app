@@ -37,7 +37,6 @@ function Login({setLoggedIn}) {
 
           navigate('/');
           setLoggedIn(true);
-          //window.location.reload(false);
         })
         .catch((err) => {
           setMessage('Wrong username - password combination.');
@@ -72,41 +71,44 @@ function Login({setLoggedIn}) {
   return (
     <div className='login-body base'>
       <div className="container">
-        <div className="login--trunk-container row">
-          {/* <form action="" className=""> */}
-            <div className="login-container d-flex align-items-center justify-content-center col-md-6 col-sm-12 ">
+        <div className="login--trunk-container fade-in">
+            <div className="login-container d-flex align-items-center justify-content-center">
                 <div className="login-box align-items-center">
                     <h1 className="login--login-title">
-                      Log In
+                      Sign In
                     </h1>
-                    <h5 className="username-text">Username:</h5>
-                    <input 
-                      value={userName}
-                      type="text"
-                      placeholder='username' 
-                      className="username" 
-                      onChange={(e) => setUserName(e.target.value)}  
-                    />
-                    <h5 className="password-text">Password:</h5>
-                    <input 
-                      value={password}
-                      type="password" 
-                      placeholder='password' 
-                      className='password' 
-                      onChange={(e) => setPassword(e.target.value)}
+                    <div className="icon-container">
+                      <input 
+                        value={userName}
+                        type="text"
+                        className="username" 
+                        placeholder='Username'
+                        onChange={(e) => setUserName(e.target.value)}  
                       />
+                      <i>&#xf007;</i>
+                    </div>
+                    <div className="icon-container">
+                      <input 
+                        value={password}
+                        type="password" 
+                        className='password'
+                        placeholder='Password' 
+                        onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <i>&#xf023;</i>
+                    </div>
 
                   <div className="login-btn-row row text-center">
                     <div className="login--btn-cont col-12 ">
-                        <button type='submit'  className='login-btn bg-succes' onClick={handleSubmit}>Log In</button>
+                        <button type='submit'  className='login-btn bg-succes' onClick={handleSubmit}>Login</button>
                     </div>
                   </div>
                   <div className="login--dont-have-cont row">
-                    <Link className="login--dont-have-account col-12" to='/sign-up'><span>Don`t have an account?</span></Link>
+                    <Link className="login--dont-have-account col-12" to='/sign-up'><span>No Account Yet? Signup Now</span></Link>
                   </div>
                 </div>
             </div>
-            <div className="login--right-side col-md-6 col-sm-12 p-0">
+            {/*<div className="login--right-side col-md-6 col-sm-12 p-0">
               <img src={images[value]} className='login--bg-img'/>
               {/* <div className="login--right-side-box col-12 ">
                 <div className="login-img row text-center">
@@ -117,8 +119,8 @@ function Login({setLoggedIn}) {
                 <div className="login--dont-have-cont row">
                   <Link className="login--dont-have-account col-6 text-center" to='/sign-up'><span>Don`t have an account?</span></Link>
                 </div>
-              </div> */}
-            </div>
+              </div> 
+            </div>*/}
             {/* </form> */}
             <LoginPopup trigger={trigger} setTrigger={setTrigger}>
               <h3>{message}</h3>

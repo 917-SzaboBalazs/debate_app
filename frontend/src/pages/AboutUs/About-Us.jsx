@@ -26,7 +26,7 @@ function AboutUs() {
           <div className='teammember'>
               <img src={szabo} alt='Szabó Balázs'></img>
               <h2>Szabó Balázs</h2>
-              <h3>Backend Fejlesztő</h3>
+              <h3>Fullstack Fejlesztő</h3>
           </div>
           <div className='teammember'>
               <img src={kata} alt='Simon Katalin'></img>
