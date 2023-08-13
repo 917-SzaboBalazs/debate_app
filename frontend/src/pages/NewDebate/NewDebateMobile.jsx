@@ -122,8 +122,12 @@ function NewDebateMobile() {
                         </div>
 
                     <h1 className='new-debate--motion new-debate--motion--mobile col-12 text-center mt-3 mb-0'>
+                    <div className="col-12 new-debate--btn new-debate-btn--mobile new-debate--label text-center font-weight-bold">Motion</div>
+                        <hr className='new-debate--line'></hr>
                         {/* Ez egy textfield lesz, hogy at lehessen irni ha arra volna igeny */}
                         <div className="row">
+                            
+                            
                             {/* <span className="new-debate--motion-text white-text">{motion}</span> */}
                             <div className="row new-debate--motion-text-row">
                             <textarea  type="text" 

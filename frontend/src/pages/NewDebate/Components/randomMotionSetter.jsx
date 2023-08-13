@@ -26,7 +26,9 @@ function RandomMotionSetter({ setMotion }) {
                 className="col-12 new-debate--motion-random-col text-center"
                 onClick={handleSetRandom}
             >
-                <span className="new-debate--motion-random-text">Randomize</span>
+                <div className="new-debate--button new-debate--motion-random-text">
+                   Choose a Random Motion
+                </div>
             </div>
         </div>
     )
