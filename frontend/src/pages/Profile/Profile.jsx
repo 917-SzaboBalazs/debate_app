@@ -15,7 +15,7 @@ function Profile({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
     const [ aboutMe, setAboutMe ] = useState('');
     const [ role, setRole ] = useState('');
     const [ username, setUserName ] = useState('');
-    const [ loading, setLoading ] = useState(false);
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
 
@@ -48,7 +48,7 @@ function Profile({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
       }, []);
 
    if (loading) {
-        return <div className="profile--base base "></div>
+        return <div className="profile--base base "><div className="container"></div></div>
    }
 
   return (

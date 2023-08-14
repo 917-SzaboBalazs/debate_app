@@ -194,21 +194,13 @@ function NewDebate() {
                         </div>
                         <div className="row new-debate--judge--spectator justify-content-evenly"> 
                             <div 
-                                className="
-                                    new-debate--spectator-col 
-                                    new-debate--button 
-                                    col-3 white-text 
-                                    text-center" 
+                                className={"new-debate--spectator-col new-debate--button col-3 white-text text-center" + (currRole === 'judge' ? ' new-debate--selected-button' : '')} 
                                     onClick={() => handleChoose('judge', null, setCurrRole)}
                                 >
                                 judge
                             </div>    
                             <div 
-                                className="
-                                    new-debate--spectator-col 
-                                    new-debate--button 
-                                    col-3 white-text 
-                                    text-center" 
+                                className={"new-debate--spectator-col new-debate--button col-3 white-text text-center" + (currRole === 'spectator' ? ' new-debate--selected-button' : '')} 
                                     onClick={() => handleChoose('spectator', null, setCurrRole)}
                                 >
                                 spectator
