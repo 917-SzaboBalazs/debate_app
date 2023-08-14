@@ -2,7 +2,7 @@ import React from 'react'
 import axiosInstance from '../../../axios'
 import handleMotion from '../Functions/handleMotion'
 
-function RandomMotionSetter({ setMotion }) {
+function RandomMotionSetter({ setMotion, currRole }) {
 
     const handleSetRandom = () => {
         axiosInstance
@@ -22,14 +22,25 @@ function RandomMotionSetter({ setMotion }) {
                 justify-content-center
                 align-items-center
                 ">
-            <div 
-                className="col-12 new-debate--motion-random-col text-center"
-                onClick={handleSetRandom}
-            >
-                <div className="new-debate--button new-debate--motion-random-text">
-                   Choose a Random Motion
+
+            {currRole === 'judge' ? 
+                <div 
+                    className="col-12 new-debate--motion-random-col text-center"
+                    onClick={handleSetRandom}
+                >
+                    <div className="new-debate--button new-debate--motion-random-text">
+                    Choose a Random Motion
+                    </div>
                 </div>
-            </div>
+            :
+                <div 
+                    className="col-12 new-debate--motion-random-col text-center"
+                >
+                    <div className="new-debate--button new-debate--motion-random-text new-debate--button-disabled">
+                    Choose a Random Motion
+                    </div>
+                </div>
+            }
         </div>
     )
 }

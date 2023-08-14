@@ -310,6 +310,7 @@
 
 .new-debate--button-disabled {
     opacity: 0.5;
+    cursor: default;
 }
 
 @media screen and (max-width: 1000px) {

@@ -143,6 +143,7 @@ function NewDebate() {
                         <hr className='new-debate--line'></hr>
                         <div className="row">
                             <div className="row">
+                                {currRole === 'judge' ?
                                 <textarea  type="text" 
                                         ref={ref}
                                         value={motion}
@@ -151,8 +152,16 @@ function NewDebate() {
                                         onFocus={(e) => setFocused(true)}
                                         onBlur={(e) => setFocused(false)}
                                         />
+                                :
+                                <textarea  type="text" 
+                                        ref={ref}
+                                        value={motion}
+                                        className="new-debate--motion-text col-12" 
+                                        disabled
+                                        />
+                                }
                             </div>
-                            <RandomMotionSetter setMotion={setMotion} />
+                            <RandomMotionSetter setMotion={setMotion} currRole={currRole} />
                         </div>
                         <div className="row">
                             <h2 className='

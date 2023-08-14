@@ -130,6 +130,7 @@ function NewDebateMobile() {
                             
                             {/* <span className="new-debate--motion-text white-text">{motion}</span> */}
                             <div className="row new-debate--motion-text-row">
+                            {currRole === 'judge' ?
                             <textarea  type="text" 
                                         ref={ref}
                                         value={motion}
@@ -138,9 +139,17 @@ function NewDebateMobile() {
                                         onFocus={(e) => setFocused(true)}
                                         onBlur={(e) => setFocused(false)}
                                         />
-                            </div>    
+                            :
+                            <textarea  type="text" 
+                                        ref={ref}
+                                        value={motion}
+                                        className="new-debate--motion-text col-12" 
+                                        disabled
+                                        />
+                            }
+                            </div> 
                         </div>
-                        <RandomMotionSetter setMotion={setMotion}/>
+                        <RandomMotionSetter setMotion={setMotion} currRole={currRole}/>
                         
                     </h1>
                 </div>
