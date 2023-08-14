@@ -66,7 +66,7 @@ function App() {
           <Route path='/finished-debate' exact element={<FinishedDebate setInDebate={setInDebate}/>}></Route>
 
           {/* Profile */}
-          <Route path='/profile' exact element={<Profile />} />
+          <Route path='/profile' exact element={<Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate} />} />
           <Route path='/edit-profile' exact element={<EditProfile />} />
 
           {/* Baj van, ha ide kerul valaki  */}

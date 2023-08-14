@@ -75,8 +75,8 @@ function Trunk({ loggedIn, inDebate, setInDebate, status, setStatus, closeMenu }
     }
 
   return (
-    <div className="home--container fade-in">
-        <div className="container">
+    <div className="home--container ">
+        <div className="container fade-in">
             <div className="trunk--container">
                 <h1>DEBATE CULTURE</h1>
                 <p>"It is better to debate a question without settling it than to settle a question without debating it."</p>
