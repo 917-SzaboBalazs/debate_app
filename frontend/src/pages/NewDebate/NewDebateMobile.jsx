@@ -190,21 +190,13 @@ function NewDebateMobile() {
 
                 <div className="new-debate--spectator  row justify-content-evenly">
                     <div 
-                                className="
-                                    new-debate--spectator-col 
-                                    new-debate--button 
-                                    col-4 white-text 
-                                    text-center" 
-                                    onClick={() => { handleChoose('judge', null, setCurrRole); window.scrollTo(0, document.body.scrollHeight); }}
-                                >
-                                judge
-                            </div>    
+                        className={"new-debate--spectator-col new-debate--button col-4 white-text text-center" + (currRole === 'judge' ? ' new-debate--selected-button' : '') }
+                            onClick={() => { handleChoose('judge', null, setCurrRole); window.scrollTo(0, document.body.scrollHeight); }}
+                        >
+                        judge
+                        </div>    
                     <div 
-                        className="
-                            new-debate--spectator-col 
-                            new-debate--button 
-                            col-4 white-text 
-                            text-center" 
+                        className={"new-debate--spectator-col new-debate--button col-4 white-text text-center" + (currRole === 'spectator' ? ' new-debate--selected-button' : '') }
                             onClick={() => handleChoose('spectator', null, setCurrRole)}
                         >
                         spectator
