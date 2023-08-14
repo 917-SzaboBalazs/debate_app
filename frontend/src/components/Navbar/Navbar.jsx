@@ -73,6 +73,15 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
           setLoading(false);
         })
 
+        document.body.addEventListener('click', (e) => {
+            if (!loggedIn && e.y > 270) {
+              setMenuOpen(false);
+            }
+            else if (loggedIn && e.y > 367) {
+              setMenuOpen(false);
+            }
+        });
+
     }, [loggedIn, inDebate]);
 
     useEffect(() => {
