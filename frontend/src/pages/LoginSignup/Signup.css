@@ -145,8 +145,23 @@ input {
     font-size: 20px;
   }
 
+  /* PASSWORD HELPER */
+  .signup--password-help {
+    margin-top: -5px;
+    margin-left: 5px;
+    color: rgb(187, 187, 187);
+  }
+
+  .signup--password-help strong {
+    color: rgb(187, 187, 187);
+  }
+
   @media screen and (max-width: 1000px) {
     .trunk-container, .signup--container, .signup-box, .icon-container {
         width: 100%;
+    }
+
+    .signup--password-help {
+        font-size: 14px;
     }
   }
