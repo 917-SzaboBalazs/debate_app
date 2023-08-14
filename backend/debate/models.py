@@ -37,8 +37,8 @@ class Debate(models.Model):
                                                               "to speak. Default value is <b>1</b>.")
 
     # options
-    speaker_time = models.IntegerField(default=6, help_text="Expresses speakers time in minutes. Default value is"
-                                                            "<b>6</b>.")
+    speaker_time = models.IntegerField(default=7, help_text="Expresses speakers time in minutes. Default value is "
+                                                            "<b>7</b>.")
 
     objects = DebateManager()
 
