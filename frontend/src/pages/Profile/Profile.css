@@ -4,18 +4,15 @@
 
 .profile--container {
     min-height: 100vh;
-}
-
-.profile--container-error {
-    min-height: 100vh;
+    background-color: #3E4958;
+    width: 700px;
+    margin: 0 auto;
 }
 
 .profile--base-row {
-    min-height: 100vh;
-    background-color: var(--primary-opacity);
+    height: auto;
     padding: 2rem;
     padding-top: 15vh;
-    min-width: 40rem;
 }
 
 .profile--element {
@@ -31,7 +28,7 @@
     width: 8rem;
     padding: 0;
     margin: 0;
-    margin-bottom: 4rem;
+    margin-bottom: 20px;
     margin-top: 2rem;
     border: 3px solid white;
 }
@@ -62,19 +59,29 @@
     color: white;
 }
 
-.profile--about-me-box {
+.profile--container h1 {
     font-size: 20px;
+    font-weight: normal;
 }
 
-@media only screen and (max-width: 767px) {
-    .profile--right-side {
-        min-height: 50vh;
-        padding-top: 2rem;
+
+@media screen and (max-width: 1000px) {
+    .profile--container {
+        width: 100%;
     }
-    
-    .profile--left-side {
-        min-height: 50vh;
-        padding-bottom: 2rem;
-        border-bottom: 10px solid var(--mcc-sarga);
+
+    .profile--container h1 {
+        font-size: 16px;
+    }
+
+    .profile--container h3 {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .profile--base-row {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
     }
 }

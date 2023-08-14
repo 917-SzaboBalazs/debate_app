@@ -14,11 +14,12 @@
 }
 
 @media screen and (max-width: 1000px) {
-  /*.home--container {
+  .home--container {
     height: 600px;
-    background: url( '../../images/mikrofon2.jpg') center center/cover no-repeat, linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.55));
+    background: url( '../../images/mikrofon2.jpg') center center/cover no-repeat, linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
     background-attachment: scroll;
-  }*/
+    background-blend-mode: overlay;
+  }
 }
 
   .trunk--container {
