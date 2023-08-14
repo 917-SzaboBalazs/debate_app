@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class DebateManager(models.Manager):
     def create_debate(self, entry_code, **other_fields):
-        other_fields.setdefault('speaker_time', 6)
+        other_fields.setdefault('speaker_time', 7)
 
         return self.create_british_parliamentary_debate(entry_code, **other_fields)
 
