@@ -257,9 +257,9 @@ function Signup() {
                       <i>&#xf023;</i>
                     </div>
                     {/* </div> */}
-                    {/* <p className="signup--password-help text-center">
-                      The password needs to be at least 8 characters long, has to contain a capital letter and a number at least.
-                    </p> */}
+                    <p className="signup--password-help">
+                      - Password must have at least <strong>8 characters</strong>
+                    </p>
                     
                     <div className="signup--btn-row row text-center">
                       <div className="singup--btn-cont col-12">
