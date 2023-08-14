@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 import './EditProfile.css';
 
-function EditProfile() {
+function EditProfile({ loggedIn, setLoggedIn }) {
     const [ userName, setUserName ] = useState('');
     const [ firstName, setFirstName ] = useState('');
     const [ lastName, setLastName ] = useState('');
@@ -21,7 +21,7 @@ function EditProfile() {
     const [ newEmail, setNewEmail ] = useState('');
     const [ newAboutMe, setNewAboutMe ] = useState('');
 
-    const [ loggedIn, setLoggedIn ] = useState(false);
+    const [ loading, setLoading ] = useState(true);
 
     let navigate = useNavigate();
 
@@ -42,18 +42,25 @@ function EditProfile() {
             setNewEmail(res.data.email);
             setAboutMe(res.data.about_me);
             setNewAboutMe(res.data.about_me);
+
+            setLoading(false);
           })
           .catch((err) => {
-            setLoggedIn(false);
+            
+            setLoading(false);
             console.log(err);
           });
 
       }, []);
 
+  if (loading) {
+    return <div className="edit--base base"><div className="edit--container container"></div></div>
+  }
+
   return (
     <>
         <div className="edit--base base">
-            <div className="edit--container container">
+            <div className="edit--container container fade-in">
                 {
                     loggedIn ?
                     <>
@@ -171,9 +178,9 @@ function EditProfile() {
                     </>
                     :
                     <>
-                        <div className="edit--error-row row d-flex  align-items-center justify-content-center text-center">
+                        {/*<div className="edit--error-row row d-flex  align-items-center justify-content-center text-center">
                             <h1 className="edit--error-element col-8">Be kéne jelentkezni hallode</h1>
-                        </div>
+                            </div>*/ }
                     </>
                 }
             </div>

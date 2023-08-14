@@ -19,6 +19,12 @@
 
 .edit--element {
     margin-bottom: 2rem;
+    
+}
+
+.edit--element input {
+    color: black;
+    
 }
 
 .custom-textarea-style {
@@ -27,8 +33,9 @@
 }
 
 .edit--aboutme > textarea{
-    color:var(--secondary);
+    color: black;
     font-size: 24px;
+    border-radius: 15px;
 }
 
 
@@ -82,4 +89,23 @@
     .edit--save-button-element{
         width: 100% !important;
     }
+}
+
+@media screen and (max-width: 1000px) {
+    .edit--container {
+        padding: 90px 10px 20px 10px;
+    }
+
+    .edit--title {
+        margin-bottom: 20px;
+    }
+
+    .edit--element {
+        margin-bottom: 15px;
+    }
+
+    .edit--element h1, .edit--element input, .edit--element textarea {
+        font-size: 18px;
+    }
+    
 }
