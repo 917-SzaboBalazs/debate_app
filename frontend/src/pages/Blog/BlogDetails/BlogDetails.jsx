@@ -6,17 +6,23 @@ import axiosInstance from '../../../axios';
 const BlogDetails = ({ loggedIn }) => {
     const { slug } = useParams();
     const [ post, setPost ] = useState({});
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
         axiosInstance
             .get('/blog/' + slug + '/')
             .then((res) => {
                 setPost(res.data);
+                setLoading(false);
             })
             .catch((err) => {
-                
+                setLoading(false);
             })
     }, []);
+
+    if (loading) {
+        return <div className="blog-details--base base"></div>
+    }
 
     return (
         <>
