@@ -1,0 +1,51 @@
+.blog--base {
+    height: max-content;
+    min-height: 100vh;
+    padding-top: 4vh;
+}
+
+.blog--container {
+    min-height: 100vh;
+    padding-top: 5vh;
+    width: 100%;
+    border: 0px;
+}
+
+.blog--header-title-cont {
+    font-weight: bold;
+    color: whitesmoke !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Trebuchet MS";
+    text-align: center !important;
+    width: 100%;
+}
+
+.blog--header-title{
+    color: white;
+}
+
+.blog--header-row {
+    /*background-image: url('https://img.freepik.com/premium-vector/newborn-dummy-nipple-seamless-pattern-baby-toys-endless-background-template-pale-colored-pacifier_607579-220.jpg');*/
+    /* background-color: #333d4b !important; */
+    height: 10vh;
+    margin-bottom: 20px;
+    margin-top: 5vh;
+
+}
+
+/* BLOG POSTS */
+.blog--post-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 500px) {
+    .blog--header-row {
+        margin: 30px 0 -10px 0;
+    }
+}

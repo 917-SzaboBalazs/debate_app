@@ -1,0 +1,73 @@
+.blogpost--container {
+    width: 440px;
+    background-color: #333D4B;
+    border-radius: 15px;
+
+    margin: 15px 30px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+}
+
+.blogpost--author {
+    font-size: 16px;
+    margin: 0 0 5px 0;
+}
+
+.blogpost--title {
+    font-weight: bold;
+}
+
+.blogpost--title-link {
+    color: white;
+    text-decoration: none;
+    transition: all 0.1s;
+}
+
+.blogpost--title-link:hover {
+    color: rgb(172, 172, 172);
+}
+
+.blogpost--date-created {
+    margin-top: -5px;
+    font-size: 14px;
+    color: gray;
+}
+
+.blogpost--thumbnail {
+    width: 410px;
+    height: 230px;
+    display: block;
+    border-radius: 15px;
+}
+
+.blogpost--excerpt {
+    text-align: justify;
+}
+
+.blogpost--read-more {
+    color: #61C3C3;
+    text-decoration: none;
+    transition: all 0.1s;
+}
+
+.blogpost--read-more:hover {
+    color: #aedbdb;
+}
+
+@media only screen and (max-width: 500px) {
+    .blogpost--container {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .blogpost--title {
+        font-size: 20px;
+    }
+
+    .blogpost--thumbnail {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+}
