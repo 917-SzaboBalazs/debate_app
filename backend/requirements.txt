@@ -13,6 +13,7 @@ idna==3.3
 itypes==1.2.0
 Jinja2==3.1.2
 MarkupSafe==2.1.1
+Pillow==10.0.0
 pipreqs==0.4.11
 PyJWT==2.4.0
 pytz==2022.2.1
