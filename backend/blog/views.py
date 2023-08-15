@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 # Create your views here.
 class ListCreateBlogPostView(ListCreateAPIView):
     serializer_class = BlogPostSerializer
-    queryset = BlogPost.objects.filter(status__iexact=1)
+    queryset = BlogPost.objects.filter(status__iexact="published")
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
@@ -17,5 +17,5 @@ class ListCreateBlogPostView(ListCreateAPIView):
 
 class RetrieveBlogPostView(RetrieveAPIView):
     serializer_class = BlogPostSerializer
-    queryset = BlogPost.objects.filter(status__iexact=1)
+    queryset = BlogPost.objects.filter(status__iexact="published")
     lookup_field = 'slug'

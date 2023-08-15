@@ -7,8 +7,8 @@ import re
 CLEANR = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
 
 STATUS = (
-    (0, "Draft"),
-    (1, "Published")
+    ("draft", "Draft"),
+    ("published", "Published")
 )
 
 # Create your models here.
@@ -22,7 +22,7 @@ class BlogPost(models.Model):
 
     added_by = models.ForeignKey(to=NewUser, on_delete=models.CASCADE, related_name='added_by')
 
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.CharField(choices=STATUS, default="draft", max_length=12)
 
     def __str__(self):
         return self.title
