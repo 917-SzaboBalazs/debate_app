@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 from django.template.defaultfilters import slugify
+from users.models import NewUser
 
 
 STATUS = (
@@ -16,6 +17,8 @@ class BlogPost(models.Model):
     excerpt = models.CharField(max_length=150, blank=True)
     content = models.TextField()
     date_created = models.DateTimeField(default=datetime.now, blank=True)
+
+    added_by = models.ForeignKey(to=NewUser, on_delete=models.CASCADE, related_name='added_by')
 
     status = models.IntegerField(choices=STATUS, default=0)
 

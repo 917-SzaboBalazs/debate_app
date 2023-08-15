@@ -3,7 +3,9 @@ from blog.models import BlogPost
 
 
 class BlogPostSerializer(serializers.ModelSerializer):
+    added_by = serializers.StringRelatedField(default=serializers.CurrentUserDefault(), read_only=True)
 
     class Meta:
         model = BlogPost
-        fields = ['title', 'slug', 'thumbnail', 'excerpt', 'content', 'date_created', ]
+        fields = ['title', 'slug', 'added_by', 'thumbnail', 'excerpt', 'content', 'date_created', ]
+        
