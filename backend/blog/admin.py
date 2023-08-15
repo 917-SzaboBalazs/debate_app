@@ -6,6 +6,6 @@ from blog.models import BlogPost
 class DebateAdmin(SummernoteModelAdmin):
     list_display = ('title', 'added_by', 'date_created', 'status', )
     fields = ('title', 'slug', 'added_by', 'thumbnail', 'excerpt', 'content', 'date_created', 'status', )
-    readonly_fields = ('added_by', 'slug', 'excerpt', )
+    readonly_fields = ('slug', 'excerpt', )
     search_fields = ('title', )
     summernote_fields = ('content', )
