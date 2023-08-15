@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axios';
 
+import FinishPopup from './Popups/FinishPopup';
+
 // icon imports
 import GreenStart from '../../images/start-green.svg';
 import WhiteStart from '../../images/start-white.svg';
@@ -21,6 +23,8 @@ import './InDebateTimer.css'
 
 function InDebateTimer() {
     const navigate = useNavigate();
+
+    const [ triggerPopup, setTriggerPopup ] = useState(false);
 
     // const [ seconds, setSeconds ] = useState(0);
     const [ running, setRunning ] = useState(false);
@@ -249,7 +253,8 @@ function InDebateTimer() {
             // setFinished(true);
             // setTrigger(true);
         //}
-        navigate('/results');
+        setTriggerPopup(true);
+        //navigate('/results');
     }
 
     const handleSetTime = (ev) => {
@@ -417,7 +422,8 @@ function InDebateTimer() {
             </div>
         </div>
         <FinishDebate trigger={trigger} setTrigger={setTrigger} />
-        </>
+        <FinishPopup trigger={triggerPopup} setTrigger={setTriggerPopup} navigate={navigate}/>
+      </>
       );
 }
 
