@@ -74,10 +74,10 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
         })
 
         document.body.addEventListener('click', (e) => {
-            if (!loggedIn && e.y > 270) {
+            if (!loggedIn && e.y > 315) {
               setMenuOpen(false);
             }
-            else if (loggedIn && e.y > 367) {
+            else if (loggedIn && e.y > 417) {
               setMenuOpen(false);
             }
         });
@@ -153,6 +153,7 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
           <Nav className="me-auto">
           <Nav.Link as={Link} to="/about-us" className='nav-link' onClick={closeMenu}>About Us</Nav.Link>
           <Nav.Link as={Link} to="/debates" className='nav-link' onClick={closeMenu}>Debates</Nav.Link>
+          <Nav.Link as={Link} to="/blog" className='nav-link' onClick={closeMenu}>Blog</Nav.Link>
 
             {
               !inDebate ?

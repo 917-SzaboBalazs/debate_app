@@ -21,6 +21,8 @@ import TesterPage from './pages/TesterPage/Test';
 
 import './App.css';
 import axiosInstance from './axios';
+import Blog from './pages/Blog/Blog';
+import BlogDetails from './pages/Blog/BlogDetails/BlogDetails';
 
 
 function App() {
@@ -68,6 +70,10 @@ function App() {
           {/* Profile */}
           <Route path='/profile' exact element={<Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate} />} />
           <Route path='/edit-profile' exact element={<EditProfile loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
+
+          {/* Blog */}
+          <Route path='/blog' exact element={<Blog loggedIn={loggedIn} />} />
+          <Route path='/blog/:slug' exact element={<BlogDetails loggedIn={loggedIn} />} />
 
           {/* Baj van, ha ide kerul valaki  */}
           <Route path='*' exact element={<Error />} />
