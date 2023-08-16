@@ -1,70 +1,202 @@
 .judges-drag--base{
     background-color: var(--primary);
     height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-.team-holder{
-    position: relative;
-    top: 25vh;
-    width: 20vw;
-    height: 50vh;
-    background-color: var(--mcc-kek);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border-radius: 10px;
-    border: 2px solid var(--secondary);
+    /* justify-content: space-around; */
 }
 
-.ordered-holder{
-    position: relative;
-    margin-left: 20vw;
-    top: 25vh;
-    width: 20vw;
-    height: 50vh;
-    background-color: var(--mcc-kek);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border-radius: 10px;
-    border: 2px solid var(--secondary);
+@media screen and (min-width: 1000px) {
+    #jd_textholder{
+        position: relative;
+        top: 12vh;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .jd_ordered-holder{
+        position: relative;
+        margin-left: 15vw;
+        top: 18vh;
+        width: 20vw;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        border-radius: 10px;
+    }
+    
+    .jd_team-holder{
+        position: relative;
+        top: -33.1vh;
+        margin-left: 65vw;
+        width: 20vw;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        border-radius: 10px;
+    
+    }
+    
+    .jd_team{
+        display: flex;
+        font-size: large;
+        width: 80%;
+        height: 18%;
+        margin-left: 10%;
+        border-radius: 10px;
+        background-color: var(--opac-white);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .jd_ordering-places{
+        display: flex;
+        width: 80%;
+        height: 18%;
+        margin-left: 10%;
+        border-radius: 10px;
+        background-color: var(--secondary);
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #jd_buttonholder{
+        position: relative;
+        top: -25vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 45vw;
+        width: 10vw;
+        height: 15vh;
+    }
+
+    .jd_button{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: center;
+        border-radius: 10px;
+        margin: 10px 10px 10px 10px;
+    }
+
+    #jd_redo, #jd_sub{
+        height: 50%;
+    }
+
+    #jd_redo{
+        background-color: rgb(235, 62, 14);
+    }
+    #jd_sub{
+        background-color: rgb(14, 187, 235);
+    }
+
 }
 
-.ordering-places{
-    display: flex;
-    width: 80%;
-    height: 18%;
-    margin-left: 10%;
-    border-radius: 10px;
-    background-color: var(--secondary);
-    justify-content: center;
-    align-items: center;
-}
 
-#og, #oo, #cg, #co{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--opac-white);
-    color: var(--primary);
-    height: 18%;
-    width: 60%;
-    margin-left: 20%;
-    border-radius: 10px;
-}
 
-#done-btn{
-    display: flex;
-    position: absolute;
-    height: 7vh;
-    width: 10vw;
-    left: 45vw;
-    top: 85vh;
-    background-color: var(--secondary);
-    color: whitesmoke;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
+@media screen and (max-width: 1000px) {
+
+    .judges-drag--base{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #jd_textholder{
+        position: relative;
+        top: 12vh;
+    }
+
+    #jd_choose_order{
+        text-align: center;
+        font-size: large;
+    }
+
+    .jd_ordered-holder{
+        position: relative;
+        top: 13vh;
+        width: 90vw;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 10px;
+        /* border: 2px solid var(--secondary); */
+        padding: 10px;
+    }
+
+    .jd_ordering-places{
+        display: flex;
+        width: 80%;
+        margin-left: 10%;
+        border-radius: 10px;
+        background-color: var(--secondary);
+        justify-content: center;
+        align-items: center;
+        height: 17%;
+    }
+
+    .jd_team-holder{
+        position: relative;
+        top: 13vh;
+        margin-left: 0vw;
+        width: 90vw;
+        height: 25vh;
+        display: grid;
+        grid-template-columns: repeat(2, 2fr); /* 2 columns */
+        grid-template-rows: repeat(2, 2fr);    /* 3 rows */
+        /*gap: 10px; /* Gap between items */
+        border-radius: 10px;
+        justify-content: space-around;
+        align-items: center;
+        /* border: 2px solid var(--secondary); */
+    }
+
+    .jd_team{
+        display: flex;
+        font-size: large;
+        justify-content: space-evenly;
+        background-color: var(--opac-white);
+        border-radius: 10px;
+        width: 80%;
+        height: 60%;
+        text-align: center;
+        margin: auto;
+        padding: 0;
+    }
+
+    #jd_buttonholder{
+        position: relative;
+        top: 20vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 90vw;
+        height: 18vh;
+
+    }
+
+    .jd_button{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 40%;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    #jd_redo, #jd_sub{
+        height: 50%;
+    }
+
+    #jd_redo{
+        background-color: rgb(235, 62, 14);
+    }
+    #jd_sub{
+        background-color: rgb(14, 187, 235);
+    }
+
 }
