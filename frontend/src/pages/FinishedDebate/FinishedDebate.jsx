@@ -5,28 +5,72 @@ import { useNavigate } from 'react-router-dom';
 
 import './FinishedDebate.css'
 
-const ListResult = (props, index) => {
-  const winnerTeam = Object.values(props.res);
-  console.log(winnerTeam)
-  console.log(props.index)
-  // const listItems = winnerTeam.map(elem => 
-  //   <li>{elem}</li>
-  // );
+// const ListResult = (props, index) => {
+//   const winnerTeam = Object.values(props.res);
+//   console.log(winnerTeam)
+//   console.log(props.index)
+//   // const listItems = winnerTeam.map(elem => 
+//   //   <li>{elem}</li>
+//   // );
 
-  switch (winnerTeam[props.index]) {
-    case "OG":
-      return "Opening Government";
-    case "OO":
-      return "Opening Opposition";
-    case "CG":
-      return "Closing Government";
-    case "CO":
-      return "Closing Opposition";
-    default: 
-      return "null";
+//   switch (winnerTeam[props.index]) {
+//     case "OG":
+//       return "Opening Government";
+//     case "OO":
+//       return "Opening Opposition";
+//     case "CG":
+//       return "Closing Government";
+//     case "CO":
+//       return "Closing Opposition";
+//     default: 
+//       return "null";
+//   }
+
+//   // return winnerTeam[props.index];
+// }
+
+function Ranking(props) {
+  const { teams } = props;
+
+  return (
+    <div className="finished-debate--ranking">
+      { teams.map((team, index) => {
+        return(
+          <div className="ranking-row" id={(index === 0) ? 'first' : 'not-first'} key={team}>
+            <div className="index-container">
+            <p>{index + 1}</p>
+          </div>
+            <p>{team}</p>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+const listFromObj = (obj) => {
+  const getAbbreviation = (abb) => {
+    switch (abb) {
+      case 'OG':
+        return 'Opening Government';
+      case 'CG':
+        return 'Closing Government';
+      case 'OO':
+        return 'Opening Opposition';
+      case 'CO':
+        return 'Closing Opposition';
+      default:
+        return 'Noone';
+    }
   }
 
-  // return winnerTeam[props.index];
+  const myList = []
+
+  for (let key in obj) {
+    myList.push(getAbbreviation(obj[key]));
+  }
+
+  return myList;
 }
 
 function FinishedDebate({ setInDebate }) {
@@ -34,7 +78,7 @@ function FinishedDebate({ setInDebate }) {
     
     const navigate = useNavigate();
 
-    
+    console.log(winnerTeam);
 
     useEffect(() => {
         axiosInstance
@@ -42,7 +86,7 @@ function FinishedDebate({ setInDebate }) {
         .then((res) => {
           // console.log(res.data);
           const results = JSON.parse(res.data.result);
-          setWinnerTeam(results);
+          setWinnerTeam(listFromObj(results));
         })
         .catch((err) => {
             console.log(err)
@@ -63,31 +107,16 @@ function FinishedDebate({ setInDebate }) {
     }
 
   return (
-    <div className='finished-debate--base row d-flex justify-content-center align-items-center'>
-        <div className="finished-debate--hiba row d-flex justify-content-evenly">
-          <div id="p1st" class='place--finished'>
-            <p><ListResult res={winnerTeam} index={0}/></p>
-            <div className="take-place--results">First</div>  
-          </div>
-          <div id="p2nd" class='place--finished'>
-            <p><ListResult res={winnerTeam} index={1}/></p>
-            <div className="take-place--results">Second</div>  
-          </div>
-          <div id="p3rd" class='place--finished'>
-            <p><ListResult res={winnerTeam} index={2}/></p>
-            <div className="take-place--results">Third</div>  
-          </div>
-          <div id="p4th" class='place--finished'>
-              <p><ListResult res={winnerTeam} index={3}/></p>
-              <div className="take-place--results">Fourth</div>  
-          </div>
-            {/* <ol className="col-12 d-flex flex-column align-items-center"><ListResult res={winnerTeam} /></ol> */}
-            <button
-                className="in-debate--leave-debate white-text col-4"
-                onClick={leaveDebate}
-            >
-                Leave Debate
-            </button>
+    <div className='finished-debate--base base d-flex justify-content-center align-items-center'>
+        <div className="finished-debate--container">
+          <h1>Results</h1>
+          <Ranking teams={winnerTeam}/>
+          <button
+              className="in-debate--leave-debate white-text col-4"
+              onClick={leaveDebate}
+              >
+              Leave Debate
+          </button>
         </div>
     </div>
   )
