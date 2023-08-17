@@ -8,94 +8,107 @@ import './JudgesDrag.css'
 import { all } from 'axios';
 
 function JudgesDrag() {
-    const [ winnerTeam, setWinnerTeam ] = useState('Nem lehet tudni, az egyik dev elbaszott valamit')
-    
-    
 
-    function handleOnDrag(e, teamName){
-        e.dataTransfer.setData("widgetType", teamName);
-        console.log("Dragging " + teamName)
+    function handleRedo(e){
+        const og = document.getElementById('og');
+        const oo = document.getElementById('oo');
+        const co = document.getElementById('co');
+        const cg = document.getElementById('cg');
+
+        const first = document.getElementById('first-place');
+        const second = document.getElementById('second-place');
+        const third = document.getElementById('third-place');
+        const fourth = document.getElementById('fourth-place');
+
+        og.style.backgroundColor = '#ffffffad';
+        oo.style.backgroundColor = '#ffffffad';
+        cg.style.backgroundColor = '#ffffffad';
+        co.style.backgroundColor = '#ffffffad';
+
+        first.innerHTML = 'First place';
+        second.innerHTML = 'Second place';
+        third.innerHTML = 'Third place';
+        fourth.innerHTML = 'Fourth place';
+
+        const text = document.getElementById('jd_choose_order');
+        text.innerHTML = 'Válaszd ki a(z) <span id="jd_choose_place">első</span> helyezettet!'
     }
 
-    function handleOnDropPlaces(e, placeName, orderName){
-        const teamName = e.dataTransfer.getData("widgetType");
-        e.dataTransfer.setData("widgetType", teamName);
-        console.log("Dropping " + teamName)
+    function handleClick(e, place){
+        const current_place = document.getElementById("jd_choose_place");
 
-        const dropPlace = document.getElementById(placeName);
-        dropPlace.innerHTML = orderName + " place:\n" + teamName;
-    }
+        const backgroundColor = window.getComputedStyle(e.currentTarget).backgroundColor;
 
-    function handleDoneClick(e){
-        const first = document.getElementById('first-place').innerHTML;
-        const second = document.getElementById('second-place').innerHTML;
-        const third = document.getElementById('third-place').innerHTML;
-        const fourth = document.getElementById('fourth-place').innerHTML;
-
-        const all_text = first + second + third + fourth;
-
-        const teams = ["OG", "OO", "CG", "CO"];
-
-        for(let i=0;i<4;i++){
-            if(!all_text.includes(teams[i])){
-                alert("You did not include the " + teams[i] + " team...");
-                return;
-            }
+        if (backgroundColor !== 'rgba(255, 255, 255, 0.68)'){
+            return;
+        }
+        
+        if (current_place.innerHTML === 'első'){
+            current_place.innerHTML = 'második';
+            const first = document.getElementById('first-place');
+            first.innerHTML = place;
+        } else if (current_place.innerHTML === 'második'){
+            current_place.innerHTML = 'harmadik';
+            const second = document.getElementById('second-place');
+            second.innerHTML = place;
+        } else if (current_place.innerHTML === 'harmadik'){
+            current_place.innerHTML = 'negyedik';
+            const third = document.getElementById('third-place');
+            third.innerHTML = place;
+        } else if (current_place.innerHTML === 'negyedik'){
+            current_place.innerHTML = '';
+            const fourth = document.getElementById('fourth-place');
+            fourth.innerHTML = place;
+            const full_sentence = document.getElementById('jd_choose_order');
+            full_sentence.innerHTML = 'Felállítottad a sorrendet'
         }
 
-        alert("Alrighty!")
-    }
-
-    function handleDragOver(e){
-        e.preventDefault();
+        e.currentTarget.style.backgroundColor = 'rgb(80,80,80)';
     }
     
 
   return (
     
     <div className='judges-drag--base'>
-                <div id="jd_textholder"><h3 id="jd_choose_order">Válaszd ki a győztes sorrendet!</h3></div>
+                <div id="jd_textholder"><h3 id="jd_choose_order">Válaszd ki a(z) <span id="jd_choose_place">első</span> helyezettet!</h3></div>
                 <div className="jd_ordered-holder" id="jd_ordered-holder">
                     <div id="first-place" className="jd_ordering-places" 
-                        onDragOver={handleDragOver} onDrop={(e) => handleOnDropPlaces(e, "first-place", "First")}>Frist place</div>
+                        >Frist place</div>
                     <div id="second-place" className="jd_ordering-places" 
-                        onDragOver={handleDragOver} onDrop={(e) => handleOnDropPlaces(e, "second-place", "Second")}>Second place</div>
+                        >Second place</div>
                     <div id="third-place" className="jd_ordering-places" 
-                        onDragOver={handleDragOver} onDrop={(e) => handleOnDropPlaces(e, "third-place", "Third")}>Third place</div>
+                        >Third place</div>
                     <div id="fourth-place" className="jd_ordering-places" 
-                        onDragOver={handleDragOver} onDrop={(e) => handleOnDropPlaces(e, "fourth-place", "Fourth")}>Fourth place</div>
+                        >Fourth place</div>
                 </div>
 
                 <div className="jd_team-holder">
                     <div    className="jd_team" 
                             id="og" 
-                            draggable
-                            onDragStart={(e) => handleOnDrag(e, "OG")}>
+                            onClick={(e) => handleClick(e, 'Opening Government')}
+                            >
                                 Opening Government
                     </div>
                     <div    className="jd_team" 
                             id="oo" 
-                            draggable
-                            onDragStart={(e) => handleOnDrag(e, "OO")}>
+                            onClick={(e) => handleClick(e, 'Opening Opposition')}>
                                 Opening Opposition
                     </div>
                     <div    className="jd_team" 
                             id="cg" 
-                            draggable
-                            onDragStart={(e) => handleOnDrag(e, "CG")}>
+                            onClick={(e) => handleClick(e, 'Closing Government')}>
                                 Closing Government
                     </div>
                     <div    className="jd_team" 
                             id="co" 
-                            draggable
-                            onDragStart={(e) => handleOnDrag(e, "CO")}>
+                            onClick={(e) => handleClick(e, 'Closing Opposition')}>
                                 Closing Opposition
                     </div>
                 </div>
                 <div id="jd_buttonholder">
                 <div    className="jd_button" 
                             id="jd_redo" 
-                            draggable
+                            onClick={(e) => handleRedo(e)}
                             >
                                 Ujrahelyezes
                     </div>
