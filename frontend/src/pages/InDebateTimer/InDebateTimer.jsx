@@ -278,13 +278,13 @@ function InDebateTimer() {
     }
 
     if (loading) {
-        return <div className="indebate--base base"><div className="indebate--container container fade-in"></div></div>
+        return <div className="indebate--base base"><div className="indebate--container fade-in"></div></div>
     }
 
     return (
         <>
         <div className="indebate--base base">
-            <div className="indebate--container container fade-in">
+            <div className="indebate--container fade-in">
                 { loggedIn && inDebate ?
                 <>
                 {
@@ -303,7 +303,7 @@ function InDebateTimer() {
                 :
                 <>
                 <div className="row indebate--entry-code-field">
-                    <h2 className="indebate--entry-code-text col-12 text-center">Entry code: {entryCode}</h2>
+                    <h2 className="indebate--entry-code-text col-12 text-center">Entry Code: {entryCode}</h2>
                 </div>
                 <div className="row indebate--motion-field">
                     <h1 className="indebate--motion-text col-12 text-center">"{motion}"</h1>
@@ -311,7 +311,7 @@ function InDebateTimer() {
                 <div className="row indebate--current-speaker">
                     <div className="col-12 text-center">
                         <h3>Jelenlegi beszélő: {currentlySpeaking} ({speakerRole[currentlySpeaking - 1]})</h3>
-                        <h3>A te szereped: {role}</h3>
+                        {/*<h3>A te szereped: {role}</h3>*/}
                     </div>
                 </div>
                 <div className="indebate--stopwatch row text-center">

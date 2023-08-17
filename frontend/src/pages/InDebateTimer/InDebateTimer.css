@@ -11,20 +11,28 @@
 }
 
 .poi-button{
-    height: 5vh;
+    height: 50px;
     border-radius: 1.5rem;
+    width: auto;
+    padding: 30px 50px;
+    line-height: 0px;
+    font-size: 25px;
 }
 
 .indebate--container {
     /* min-height: 75vh; */
-    padding-top: 15vh;
+    padding-top: 120px;
     background-color: var(--primary);
     min-height: 100vh;
+    width: 1000px;
+    margin: 0 auto;
 }
 
 .indebate--numbers {
     font-size: 72px;
     font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .indebate--buttons {
@@ -127,7 +135,7 @@
 }
 
 .indebate--current-speaker {
-    margin-bottom: 4rem;
+    margin-bottom: 10px;
 }
 
 .in-debate--hiba {
@@ -138,6 +146,12 @@
 .indebate--motion-text {
     font-weight: bold;
     color: #61C3C3;
+    font-size: 30px;
+    padding: 20px 30px;
+}
+
+.indebate--motion-field {
+    margin: 20px 0;
 }
 
 .indebate--entry-code-field {
@@ -215,6 +229,35 @@
   color:#333d4b
 }
 
+.indebate--role-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.indebate--role-controls > button {
+    margin: 0;
+    min-width: auto;
+}
+
+.indebate--role-controls > .in-debate--finish-field {
+    padding: 0 !important;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+}
+
+.indebate--role-controls > .in-debate--finish-field > button {
+    margin: 0 5px;
+    min-width: auto;
+    width: 200px;
+   
+}
+
+/* ORDER */
+.indebate--role-controls > button:nth-child(2) {
+   order: 1;
+}
+
 @media screen and (max-width: 768px) {
     .in-debate--finish-button{
         width: 80%;
@@ -228,16 +271,30 @@
         margin: 0;
     }
 }
-
 @media screen and (max-width: 1000px) {
+    .indebate--container {
+        padding-top: 90px;
+        width: 100%;
+    }
+
+    .poi-button {
+        font-size: 15px;
+        padding: 15px 30px;
+    }
+
     .indebate--motion-text {
         font-size: 19px;
-        padding: 0;
+        padding: 0 10px;
         margin-bottom: 20px;
     }
 
     h3 {
         font-size: 14px;
+    }
+
+    .indebate--numbers {
+        margin-top: 0;
+        margin-bottom: 0px;
     }
 
     .indebate--current-speaker {
@@ -259,12 +316,6 @@
         margin-top: -30px;
     }
 
-    .indebate--role-controls {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
     .indebate--role-controls > button {
         margin: 0;
         min-width: auto;
@@ -273,6 +324,8 @@
 
     .indebate--role-controls > .in-debate--finish-field {
         padding: 0 !important;
+        margin-left: 5px !important;
+        margin-right: 5px !important;
     }
 
     .indebate--role-controls > .in-debate--finish-field > button {
@@ -285,10 +338,5 @@
     .indebate--role-controls button img {
         width: 20px;
         height: 20px;
-    }
-
-    /* ORDER */
-    .indebate--role-controls > button:nth-child(2) {
-       order: 1;
     }
 }

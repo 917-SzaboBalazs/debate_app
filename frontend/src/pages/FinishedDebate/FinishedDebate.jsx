@@ -50,25 +50,10 @@ function Ranking(props) {
 }
 
 const listFromObj = (obj) => {
-  const getAbbreviation = (abb) => {
-    switch (abb) {
-      case 'OG':
-        return 'Opening Government';
-      case 'CG':
-        return 'Closing Government';
-      case 'OO':
-        return 'Opening Opposition';
-      case 'CO':
-        return 'Closing Opposition';
-      default:
-        return 'Noone';
-    }
-  }
-
-  const myList = []
+  const myList = [];
 
   for (let key in obj) {
-    myList.push(getAbbreviation(obj[key]));
+    myList.push(obj[key]);
   }
 
   return myList;
@@ -85,6 +70,7 @@ function FinishedDebate({ setInDebate, setStatus }) {
         .get('debate/current/')
         .then((res) => {
           const results = JSON.parse(res.data.result);
+          
           setWinnerTeam(listFromObj(results));
           setLoading(false);
         })

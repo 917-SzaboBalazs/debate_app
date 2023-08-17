@@ -43,7 +43,7 @@ function EditProfile({ loggedIn }) {
       }, []);
 
   if (loading) {
-    return <div className="edit--base base"><div className="edit--container container"></div></div>
+    return <div className="edit--base base"><div className="edit--container container fade-in"></div></div>
   }
 
   return (
