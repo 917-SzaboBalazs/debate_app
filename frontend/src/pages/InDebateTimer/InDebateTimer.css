@@ -139,6 +139,15 @@
     font-weight: bold;
 }
 
+.indebate--entry-code-field {
+    margin-bottom: 10px;
+}
+
+.indebate--entry-code-text {
+    font-size: 36px;
+    letter-spacing: 1px;
+}
+
 .in-debate--finish-button {
     font-weight: bold;
     text-transform: uppercase;

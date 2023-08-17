@@ -124,7 +124,6 @@ function Signup() {
             password: password
           })
           .then((res) => {
-            console.log('Succes!');
             setFinal('Success! Your account has been created!');
             
             // wait for 3 seconds before redirecting to home page
@@ -144,7 +143,6 @@ function Signup() {
               }
               
               if (typeof(err.response.data.username) != 'undefined') {
-                console.log(err.response.data.username);
                 setFinal('This username already exists.');
                 setUserName('');
               } else if (typeof(err.response.data.email) != 'undefined') {

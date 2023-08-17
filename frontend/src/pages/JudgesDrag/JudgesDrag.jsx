@@ -52,46 +52,62 @@ function JudgesDrag() {
     
 
   return (
-    <div className='judges-drag--base justify-content-center'>
-                <div className="team-holder">
-                    <div    className="team" 
-                            id="og" 
-                            draggable
-                            onDragStart={(e) => handleOnDrag(e, "OG")}>
-                                OG
-                    </div>
-                    <div    className="team" 
-                            id="oo" 
-                            draggable
-                            onDragStart={(e) => handleOnDrag(e, "OO")}>
-                                OO
-                    </div>
-                    <div    className="team" 
-                            id="cg" 
-                            draggable
-                            onDragStart={(e) => handleOnDrag(e, "CG")}>
-                                CG
-                    </div>
-                    <div    className="team" 
-                            id="co" 
-                            draggable
-                            onDragStart={(e) => handleOnDrag(e, "CO")}>
-                                CO
-                    </div>
-                </div>
-
-                <div className="ordered-holder" id="ordered-holder">
-                    <div id="first-place" className="ordering-places" 
+    
+    <div className='judges-drag--base'>
+                <div id="jd_textholder"><h3 id="jd_choose_order">Válaszd ki a győztes sorrendet!</h3></div>
+                <div className="jd_ordered-holder" id="jd_ordered-holder">
+                    <div id="first-place" className="jd_ordering-places" 
                         onDragOver={handleDragOver} onDrop={(e) => handleOnDropPlaces(e, "first-place", "First")}>Frist place</div>
-                    <div id="second-place" className="ordering-places" 
+                    <div id="second-place" className="jd_ordering-places" 
                         onDragOver={handleDragOver} onDrop={(e) => handleOnDropPlaces(e, "second-place", "Second")}>Second place</div>
-                    <div id="third-place" className="ordering-places" 
+                    <div id="third-place" className="jd_ordering-places" 
                         onDragOver={handleDragOver} onDrop={(e) => handleOnDropPlaces(e, "third-place", "Third")}>Third place</div>
-                    <div id="fourth-place" className="ordering-places" 
+                    <div id="fourth-place" className="jd_ordering-places" 
                         onDragOver={handleDragOver} onDrop={(e) => handleOnDropPlaces(e, "fourth-place", "Fourth")}>Fourth place</div>
                 </div>
 
-                <div id="done-btn" onClick={handleDoneClick}>DONE</div>
+                <div className="jd_team-holder">
+                    <div    className="jd_team" 
+                            id="og" 
+                            draggable
+                            onDragStart={(e) => handleOnDrag(e, "OG")}>
+                                Opening Government
+                    </div>
+                    <div    className="jd_team" 
+                            id="oo" 
+                            draggable
+                            onDragStart={(e) => handleOnDrag(e, "OO")}>
+                                Opening Opposition
+                    </div>
+                    <div    className="jd_team" 
+                            id="cg" 
+                            draggable
+                            onDragStart={(e) => handleOnDrag(e, "CG")}>
+                                Closing Government
+                    </div>
+                    <div    className="jd_team" 
+                            id="co" 
+                            draggable
+                            onDragStart={(e) => handleOnDrag(e, "CO")}>
+                                Closing Opposition
+                    </div>
+                </div>
+                <div id="jd_buttonholder">
+                <div    className="jd_button" 
+                            id="jd_redo" 
+                            draggable
+                            >
+                                Ujrahelyezes
+                    </div>
+                    <div    className="jd_button" 
+                            id="jd_sub" 
+                            draggable
+                            >
+                                Submit
+                    </div>
+                </div>
+
+                {/* <div id="done-btn" onClick={handleDoneClick}>DONE</div> */}
 
     </div>
   )

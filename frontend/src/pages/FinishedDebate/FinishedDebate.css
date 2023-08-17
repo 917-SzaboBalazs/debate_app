@@ -1,6 +1,6 @@
 .finished-debate--base {
   min-height: 100vh;
-  padding-top: 5rem;
+  /* padding-top: 5rem; */
 }
 
 .finished-debate--base h1{
@@ -12,7 +12,7 @@
 }
 
 .finished-debate--base{
-  background-color: var(--beige);
+  /* background-color: var(--beige); */
 }
 
 .place--finished{
@@ -31,7 +31,7 @@
 }
 
 .take-place--results{
-  background-color: var(--primary);
+  background-color: var(--primary-light);
   border: 2px solid var(--secondary);
   border-radius: 10px;
   width: 100%;
@@ -58,9 +58,69 @@
 
 .in-debate--leave-debate{
   margin-top: 10vh;
-  width: 80vw;
+  width: 80%;
 }
 
 .finished-debate--hiba{
   margin-top: 15vh;
+}
+
+.finished-debate--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 700px;
+  min-height: 100vh;
+  background-color: var(--primary-light);
+  justify-content: center;
+}
+
+.finished-debate--container h1{
+  color: white;
+  margin-bottom: 3rem;
+}
+
+
+.finished-debate--ranking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%
+}
+
+.finished-debate--container .ranking-row{
+  display: flex;
+  flex-direction: row;
+  width: 45%;
+  justify-content: space-between;
+  border-bottom: 5px solid white;
+  border-radius: 3px;
+  padding: 10px;
+  align-items: center;
+}
+
+.finished-debate--container #first{
+  border: 5px solid var(--secondary);
+  background-color: var(--secondary);
+  border-radius: .75rem;
+}
+
+.finished-debate--container .ranking-row  p{
+  margin-left: 10px;
+  margin-bottom: 0px;
+  vertical-align: middle;
+  font-size: larger;
+  /* color: var(--primary); */
+}
+
+@media screen and (max-width: 1000px) {
+  .finished-debate--container .ranking-row{
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 665px) {
+  .finished-debate--container .ranking-row{
+    width: 90%;
+  }
 }

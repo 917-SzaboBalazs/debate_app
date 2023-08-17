@@ -11,17 +11,11 @@ import { Link, useLocation } from "react-router-dom";
 
 import './Footer.css';
 
-export default function Footer({ loggedIn, inDebate, setLoggedIn, setInDebate }) {
-  const [ userName, setUserName ] = useState('');
+export default function Footer() {
 
   const location = useLocation();
   const hideFooterURLs = ['/new-debate', '/in-debate', '/results', '/finished-debate'];
 
-  useEffect(() => {
-    getUserCurrent(setUserName, setLoggedIn, setInDebate);
-  }, [setUserName, setLoggedIn, setInDebate]);
-
-  console.log(location.pathname);
   if (hideFooterURLs.includes(location.pathname)) {
     
     return <></>

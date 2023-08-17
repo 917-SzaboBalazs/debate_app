@@ -40,49 +40,25 @@ function CreateDebateComponent(props) {
   return(<></>)
 }
 
-function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, status, setStatus }) {
+function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, status, setStatus, username, setUsername }) {
     let navigate = useNavigate();
 
     const [ triggerCreate, setTriggerCreate ] = useState(false);
     const [ triggerJoin, setTriggerJoin ] = useState(false);
-    const [ userName, setUserName ] = useState('');
     const [ menuOpen, setMenuOpen ] = useState(false);
 
-    const [loading, setLoading] = useState(true);
     const location = useLocation();
 
-    // check if user is logged in
     useEffect(() => {
-
-      getUserCurrent(setUserName, setLoggedIn, setInDebate);
-
-      // lekerem a debate statuszat
-      axiosInstance
-        .get('debate/current/')
-        .then((res) => {
-          if (res.data.status == 'lobby') {
-            setStatus('/new-debate')
-          } else if (res.data.status == 'running') {
-            setStatus('/in-debate')
-          } else if (res.data.status == 'finished') {
-            setStatus('/finished-debate')
+      document.body.addEventListener('click', (e) => {
+          if (!loggedIn && e.y > 315) {
+            setMenuOpen(false);
           }
-          setLoading(false);
-        })
-        .catch((err) => {
-          setLoading(false);
-        })
-
-        document.body.addEventListener('click', (e) => {
-            if (!loggedIn && e.y > 315) {
-              setMenuOpen(false);
-            }
-            else if (loggedIn && e.y > 417) {
-              setMenuOpen(false);
-            }
+          else if (loggedIn && e.y > 417) {
+            setMenuOpen(false);
+          }
         });
-
-    }, [loggedIn, inDebate]);
+    }, []);
 
     useEffect(() => {
       closeMenu();
@@ -90,11 +66,11 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
 
     const handleClickTriggerJoin = () => {
       setTriggerJoin(true);
-      
     }
 
     const logOut = () => {
       closeMenu();
+
       axiosInstance
         .post('user/logout/blacklist/', {
   			refresh_token: localStorage.getItem('refresh_token'),
@@ -110,38 +86,11 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
       })
         .catch((err) => {
         })
-    }
-
-    // const leaveDebate = () => {
-    //   axiosInstance
-    //     .get('user/current/')
-    //     .then((userRes) => {
-    //       axiosInstance
-    //         .get('debate/current/')
-    //         .then((debateRes) => {
-    //             axiosInstance
-    //               .patch('user/current/', {"current_debate": null, 'role': null})
-    //               .then(() => {
-    //                 navigate('/');
-    //                 getUserCurrent(setUserName, setLoggedIn, setInDebate);
-    //                 })
-    //               .catch((err) => {
-    //               })
-    //         })
-    //         .catch((err) => {
-    //         });
-    //     })
-    //     .catch((err) => {
-    //     })
+    };
     
 
   const closeMenu = () => { setMenuOpen(false); window.scrollTo(0, 0) };
   const toggleMenu = () => setMenuOpen(menuOpen === "expanded" ? false : "expanded");
-
-  if (loading)
-  {
-    return <></>
-  }
 
   return (
     <>
@@ -167,7 +116,7 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
                 {loggedIn && <Nav.Link onClick={
                   () => {
                   closeMenu();
-                  leaveDebate(setUserName, setLoggedIn, setInDebate, navigate);
+                  leaveDebate(setInDebate, setStatus, navigate);
                   }} className='nav-link yellow-text'>Leave Debate</Nav.Link>}
               </>
             }
@@ -181,7 +130,7 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
                 </>
                 :
                 <>
-                  <Nav.Link as={Link} to="/profile" className='nav-link' onClick={closeMenu}>{userName}</Nav.Link>
+                  <Nav.Link as={Link} to="/profile" className='nav-link' onClick={closeMenu}>{username}</Nav.Link>
                   <Nav.Link onClick={logOut}>Log Out</Nav.Link>
                 </>
             }
