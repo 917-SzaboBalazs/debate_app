@@ -41,6 +41,7 @@ function InDebateTimer() {
     const [ loggedIn, setLoggedIn ] = useState(false);
     const [ inDebate, setInDebate ] = useState(false);
     const [ motion, setMotion ] = useState('');
+    const [ entryCode, setEntryCode ] = useState('');
     const [ winner, setWinner ] = useState('');
     const [ status, setStatus ] = useState('');
     const [ speakerTime, setSpeakerTime ] = useState('');
@@ -86,6 +87,7 @@ function InDebateTimer() {
             .then((res) => {
                 setSpeakerTime(res.data.speaker_time);
                 setMotion(res.data.motion);
+                setEntryCode(res.data.entry_code);
                 setCurrentlySpeaking(res.data.current_number);
                 setWinner(res.data.winner);
                 setStatus(res.data.status);
@@ -300,6 +302,9 @@ function InDebateTimer() {
                 </>
                 :
                 <>
+                <div className="row indebate--entry-code-field">
+                    <h2 className="indebate--entry-code-text col-12 text-center">Entry code: {entryCode}</h2>
+                </div>
                 <div className="row indebate--motion-field">
                     <h1 className="indebate--motion-text col-12 text-center">"{motion}"</h1>
                 </div>

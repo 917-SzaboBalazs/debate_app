@@ -5,7 +5,7 @@ import placeholder from '../../images/placeholders/410x230.png';
 import axiosInstance from '../../axios';
 
 
-const Blog = ({ loggedIn }) => {
+const Blog = () => {
 
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);

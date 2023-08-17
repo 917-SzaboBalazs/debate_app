@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import './FinishedDebate.css'
+import leaveDebate from '../../components/Functions/leaveDebate';
 
 // const ListResult = (props, index) => {
 //   const winnerTeam = Object.values(props.res);
@@ -73,47 +74,38 @@ const listFromObj = (obj) => {
   return myList;
 }
 
-function FinishedDebate({ setInDebate }) {
-    const [ winnerTeam, setWinnerTeam ] = useState(['Nem lehet tudni, az egyik dev elbaszott valamit'])
+function FinishedDebate({ setInDebate, setStatus }) {
+    const [ winnerTeam, setWinnerTeam ] = useState(['Nem lehet tudni, az egyik dev elbaszott valamit']);
+    const [ loading, setLoading ] = useState(true);
     
     const navigate = useNavigate();
-
-    console.log(winnerTeam);
 
     useEffect(() => {
         axiosInstance
         .get('debate/current/')
         .then((res) => {
-          // console.log(res.data);
           const results = JSON.parse(res.data.result);
           setWinnerTeam(listFromObj(results));
+          setLoading(false);
         })
         .catch((err) => {
-            console.log(err)
+          setLoading(false);
         })
         
     }, []);
-    
-    const leaveDebate = () => {
-        axiosInstance
-            .patch('user/current/', {"current_debate": null, 'role': null})
-            .then((res) => {
-                setInDebate(false);
-                navigate('/');
-                
-            })
-            .catch((err) => {
-            })
-    }
+
+  if (loading) {
+    return <div className='finished-debate--base base d-flex justify-content-center align-items-center'></div>
+  }
 
   return (
     <div className='finished-debate--base base d-flex justify-content-center align-items-center'>
-        <div className="finished-debate--container">
+        <div className="finished-debate--container fade-in">
           <h1>Results</h1>
           <Ranking teams={winnerTeam}/>
           <button
               className="in-debate--leave-debate white-text col-4"
-              onClick={leaveDebate}
+              onClick={() => leaveDebate(setInDebate, setStatus, navigate)}
               >
               Leave Debate
           </button>

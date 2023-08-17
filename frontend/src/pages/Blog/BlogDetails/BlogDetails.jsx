@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import './blogDetails.css';
 import axiosInstance from '../../../axios';
 
-const BlogDetails = ({ loggedIn }) => {
+const BlogDetails = () => {
     const { slug } = useParams();
     const [ post, setPost ] = useState({});
     const [ loading, setLoading ] = useState(true);

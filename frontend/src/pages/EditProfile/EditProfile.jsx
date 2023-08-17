@@ -8,11 +8,7 @@ import { Link } from 'react-router-dom';
 
 import './EditProfile.css';
 
-function EditProfile({ loggedIn, setLoggedIn }) {
-    const [ userName, setUserName ] = useState('');
-    const [ firstName, setFirstName ] = useState('');
-    const [ lastName, setLastName ] = useState('');
-    const [ aboutMe, setAboutMe ] = useState('');
+function EditProfile({ loggedIn }) {
 
     const [ newUserName, setNewUserName ] = useState('');
     const [ newFirstName, setNewFirstName ] = useState('');
@@ -30,17 +26,11 @@ function EditProfile({ loggedIn, setLoggedIn }) {
         axiosInstance
           .get('user/current/')
           .then((res) => {
-            console.log(res);
-            setLoggedIn(true);
-            setUserName(res.data.username);
             setNewUserName(res.data.username);
-            setFirstName(res.data.first_name);
             setNewFirstName(res.data.first_name);
-            setLastName(res.data.last_name);
             setNewLastName(res.data.last_name);
             setNewBirthday(res.data.birthday);
             setNewEmail(res.data.email);
-            setAboutMe(res.data.about_me);
             setNewAboutMe(res.data.about_me);
 
             setLoading(false);
@@ -48,7 +38,6 @@ function EditProfile({ loggedIn, setLoggedIn }) {
           .catch((err) => {
             
             setLoading(false);
-            console.log(err);
           });
 
       }, []);
