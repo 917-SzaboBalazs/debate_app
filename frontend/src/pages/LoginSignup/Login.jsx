@@ -42,6 +42,7 @@ function Login({setLoggedIn, setGlobalUsername}) {
         .catch((err) => {
           setMessage('Wrong username - password combination.');
           setTrigger(true);
+          setPassword('');
         })
     }
 
