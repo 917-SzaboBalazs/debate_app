@@ -10,7 +10,7 @@ export default function FinishPopup(props) {
             <div className="finish-popup-buttons">
               <button onClick={() => {
                 props.setTrigger(false);
-                props.navigate('/results');
+                props.navigate('/judges-drag');
               }}>Yes</button>
               <button onClick={() => props.setTrigger(false)}>No</button>
             </div>
