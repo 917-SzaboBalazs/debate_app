@@ -33,6 +33,7 @@
     font-weight: bold;
     margin-top: 50px;
     margin-bottom: 50px;
+    position: relative;
 }
 
 .indebate--buttons {
@@ -224,9 +225,17 @@
   font-weight: bolder;
 }
 
-.poi-button:hover {
-  background-color: white;
-  color:#333d4b
+.button:hover:not(:disabled) {
+      background-color: white;
+      color:#333d4b
+    }
+
+@media (hover:hover) {
+    .poi-button:hover:not(:disabled) {
+      background-color: white;
+      color:#333d4b
+    }
+
 }
 
 .indebate--role-controls {
@@ -253,9 +262,25 @@
    
 }
 
+.in-debate--poi-seconds {
+    position: absolute;
+    font-size: 30px;
+    color: #61C3C3;
+}
+
 /* ORDER */
 .indebate--role-controls > button:nth-child(2) {
    order: 1;
+}
+
+/* HIDE */
+.display-none {
+    display: none;
+}
+
+.poi-button:disabled {
+    opacity: 0.5;
+    cursor: default;
 }
 
 @media screen and (max-width: 768px) {
@@ -338,5 +363,10 @@
     .indebate--role-controls button img {
         width: 20px;
         height: 20px;
+    }
+
+    .in-debate--poi-seconds {
+        font-size: 18px;
+        top: 5px;
     }
 }

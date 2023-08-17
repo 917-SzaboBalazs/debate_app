@@ -318,26 +318,33 @@ function InDebateTimer() {
                     <div className="indebate--numbers">
                         <span>{minutes}:</span>
                         <span>{seconds < 10 ? "0" + seconds : seconds}</span>
+                        <span 
+                        className={poi ? "in-debate--poi-seconds" : "in-debate--poi-seconds display-none"}
+                        >{POIseconds < 10 ? "0" + POIseconds : POIseconds}</span>   
                         {/* <span>{("0" + ((secondsLeft / 100) % 100)).slice(-2)}</span> */}
                     </div>
-                    { role === 'judge' || role === 'judge1 (chair)' ? <>
-                        {
-                            !poi ? 
-                            <div className="row justify-content-center">    
+                    { role === 'judge'  ? <>
+                            <div className="row justify-content-center">   
+                                {!poi ?  
                                 <button 
                                     className="poi-button poi-element col-3"
                                     onClick={() => {
                                         handlePOI();
                                     }}
                                 >
-                                    P.O.I.
+                                    POI
                                 </button>
-                            </div>
+                            
                             : 
-                            <div className="in-debate--poi-seconds poi-element">
-                                {POIseconds}
+                                <button 
+                                    className="poi-button poi-element col-3"
+                                    disabled
+                                    >
+                                    POI
+                                </button>
+                            }
                             </div>
-                        }   
+                
                     <div className="indebate--buttons text-center">
                         <button
                             className={`indebate--button col-12 indebate--start-button ${!running ? 'indebate--start' : 'indebate--stop'}`}
