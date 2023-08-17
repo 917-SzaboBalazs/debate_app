@@ -1,0 +1,136 @@
+{
+    "menu":{
+        "About" : "About Us",
+        "Debates": "Debates",
+        "Blog": "Blog",
+        "logIn": "Log In",
+        "signUp": "Sign Up",
+        "current": "Current Debate",
+        "leave": "Leave Debate",
+        "join": "Join a Debate",
+        "create": "Create a Debate"
+    },
+    "landing":{
+        "notSignedIn":{
+            "call":"Create a Free Account and Start Debating Now!",
+            "label1":"Log In",
+            "label2":"Sign Up"
+
+        },
+        "signedIn":{
+            "call":"Let's Start a Debate!",
+            "label1":"Join",
+            "label2":"Create"
+        },
+        "inDebate":{
+            "call":"Go Back To Your Debate!",
+            "label1":"Current",
+            "label2":"Leave"
+        }
+    },
+    "aboutUs":{
+        "headline":"Who we are?",
+        "description":"Ide meg kell irni",
+        "team":"The Team",
+        "szabo":"Backend Developer",
+        "kata":"Backend Developer",
+        "fa":"Designer",
+        "pa":"Project manager",
+        "saska":"Frontend Developer",
+        "huni":"Frontend Developer",
+        "andris":"Mentor"
+    },
+    "debates":{
+        "formats":"Debate formats",
+        "brit":{
+            "name":"British Parliamentary",
+            "description":"Description for BP."
+        },
+        "worldSchools":{
+            "name":"World Schools",
+            "description":"Description for WS."
+        },
+        "karlPopper":{
+            "name":"Karl Popper",
+            "description":"Description for KP"
+        }
+    },
+    "editProfile":{
+        "title":"Edit Your Profile!",
+        "firstname":"Firstname: ",
+        "lastname":"Lastname: ",
+        "birthday":"Birthday: ",
+        "email":"Email: ",
+        "aboutMe":"About Me: ",
+        "save":"Save changes",
+        "404":"Sign in to access this page"
+    },
+    "404":"If you see this page, you should run as fast as you can",
+    "profile":{
+        "firstname":"Firstname: ",
+        "lastname":"Lastname: ",
+        "birthday":"Birthday: ",
+        "email":"Email: ",
+        "edit":"Edit Profile"
+    },
+    "joinDebate":{
+        "error":"Invalid Code!",
+        "code":"Debate Code:",
+        "next":"Next",
+        "notLoggedIn":"You have to be logged in first, in order to join a debate."
+    },
+    "newDebate":{
+        "motion":"Motion",
+        "government":"Government",
+        "opposition":"Opposition",
+        "entryCode":"Entry Code: ",
+        "start":"START",
+        "judge":"judge",
+        "spectator":"spectator"
+    },
+    "randomMotion":"Choose a Random Motion",
+    "inDebate":{
+        "code":"Entry Code:",
+        "currentSpeacer":"Current Speaker: "
+    },
+    "judgesDrag":{
+        "first":"First place",
+        "second":"Second place",
+        "third":"Third place",
+        "fourth":"Fourth place",
+        "og":"Opening Government",
+        "oo":"Opening Opposition",
+        "cg":"Closing Government",
+        "co":"Closing Opposition",
+        "reorder":"Order again",
+        "submit":"Submit",
+        "message":{
+            "first":"first",
+            "choose":"Choose the",
+            "place":"team!"
+        }
+    },
+    "login":{
+        "title":"Sign In",
+        "username":"Username",
+        "password":"Password",
+        "login":"Log In",
+        "call":"No Account Yet? Signup Now",
+        "error":"Wrong username - password combination."
+    },
+    "signUp":{
+        "title":"Sign Up",
+        "username":"Username",
+        "email":"Email",
+        "password":"Password",
+        "passwordAgain":"Password Again",
+        "requirement":"- Password must have at least",
+        "characters":"8 characters",
+        "create":"Create Account",
+        "call":"Already have an Account? Sign in Now"
+    },
+    "results":{
+        "title":"Results",
+        "leave":"Leave Debate"
+    }
+}

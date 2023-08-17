@@ -2,12 +2,14 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import axiosInstance from '../../axios';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'
 
 import './Profile.css';
 
 import face1 from '../../images/faces/face1.svg';
 
 function Profile({ loggedIn }) {
+    const { t } = useTranslation();
     const [ firstName, setFirstName ] = useState('');
     const [ lastName, setLastName ] = useState('');
     const [ email, setEmail ] = useState('');
@@ -69,18 +71,18 @@ function Profile({ loggedIn }) {
                                     :
                                         <p className="profile--element d-flex justify-content-center">You are not in a debate</p>
                                 } */}
-                                <h1 className="profile--firstname-element profile--element row d-flex justify-content-center">Firstname: {firstName}</h1>
+                                <h1 className="profile--firstname-element profile--element row d-flex justify-content-center">{t("profile.firstname")}{firstName}</h1>
                                 <div className="profile--lastname row d-flex justify-content-center">
-                                    <h1 className="profile--lastname-element profile--element d-flex justify-content-center">Lastname: {lastName}</h1>
+                                    <h1 className="profile--lastname-element profile--element d-flex justify-content-center">{t("profile.lastname")}{lastName}</h1>
                                 </div>
                                 <div className="profile--birthday row d-flex justify-content-center ">
-                                    <h1 className="profile--birthday-element profile--element d-flex justify-content-center">Birthday: {bDay}</h1>
+                                    <h1 className="profile--birthday-element profile--element d-flex justify-content-center">{t("profile.birthday")}{bDay}</h1>
                                 </div>
                                 <div className="profile--email row d-flex justify-content-center">
-                                    <h1 className="profile--email-element profile--element d-flex justify-content-center">Email: {email}</h1>
+                                    <h1 className="profile--email-element profile--element d-flex justify-content-center">{t("profile.email")}{email}</h1>
                                 </div>
                                 <div className="profile--edit row d-flex justify-content-center">
-                                    <Link to="/edit-profile" className="profile--edit-element col-4 text-center d-flex justify-content-center"><h3>Edit Profile</h3></Link>
+                                    <Link to="/edit-profile" className="profile--edit-element col-4 text-center d-flex justify-content-center"><h3>{t("profile.edit")}</h3></Link>
                                 </div>
                         </div>
                     </div>

@@ -14,9 +14,12 @@ import image5 from '../../images/signup5.jpg'
 import image6 from '../../images/signup6.jpg'
 import image7 from '../../images/signup7.jpg'
 
+import { useTranslation } from 'react-i18next'
+
 import './Login.css'
 
 function Login({setLoggedIn, setGlobalUsername}) {
+    const { t } = useTranslation();
     const [ userName, setUserName ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ trigger, setTrigger ] = useState(false);
@@ -40,7 +43,16 @@ function Login({setLoggedIn, setGlobalUsername}) {
           setGlobalUsername(userName);
         })
         .catch((err) => {
-          setMessage('Wrong username - password combination.');
+          const lang = localStorage.getItem('lang')
+          if (lang === 'en')
+          {
+            setMessage("Wrong username - password combination.");
+          }
+          else
+          {
+            setMessage("Helytelen felhasználónév vagy jelszó.");
+          }
+          
           setTrigger(true);
           setPassword('');
         })
@@ -77,14 +89,14 @@ function Login({setLoggedIn, setGlobalUsername}) {
             <div className="login-container d-flex align-items-center justify-content-center">
                 <div className="login-box align-items-center">
                     <h1 className="login--login-title">
-                      Sign In
+                      {t("login.title")}
                     </h1>
                     <div className="icon-container">
                       <input 
                         value={userName}
                         type="text"
                         className="username" 
-                        placeholder='Username'
+                        placeholder={t("login.username")}
                         onChange={(e) => setUserName(e.target.value)}  
                       />
                       <i>&#xf007;</i>
@@ -94,7 +106,7 @@ function Login({setLoggedIn, setGlobalUsername}) {
                         value={password}
                         type="password" 
                         className='password'
-                        placeholder='Password' 
+                        placeholder={t("login.password")}
                         onChange={(e) => setPassword(e.target.value)}
                         />
                         <i>&#xf023;</i>
@@ -102,11 +114,11 @@ function Login({setLoggedIn, setGlobalUsername}) {
 
                   <div className="login-btn-row row text-center">
                     <div className="login--btn-cont col-12 ">
-                        <button type='submit'  className='login-btn bg-succes' onClick={handleSubmit}>Login</button>
+                        <button type='submit'  className='login-btn bg-succes' onClick={handleSubmit}>{t("login.login")}</button>
                     </div>
                   </div>
                   <div className="login--dont-have-cont row">
-                    <Link className="login--dont-have-account col-12" to='/sign-up'><span>No Account Yet? Signup Now</span></Link>
+                    <Link className="login--dont-have-account col-12" to='/sign-up'><span>{t("login.call")}</span></Link>
                   </div>
                 </div>
             </div>

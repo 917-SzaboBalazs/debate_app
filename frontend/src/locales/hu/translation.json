@@ -1,0 +1,137 @@
+{
+    "menu":{
+        "About" : "Rólunk",
+        "Debates": "Vitaformátumok",
+        "Blog": "Blog",
+        "logIn": "Bejelentkezés",
+        "signUp": "Regisztráció",
+        "current": "Jelenlegi Vita",
+        "leave": "Kilépés a vitából",
+        "join": "Csatlakozz egy vitához",
+        "create": "Hozz létre új vitát"
+    },
+    "landing":{
+        "notSignedIn":{
+            "call":"Regiszrálj és kezdj el vitázni most!",
+            "label1":"Belépés",
+            "label2":"Új Tag"
+
+        },
+        "signedIn":{
+            "call":"Kezdődjön a vita!",
+            "label1":"Meglévő",
+            "label2":"Új Vita"
+        },
+        "inDebate":{
+            "call":"Menj vissza a vitádhoz!",
+            "label1":"Előtér",
+            "label2":"Kilépés"
+        }
+    },
+    "aboutUs":{
+        "headline":"Kik vagyunk?",
+        "description":"Csapatunk a Mathias Corvinus Collegium kolozsvári egyetemi program diákprojektje során jött létre és feladatunk a vitakultúra terjesztése. Fontos számunkra a tájékozódottság és a folytonos tudásbővítés, épp ezért a közös célunk az, hogy segítsünk a felhasználóinknak a logikus gondolatmenet levezetésében, a véleményük kifejtésében, valamint a határozott és meggyőző érvelésben. Úgy gondoljuk, hogy a kritikus és innovatív gondolkodás képessége segíteni fogja a vitázókat abban, hogy az élet minden területén megállják a helyüket.",
+        "team":"A Csapat",
+        "szabo":"Backend Fejlesztő",
+        "kata":"Backend Fejlesztő",
+        "fa":"Dizájner",
+        "pa":"Projekt menedzser",
+        "saska":"Frontend Fejlesztő",
+        "huni":"Frontend Fejlesztő",
+        "andris":"Mentor"
+    },
+    "debates":{
+        "formats":"Vitaformátumok",
+        "brit":{
+            "name":"Brit Parlamenti",
+            "description":"A brit parlamenti viták négy, egyenként két-két felszólalóból álló csapatból állnak, amelyek két oldalra oszlanak, amelyek az indítvány mellett és ellen szólalnak fel. A vita brit parlamenti eljárásból való eredete miatt az oldalakat kormánynak és ellenzéknek nevezik. Minden felszólaló legfeljebb hétperces beszédet tart. Az oldalak első felszólalói definiálják a tételmondatot, majd felsorolják az érveiket, a második felszólalók cáfolni próbálják az ellenfél érveit, új érveket hoznak be, illetve visszaépítik a cáfolatot kapott érveiket. A harmadik felszólaló feladata a kiterjesztés, egy új szempontból kell megközelítenie a tételmondatot és behoznia egy friss érvet, míg az utolsó felszólaló az összefoglaló szerepet tölti be, vagyis összefoglalja, mi hangzott el a vitán és nem hozhat be új érvet."
+        },
+        "worldSchools":{
+            "name":"World Schools",
+            "description":"A World Schools Style Debating (vagy WSS) a brit parlamenti és az ausztrál-ázsiai vitázási formátumok kombinációja, amelyet az iskolai vitaversenyek világbajnokságának igényeihez terveztek. Minden vita nyolc beszédből áll, amelyeket két háromfős csapat tart, a javaslattevő és az ellenzéki oldal képviseletében. Az első hat beszéd nyolc percig tart, majd mindkét csapat egy négyperces záróbeszéddel fejezi be a vitát. A csapatoknak 30-60 perc áll rendelkezésükre a beszédek előkészítésére."
+        },
+        "karlPopper":{
+            "name":"Karl Popper",
+            "description":"Minden vitában két csapat vesz részt. Az egyik csapat az igenlő fél szerepét kapja meg, a másik pedig a másik a nemleges felet. A szerep (fél) kiválasztása előzetesen történik. Minden csapat három-öt vitázóból áll, akik közül hárman aktívan részt vesznek a vitában. A csapat a vita elején közli a három aktív vitázó nevét és sorrendjét. Egy csapat vitapartnerei szabadon cserélődhetnek a csapaton belül a verseny során, de nem a vita során."
+        }
+    },
+    "editProfile":{
+        "title":"Szerkeszd a Profilod!",
+        "firstname":"Keresztnév: ",
+        "lastname":"Családnév: ",
+        "birthday":"Születésnap: ",
+        "email":"Email: ",
+        "aboutMe":"Leírás: ",
+        "save":"Mentés",
+        "404":"Ha szerkeszteni szeretnéd a profilod, előbb jelentkezz be!"
+    },
+    "404":"Ha ezt az oldalt látod, akkor menekülj minél gyorsabban",
+    "profile":{
+        "firstname":"Keresztnév: ",
+        "lastname":"Családnév: ",
+        "birthday":"Születésnap: ",
+        "email":"Email: ",
+        "edit":"Szerkesztés"
+    },
+    "joinDebate":{
+        "error":"Helytelen Kód!",
+        "code":"Add meg a vita kódját:",
+        "next":"Tovább",
+        "notLoggedIn":"Jelentkezz be, ha vitához szeretnél csatlakozni."
+    },
+    "newDebate":{
+        "motion":"Tételmondat",
+        "government":"Kormány",
+        "opposition":"Ellenzék",
+        "entryCode":"Vita Kód: ",
+        "start":"Kezdődjön a vita!",
+        "judge":"bíró",
+        "spectator":"néző"
+    },
+    "randomMotion":"Véletlenszerű tételmondat",
+    "inDebate":{
+        "code":"Vita Kód:",
+        "currentSpeacer":"Jelenlegi beszélő: "
+    },
+    "judgesDrag":{
+        "first":"Első hely",
+        "second":"Második hely",
+        "third":"Harmadik hely",
+        "fourth":"Negyedik hely",
+        "og":"Nyitókormány",
+        "oo":"Nyitóellenzék",
+        "cg":"Zárókormány",
+        "co":"Záróellenzék",
+        "reorder":"Újra",
+        "submit":"Tovább",
+        "message":{
+            "first":"első",
+            "choose":"Válaszd ki a(z)",
+            "place":"helyezettet!"
+        }
+    },
+    "login":{
+        "title":"Bejelentkezés",
+        "username":"Felhasználónév",
+        "password":"Jelszó",
+        "login":"Bejelentkezés",
+        "call":"Nincs fiókod? Regisztrálj most!",
+        "error":"Wrong username - password combination."
+    },
+    "signUp":{
+        "title":"Regisztráció",
+        "username":"Felhasználónév",
+        "email":"Email",
+        "password":"Jelszó",
+        "passwordAgain":"Jelszó újra",
+        "requirement":"- A jelszó legalább",
+        "characters":"8 karakter hosszú",
+        "create":"Regisztráció",
+        "call":"Van már fiókod? Jelentkezz be itt!"
+    },
+    "results":{
+        "title":"Rangsor",
+        "leave":"Kilépés a vitából"
+    }
+    
+}

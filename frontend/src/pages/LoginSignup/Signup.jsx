@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axiosInstance from '../../axios'
 import SignupPopup from '../../components/Popups/SignupLogin/SignupPopup';
+import { useTranslation } from 'react-i18next'
 
 import './Signup.css'
 
@@ -16,9 +17,7 @@ import image6 from '../../images/signup6.jpg'
 import image7 from '../../images/signup7.jpg'
 
 function Signup() {
-
-  
-
+  const { t } = useTranslation();
   const [ userName, setUserName ] = useState('');
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -33,59 +32,124 @@ function Signup() {
 
   // check if teh username is a valid one
   const validateUsername = (username) => {
-    if (username === '') {
-      message = 'The username field must not be empty.';
-      return false;
+    const lang = localStorage.getItem('lang')
+    if (lang === 'en')
+    {
+      if (username === '') {
+        message = 'The username field must not be empty.';
+        return false;
+      }
+  
+      if (username.length > 20) {
+        message = 'The length of the username must be maximum 20 characters.';
+        return false;
+      }
     }
-
-    if (username.length > 20) {
-      message = 'The length of the username must be maximum 20 characters.';
-      return false;
+    else
+    {
+      if (username === '') {
+        message = 'A felhasználónév nem lehet üres.';
+        return false;
+      }
+  
+      if (username.length > 20) {
+        message = 'A felhasználónév legfeljebb 20 karakter hosszú lehet.';
+        return false;
+      }
     }
+    
 
     return true;
   }
 
   // check if the password is a valid one
   const validatePassword = (password, passwordAgain) => {
-    if (password === '' || passwordAgain === '') {
-      message = 'The password fields must not be empty.';
-      return false;
+    const lang = localStorage.getItem('lang')
+    if (lang === 'en')
+    {
+      if (password === '' || passwordAgain === '') {
+        message = 'The password fields must not be empty.';
+        return false;
+      }
+  
+      if (password !== passwordAgain) {
+        message = 'The passwords must match.';
+        return false;
+      }
+  
+      if (password.length < 8) {
+        message = 'The password must be at least 8 characters';
+        return false;
+      }
     }
-
-    if (password !== passwordAgain) {
-      message = 'The passwords must match.';
-      return false;
+    else
+    {
+      if (password === '' || passwordAgain === '') {
+        message = 'A jelszó mezők nem lehetnek üresek.';
+        return false;
+      }
+  
+      if (password !== passwordAgain) {
+        message = 'A jelszavak nem egyeznek.';
+        return false;
+      }
+  
+      if (password.length < 8) {
+        message = 'A jelszónak legalább 8 karakter hosszúnak kell lennie.';
+        return false;
+      }
     }
-
-    if (password.length < 8) {
-      message = 'The password must be at least 8 characters';
-      return false;
-    }
+    
 
     return true;
   }
 
   // check if the email is a valid one
   const validateEmail = (email) => {
-    if (email === '') {
-      message = 'The email field must not be empty.';
-      return false;
+    const lang = localStorage.getItem('lang')
+    if (lang === 'en')
+    {
+      if (email === '') {
+        message = 'The email field must not be empty.';
+        return false;
+      }
+  
+      if (email.length > 40) {
+        message = 'The email must be at most 40 characters.';
+        return false;
+      }
+  
+      if (!String(email)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )) {
+        message = 'The given email addres is not valid.'
+        return false;
+      }
     }
-
-    if (email.length > 40) {
-      message = 'The email must be at most 40 characters.';
-      return false;
+    else
+    {
+      if (email === '') {
+        message = 'Az email mező nem lehet üres.';
+        return false;
+      }
+  
+      if (email.length > 40) {
+        message = 'Az email legfeljebb 40 karakter hosszú lehet.';
+        return false;
+      }
+  
+      if (!String(email)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )) {
+        message = 'Helytelen email.'
+        return false;
+      }
     }
-
-    if (!String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    )) {
-      message = 'The given email addres is not valid.'
-      return false;
-    }
+    
 
     return true;
   };
@@ -124,7 +188,15 @@ function Signup() {
             password: password
           })
           .then((res) => {
-            setFinal('Success! Your account has been created!');
+            const lang = localStorage.getItem('lang')
+            if(lang === 'en')
+            {
+              setFinal('Success! Your account has been created!');
+            }
+            else{
+              setFinal('Sikeres regisztráció!');
+            }
+            
             
             // wait for 3 seconds before redirecting to home page
             const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -138,10 +210,12 @@ function Signup() {
           })
           .catch((err) => {
 
+            const lang = localStorage.getItem('lang')
+            if (lang === 'en')
+            {
               if (typeof(err.response.data) == 'undefined') {
-                  setFinal('Server error.');
+                setFinal('Server error.');
               }
-              
               if (typeof(err.response.data.username) != 'undefined') {
                 setFinal('This username already exists.');
                 setUserName('');
@@ -151,6 +225,23 @@ function Signup() {
               } else if (err.response.status === 400){
                 setFinal('Unexpected error');
               } 
+            }
+            else
+            {
+              if (typeof(err.response.data) == 'undefined') {
+                setFinal('Szerverhiba.');
+              }
+              if (typeof(err.response.data.username) != 'undefined') {
+                setFinal('A felhasználónév foglalt.');
+                setUserName('');
+              } else if (typeof(err.response.data.email) != 'undefined') {
+                setFinal('Az email cím már használatban van.');
+                setEmail('');
+              } else if (err.response.status === 400){
+                setFinal('Váratlan hiba');
+              } 
+            }
+
 
             });
     }
@@ -193,14 +284,14 @@ function Signup() {
             <div className="signup--container d-flex align-items-center justify-content-center">
                 <div className="signup-box align-items center">
                     {/* <div className="signup-box-2 col-12"> */}
-                    <h1 className="signup--signup-title">Sign Up</h1>
+                    <h1 className="signup--signup-title">{t("signUp.title")}</h1>
 
                     <div className="icon-container">
                       <input
                           id="username"
                           name="username"
                           type="text"
-                          placeholder='Username'
+                          placeholder={t("signUp.username")}
                           className="username"
                           value={userName}
                           onChange = {(e) => {
@@ -215,7 +306,7 @@ function Signup() {
                           id="email"
                           name="email"
                           type="text"
-                          placeholder='Email'
+                          placeholder={t("signUp.email")}
                           className="email"
                           value={email}
                           onChange = {(e) => {
@@ -230,7 +321,7 @@ function Signup() {
                           id="password"
                           name="password"
                           type="password"
-                          placeholder='Password'
+                          placeholder={t("signUp.password")}
                           className='password'
                           value={password}
                           onChange = {(e) => {
@@ -245,7 +336,7 @@ function Signup() {
                           id="passwordAgain"
                           name="passwordAgain"
                           type="password"
-                          placeholder='Password Again'
+                          placeholder={t("signUp.passwordAgain")}
                           className='password'
                           value={passwordAgain}
                           onChange = {(e) => {
@@ -256,7 +347,7 @@ function Signup() {
                     </div>
                     {/* </div> */}
                     <p className="signup--password-help">
-                      - Password must have at least <strong>8 characters</strong>
+                    {t("signUp.requirement")} <strong>{t("signUp.characters")}</strong>
                     </p>
                     
                     <div className="signup--btn-row row text-center">
@@ -266,11 +357,11 @@ function Signup() {
                             type='submit'
                             onClick={handleSubmit}
                         >
-                            Create Account
+                            {t("signUp.create")}
                         </button>
                       </div>
                       <div className="signup--already-cont row">
-                        <Link className="signup--already-have-an-account col-12" to='/log-in'><span>Already have an Account? Sign in Now</span></Link>
+                        <Link className="signup--already-have-an-account col-12" to='/log-in'><span>{t("signUp.call")}</span></Link>
                       </div>
                    {/* </div> */}
                    </div>

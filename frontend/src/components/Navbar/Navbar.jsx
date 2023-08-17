@@ -16,6 +16,9 @@ import leaveDebate from '../Functions/leaveDebate';
 import axiosInstance from '../../axios';
 
 import { Link } from 'react-router-dom';
+import LanguageSelector from '../LanguageSelector/LanguageSelector.js';
+import { useTranslation } from 'react-i18next'
+import i18n from "../../i18n";
 
 // import './Navbar.css';
 import './Navbar2.css';
@@ -24,6 +27,7 @@ import Logo from '../../images/logo.svg';
 
 function CreateDebateComponent(props) {
   const { loggedIn, navigate, setInDebate, closeMenu } = props;
+  const { t } = useTranslation();
 
   if (loggedIn) {
     return (
@@ -32,7 +36,7 @@ function CreateDebateComponent(props) {
           closeMenu();
           await handleClickTriggerCreate(navigate, setInDebate);
         }}
-        className='nav-link yellow-text'>Create a Debate
+        className='nav-link yellow-text'>{t("menu.create")}
       </Nav.Link>
     )
   }
@@ -91,6 +95,20 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
 
   const closeMenu = () => { setMenuOpen(false); window.scrollTo(0, 0) };
   const toggleMenu = () => setMenuOpen(menuOpen === "expanded" ? false : "expanded");
+  const { t } = useTranslation();
+  const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+
+    const toggleLanguage = () => {
+        const newLanguage = selectedLanguage === "en" ? "hu" : "en";
+        i18n.changeLanguage(newLanguage);
+        setSelectedLanguage(newLanguage);
+        localStorage.setItem("lang", newLanguage);
+        const pathname = window.location.pathname;
+        console.log(pathname)
+        if(pathname === '/judges-drag'){
+          window.location.reload()
+        }
+    }
 
   return (
     <>
@@ -100,41 +118,43 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
         <Navbar.Toggle aria-controls="responsive-navbar-nav" color='white' onClick={toggleMenu} />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-          <Nav.Link as={Link} to="/about-us" className='nav-link' onClick={closeMenu}>About Us</Nav.Link>
-          <Nav.Link as={Link} to="/debates" className='nav-link' onClick={closeMenu}>Debates</Nav.Link>
-          <Nav.Link as={Link} to="/blog" className='nav-link' onClick={closeMenu}>Blog</Nav.Link>
+          <Nav.Link as={Link} to="/about-us" className='nav-link' onClick={closeMenu}>{t("menu.About")}</Nav.Link>
+          <Nav.Link as={Link} to="/debates" className='nav-link' onClick={closeMenu}>{t("menu.Debates")}</Nav.Link>
+          <Nav.Link as={Link} to="/blog" className='nav-link' onClick={closeMenu}>{t("menu.Blog")}</Nav.Link>
 
             {
               !inDebate ?
               <>
-                {loggedIn && <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>Join a Debate</Nav.Link> }
+                {loggedIn && <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>{t("menu.join")}</Nav.Link> }
                 <CreateDebateComponent loggedIn={loggedIn} setInDebate={setInDebate} navigate={navigate} closeMenu={closeMenu} />
               </>
               :
               <>
-                {loggedIn && <Nav.Link as={Link} to={status} className='nav-link yellow-text' onClick={closeMenu}>Current Debate</Nav.Link>}
+                {loggedIn && <Nav.Link as={Link} to={status} className='nav-link yellow-text' onClick={closeMenu}>{t("menu.current")}</Nav.Link>}
                 {loggedIn && <Nav.Link onClick={
                   () => {
                   closeMenu();
                   leaveDebate(setInDebate, setStatus, navigate);
-                  }} className='nav-link yellow-text'>Leave Debate</Nav.Link>}
+                  }} className='nav-link yellow-text'>{t("menu.leave")}</Nav.Link>}
               </>
             }
             </Nav>
             <Nav>
             { !loggedIn ?
                 <>
-                  <Nav.Link as={Link} to="/log-In" className='nav-link' onClick={closeMenu}>Log In</Nav.Link>
-                  <Nav.Link as={Link} to="/sign-up" className='nav-link' onClick={closeMenu}>Sign Up</Nav.Link>
-
+                  <Nav.Link as={Link} to="/log-In" className='nav-link' onClick={closeMenu}>{t("menu.logIn")}</Nav.Link>
+                  <Nav.Link as={Link} to="/sign-up" className='nav-link' onClick={closeMenu}>{t("menu.signUp")}</Nav.Link>
                 </>
                 :
                 <>
                   <Nav.Link as={Link} to="/profile" className='nav-link' onClick={closeMenu}>{username}</Nav.Link>
                   <Nav.Link onClick={logOut}>Log Out</Nav.Link>
+                  
                 </>
             }
+            <Nav.Link className='nav-link' onClick={toggleLanguage}>{selectedLanguage === "en" ? "Hungarian" : "English"}</Nav.Link>
           </Nav>
+          
           <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} />
           <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} setInDebate={setInDebate} closeMenu={closeMenu} status={status} setStatus={setStatus}/>
         </Navbar.Collapse>

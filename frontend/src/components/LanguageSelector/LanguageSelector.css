@@ -1,0 +1,18 @@
+/* LanguageSelector.css */
+
+/* .language-selector {
+    display: inline-block;
+    position: relative;
+  } */
+  
+  .language-button {
+    background-color: rgba(var(--primary),var(--bs-bg-opacity))!important;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  /* .language-button:hover{
+    color: (var(--primary));
+  } */
+  

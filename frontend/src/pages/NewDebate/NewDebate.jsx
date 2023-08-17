@@ -11,6 +11,7 @@ import listerDesktop from './Functions/listerDesktop';
 import axiosInstance from '../../axios';
 import RandomMotionSetter from './Components/randomMotionSetter';
 import spectatorLister from './Functions/spectatorLister';
+import { useTranslation } from 'react-i18next'
 
 
 function NewDebate() {
@@ -29,6 +30,7 @@ function NewDebate() {
     const [ posts, setPosts ] = useState([]);
     const [ allUsers, setAllUsers] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { t } = useTranslation();
 
     const ref = useRef(null);
 
@@ -59,7 +61,6 @@ function NewDebate() {
         .get('debate/current/')
         .then((res) => {
             // console.log(res);
-      
             setMotion(res.data.motion);
             setLoading(false)
         })
@@ -124,7 +125,7 @@ function NewDebate() {
                     <div
                         className="new-debate--decision--pro new-debate--dec col-3"
                     >
-                        <div className="col-12 new-debate--pro-btn new-debate--label text-center font-weight-bold">Government</div>
+                        <div className="col-12 new-debate--pro-btn new-debate--label text-center font-weight-bold">{t("newDebate.government")}</div>
                         <hr className='new-debate--line'></hr>
                         {
                             listerDesktop (
@@ -132,14 +133,15 @@ function NewDebate() {
                                 posts, 
                                 allUsers, 
                                 handleChoose,  
-                                setCurrRole)
+                                setCurrRole
+                                )
                         }
                     </div>
 
                     {/* Itt van a kozepso sor*/}
                     <div className='new-debate--motion col-6 text-center p-4'>
                         {/* Ez egy textfield lesz, hogy at lehessen irni ha arra volna igeny */}
-                        <div className="col-12 new-debate--pro-btn new-debate--label text-center font-weight-bold"><h2>Motion</h2></div>
+                        <div className="col-12 new-debate--pro-btn new-debate--label text-center font-weight-bold"><h2>{t("newDebate.motion")}</h2></div>
                         <hr className='new-debate--line'></hr>
                         <div className="row">
                             <div className="row">
@@ -169,7 +171,7 @@ function NewDebate() {
                                 text-center 
                                 white-text'
                                 >
-                                Entry Code: {entryCode}
+                                {t("newDebate.entryCode")} {entryCode}
                             </h2>
                         </div>
 
@@ -185,7 +187,7 @@ function NewDebate() {
                                             className="new-debate--button col-4 white-text text-center"
                                             onClick={startDebate}
                                         >
-                                            start
+                                            {t("newDebate.start")}
                                         </div>
                                     </div>
                                 </>
@@ -195,7 +197,7 @@ function NewDebate() {
                                         <div
                                             className="new-debate--button new-debate--button-disabled col-4 white-text text-center"
                                         >
-                                            start
+                                            {t("newDebate.start")}
                                         </div>
                                     </div>
                     </>
@@ -206,13 +208,13 @@ function NewDebate() {
                                 className={"new-debate--spectator-col new-debate--button col-3 white-text text-center" + (currRole === 'judge' ? ' new-debate--selected-button' : '')} 
                                     onClick={() => handleChoose('judge', null, setCurrRole)}
                                 >
-                                judge
+                                {t("newDebate.judge")}
                             </div>    
                             <div 
                                 className={"new-debate--spectator-col new-debate--button col-3 white-text text-center" + (currRole === 'spectator' ? ' new-debate--selected-button' : '')} 
                                     onClick={() => handleChoose('spectator', null, setCurrRole)}
                                 >
-                                spectator
+                                {t("newDebate.spectator")}
                             </div>
                         </div>
                         {/* <div className="row">Ide be kene tenni a birot, az fasza lenne sztem (vagyis legalulra)</div> */}
@@ -225,7 +227,7 @@ function NewDebate() {
                     <div
                         className="new-debate--decision--con new-debate--dec col-3"
                     >
-                        <div className="col-12 new-debate--pro-btn text-center new-debate--label font-weight-bold">Opposition</div>
+                        <div className="col-12 new-debate--pro-btn text-center new-debate--label font-weight-bold">{t('newDebate.opposition')}</div>
                         <hr className='new-debate--line'></hr>
                         {
                             listerDesktop (

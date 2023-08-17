@@ -2,22 +2,25 @@ import React from 'react';
 import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../../axios';
+import { useTranslation } from 'react-i18next'
 
 import './JoinDebate.css';
 
 function ErrorMessage(props) {
+  const { t } = useTranslation();
   const { errorState } = props;
 
   if ( !errorState ) return <></>;
 
   return (
     <div className="error-message">
-      <p>Invalid code</p>
+      <p>{t("joinDebate.error")}</p>
     </div>
   );
 }
 
 function JoinDebate(props) {
+    const { t } = useTranslation();
     const [ debateCode, setDebateCode ] = useState('');
     const [ errorState, setErrorState ] = useState(false);
 
@@ -76,11 +79,11 @@ function JoinDebate(props) {
                 <button className="join-debate--close-btn" onClick={() => handleClose(props)}>X</button>
                 { props.loggedIn ?
                 <>
-                <h3 className="join-debate--text white-text">Debate Code: </h3>
+                <h3 className="join-debate--text white-text">{t("joinDebate.code")} </h3>
                 <input
                     type="text"
                     value={debateCode}
-                    placeholder='kód'
+                    placeholder=""
                     id="join-debate--code"
                     onChange={(e) => {
                         setDebateCode(e.target.value);
@@ -91,12 +94,12 @@ function JoinDebate(props) {
                     className="join-debate--next-btn"
                     onClick={handleNext}
                 >
-                    Next
+                    {t("joinDebate.next")}
                 </button>
                 <ErrorMessage errorState={errorState} />
                 </>
                 :
-                <h1>You have to be logged in first, in order to join a debate.</h1>
+                <h1>{t("joinDebate.notLoggedIn")}</h1>
                 }
             </div>
         </div>

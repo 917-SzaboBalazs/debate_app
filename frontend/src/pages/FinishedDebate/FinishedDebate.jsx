@@ -2,6 +2,7 @@ import React from 'react'
 import axiosInstance from '../../axios';
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'
 
 import './FinishedDebate.css'
 import leaveDebate from '../../components/Functions/leaveDebate';
@@ -60,6 +61,7 @@ const listFromObj = (obj) => {
 }
 
 function FinishedDebate({ setInDebate, setStatus }) {
+    const { t } = useTranslation();
     const [ winnerTeam, setWinnerTeam ] = useState(['Nem lehet tudni, az egyik dev elbaszott valamit']);
     const [ loading, setLoading ] = useState(true);
     
@@ -87,13 +89,13 @@ function FinishedDebate({ setInDebate, setStatus }) {
   return (
     <div className='finished-debate--base base d-flex justify-content-center align-items-center'>
         <div className="finished-debate--container fade-in">
-          <h1>Results</h1>
+          <h1>{t('results.title')}</h1>
           <Ranking teams={winnerTeam}/>
           <button
               className="in-debate--leave-debate white-text col-4"
               onClick={() => leaveDebate(setInDebate, setStatus, navigate)}
               >
-              Leave Debate
+              {t('results.leave')}
           </button>
         </div>
     </div>
