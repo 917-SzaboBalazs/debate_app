@@ -137,6 +137,7 @@
 
 .indebate--motion-text {
     font-weight: bold;
+    color: #61C3C3;
 }
 
 .indebate--entry-code-field {
@@ -146,6 +147,7 @@
 .indebate--entry-code-text {
     font-size: 36px;
     letter-spacing: 1px;
+    
 }
 
 .in-debate--finish-button {
@@ -216,6 +218,14 @@
 @media screen and (max-width: 768px) {
     .in-debate--finish-button{
         width: 80%;
+    }
+
+    .indebate--entry-code-text {
+        font-size: 16px;
+    }
+
+    .indebate--entry-code-field {
+        margin: 0;
     }
 }
 
