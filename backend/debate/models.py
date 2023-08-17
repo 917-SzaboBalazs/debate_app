@@ -20,7 +20,7 @@ class Debate(models.Model):
     type = models.CharField(max_length=50, default="british", help_text="Default value is <b>british</b>. Other "
                                                                         "possible values: <b>british</b>.")
 
-    result = models.CharField(max_length=50, null=True, blank=True, help_text="Stores the result of the debate."
+    result = models.CharField(max_length=200, null=True, blank=True, help_text="Stores the result of the debate. "
                                                                               "Default value is <b>NULL</b>.")
     status = models.CharField(max_length=50, default="lobby", help_text="Signals current status of the debate."
                                                                         "Default value is <b>lobby</b>. Other possible"

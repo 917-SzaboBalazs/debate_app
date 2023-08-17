@@ -96,8 +96,8 @@ function App() {
           {/* Ezt a kettot majd egybe fog kelleni cuccoljam */}
           <Route path='/new-debate' exact element={<NewDebateWrapper />} />
           <Route path='/in-debate' exact element={<InDebateTimer />} />
-          <Route path='/judges-drag' exact element={<JudgesDrag />} />
-          <Route path='/results' exact element={<Results />} />
+          <Route path='/judges-drag' exact element={<JudgesDrag inDebate={inDebate} />} />
+          {/*<Route path='/results' exact element={<Results />} />*/}
           <Route path='/finished-debate' exact element={<FinishedDebate setInDebate={setInDebate} setStatus={setStatus}/>} />
 
           {/* Profile */}

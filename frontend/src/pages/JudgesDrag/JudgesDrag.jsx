@@ -1,13 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axiosInstance from '../../axios';
-import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 
 import './JudgesDrag.css'
-import { all } from 'axios';
 
-function JudgesDrag() {
+function JudgesDrag({ inDebate }) {
+    const navigate = useNavigate();
+    const [noPlaced, setNoPlaced] = useState(0);
+
+    const handleSubmit = () => {
+        // RESULTS TO JSON
+        const result = {
+            '1' : document.getElementById('first-place').outerText,
+            '2' : document.getElementById('second-place').outerText,
+            '3' : document.getElementById('third-place').outerText,
+            '4' : document.getElementById('fourth-place').outerText,
+        }
+
+        if (!validateData()) {
+            return;
+        }
+
+        // SEND DATA TO BACKEND AND REDIRECT TO FINISH PAGE
+        axiosInstance
+            .patch('debate/current/', {
+                'result': JSON.stringify(Object.assign({}, result)),
+                'status': 'finished',
+            })
+            .then((res) => {
+                navigate('/finished-debate');
+            })
+            .catch((err) => {
+            });
+    };
+
+    const validateData = () => {
+        if (noPlaced < 4) {
+            return false;
+        }
+
+        return true;
+    }
 
     function handleRedo(e){
         const og = document.getElementById('og');
@@ -32,6 +65,8 @@ function JudgesDrag() {
 
         const text = document.getElementById('jd_choose_order');
         text.innerHTML = 'Válaszd ki a(z) <span id="jd_choose_place">első</span> helyezettet!'
+
+        setNoPlaced(0);
     }
 
     function handleClick(e, place){
@@ -63,65 +98,72 @@ function JudgesDrag() {
             full_sentence.innerHTML = 'Felállítottad a sorrendet'
         }
 
+        setNoPlaced(noPlaced + 1);
+
         e.currentTarget.style.backgroundColor = 'rgb(80,80,80)';
     }
-    
+
+  if (!inDebate) {
+    return <div className='judges-drag--base'><div className='fade-in'></div></div>
+  }
 
   return (
     
-    <div className='judges-drag--base'>
-                <div id="jd_textholder"><h3 id="jd_choose_order">Válaszd ki a(z) <span id="jd_choose_place">első</span> helyezettet!</h3></div>
-                <div className="jd_ordered-holder" id="jd_ordered-holder">
-                    <div id="first-place" className="jd_ordering-places" 
-                        >Frist place</div>
-                    <div id="second-place" className="jd_ordering-places" 
-                        >Second place</div>
-                    <div id="third-place" className="jd_ordering-places" 
-                        >Third place</div>
-                    <div id="fourth-place" className="jd_ordering-places" 
-                        >Fourth place</div>
-                </div>
+    <div className='judges-drag--base base'>
+        <div className="fade-in">
+            <div id="jd_textholder"><h3 id="jd_choose_order">Válaszd ki a(z) <span id="jd_choose_place">első</span> helyezettet!</h3></div>
+            <div className="jd_ordered-holder" id="jd_ordered-holder">
+                <div id="first-place" className="jd_ordering-places" 
+                    >First place</div>
+                <div id="second-place" className="jd_ordering-places" 
+                    >Second place</div>
+                <div id="third-place" className="jd_ordering-places" 
+                    >Third place</div>
+                <div id="fourth-place" className="jd_ordering-places" 
+                    >Fourth place</div>
+            </div>
 
-                <div className="jd_team-holder">
-                    <div    className="jd_team" 
-                            id="og" 
-                            onClick={(e) => handleClick(e, 'Opening Government')}
-                            >
-                                Opening Government
-                    </div>
-                    <div    className="jd_team" 
-                            id="oo" 
-                            onClick={(e) => handleClick(e, 'Opening Opposition')}>
-                                Opening Opposition
-                    </div>
-                    <div    className="jd_team" 
-                            id="cg" 
-                            onClick={(e) => handleClick(e, 'Closing Government')}>
-                                Closing Government
-                    </div>
-                    <div    className="jd_team" 
-                            id="co" 
-                            onClick={(e) => handleClick(e, 'Closing Opposition')}>
-                                Closing Opposition
-                    </div>
+            <div className="jd_team-holder">
+                <div    className="jd_team" 
+                        id="og" 
+                        onClick={(e) => handleClick(e, 'Opening Government')}
+                        >
+                            Opening Government
                 </div>
-                <div id="jd_buttonholder">
+                <div    className="jd_team" 
+                        id="oo" 
+                        onClick={(e) => handleClick(e, 'Opening Opposition')}>
+                            Opening Opposition
+                </div>
+                <div    className="jd_team" 
+                        id="cg" 
+                        onClick={(e) => handleClick(e, 'Closing Government')}>
+                            Closing Government
+                </div>
+                <div    className="jd_team" 
+                        id="co" 
+                        onClick={(e) => handleClick(e, 'Closing Opposition')}>
+                            Closing Opposition
+                </div>
+            </div>
+            <div id="jd_buttonholder">
+            <div    className="jd_button" 
+                        id="jd_redo" 
+                        onClick={(e) => handleRedo(e)}
+                        >
+                            Ujrahelyezes
+                </div>
                 <div    className="jd_button" 
-                            id="jd_redo" 
-                            onClick={(e) => handleRedo(e)}
-                            >
-                                Ujrahelyezes
-                    </div>
-                    <div    className="jd_button" 
-                            id="jd_sub" 
-                            draggable
-                            >
-                                Submit
-                    </div>
+                        id="jd_sub" 
+                        draggable
+                        onClick={handleSubmit}
+                        >
+                            Submit
                 </div>
+            </div>
 
-                {/* <div id="done-btn" onClick={handleDoneClick}>DONE</div> */}
-
+            {/* <div id="done-btn" onClick={handleDoneClick}>DONE</div> */}
+        </div>
     </div>
   )
 }
