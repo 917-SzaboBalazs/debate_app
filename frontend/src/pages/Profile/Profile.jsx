@@ -7,14 +7,14 @@ import './Profile.css';
 
 import face1 from '../../images/faces/face1.svg';
 
-function Profile({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
+function Profile({ loggedIn }) {
     const [ firstName, setFirstName ] = useState('');
     const [ lastName, setLastName ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ bDay, setbDay ] = useState('');
     const [ aboutMe, setAboutMe ] = useState('');
-    const [ role, setRole ] = useState('');
     const [ username, setUserName ] = useState('');
+    
     const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
@@ -22,21 +22,12 @@ function Profile({ loggedIn, setLoggedIn, inDebate, setInDebate }) {
         axiosInstance
           .get('user/current/')
           .then((res) => {
-            console.log(res);
-            setLoggedIn(true);
             setFirstName(res.data.first_name);
             setLastName(res.data.last_name);
             setEmail(res.data.email);
             setbDay(res.data.birthday);
             setAboutMe(res.data.about_me);
-            setRole(res.data.role);
             setUserName(res.data.username);
-
-            if (res.data.current_debate != null) {
-              setInDebate(true);
-            } else {
-              setInDebate(false);
-            }
 
             setLoading(false);
 

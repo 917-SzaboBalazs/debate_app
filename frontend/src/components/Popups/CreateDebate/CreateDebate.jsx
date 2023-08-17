@@ -36,8 +36,10 @@ function CreateDebate(props) {
     axiosInstance
       .post('debate/', { 'type': debateType, 'motion': motion, 'no_judges': noJudges, 'speaker_time': speakerTime, 'has_chair': hasChair, 'status': 'lobby'})
       .then((res) => {
-        navigate('/new-debate');
+        props.setStatus('new-debate/');
         props.setIndebate(true);
+
+        navigate('/new-debate');
 
         axiosInstance
           .patch('user/current/', {

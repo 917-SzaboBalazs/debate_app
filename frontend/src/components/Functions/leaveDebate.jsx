@@ -1,26 +1,19 @@
 import axiosInstance from '../../axios';
-import getUserCurrent from './getUserCurrent';
 
+function leaveDebate(setInDebate, setStatus, navigate) {
 
-function leaveDebate(setUserName, setLoggedIn, setInDebate, navigate) {
-
-    axiosInstance
-    .get('user/current/')
-    .then((userRes) => {
-      axiosInstance
-            .patch('user/current/', {"current_debate": null, 'role': null})
-            .then((res) => {
-            navigate('/');
-            //window.location.reload(false);
-            setInDebate(false);
-            })
-            .catch((err) => {
-            })
-      
+  axiosInstance
+    .patch('user/current/', {
+      "current_debate": null, 
+      'role': null
+    })
+    .then((res) => {
+      navigate('/');
+      setInDebate(false);
+      setStatus('');
     })
     .catch((err) => {
-      console.log(err);
     })
 }
 
-export default leaveDebate
+export default leaveDebate;

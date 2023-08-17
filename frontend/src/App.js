@@ -26,26 +26,59 @@ import BlogDetails from './pages/Blog/BlogDetails/BlogDetails';
 
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [inDebate, setInDebate] = useState(false);
-  const [ status, setStatus ] = useState('/new-debate');
+  /* USER */
+  const [ loggedIn, setLoggedIn ] = useState(false);
+  const [ username, setUsername ] = useState('');
+  
+  /* DEBATE */
+  const [ inDebate, setInDebate ] = useState(false);
+  const [ status, setStatus ] = useState('');
+
+  const [userLoading, setUserLoading] = useState(true);
+  const [debateLoading, setDebateLoading] = useState(true);
 
   useEffect(() => {
     axiosInstance
       .get("user/current/")
       .then((res) => {
         setLoggedIn(true);
+        setUsername(res.data.username);
+        setUserLoading(false);
       })
       .catch((err) => {
+        setUserLoading(false);
+      });
 
+    axiosInstance
+      .get("debate/current/")
+      .then((res) => {
+        setInDebate(true);
+
+        if (res.data.status == 'lobby') {
+          setStatus('/new-debate')
+        } else if (res.data.status == 'running') {
+          setStatus('/in-debate')
+        } else if (res.data.status == 'finished') {
+          setStatus('/finished-debate')
+        }
+
+        setDebateLoading(false);
       })
-  })
+      .catch((err) => {
+        setDebateLoading(false);
+      });
+
+  }, []);
+
+  if (debateLoading || userLoading) {
+    return <></>
+  }
 
   return (
     <>
       <Router>
         {/* Navbar  */}
-        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate} status={status} setStatus={setStatus}/>
+        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate} status={status} setStatus={setStatus} username={username} setUsername={setUsername}/>
 
         {/* A tobbi oldal elerhetosege  */}
         <Routes>
@@ -53,7 +86,7 @@ function App() {
           <Route path='/' exact element={<Home loggedIn={loggedIn} inDebate={inDebate} setInDebate={setInDebate} status={status} setStatus={setStatus} />} />
 
           {/* Login - Signup  */}
-          <Route path='/log-In' exact element={<Login setLoggedIn={setLoggedIn} />} />
+          <Route path='/log-In' exact element={<Login setLoggedIn={setLoggedIn} setGlobalUsername={setUsername} />} />
           <Route path='/sign-up' exact element={<Signup/>} />
 
           <Route path='/about-us' exact element={<AboutUs />} />
@@ -65,25 +98,22 @@ function App() {
           <Route path='/in-debate' exact element={<InDebateTimer />} />
           <Route path='/judges-drag' exact element={<JudgesDrag />} />
           <Route path='/results' exact element={<Results />} />
-          <Route path='/finished-debate' exact element={<FinishedDebate setInDebate={setInDebate}/>}></Route>
+          <Route path='/finished-debate' exact element={<FinishedDebate setInDebate={setInDebate} setStatus={setStatus}/>} />
 
           {/* Profile */}
-          <Route path='/profile' exact element={<Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate} />} />
-          <Route path='/edit-profile' exact element={<EditProfile loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
+          <Route path='/profile' exact element={<Profile loggedIn={loggedIn} />} />
+          <Route path='/edit-profile' exact element={<EditProfile loggedIn={loggedIn} />} />
 
           {/* Blog */}
-          <Route path='/blog' exact element={<Blog loggedIn={loggedIn} />} />
-          <Route path='/blog/:slug' exact element={<BlogDetails loggedIn={loggedIn} />} />
+          <Route path='/blog' exact element={<Blog />} />
+          <Route path='/blog/:slug' exact element={<BlogDetails />} />
 
           {/* Baj van, ha ide kerul valaki  */}
           <Route path='*' exact element={<Error />} />
-
-          {/* Tester oldal  */}
-          <Route path='/testing' exact element={<TesterPage/>}/>
         </Routes>
       
       {/* Footer  */}
-      <Footer loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate}/>
+      <Footer />
       </Router>
     </>
   )

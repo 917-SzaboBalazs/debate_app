@@ -1,6 +1,6 @@
 import axiosInstance from "../../axios";
 
-const handleClickTriggerCreate = (navigate, setInDebate) => {
+const handleClickTriggerCreate = (navigate, setInDebate, setStatus) => {
 
     // alapertelmezetten britt parlamenti a vitafomatum
     axiosInstance
@@ -8,10 +8,10 @@ const handleClickTriggerCreate = (navigate, setInDebate) => {
     .then((res) => {
         setInDebate(true);
         navigate('/new-debate');
+        setStatus('/new-debate');
       }
     )
     .catch((err) => {
-        alert('You have to be logged in for creating a debate.');
     }
     )
 }

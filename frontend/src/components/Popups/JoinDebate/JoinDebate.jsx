@@ -48,21 +48,21 @@ function JoinDebate(props) {
                 }
                 setDebateCode("");
                 if (res.data.status === 'lobby') {
-                  props.setStatus('/new-debate')
+                  props.setStatus('/new-debate');
+                  navigate('/new-debate');
                 } else if (res.data.status === 'running') {
-                  props.setStatus('/in-debate')
+                  props.setStatus('/in-debate');
+                  navigate('/in-debate');
                 } else if (res.data.status === 'finished') {
-                  props.setStatus('/finished-debate')
+                  props.setStatus('/finished-debate');
+                  navigate('/finished-debate');
                 }
-
-                navigate(props.status);
 
                 axiosInstance
                   .patch('user/current/', {
                     'role': 'spectator'
                   })
                   .catch((err) => {
-                    console.log(err);
                   })
             })
             .catch((err) => {

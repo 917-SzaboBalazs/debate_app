@@ -2,76 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axiosInstance from '../../axios';
 import handleClickTriggerCreate from '../Functions/handleClickCreate';
 
 import JoinDebate from '../Popups/JoinDebate/JoinDebate';
 import CreateDebate from '../Popups/CreateDebate/CreateDebate';
+import leaveDebate from '../Functions/leaveDebate';
 
 import './Trunk.css';
 
-function Trunk({ loggedIn, inDebate, setInDebate, status, setStatus, closeMenu }) {
+function Trunk({ loggedIn, inDebate, setInDebate, status, setStatus }) {
     const [ triggerCreate, setTriggerCreate ] = useState(false);
     const [ triggerJoin, setTriggerJoin ] = useState(false);
 
-    
-
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true);
-
-    // let navigate = useNavigate();
-
-    // check if user is logged in
-    useEffect(() => {
-      axiosInstance
-        .get('user/current/')
-        .then((res) => {
-
-          axiosInstance
-            .get('debate/current/')
-            .then((res) => {
-                if (res.data.status === 'lobby') {
-                    setStatus('/new-debate')
-                } else if (res.data.status === 'running') {
-                    setStatus('/in-debate')
-                } else if (res.data.status === 'finished') {
-                    setStatus('/finished-debate')
-                }
-
-                setLoading(false);
-            })
-            .catch((err) => {
-                setLoading(false);
-            }, []);
-        })
-        .catch((err) => {
-          setLoading(false);
-        });
-
-        
-
-
-    }, [loggedIn, inDebate]);
 
     const handleClickTriggerJoin = () => {
         setTriggerJoin(true);
-        }
-
-    const leaveDebate = () => {
-        axiosInstance
-            .patch('user/current/', {"current_debate": null, 'role': null})
-            .then((res) => {
-            // navigate('/');
-            //window.location.reload(false);
-            setInDebate(false);
-            })
-            .catch((err) => {
-            })
-        }
-
-    if (loading)
-    {
-        return <div className="home--container"></div>
     }
 
   return (
@@ -116,7 +62,7 @@ function Trunk({ loggedIn, inDebate, setInDebate, status, setStatus, closeMenu }
                                 <button
                                     className='trunk--signin-button text-uppercase'
                                     onClick={() => {
-                                        handleClickTriggerCreate(navigate, setInDebate)
+                                        handleClickTriggerCreate(navigate, setInDebate, setStatus)
                                     }}
                                 >
                                     <div className="trunk--signup-link trunk--link-text" ><span className='white-text'>Create</span></div>
@@ -134,7 +80,7 @@ function Trunk({ loggedIn, inDebate, setInDebate, status, setStatus, closeMenu }
                                 </button>
                                 <button
                                     className='trunk--signin-button text-uppercase'
-                                    onClick={leaveDebate}
+                                    onClick={() => leaveDebate(setInDebate, setStatus, navigate)}
                                 >
                                     <div className="trunk--signup-link trunk--link-text" ><span className='white-text'>Leave</span></div>
                                 </button>
@@ -143,8 +89,9 @@ function Trunk({ loggedIn, inDebate, setInDebate, status, setStatus, closeMenu }
                 </div>
             </div>
         </div>
-        <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} setInDebate={setInDebate} />
-        <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} setInDebate={setInDebate} status={status} setStatus={setStatus} />
+
+        <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} setInDebate={setInDebate} setStatus={setStatus} />
+        <JoinDebate loggedIn={loggedIn} trigger={triggerJoin} setTrigger={setTriggerJoin} setInDebate={setInDebate} setStatus={setStatus} />
     </div>
   )
 }

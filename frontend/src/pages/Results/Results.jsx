@@ -35,7 +35,6 @@ function Results() {
         }
       })
       .catch((err) => {
-        console.log(err);
       });
   }, []);
 
@@ -133,7 +132,6 @@ function Results() {
               navigate('/finished-debate');
             })
             .catch((err) => {
-                console.log(err);
             })
       })
       .catch((err) => {

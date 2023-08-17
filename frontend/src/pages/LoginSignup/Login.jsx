@@ -16,7 +16,7 @@ import image7 from '../../images/signup7.jpg'
 
 import './Login.css'
 
-function Login({setLoggedIn}) {
+function Login({setLoggedIn, setGlobalUsername}) {
     const [ userName, setUserName ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ trigger, setTrigger ] = useState(false);
@@ -37,6 +37,7 @@ function Login({setLoggedIn}) {
 
           navigate('/');
           setLoggedIn(true);
+          setGlobalUsername(userName);
         })
         .catch((err) => {
           setMessage('Wrong username - password combination.');
