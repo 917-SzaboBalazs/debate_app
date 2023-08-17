@@ -24,8 +24,12 @@ import axiosInstance from './axios';
 import Blog from './pages/Blog/Blog';
 import BlogDetails from './pages/Blog/BlogDetails/BlogDetails';
 
+import ReactGA from 'react-ga';
+
 
 function App() {
+  ReactGA.initialize('G-PVMMHJKF98');
+
   /* USER */
   const [ loggedIn, setLoggedIn ] = useState(false);
   const [ username, setUsername ] = useState('');
