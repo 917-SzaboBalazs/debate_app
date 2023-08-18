@@ -24,8 +24,12 @@ import axiosInstance from './axios';
 import Blog from './pages/Blog/Blog';
 import BlogDetails from './pages/Blog/BlogDetails/BlogDetails';
 
+import ReactGA from 'react-ga';
+
 
 function App() {
+  ReactGA.initialize('G-PVMMHJKF98');
+
   /* USER */
   const [ loggedIn, setLoggedIn ] = useState(false);
   const [ username, setUsername ] = useState('');
@@ -90,7 +94,7 @@ function App() {
           <Route path='/sign-up' exact element={<Signup/>} />
 
           <Route path='/about-us' exact element={<AboutUs />} />
-          <Route path='/debates' exact element={<Debates />} />
+          {/* <Route path='/debates' exact element={<Debates />} /> */}
 
           {/* DEBATE */}
           {/* Ezt a kettot majd egybe fog kelleni cuccoljam */}

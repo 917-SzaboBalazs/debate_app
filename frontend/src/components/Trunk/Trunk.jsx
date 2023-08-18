@@ -8,17 +8,25 @@ import JoinDebate from '../Popups/JoinDebate/JoinDebate';
 import CreateDebate from '../Popups/CreateDebate/CreateDebate';
 import leaveDebate from '../Functions/leaveDebate';
 
+import { useTranslation } from 'react-i18next'
+
 import './Trunk.css';
 
 function Trunk({ loggedIn, inDebate, setInDebate, status, setStatus }) {
     const [ triggerCreate, setTriggerCreate ] = useState(false);
     const [ triggerJoin, setTriggerJoin ] = useState(false);
+    const { t } = useTranslation();
+    
+    
 
     const navigate = useNavigate();
 
     const handleClickTriggerJoin = () => {
         setTriggerJoin(true);
     }
+
+    
+
 
   return (
     <div className="home--container ">
@@ -30,14 +38,14 @@ function Trunk({ loggedIn, inDebate, setInDebate, status, setStatus }) {
 
                         {!loggedIn && 
                         <>
-                             <h2 className='trunk--btns--helper-text'>Create a Free Account and Start Debating Now!</h2>
+                             <h2 className='trunk--btns--helper-text'>{t("landing.notSignedIn.call")}</h2>
                              <button
                                 className='trunk--login-button text-uppercase'
                                 onClick={() => {
                                     navigate('/log-in');
                                 }} 
                             >
-                            <div className='trunk--login-link trunk--link-text' ><span className='white-text'>Log In</span></div>
+                            <div className='trunk--login-link trunk--link-text' ><span className='white-text'>{t("landing.notSignedIn.label1")}</span></div>
                             </button>
                             <button
                                 className='trunk--signin-button text-uppercase'
@@ -45,19 +53,19 @@ function Trunk({ loggedIn, inDebate, setInDebate, status, setStatus }) {
                                     navigate('/sign-up')
                                 }}
                             >
-                            <div className="trunk--signup-link trunk--link-text" ><span className='white-text'>Sign Up</span></div>
+                            <div className="trunk--signup-link trunk--link-text" ><span className='white-text'>{t("landing.notSignedIn.label2")}</span></div>
                             </button>
                             
                         </>}
 
                         {loggedIn && !inDebate &&
                             <>
-                                <h2 className='trunk--btns--helper-text'>Let's Start a Debate!</h2>
+                                <h2 className='trunk--btns--helper-text'>{t("landing.signedIn.call")}</h2>
                                 <button
                                     className='trunk--login-button text-uppercase'
                                     onClick={handleClickTriggerJoin} 
                                 >
-                                    <div className='trunk--login-link trunk--link-text' ><span className='white-text'>Join</span></div>
+                                    <div className='trunk--login-link trunk--link-text' ><span className='white-text'>{t("landing.signedIn.label1")}</span></div>
                                 </button>
                                 <button
                                     className='trunk--signin-button text-uppercase'
@@ -65,24 +73,24 @@ function Trunk({ loggedIn, inDebate, setInDebate, status, setStatus }) {
                                         handleClickTriggerCreate(navigate, setInDebate, setStatus)
                                     }}
                                 >
-                                    <div className="trunk--signup-link trunk--link-text" ><span className='white-text'>Create</span></div>
+                                    <div className="trunk--signup-link trunk--link-text" ><span className='white-text'>{t("landing.signedIn.label2")}</span></div>
                                 </button>
                             </>
                         }
 
                         {loggedIn && inDebate && 
                             <>
-                                <h2 className='trunk--btns--helper-text'>Go Back To Your Debate!</h2>
+                                <h2 className='trunk--btns--helper-text'>{t("landing.inDebate.call")}</h2>
                                 <button
                                     className='trunk--login-button text-uppercase'
                                 >
-                                    <Link className='trunk--login-link trunk--link-text' to={status}><span className='white-text'>Current</span></Link>
+                                    <Link className='trunk--login-link trunk--link-text' to={status}><span className='white-text'>{t("landing.inDebate.label1")}</span></Link>
                                 </button>
                                 <button
                                     className='trunk--signin-button text-uppercase'
                                     onClick={() => leaveDebate(setInDebate, setStatus, navigate)}
                                 >
-                                    <div className="trunk--signup-link trunk--link-text" ><span className='white-text'>Leave</span></div>
+                                    <div className="trunk--signup-link trunk--link-text" ><span className='white-text'>{t("landing.inDebate.label2")}</span></div>
                                 </button>
                             </>
                         }

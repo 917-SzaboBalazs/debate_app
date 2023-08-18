@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axios';
+import { useTranslation } from 'react-i18next'
 
 import FinishPopup from './Popups/FinishPopup';
 
@@ -22,6 +23,7 @@ import FinishDebate from '../../components/Popups/FinishDebate/FinishDebate';
 import './InDebateTimer.css'
 
 function InDebateTimer() {
+    const { t } = useTranslation();
     const navigate = useNavigate();
 
     const [ triggerPopup, setTriggerPopup ] = useState(false);
@@ -50,8 +52,16 @@ function InDebateTimer() {
     const [ POIseconds, setPOIseconds ] = useState(15);
 
     const [loading, setLoading] = useState(true);
-
-    const speakerRole = [ 'Nyitó kormány - 1', 'Nyitó ellenzék - 1', 'Nyitó kormány - 2', 'Nyitó ellenzék - 2', 'Záró kormány - 1', 'Záró ellenzék - 1', 'Záró kormány - 2', 'Záró ellenzék - 2'];
+    let lang = localStorage.getItem('lang')
+    var speakerRole;
+    if (lang=== 'en')
+    {
+        speakerRole = [ 'Opening Government - 1', 'Opening Opposition - 1', 'Opening Government - 2', 'Opening Opposition - 2', 'Closing Government - 1', 'Closing Opposition - 1', 'Closing Government - 2', 'Closing Opposition - 2'];
+    }
+    else{
+        speakerRole = [ 'Nyitó Kormány - 1', 'Nyitó Ellenzék - 1', 'Nyitó Kormány - 2', 'Nyitó Ellenzék - 2', 'Záró Kormány - 1', 'Záró Ellenzék - 1', 'Záró Kormány - 2', 'Záró Ellenzék - 2'];
+    }
+    
     
     // check if user is logged in
     useEffect(() => {
@@ -303,14 +313,15 @@ function InDebateTimer() {
                 :
                 <>
                 <div className="row indebate--entry-code-field">
-                    <h2 className="indebate--entry-code-text col-12 text-center">Entry Code: {entryCode}</h2>
+                    <h2 className="indebate--entry-code-text col-12 text-center">{t('inDebate.code')} {entryCode}</h2>
                 </div>
                 <div className="row indebate--motion-field">
                     <h1 className="indebate--motion-text col-12 text-center">"{motion}"</h1>
                 </div>
                 <div className="row indebate--current-speaker">
                     <div className="col-12 text-center">
-                        <h3>Jelenlegi beszélő: {currentlySpeaking} ({speakerRole[currentlySpeaking - 1]})</h3>
+                        {/* <h3>{t('inDebate.currentSpeacer')} {currentlySpeaking} ({speakerRole[currentlySpeaking - 1]})</h3> */}
+                        <h3>{t('inDebate.currentSpeacer')} {speakerRole[currentlySpeaking - 1]}</h3>
                         {/*<h3>A te szereped: {role}</h3>*/}
                     </div>
                 </div>

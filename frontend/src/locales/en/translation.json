@@ -1,0 +1,141 @@
+{
+    "menu":{
+        "About" : "About Us",
+        "Debates": "Debates",
+        "Blog": "Blog",
+        "logIn": "Log In",
+        "signUp": "Sign Up",
+        "current": "Current Debate",
+        "leave": "Leave Debate",
+        "join": "Join a Debate",
+        "create": "Create a Debate"
+    },
+    "landing":{
+        "notSignedIn":{
+            "call":"Create a Free Account and Start Debating Now!",
+            "label1":"Log In",
+            "label2":"Sign Up"
+
+        },
+        "signedIn":{
+            "call":"Let's Start a Debate!",
+            "label1":"Join",
+            "label2":"Create"
+        },
+        "inDebate":{
+            "call":"Go Back To Your Debate!",
+            "label1":"Current",
+            "label2":"Leave"
+        }
+    },
+    "aboutUs":{
+        "headline":"Who we are?",
+        "description":"This website started as a student project in the Cluj University Program and our mission is to promote the culture of debate. It is important for us to be informed and to keep expanding our knowledge, which is why our common goal is to help our users to derive logical lines of thought, to express their opinions and to argue in a strong and convincing way. We believe that the ability to think critically and innovatively will help debaters to succeed in all walks of life.",
+        "team":"The Team",
+        "szabo":"Backend Developer",
+        "kata":"Backend Developer",
+        "fa":"Designer",
+        "pa":"Project manager",
+        "saska":"Frontend Developer",
+        "huni":"Frontend Developer",
+        "andris":"Mentor"
+    },
+    "debates":{
+        "formats":"Debate formats",
+        "brit":{
+            "name":"British Parliamentary",
+            "description":"The British Parliamentary debating format features four teams—Government Opening, Opposition Opening, Government Closing, and Opposition Closing—engaging in a fast-paced debate on a motion presented in the format 'This house believes that...'. Each team consists of two speakers who deliver speeches in a specific order: Prime Minister (PM), Leader of the Opposition (LO), Deputy Prime Minister (DPM), Deputy Leader of the Opposition (DLO), Member of the Government (MG), Member of the Opposition (MO), Government Whip (GW), and Opposition Whip (OW). Speeches are typically 5 to 7 minutes long, and debaters can challenge arguments through points of information or rebuttals. The format emphasizes persuasive communication, critical thinking, and strategic analysis, with judges evaluating the teams' performance based on argument strength, responsiveness, presentation, and strategy."
+        },
+        "worldSchools":{
+            "name":"World Schools",
+            "description":"The World Schools Debating format involves two teams representing countries or schools, with three speakers each—Prime Minister (PM), Leader of the Opposition (LO), Member of the Government (MG), and Member of the Opposition (MO)—debating either a prepared or impromptu motion. Speeches, lasting about 5 to 7 minutes, cover argument introduction, counters, and rebuttals. Judges assess teams based on argument quality, responsiveness, teamwork, and presentation. The format combines prepared and spontaneous debating, fostering critical thinking and versatile communication skills."
+        },
+        "karlPopper":{
+            "name":"Karl Popper",
+            "description":"The Karl Popper Debate format, inspired by philosopher Karl Popper's ideas, encourages critical discourse through a focused exploration of a proposition. It involves three phases: constructive, rebuttal, and final focus. In the constructive phase, two teams present arguments for or against a motion, each having two speakers who introduce their main points. In the rebuttal phase, speakers challenge opponents' arguments and present further analysis. The final focus phase allows both sides to summarize their cases, emphasizing their key points and showing why their stance prevails. This format aims to foster rigorous argumentation, evidential support, and logical reasoning."
+        }
+    },
+    "editProfile":{
+        "title":"Edit Your Profile!",
+        "firstname":"Firstname: ",
+        "lastname":"Lastname: ",
+        "birthday":"Birthday: ",
+        "email":"Email: ",
+        "aboutMe":"About Me: ",
+        "save":"Save changes",
+        "404":"Sign in to access this page"
+    },
+    "404":"If you see this page, you should run as fast as you can",
+    "profile":{
+        "firstname":"Firstname: ",
+        "lastname":"Lastname: ",
+        "birthday":"Birthday: ",
+        "email":"Email: ",
+        "edit":"Edit Profile"
+    },
+    "joinDebate":{
+        "error":"Invalid Code!",
+        "code":"Debate Code:",
+        "next":"Next",
+        "notLoggedIn":"You have to be logged in first, in order to join a debate."
+    },
+    "newDebate":{
+        "motion":"Motion",
+        "government":"Government",
+        "opposition":"Opposition",
+        "entryCode":"Entry Code: ",
+        "start":"START",
+        "judge":"judge",
+        "spectator":"spectator"
+    },
+    "randomMotion":"Choose a Random Motion",
+    "inDebate":{
+        "code":"Entry Code:",
+        "currentSpeacer":"Current Speaker: ",
+        "popup":{
+            "title":"Do you wish to finish the debate now?",
+            "yes":"Yes",
+            "no":"No"
+        }
+    },
+    "judgesDrag":{
+        "first":"First place",
+        "second":"Second place",
+        "third":"Third place",
+        "fourth":"Fourth place",
+        "og":"Opening Government",
+        "oo":"Opening Opposition",
+        "cg":"Closing Government",
+        "co":"Closing Opposition",
+        "reorder":"Order again",
+        "submit":"Submit",
+        "message":{
+            "first":"first",
+            "choose":"Choose the",
+            "place":"team!"
+        }
+    },
+    "login":{
+        "title":"Sign In",
+        "username":"Username",
+        "password":"Password",
+        "login":"Log In",
+        "call":"No Account Yet? Signup Now",
+        "error":"Wrong username - password combination."
+    },
+    "signUp":{
+        "title":"Sign Up",
+        "username":"Username",
+        "email":"Email",
+        "password":"Password",
+        "passwordAgain":"Password Again",
+        "requirement":"- Password must have at least",
+        "characters":"8 characters",
+        "create":"Create Account",
+        "call":"Already have an Account? Sign in Now"
+    },
+    "results":{
+        "title":"Results",
+        "leave":"Leave Debate"
+    }
+}

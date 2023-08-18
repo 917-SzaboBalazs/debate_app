@@ -1,15 +1,27 @@
 import React from 'react'
 import axiosInstance from '../../../axios'
 import handleMotion from '../Functions/handleMotion'
+import { useTranslation } from 'react-i18next'
 
 function RandomMotionSetter({ setMotion, currRole }) {
+    const { t } = useTranslation();
 
     const handleSetRandom = () => {
         axiosInstance
             .get('motion/random/')
             .then((res) => {
-                handleMotion(res.data.text_in_english);
-                setMotion(res.data.text_in_english);
+                const lang = localStorage.getItem('lang')
+                if (lang === 'en')
+                {
+                    handleMotion(res.data.text_in_english);
+                    setMotion(res.data.text_in_english);
+                }
+                else
+                {
+                    handleMotion(res.data.text_in_hungarian);
+                    setMotion(res.data.text_in_hungarian);
+                }
+                
             })
             .catch((err) => {
                 console.log(err);
@@ -29,7 +41,7 @@ function RandomMotionSetter({ setMotion, currRole }) {
                     onClick={handleSetRandom}
                 >
                     <div className="new-debate--button new-debate--motion-random-text">
-                    Choose a Random Motion
+                    {t('randomMotion')}
                     </div>
                 </div>
             :
@@ -37,7 +49,7 @@ function RandomMotionSetter({ setMotion, currRole }) {
                     className="col-12 new-debate--motion-random-col text-center"
                 >
                     <div className="new-debate--button new-debate--motion-random-text new-debate--button-disabled">
-                    Choose a Random Motion
+                    {t('randomMotion')}
                     </div>
                 </div>
             }

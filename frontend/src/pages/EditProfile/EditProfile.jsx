@@ -5,11 +5,12 @@ import { useNavigate } from 'react-router-dom';
 
 import axiosInstance from '../../axios'
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'
 
 import './EditProfile.css';
 
 function EditProfile({ loggedIn }) {
-
+    const { t } = useTranslation();
     const [ newUserName, setNewUserName ] = useState('');
     const [ newFirstName, setNewFirstName ] = useState('');
     const [ newLastName, setNewLastName ] = useState('');
@@ -54,10 +55,10 @@ function EditProfile({ loggedIn }) {
                     loggedIn ?
                     <>
                         <div className="edit--title row text-center">
-                            <h1 className="col-12">Edit Your Profile!</h1>
+                            <h1 className="col-12">{t("editProfile.title")}</h1>
                         </div>
                         <div className="edit--firstname edit--element row">
-                            <h1 className="edit--firstname-text col-md-5 col-sm-12">Firstname: </h1>
+                            <h1 className="edit--firstname-text col-md-5 col-sm-12">{t("editProfile.firstname")} </h1>
                             <input
                                 type="text"
                                 className="edit--firstname-input col-md-7 col-sm-12"
@@ -68,7 +69,7 @@ function EditProfile({ loggedIn }) {
                             />
                         </div>
                         <div className="edit--lastname edit--element row">
-                            <h1 className="edit--lastname-text col-md-5 col-sm-12">Lastname: </h1>
+                            <h1 className="edit--lastname-text col-md-5 col-sm-12">{t("editProfile.lastname")}</h1>
                             <input
                                 type="text"
                                 className="edit--lastname-input col-md-7 col-sm-12"
@@ -79,7 +80,7 @@ function EditProfile({ loggedIn }) {
                             />
                         </div>
                         <div className="edit--birthday edit--element row">
-                            <h1 className="edit--birthday-text col-md-5 col-sm-12">Birthday: </h1>
+                            <h1 className="edit--birthday-text col-md-5 col-sm-12">{t("editProfile.birthday")}</h1>
                             <input
                                 type="date"
                                 className="edit--birthday-input col-md-7 col-sm-12"
@@ -90,7 +91,7 @@ function EditProfile({ loggedIn }) {
                             />
                         </div>
                         <div className="edit--email edit--element row">
-                            <h1 className="edit--email-text col-md-5 col-sm-12">Email: </h1>
+                            <h1 className="edit--email-text col-md-5 col-sm-12">{t("editProfile.email")}</h1>
                             <input
                                 type="email"
                                 className="edit--email-input col-md-7 col-sm-12"
@@ -101,7 +102,7 @@ function EditProfile({ loggedIn }) {
                             />
                         </div>
                         <div className="edit--aboutme edit--element row">
-                            <h1 className="edit--aboutme-text col-md-5 col-sm-12">About me: </h1>
+                            <h1 className="edit--aboutme-text col-md-5 col-sm-12">{t("editProfile.aboutMe")} </h1>
                             <textarea
                                 className="col-md-7 col-sm-12"
                                 value={newAboutMe}
@@ -110,37 +111,6 @@ function EditProfile({ loggedIn }) {
                                 }}
                             />
                         </div>
-
-                        {/* <Link to='/profile' className="edit--save-button-row row d-flex justify-content-center text-center">
-                            <div
-                                className="row d-flex justify-content-center text-center"
-                                
-                            >   
-                            <Link to='/profile' >
-                                <div className="edit--save-button-element"
-                                onClick={() => {
-                                    axiosInstance
-                                        .patch('user/current/', {
-                                                'username': newUserName,
-                                                'first_name': newFirstName,
-                                                'last_name': newLastName,
-                                                'birthday': newBirthday,
-                                                'email': newEmail,
-                                                'about_me': newAboutMe
-                                                })
-                                        .then((res) => {
-                                            navigate('/profile')
-                                        })
-                                        .catch((err) => {
-                                            console.log(err);
-                                        })
-                                }}>
-                                <p>Save changes</p>
-                                </div>
-                                </Link>
-
-                            </div>
-                            </Link> */}
                             <div className="profile--edit row d-flex justify-content-center">
                                 <Link to="/profile" className="profile--edit-element col-4 text-center d-flex justify-content-center">
                                     <h3 onClick={() => {
@@ -159,7 +129,7 @@ function EditProfile({ loggedIn }) {
                                         .catch((err) => {
                                             console.log(err);
                                         })
-                                }}>Save changes</h3>
+                                }}>{t("editProfile.save")}</h3>
                                     </Link>
                             </div>
 
@@ -167,9 +137,9 @@ function EditProfile({ loggedIn }) {
                     </>
                     :
                     <>
-                        {/*<div className="edit--error-row row d-flex  align-items-center justify-content-center text-center">
-                            <h1 className="edit--error-element col-8">Be kéne jelentkezni hallode</h1>
-                            </div>*/ }
+                        { <div className="edit--error-row row d-flex  align-items-center justify-content-center text-center">
+                            <h1 className="edit--error-element col-8">{t("editProfile.404")}</h1>
+                            </div> }
                     </>
                 }
             </div>
