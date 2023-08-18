@@ -1,18 +1,20 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next'
 
 import './FinishPopup.css';
 
 export default function FinishPopup(props) {
+  const { t } = useTranslation();
   return (props.trigger) ? (
     <div className="finish-popup">
         <div className="finish-popup--inner">
-            <p>Do you wish to finish the debate now?</p>
+            <p>{t("inDebate.popup.title")}</p>
             <div className="finish-popup-buttons">
               <button onClick={() => {
                 props.setTrigger(false);
                 props.navigate('/judges-drag');
-              }}>Yes</button>
-              <button onClick={() => props.setTrigger(false)}>No</button>
+              }}>{t("inDebate.popup.yes")}</button>
+              <button onClick={() => props.setTrigger(false)}>{t("inDebate.popup.no")}</button>
             </div>
         </div>
     </div>

@@ -30,7 +30,7 @@
     },
     "aboutUs":{
         "headline":"Who we are?",
-        "description":"Ide meg kell irni",
+        "description":"This website started as a student project in the Cluj University Program and our mission is to promote the culture of debate. It is important for us to be informed and to keep expanding our knowledge, which is why our common goal is to help our users to derive logical lines of thought, to express their opinions and to argue in a strong and convincing way. We believe that the ability to think critically and innovatively will help debaters to succeed in all walks of life.",
         "team":"The Team",
         "szabo":"Backend Developer",
         "kata":"Backend Developer",
@@ -44,15 +44,15 @@
         "formats":"Debate formats",
         "brit":{
             "name":"British Parliamentary",
-            "description":"Description for BP."
+            "description":"The British Parliamentary debating format features four teams—Government Opening, Opposition Opening, Government Closing, and Opposition Closing—engaging in a fast-paced debate on a motion presented in the format 'This house believes that...'. Each team consists of two speakers who deliver speeches in a specific order: Prime Minister (PM), Leader of the Opposition (LO), Deputy Prime Minister (DPM), Deputy Leader of the Opposition (DLO), Member of the Government (MG), Member of the Opposition (MO), Government Whip (GW), and Opposition Whip (OW). Speeches are typically 5 to 7 minutes long, and debaters can challenge arguments through points of information or rebuttals. The format emphasizes persuasive communication, critical thinking, and strategic analysis, with judges evaluating the teams' performance based on argument strength, responsiveness, presentation, and strategy."
         },
         "worldSchools":{
             "name":"World Schools",
-            "description":"Description for WS."
+            "description":"The World Schools Debating format involves two teams representing countries or schools, with three speakers each—Prime Minister (PM), Leader of the Opposition (LO), Member of the Government (MG), and Member of the Opposition (MO)—debating either a prepared or impromptu motion. Speeches, lasting about 5 to 7 minutes, cover argument introduction, counters, and rebuttals. Judges assess teams based on argument quality, responsiveness, teamwork, and presentation. The format combines prepared and spontaneous debating, fostering critical thinking and versatile communication skills."
         },
         "karlPopper":{
             "name":"Karl Popper",
-            "description":"Description for KP"
+            "description":"The Karl Popper Debate format, inspired by philosopher Karl Popper's ideas, encourages critical discourse through a focused exploration of a proposition. It involves three phases: constructive, rebuttal, and final focus. In the constructive phase, two teams present arguments for or against a motion, each having two speakers who introduce their main points. In the rebuttal phase, speakers challenge opponents' arguments and present further analysis. The final focus phase allows both sides to summarize their cases, emphasizing their key points and showing why their stance prevails. This format aims to foster rigorous argumentation, evidential support, and logical reasoning."
         }
     },
     "editProfile":{
@@ -91,7 +91,12 @@
     "randomMotion":"Choose a Random Motion",
     "inDebate":{
         "code":"Entry Code:",
-        "currentSpeacer":"Current Speaker: "
+        "currentSpeacer":"Current Speaker: ",
+        "popup":{
+            "title":"Do you wish to finish the debate now?",
+            "yes":"Yes",
+            "no":"No"
+        }
     },
     "judgesDrag":{
         "first":"First place",

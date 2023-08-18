@@ -91,7 +91,12 @@
     "randomMotion":"Véletlenszerű tételmondat",
     "inDebate":{
         "code":"Vita Kód:",
-        "currentSpeacer":"Jelenlegi beszélő: "
+        "currentSpeacer":"Jelenlegi beszélő: ",
+        "popup":{
+            "title":"Be szeretnéd fejezni a vitát?",
+            "yes":"Igen",
+            "no":"Nem"
+        }
     },
     "judgesDrag":{
         "first":"Első hely",

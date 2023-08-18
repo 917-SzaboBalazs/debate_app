@@ -119,7 +119,7 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
           <Nav.Link as={Link} to="/about-us" className='nav-link' onClick={closeMenu}>{t("menu.About")}</Nav.Link>
-          <Nav.Link as={Link} to="/debates" className='nav-link' onClick={closeMenu}>{t("menu.Debates")}</Nav.Link>
+          {/* <Nav.Link as={Link} to="/debates" className='nav-link' onClick={closeMenu}>{t("menu.Debates")}</Nav.Link> */}
           <Nav.Link as={Link} to="/blog" className='nav-link' onClick={closeMenu}>{t("menu.Blog")}</Nav.Link>
 
             {
