@@ -26,7 +26,7 @@ import './Navbar2.css';
 import Logo from '../../images/logo.svg';
 
 function CreateDebateComponent(props) {
-  const { loggedIn, navigate, setInDebate, closeMenu } = props;
+  const { loggedIn, navigate, setInDebate, setStatus, closeMenu } = props;
   const { t } = useTranslation();
 
   if (loggedIn) {
@@ -34,7 +34,7 @@ function CreateDebateComponent(props) {
       <Nav.Link 
         onClick={async () => { 
           closeMenu();
-          await handleClickTriggerCreate(navigate, setInDebate);
+          await handleClickTriggerCreate(navigate, setInDebate, setStatus);
         }}
         className='nav-link yellow-text'>{t("menu.create")}
       </Nav.Link>
@@ -50,15 +50,17 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
     const [ triggerCreate, setTriggerCreate ] = useState(false);
     const [ triggerJoin, setTriggerJoin ] = useState(false);
     const [ menuOpen, setMenuOpen ] = useState(false);
+    const { t } = useTranslation();
+    const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
 
     const location = useLocation();
 
     useEffect(() => {
       document.body.addEventListener('click', (e) => {
-          if (!loggedIn && e.y > 315) {
+          if (!loggedIn && e.y > 67) {
             setMenuOpen(false);
           }
-          else if (loggedIn && e.y > 417) {
+          else if (loggedIn && e.y > 67) {
             setMenuOpen(false);
           }
         });
@@ -66,7 +68,7 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
 
     useEffect(() => {
       closeMenu();
-    }, [location]);
+    }, [location, selectedLanguage]);
 
     const handleClickTriggerJoin = () => {
       setTriggerJoin(true);
@@ -95,8 +97,7 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
 
   const closeMenu = () => { setMenuOpen(false); window.scrollTo(0, 0) };
   const toggleMenu = () => setMenuOpen(menuOpen === "expanded" ? false : "expanded");
-  const { t } = useTranslation();
-  const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+  
 
     const toggleLanguage = () => {
         const newLanguage = selectedLanguage === "en" ? "hu" : "en";
@@ -126,7 +127,7 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
               !inDebate ?
               <>
                 {loggedIn && <Nav.Link onClick={handleClickTriggerJoin} className='nav-link yellow-text'>{t("menu.join")}</Nav.Link> }
-                <CreateDebateComponent loggedIn={loggedIn} setInDebate={setInDebate} navigate={navigate} closeMenu={closeMenu} />
+                <CreateDebateComponent loggedIn={loggedIn} setInDebate={setInDebate}  navigate={navigate} closeMenu={closeMenu} setStatus={setStatus} />
               </>
               :
               <>
@@ -147,12 +148,15 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
                 </>
                 :
                 <>
-                  <Nav.Link as={Link} to="/profile" className='nav-link' onClick={closeMenu}>{username}</Nav.Link>
-                  <Nav.Link onClick={logOut}>Log Out</Nav.Link>
+                  <Nav.Link as={Link} to="/profile" className='nav-link' onClick={closeMenu}>
+                    <i className="nav-profile-icon">&#xf007;</i>
+                    {username}
+                    </Nav.Link>
+                  <Nav.Link onClick={logOut}>{t("menu.logout")}</Nav.Link>
                   
                 </>
             }
-            <Nav.Link className='nav-link' onClick={toggleLanguage}>{selectedLanguage === "en" ? "Hungarian" : "English"}</Nav.Link>
+            <LanguageSelector selectedLanguage={selectedLanguage} toggleLanguage={toggleLanguage} />
           </Nav>
           
           <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} />

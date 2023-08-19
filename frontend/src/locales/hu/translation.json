@@ -3,28 +3,29 @@
         "About" : "Rólunk",
         "Debates": "Vitaformátumok",
         "Blog": "Blog",
-        "logIn": "Bejelentkezés",
-        "signUp": "Regisztráció",
+        "logIn": "Lépj Be",
+        "signUp": "Regisztrálj",
         "current": "Jelenlegi Vita",
-        "leave": "Kilépés a vitából",
-        "join": "Csatlakozz egy vitához",
-        "create": "Hozz létre új vitát"
+        "leave": "Kilépés a Vitából",
+        "join": "Csatlakozz egy Vitához",
+        "create": "Hozz létre Új Vitát",
+        "logout": "Kilépés"
     },
     "landing":{
         "notSignedIn":{
-            "call":"Regiszrálj és kezdj el vitázni most!",
-            "label1":"Belépés",
-            "label2":"Új Tag"
+            "call":"Regisztrálj és Kezdj el Vitázni Most!",
+            "label1":"Lépj Be",
+            "label2":"Regisztrálj"
 
         },
         "signedIn":{
-            "call":"Kezdődjön a vita!",
-            "label1":"Meglévő",
+            "call":"Kezdődjön a Vita!",
+            "label1":"Csatlakozz",
             "label2":"Új Vita"
         },
         "inDebate":{
             "call":"Menj vissza a vitádhoz!",
-            "label1":"Előtér",
+            "label1":"Aktuális",
             "label2":"Kilépés"
         }
     },
@@ -116,23 +117,36 @@
         }
     },
     "login":{
-        "title":"Bejelentkezés",
+        "title":"Jelentkezz Be",
         "username":"Felhasználónév",
         "password":"Jelszó",
         "login":"Bejelentkezés",
         "call":"Nincs fiókod? Regisztrálj most!",
-        "error":"Wrong username - password combination."
+        "error":"Hibás felhasználónév vagy jelszó."
     },
     "signUp":{
-        "title":"Regisztráció",
+        "title":"Regisztrálj",
         "username":"Felhasználónév",
         "email":"Email",
         "password":"Jelszó",
         "passwordAgain":"Jelszó újra",
         "requirement":"- A jelszó legalább",
-        "characters":"8 karakter hosszú",
+        "characters":"8 karakter hosszú kell legyen",
         "create":"Regisztráció",
-        "call":"Van már fiókod? Jelentkezz be itt!"
+        "call":"Van már fiókod? Jelentkezz be itt!",
+
+        "validation": {
+            "non_empty_username": "A felhasználónév nem lehet üres.",
+            "too_long_username": "A felhasználónév legfeljebb 20 karakter hosszú lehet.",
+            "non_empty_password": "A jelszó mezők nem lehetnek üresek.",
+            "non_matching_passwords": "A jelszavak nem egyeznek.",
+            "too_short_password": "A jelszónak legalább 8 karakter hosszúnak kell lennie.",
+            "non_empty_email": "Az email mező nem lehet üres.",
+            "too_long_email": "Az email legfeljebb 40 karakter hosszú lehet.",
+            "non_valid_email": "Helytelen email."
+        },
+
+        "account_created": "Sikeres regisztráció!"
     },
     "results":{
         "title":"Rangsor",

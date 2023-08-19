@@ -78,3 +78,14 @@
 .nav--logo {
     width: 8rem;
 }
+
+.nav-profile-icon {
+    font-family: FontAwesome;
+    font-style: normal;
+    margin-right: 7px;
+    transition: all 0.2s;
+}
+
+.nav-link:hover i {
+    color: black;
+}
