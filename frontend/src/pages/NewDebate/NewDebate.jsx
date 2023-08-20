@@ -31,6 +31,7 @@ function NewDebate() {
     const [ allUsers, setAllUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const { t } = useTranslation();
+    let lang = localStorage.getItem('lang')
 
     const ref = useRef(null);
 
@@ -55,6 +56,36 @@ function NewDebate() {
 
         return () => {clearInterval(interval)};
     }, [focused]);
+
+    useEffect(() => {
+        if (motion.length === 0) {
+            return;
+        }
+
+        const target_lang = lang == "en" ? "en-gb" : "hu";
+
+        axiosInstance
+            .post("motion/translate/", {
+                "motion": motion,
+                "target_lang": target_lang
+            })
+            .then((res) => {
+                
+                axiosInstance
+                    .patch("debate/current/", {
+                        "motion": res.data.motion
+                    })
+                    .then((res) => {
+
+                    })
+                    .catch((err) => {
+
+                    })
+
+            })
+            .catch((err) => {
+            })
+    }, [t]);
 
     useEffect(() => {
         axiosInstance
