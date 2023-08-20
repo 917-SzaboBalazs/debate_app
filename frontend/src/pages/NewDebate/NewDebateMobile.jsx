@@ -4,6 +4,8 @@ import React from 'react'
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next'
+
 import './NewDebate.css';
 
 import axiosInstance from '../../axios';
@@ -27,6 +29,8 @@ function NewDebateMobile() {
 
     const [ posts, setPosts ] = useState([]);
     const [ allUsers, setAllUsers] = useState([]);
+    const { t } = useTranslation();
+    let lang = localStorage.getItem('lang')
 
     const ref = useRef(null);
 
@@ -51,6 +55,36 @@ function NewDebateMobile() {
   
           return () => {clearInterval(interval)};
       }, [focused, navigate]);
+      
+    useEffect(() => {
+        if (motion === null || motion.length === 0) {
+            return;
+        }   
+
+        const target_lang = lang == "en" ? "en-gb" : "hu";
+
+        axiosInstance
+            .post("motion/translate/", {
+                "motion": motion,
+                "target_lang": target_lang
+            })
+            .then((res) => {
+                
+                axiosInstance
+                    .patch("debate/current/", {
+                        "motion": res.data.motion
+                    })
+                    .then((res) => {
+
+                    })
+                    .catch((err) => {
+
+                    })
+
+            })
+            .catch((err) => {
+            })
+    }, [t]);
 
       useEffect(() => {
         axiosInstance
@@ -117,12 +151,12 @@ function NewDebateMobile() {
                                 text-center 
                                 white-text'
                                 >
-                                Entry Code: {entryCode}
+                                {t("newDebate.entryCode")} {entryCode}
                             </h2>
                         </div>
 
                     <h1 className='new-debate--motion new-debate--motion--mobile col-12 text-center mt-3 mb-0'>
-                    <div className="col-12 new-debate--btn new-debate-btn--mobile new-debate--label text-center font-weight-bold">Motion</div>
+                    <div className="col-12 new-debate--btn new-debate-btn--mobile new-debate--label text-center font-weight-bold">{t("newDebate.motion")}</div>
                         <hr className='new-debate--line'></hr>
                         {/* Ez egy textfield lesz, hogy at lehessen irni ha arra volna igeny */}
                         <div className="row">
@@ -160,7 +194,7 @@ function NewDebateMobile() {
                     <div
                         className="new-debate--decision--pro new-debate--decision--pro--mobile  new-debate--dec col-12"
                     >
-                        <div className="col-12 new-debate--pro-btn new-debate--pro-btn--mobile new-debate--label text-center font-weight-bold">Government</div>
+                        <div className="col-12 new-debate--pro-btn new-debate--pro-btn--mobile new-debate--label text-center font-weight-bold">{t("newDebate.government")}</div>
                         <hr className='new-debate--line'></hr>
                         {
                             listerMobile (
@@ -175,7 +209,7 @@ function NewDebateMobile() {
                     <div
                         className="new-debate--decision--con .new-debate--decision--con--mobile new-debate--dec col-12"
                     >
-                        <div className="col-12 new-debate--pro-btn new-debate--pro-btn--mobile text-center new-debate--label font-weight-bold">Opposition</div>
+                        <div className="col-12 new-debate--pro-btn new-debate--pro-btn--mobile text-center new-debate--label font-weight-bold">{t('newDebate.opposition')}</div>
                         <hr className='new-debate--line'></hr>
                         {
                             listerMobile (
@@ -186,7 +220,7 @@ function NewDebateMobile() {
                                 setCurrRole)
                         }
                     </div>
-                    <div className="col-12 new-debate--pro-btn new-debate--pro-btn--mobile new-debate--label text-center font-weight-bold">Spectators</div>
+                    <div className="col-12 new-debate--pro-btn new-debate--pro-btn--mobile new-debate--label text-center font-weight-bold">{t("newDebate.spectators")}</div>
                     <hr className='new-debate--line'></hr>
                     <div className="row new-debate--center-spectators-row"> 
                         {
@@ -202,13 +236,13 @@ function NewDebateMobile() {
                         className={"new-debate--spectator-col new-debate--button col-4 white-text text-center" + (currRole === 'judge' ? ' new-debate--selected-button' : '') }
                             onClick={() => { handleChoose('judge', null, setCurrRole); window.scrollTo(0, document.body.scrollHeight); }}
                         >
-                        judge
+                        {t("newDebate.judge")}
                         </div>    
                     <div 
                         className={"new-debate--spectator-col new-debate--button col-4 white-text text-center" + (currRole === 'spectator' ? ' new-debate--selected-button' : '') }
                             onClick={() => handleChoose('spectator', null, setCurrRole)}
                         >
-                        spectator
+                        {t("newDebate.spectator")}
                     </div>
                 </div>
 
@@ -247,7 +281,7 @@ function NewDebateMobile() {
                                 className="new-debate--button col-4 white-text text-center"
                                 onClick={startDebate}
                             >
-                                start
+                                {t("newDebate.start")}
                             </div>
                         
                     </>
@@ -256,7 +290,7 @@ function NewDebateMobile() {
                          <div
                                 className="new-debate--button new-debate--button-disabled col-4 white-text text-center"
                             >
-                                start
+                                {t("newDebate.start")}
                             </div>
                     </>
                 }

@@ -58,7 +58,7 @@ function NewDebate() {
     }, [focused]);
 
     useEffect(() => {
-        if (motion.length === 0) {
+        if (motion === null || motion.length === 0) {
             return;
         }
 

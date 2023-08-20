@@ -65,7 +65,11 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
 
     useEffect(() => {
       closeMenu();
-    }, [location, selectedLanguage]);
+    }, [location]);
+
+    useEffect(() => {
+      setMenuOpen(false);
+    }, [selectedLanguage])
 
     const handleClickTriggerJoin = () => {
       setTriggerJoin(true);

@@ -84,8 +84,9 @@
         "motion":"Tételmondat",
         "government":"Kormány",
         "opposition":"Ellenzék",
+        "spectators":"Nézők",
         "entryCode":"Vita Kód: ",
-        "start":"Kezdődjön a vita!",
+        "start":"Kezdés",
         "judge":"bíró",
         "spectator":"néző"
     },

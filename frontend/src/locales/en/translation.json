@@ -84,6 +84,7 @@
         "motion":"Motion",
         "government":"Government",
         "opposition":"Opposition",
+        "spectators": "Spectators",
         "entryCode":"Entry Code: ",
         "start":"START",
         "judge":"judge",
