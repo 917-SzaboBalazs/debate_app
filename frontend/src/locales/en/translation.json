@@ -36,7 +36,7 @@
         "szabo":"Backend Developer",
         "kata":"Backend Developer",
         "fa":"Designer",
-        "pa":"Project manager",
+        "pa":"Project Manager",
         "saska":"Frontend Developer",
         "huni":"Frontend Developer",
         "andris":"Mentor"
@@ -94,7 +94,7 @@
         "code":"Entry Code:",
         "currentSpeacer":"Current Speaker: ",
         "popup":{
-            "title":"Do you wish to finish the debate now?",
+            "title":"Do you want to finish the debate now?",
             "yes":"Yes",
             "no":"No"
         }
