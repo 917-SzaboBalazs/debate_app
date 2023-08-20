@@ -318,6 +318,10 @@
         margin-top: 50px;
     }
 
+    .new-debate--spectator-col {
+        width: 120px;
+    }
+
     .new-debate--motion-text-row {
         padding: 0;
         height: auto;
