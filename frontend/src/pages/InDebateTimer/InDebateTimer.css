@@ -118,7 +118,11 @@
     margin-left: 4px;
 }
 
-.indebate--next-button:hover {
+.indebate--next-button:disabled {
+    opacity: 0.5;
+}
+
+.indebate--next-button:hover:not(:disabled) {
     background-color: white;
     transition: .3s;
 }
@@ -130,9 +134,15 @@
     margin-right: 4px;
 }
 
-.indebate--back-button:hover {
+.indebate--back-button:disabled {
+    opacity: 0.5;
+}
+
+.indebate--back-button:hover:not(:disabled) {
     background-color: white;
     transition: .3s;
+    color: #333d4b;
+    border-color: white;
 }
 
 .indebate--current-speaker {
@@ -178,7 +188,11 @@
     border-radius: 2rem;
 }
 
-.in-debate--finish-button:hover {
+.in-debate--finish-button:disabled {
+    opacity: 0.5;
+}
+
+.in-debate--finish-button:hover:not(:disabled) {
     /* color: rgb(243, 234, 226); */
     color: #333d4b;
     /* background-color: #333d4b; */

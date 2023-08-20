@@ -62,7 +62,7 @@
         "lastname":"Családnév: ",
         "birthday":"Születésnap: ",
         "email":"Email: ",
-        "aboutMe":"Leírás: ",
+        "aboutMe":"Rólam: ",
         "save":"Mentés",
         "404":"Ha szerkeszteni szeretnéd a profilod, előbb jelentkezz be!"
     },
@@ -146,7 +146,14 @@
             "non_valid_email": "Helytelen email."
         },
 
-        "account_created": "Sikeres regisztráció!"
+        "account_created": "Sikeres regisztráció!",
+
+        "server_validation": {
+            "server_error": "Szerverhiba.",
+            "duplicate_username": "A felhasználónév foglalt.",
+            "duplicate_email": "Az email cím már használatban van.",
+            "unexpected_error": "Váratlan hiba."
+        }
     },
     "results":{
         "title":"Rangsor",

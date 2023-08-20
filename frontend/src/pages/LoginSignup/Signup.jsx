@@ -141,39 +141,18 @@ function Signup() {
           })
           .catch((err) => {
 
-            const lang = localStorage.getItem('lang')
-            if (lang === 'en')
-            {
-              if (typeof(err.response.data) == 'undefined') {
-                setMessage('Server error.');
-              }
-              if (typeof(err.response.data.username) != 'undefined') {
-                setMessage('This username already exists.');
-                setUserName('');
-              } else if (typeof(err.response.data.email) != 'undefined') {
-                setMessage('This email address has been used before.');
-                setEmail('');
-              } else if (err.response.status === 400){
-                setMessage('Unexpected error');
-              } 
+            if (typeof(err.response.data) == 'undefined') {
+              setMessage('signUp.server_validation.server_error');
             }
-            else
-            {
-              if (typeof(err.response.data) == 'undefined') {
-                setMessage('Szerverhiba.');
-              }
-              if (typeof(err.response.data.username) != 'undefined') {
-                setMessage('A felhasználónév foglalt.');
-                setUserName('');
-              } else if (typeof(err.response.data.email) != 'undefined') {
-                setMessage('Az email cím már használatban van.');
-                setEmail('');
-              } else if (err.response.status === 400){
-                setMessage('Váratlan hiba');
-              } 
-            }
-
-
+            if (typeof(err.response.data.username) != 'undefined') {
+              setMessage('signUp.server_validation.duplicate_username');
+              setUserName('');
+            } else if (typeof(err.response.data.email) != 'undefined') {
+              setMessage('signUp.server_validation.duplicate_email');
+              setEmail('');
+            } else if (err.response.status === 400){
+              setMessage('signUp.server_validation.unexpected_error');
+            } 
             });
     }
 
@@ -301,7 +280,7 @@ function Signup() {
                   </div>
               </div>
           </div>
-          <SignupPopup trigger={trigger} setTrigger={setTrigger}>
+          <SignupPopup trigger={trigger} setTrigger={setTrigger} setMessage={setMessage} >
             <h3>{t(message)}</h3>
           </SignupPopup>
 

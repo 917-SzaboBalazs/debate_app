@@ -1,3 +1,5 @@
+/* DESKTOP DROPDOWN */
+
 .Dropdown-root {
   height: auto;
   margin: auto;
@@ -39,4 +41,13 @@
 
 .Dropdown-option.is-selected {
   display: none;
+}
+
+/* MOBILE LISTING ALL */
+.language-selector--list-container {
+  margin-left: -5px;
+}
+
+.langauge-selector--language-flag {
+  margin: 5px 10px;
 }

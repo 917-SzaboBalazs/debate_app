@@ -5,6 +5,7 @@
 } */
 
 .login-popup {
+    z-index: 8;
     position: fixed;
     top: 0;
     left: 0;

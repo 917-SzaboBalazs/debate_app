@@ -258,6 +258,15 @@ function InDebateTimer() {
             .catch((err) => {
                 console.log(err);
             });
+
+        axiosInstance
+            .patch('timer/poi/', {'state': 'reset'})
+            .then((res) => {
+                console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     const handleFinish = () => {
@@ -342,6 +351,7 @@ function InDebateTimer() {
                                     onClick={() => {
                                         handlePOI();
                                     }}
+                                    disabled={!running}
                                 >
                                     POI
                                 </button>
@@ -390,9 +400,10 @@ function InDebateTimer() {
                             onClick={handleBack}
                             onMouseOver={handleMouseBack}
                             onMouseOut={handleMouseBack}
+                            disabled={running || currentlySpeaking === 1}
                         >
                             <img src={
-                                !isMouseBack ?
+                                !isMouseBack || running || currentlySpeaking === 1 ?
                                     WhiteBack :
                                     YellowBack
                             }
@@ -404,9 +415,10 @@ function InDebateTimer() {
                             onClick={handleNext}
                             onMouseOver={handleMouseNext}
                             onMouseOut={handleMouseNext}
+                            disabled={running || currentlySpeaking === 8}
                         >
                             <img src={
-                                !isMouseNext ?
+                                !isMouseNext || running || currentlySpeaking === 8 ?
                                     WhiteNext :
                                     YellowNext
                             }
@@ -421,6 +433,7 @@ function InDebateTimer() {
                             <button
                                 className="in-debate--finish-button col-3"
                                 onClick={handleFinish}
+                                disabled={running}
                             >
                                 finish
                             </button>

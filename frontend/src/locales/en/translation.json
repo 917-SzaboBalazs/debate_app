@@ -146,7 +146,14 @@
             "non_valid_email": "The given email addres is not valid."
         },
 
-        "account_created": "Success! Your account has been created!"
+        "account_created": "Success! Your account has been created!",
+
+        "server_validation": {
+            "server_error": "Server error.",
+            "duplicate_username": "This username already exists.",
+            "duplicate_email": "This email address has been used before.",
+            "unexpected_error": "Unexpected error."
+        }
     },
     "results":{
         "title":"Results",

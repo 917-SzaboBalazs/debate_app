@@ -44,7 +44,7 @@ function CreateDebateComponent(props) {
   return(<></>)
 }
 
-function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, status, setStatus, username, setUsername }) {
+function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, status, setStatus, username, setUsername, windowWidth }) {
     let navigate = useNavigate();
 
     const [ triggerCreate, setTriggerCreate ] = useState(false);
@@ -57,10 +57,7 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
 
     useEffect(() => {
       document.body.addEventListener('click', (e) => {
-          if (!loggedIn && e.y > 67) {
-            setMenuOpen(false);
-          }
-          else if (loggedIn && e.y > 67) {
+          if (e.y > 67) {
             setMenuOpen(false);
           }
         });
@@ -111,6 +108,17 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
         }
     }
 
+  const selectLanguage = (newLanguage) => {
+    i18n.changeLanguage(newLanguage);
+    setSelectedLanguage(newLanguage);
+    localStorage.setItem("lang", newLanguage);
+    const pathname = window.location.pathname;
+    console.log(pathname)
+    if(pathname === '/judges-drag'){
+      window.location.reload()
+    }
+  }
+
   return (
     <>
     <Navbar collapseOnSelect expand="lg" bg="primary" className='nav fade-in' expanded={menuOpen}>
@@ -156,7 +164,7 @@ function CollapsibleExample({ loggedIn, setLoggedIn, inDebate, setInDebate, stat
                   
                 </>
             }
-            <LanguageSelector selectedLanguage={selectedLanguage} toggleLanguage={toggleLanguage} />
+            <LanguageSelector selectedLanguage={selectedLanguage} toggleLanguage={toggleLanguage} selectLanguage={selectLanguage} windowWidth={windowWidth} />
           </Nav>
           
           <CreateDebate loggedIn={loggedIn} trigger={triggerCreate} setTrigger={setTriggerCreate} />
