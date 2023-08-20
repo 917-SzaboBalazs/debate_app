@@ -98,6 +98,9 @@ class RetrieveUpdateCurrentDebateView(RetrieveUpdateAPIView):
     def patch(self, request, *args, **kwargs):
         if self.request.user.current_debate is None:
             return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        if self.request.user.role != "judge":
+            return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED, data={"message": "Only the judge is allowed to edit the debate."})
 
         current_debate = self.queryset.filter(id=self.request.user.current_debate.id)[0]
 
