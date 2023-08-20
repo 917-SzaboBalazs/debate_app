@@ -40,6 +40,12 @@ function App() {
 
   const [userLoading, setUserLoading] = useState(true);
   const [debateLoading, setDebateLoading] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(getWindowSize());
+
+  function getWindowSize() {
+    const {innerWidth, _} = window;
+    return innerWidth;
+  }
 
   useEffect(() => {
     axiosInstance
@@ -74,6 +80,18 @@ function App() {
 
   }, []);
 
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowWidth(getWindowSize());
+    }
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
   if (debateLoading || userLoading) {
     return <></>
   }
@@ -82,7 +100,7 @@ function App() {
     <>
       <Router>
         {/* Navbar  */}
-        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate} status={status} setStatus={setStatus} username={username} setUsername={setUsername}/>
+        <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} inDebate={inDebate} setInDebate={setInDebate} status={status} setStatus={setStatus} username={username} setUsername={setUsername} windowWidth={windowWidth}/>
 
         {/* A tobbi oldal elerhetosege  */}
         <Routes>

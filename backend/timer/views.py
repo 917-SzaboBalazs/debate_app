@@ -133,3 +133,35 @@ class CreatePOITimerView(generics.ListCreateAPIView):
             "remaining-time": request.user.current_debate.poi.remaining_time().seconds,
             "state": request.user.current_debate.poi.get_state_display(),
         })
+
+    def patch(self, request, *args, **kwargs):
+        if request.user.current_debate is None:
+            return Response(data={
+                "detail": "User not in debate"
+            }, status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            has_poi = (request.user.current_debate.poi is not None)
+        except POITime.DoesNotExist:
+            has_poi = False
+
+        if not has_poi:
+            return Response(data={
+                "detail": "This debate doesn't have a POI"
+            }, status=status.HTTP_404_NOT_FOUND)
+
+        if 'state' in request.data:
+            if request.data.get('state') == "reset":
+                request.user.current_debate.poi.delete()
+
+                return Response(data={
+                    "remaining-time": 0,
+                    "state": "paused",
+                })
+
+                return Response(status=status.HTTP_202_ACCEPTED)
+
+            return Response(data={"detail": "Invalid state option (available options: reset)"},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(data={"detail": "State field is required"}, status=status.HTTP_400_BAD_REQUEST)

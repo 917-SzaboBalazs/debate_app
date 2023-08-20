@@ -23,12 +23,12 @@ function Login({setLoggedIn, setGlobalUsername}) {
     const [ userName, setUserName ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ trigger, setTrigger ] = useState(false);
-    const [ message, setMessage ] = useState('');
-
 
     let navigate = useNavigate();
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+      e.preventDefault();
+
       axiosInstance
         .post('token/', {
           username: userName,
@@ -43,15 +43,7 @@ function Login({setLoggedIn, setGlobalUsername}) {
           setGlobalUsername(userName);
         })
         .catch((err) => {
-          const lang = localStorage.getItem('lang')
-          if (lang === 'en')
-          {
-            setMessage("Wrong username - password combination.");
-          }
-          else
-          {
-            setMessage("Helytelen felhasználónév vagy jelszó.");
-          }
+          
           
           setTrigger(true);
           setPassword('');
@@ -91,6 +83,7 @@ function Login({setLoggedIn, setGlobalUsername}) {
                     <h1 className="login--login-title">
                       {t("login.title")}
                     </h1>
+                    <form onSubmit={handleSubmit} method='post'>
                     <div className="icon-container">
                       <input 
                         value={userName}
@@ -114,9 +107,11 @@ function Login({setLoggedIn, setGlobalUsername}) {
 
                   <div className="login-btn-row row text-center">
                     <div className="login--btn-cont col-12 ">
-                        <button type='submit'  className='login-btn bg-succes' onClick={handleSubmit}>{t("login.login")}</button>
+                        <button type='submit'  className='login-btn bg-succes'>{t("login.login")}</button>
                     </div>
                   </div>
+
+                  </form>
                   <div className="login--dont-have-cont row">
                     <Link className="login--dont-have-account col-12" to='/sign-up'><span>{t("login.call")}</span></Link>
                   </div>
@@ -137,7 +132,7 @@ function Login({setLoggedIn, setGlobalUsername}) {
             </div>*/}
             {/* </form> */}
             <LoginPopup trigger={trigger} setTrigger={setTrigger}>
-              <h3>{message}</h3>
+              <h3>{t("login.error")}</h3>
             </LoginPopup>
           </div>
         </div>

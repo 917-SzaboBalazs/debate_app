@@ -1,23 +1,40 @@
-import React, { useState } from "react";
-import i18n from "../../i18n";
+import React, { useEffect, useRef, useState } from "react";
 import './LanguageSelector.css';
+import Dropdown from 'react-dropdown';
+import en_flag from '../../images/flags/en.png';
+import hu_flag from '../../images/flags/hu.png';
 
-const LanguageSelector = () => {
-    const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+const LanguageSelector = ({selectedLanguage, toggleLanguage, selectLanguage, windowWidth}) => {
+    const languages = [
+        {value: 'hu', label: <img src={hu_flag} alt="HU" />},
+        {value: 'en', label: <img src={en_flag} alt="EN" />}
+    ];
 
-    const toggleLanguage = () => {
-        const newLanguage = selectedLanguage === "en" ? "hu" : "en";
-        i18n.changeLanguage(newLanguage);
-        setSelectedLanguage(newLanguage);
-        localStorage.setItem("lang", newLanguage);
-    }
+    const defaultOption = selectedLanguage;
 
     return (
-        // <div className="language-selector nav-link">
-            <button className="language-button" onClick={toggleLanguage}>
-                {selectedLanguage === "en" ? "Hungarian" : "English"}
-            </button>
-        // </div>
+            <>
+            {
+                windowWidth >= 992 ? 
+
+                    <Dropdown
+                    className="language-selector--dropdown"
+                    options={languages}
+                    value={defaultOption}
+                    onChange={toggleLanguage}
+                
+                />
+            :
+                <>
+                    <div className="language-selector--list-container">
+                        <img src={hu_flag} alt="HU" className="langauge-selector--language-flag" onClick={() => selectLanguage("hu")} />
+                        <img src={en_flag} alt="EN" className="langauge-selector--language-flag" onClick={() => selectLanguage("en")} />
+
+                    </div>
+                </>
+            }
+
+            </>
     );
 };
 

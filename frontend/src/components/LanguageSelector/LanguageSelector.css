@@ -1,18 +1,53 @@
-/* LanguageSelector.css */
+/* DESKTOP DROPDOWN */
 
-/* .language-selector {
-    display: inline-block;
-    position: relative;
-  } */
+.Dropdown-root {
+  height: auto;
+  margin: auto;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.Dropdown-placeholder {
+  padding: 10px 20px;
+  border-radius: 5px 5px 0 0;
+  transition: all 0.2s;
   
-  .language-button {
-    background-color: rgba(var(--primary),var(--bs-bg-opacity))!important;
-    border: none;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  /* .language-button:hover{
-    color: (var(--primary));
-  } */
+}
+
+.Dropdown-placeholder:hover, .Dropdown-root.is-open .Dropdown-placeholder {
+  background-color: #262c35;
+}
+
+.Dropdown-placeholder:hover {
+  border-radius: 5px;
+}
+
+.Dropdown-menu {
+  position: absolute;
+  background-color: #333D4B;
   
+  border-radius: 0 0 5px 5px;
+}
+
+.Dropdown-option {
+  padding: 10px 20px;
+  transition: all 0.2s;
+}
+
+.Dropdown-option:hover {
+  background-color: #262c35;
+  border-radius: 0 0 5px 5px;
+}
+
+.Dropdown-option.is-selected {
+  display: none;
+}
+
+/* MOBILE LISTING ALL */
+.language-selector--list-container {
+  margin-left: -5px;
+}
+
+.langauge-selector--language-flag {
+  margin: 5px 10px;
+}

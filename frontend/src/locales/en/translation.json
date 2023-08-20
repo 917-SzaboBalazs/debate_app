@@ -8,7 +8,8 @@
         "current": "Current Debate",
         "leave": "Leave Debate",
         "join": "Join a Debate",
-        "create": "Create a Debate"
+        "create": "Create a Debate",
+        "logout": "Logout"
     },
     "landing":{
         "notSignedIn":{
@@ -35,7 +36,7 @@
         "szabo":"Backend Developer",
         "kata":"Backend Developer",
         "fa":"Designer",
-        "pa":"Project manager",
+        "pa":"Project Manager",
         "saska":"Frontend Developer",
         "huni":"Frontend Developer",
         "andris":"Mentor"
@@ -93,7 +94,7 @@
         "code":"Entry Code:",
         "currentSpeacer":"Current Speaker: ",
         "popup":{
-            "title":"Do you wish to finish the debate now?",
+            "title":"Do you want to finish the debate now?",
             "yes":"Yes",
             "no":"No"
         }
@@ -116,12 +117,12 @@
         }
     },
     "login":{
-        "title":"Sign In",
+        "title":"Log In",
         "username":"Username",
         "password":"Password",
         "login":"Log In",
-        "call":"No Account Yet? Signup Now",
-        "error":"Wrong username - password combination."
+        "call":"No Account Yet? Sign Up Now!",
+        "error":"Wrong username or password."
     },
     "signUp":{
         "title":"Sign Up",
@@ -132,7 +133,27 @@
         "requirement":"- Password must have at least",
         "characters":"8 characters",
         "create":"Create Account",
-        "call":"Already have an Account? Sign in Now"
+        "call":"Already have an Account? Sign in Now!",
+
+        "validation": {
+            "non_empty_username": "The username field must not be empty.",
+            "too_long_username": "The length of the username must be maximum 20 characters.",
+            "non_empty_password": "The password fields must not be empty.",
+            "non_matching_passwords": "The passwords must match.",
+            "too_short_password": "The password must be at least 8 characters.",
+            "non_empty_email": "The email field must not be empty.",
+            "too_long_email": "The email must be at most 40 characters.",
+            "non_valid_email": "The given email addres is not valid."
+        },
+
+        "account_created": "Success! Your account has been created!",
+
+        "server_validation": {
+            "server_error": "Server error.",
+            "duplicate_username": "This username already exists.",
+            "duplicate_email": "This email address has been used before.",
+            "unexpected_error": "Unexpected error."
+        }
     },
     "results":{
         "title":"Results",
