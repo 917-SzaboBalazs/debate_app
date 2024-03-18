@@ -1,31 +1,34 @@
-# debate_app
+# Debate App
 
-Google Doc links:
-Drive: https://docs.google.com/document/d/1utVIOJrAO7IC1rojlQ6xNVul-8mgifeCqnwTk_SjHWE/edit
+## Description
+Debate App is a platform where users can engage in debates on various topics, share opinions, and engage in discussions with others.
 
-  **Vitaweboldal meeting 1** 
-  https://docs.google.com/document/d/1bFabP2QF9wGk0zb4F91yEjeJC6bReGfvRGylfLHoSss/edit
-  
-  **Documentáció**
-  https://docs.google.com/document/d/1iUrgGlJO3BmjWG6Vtaayeir1AcdA_WrvuJZVUVhaVyU/edit
+## Features
+- **User authentication**: Users can sign up, log in, and manage their accounts.
+- **Debate creation**: Users can create debates on different topics.
+- **Joining debates**: Users can join existing debates and participate by expressing their opinions.
+- **Admin panel**: Admins can manage users, debates, comments, and other aspects of the platform.
 
-  **Version 1.0** 
-  https://docs.google.com/document/d/1utVIOJrAO7IC1rojlQ6xNVul-8mgifeCqnwTk_SjHWE/edit
+## Starting the App
+1. **Backend Setup:**
+   - Activate virtual environment:
+     ```
+     source venv/bin/activate  # For Unix/Linux
+     venv\Scripts\activate  # For Windows
+     ```
+   - Install dependencies:
+     ```
+     pip install -r requirements.txt
+     ```
+   - Start the backend server:
+     ```
+     python manage.py runserver
+     ```
 
-  Backend
+2. **Frontend Setup:**
+   - Start the frontend server:
+     ```
+     npm start
+     ```
 
-
-  Activate virtual environment
-  venv\Scripts\activate
-  
-  Install:
-  pip install -r requirements.txt
-
-  Start:
-
-  python manage.py runserver
-
-  Frontend:
-
-  Start:
-  npm start
+3. Open your web browser and navigate to `http://localhost:3000` to access the Debate App.
